@@ -13,6 +13,7 @@ public class LoadingScene : MonoBehaviour
     }
 
     // Update is called once per frame
+   
    IEnumerator Loading()
     {
 
@@ -23,7 +24,9 @@ public class LoadingScene : MonoBehaviour
             fill.fillAmount =1f - (timeCoolDown/timeLoad);
             yield return null;
         }
-        SceneManager.LoadScene("PlayScene");
+      
+       
+        
     }
 
     
