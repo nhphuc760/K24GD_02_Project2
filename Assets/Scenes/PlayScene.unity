@@ -199,7 +199,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2315132830120601726, guid: 7e5bd3d7035872548af23be64725db42, type: 3}
+  m_Sprite: {fileID: 2315132830120601726, guid: 291e0a5160b34bd45b1d5ee277e35b11, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Library: []
-  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 5803b884ed2db3746b554050d7b930c4, type: 3}
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 7315c201994dd2e4a911e3adafc74bd4, type: 3}
 --- !u!114 &311686150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1372,6 +1372,7 @@ Tilemap:
   m_TileMatrixArray:
   - m_RefCount: 0
     m_Data:
+<<<<<<< HEAD
       e00: -1.57775e-40
       e01: 0
       e02: 1e-45
@@ -1396,6 +1397,32 @@ Tilemap:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -16, y: -6, z: 0}
   m_Size: {x: 27, y: 14, z: 1}
+=======
+      e00: -1.60465e-40
+      e01: 0
+      e02: 1e-45
+      e03: 2.9859276e-19
+      e10: 7.51e-43
+      e11: 0
+      e12: 0
+      e13: 7.48e-43
+      e20: 6.268263e+21
+      e21: 2.9859276e-19
+      e22: -1.60465e-40
+      e23: -9.238789e-19
+      e30: 4.5907e-41
+      e31: 7.48e-43
+      e32: 7.51e-43
+      e33: 7.48e-43
+  m_TileColorArray:
+  - m_RefCount: 0
+    m_Data: {r: -9.238747e-19, g: -9.238747e-19, b: -9.238747e-19, a: -9.238747e-19}
+  m_TileObjectToInstantiateArray: []
+  m_AnimationFrameRate: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Origin: {x: -17, y: -6, z: 0}
+  m_Size: {x: 25, y: 16, z: 1}
+>>>>>>> 609c65fc21a39ce89ead6fa99f4aad43e4e8644c
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
