@@ -25,4 +25,6 @@ public class LoadingScene : MonoBehaviour
         }
         SceneManager.LoadScene("PlayScene");
     }
+
+    
 }
