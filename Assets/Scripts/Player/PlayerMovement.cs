@@ -24,5 +24,6 @@ public class PlayerMovement:MonoBehaviour
             verticalMovement = direct.y;
         }
         rb.linearVelocity = direct * moveSpeed;
+
     }
 }
