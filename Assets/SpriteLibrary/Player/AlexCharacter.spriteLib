@@ -1573,9 +1573,49 @@ MonoBehaviour:
   - m_Name: Run_Side
     m_Hash: 641436153
     m_CategoryList: []
-    m_OverrideEntries: []
+    m_OverrideEntries:
+    - m_Name: Run_16
+      m_Hash: 877141110
+      m_Sprite: {fileID: -2969576599511150121, guid: e7e2fdf4c053f364b9ea7ed9134867f2, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -2969576599511150121, guid: e7e2fdf4c053f364b9ea7ed9134867f2, type: 3}
+    - m_Name: Run_17
+      m_Hash: 55520480
+      m_Sprite: {fileID: -1100304572229716114, guid: e7e2fdf4c053f364b9ea7ed9134867f2, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1100304572229716114, guid: e7e2fdf4c053f364b9ea7ed9134867f2, type: 3}
+    - m_Name: Run_18
+      m_Hash: 334508401
+      m_Sprite: {fileID: -1286830556838052669, guid: e7e2fdf4c053f364b9ea7ed9134867f2, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1286830556838052669, guid: e7e2fdf4c053f364b9ea7ed9134867f2, type: 3}
+    - m_Name: Run_19
+      m_Hash: 620167655
+      m_Sprite: {fileID: -4740722875278701659, guid: e7e2fdf4c053f364b9ea7ed9134867f2, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -4740722875278701659, guid: e7e2fdf4c053f364b9ea7ed9134867f2, type: 3}
+    - m_Name: Run_20
+      m_Hash: 906422912
+      m_Sprite: {fileID: -6219685122133649782, guid: e7e2fdf4c053f364b9ea7ed9134867f2, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -6219685122133649782, guid: e7e2fdf4c053f364b9ea7ed9134867f2, type: 3}
+    - m_Name: Run_21
+      m_Hash: 16898582
+      m_Sprite: {fileID: -5210376377794636309, guid: e7e2fdf4c053f364b9ea7ed9134867f2, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -5210376377794636309, guid: e7e2fdf4c053f364b9ea7ed9134867f2, type: 3}
+    - m_Name: Run_22
+      m_Hash: 403213228
+      m_Sprite: {fileID: -227415817694919712, guid: e7e2fdf4c053f364b9ea7ed9134867f2, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -227415817694919712, guid: e7e2fdf4c053f364b9ea7ed9134867f2, type: 3}
+    - m_Name: Run_23
+      m_Hash: 789560122
+      m_Sprite: {fileID: 2448761691846615139, guid: e7e2fdf4c053f364b9ea7ed9134867f2, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2448761691846615139, guid: e7e2fdf4c053f364b9ea7ed9134867f2, type: 3}
     m_FromMain: 0
-    m_EntryOverrideCount: 0
+    m_EntryOverrideCount: 8
   - m_Name: Watering_Front
     m_Hash: 186333637
     m_CategoryList: []
@@ -1715,5 +1755,5 @@ MonoBehaviour:
     m_FromMain: 0
     m_EntryOverrideCount: 8
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 638954682495003641
+  m_ModificationHash: 638955291203138721
   m_Version: 1
