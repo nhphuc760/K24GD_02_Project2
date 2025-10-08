@@ -70,7 +70,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -84,7 +84,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -143,7 +143,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: iOS
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -162,10 +162,10 @@ TextureImporter:
       name: Mermaid _0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 32
-        height: 32
+        x: 7
+        y: 66
+        width: 17
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,10 +184,10 @@ TextureImporter:
       name: Mermaid _1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
-        height: 32
+        x: 39
+        y: 65
+        width: 17
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,10 +206,10 @@ TextureImporter:
       name: Mermaid _2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
-        width: 32
-        height: 32
+        x: 71
+        y: 65
+        width: 17
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,10 +228,10 @@ TextureImporter:
       name: Mermaid _3
       rect:
         serializedVersion: 2
-        x: 96
-        y: 64
-        width: 32
-        height: 32
+        x: 103
+        y: 66
+        width: 17
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,10 +250,10 @@ TextureImporter:
       name: Mermaid _4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
+        x: 7
+        y: 34
+        width: 17
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -272,10 +272,10 @@ TextureImporter:
       name: Mermaid _5
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
+        x: 39
+        y: 33
+        width: 17
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -294,10 +294,10 @@ TextureImporter:
       name: Mermaid _6
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
+        x: 71
+        y: 33
+        width: 17
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -316,10 +316,10 @@ TextureImporter:
       name: Mermaid _7
       rect:
         serializedVersion: 2
-        x: 96
-        y: 32
-        width: 32
-        height: 32
+        x: 103
+        y: 34
+        width: 17
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -338,10 +338,10 @@ TextureImporter:
       name: Mermaid _8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
+        x: 7
+        y: 2
+        width: 17
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -360,10 +360,10 @@ TextureImporter:
       name: Mermaid _9
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
+        x: 39
+        y: 1
+        width: 17
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -382,10 +382,10 @@ TextureImporter:
       name: Mermaid _10
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
+        x: 71
+        y: 1
+        width: 17
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -404,10 +404,10 @@ TextureImporter:
       name: Mermaid _11
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
+        x: 103
+        y: 2
+        width: 17
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -426,7 +426,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 35399370731cc2c43b488853a80fa4e9
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 

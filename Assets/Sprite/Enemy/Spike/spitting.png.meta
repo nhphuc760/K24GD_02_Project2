@@ -79,7 +79,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -93,7 +93,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,7 +117,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -152,7 +152,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: iOS
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -171,10 +171,10 @@ TextureImporter:
       name: spitting_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 32
-        height: 32
+        x: 7
+        y: 71
+        width: 21
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,10 +193,10 @@ TextureImporter:
       name: spitting_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
-        height: 32
+        x: 39
+        y: 71
+        width: 21
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,10 +215,10 @@ TextureImporter:
       name: spitting_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
-        width: 32
-        height: 32
+        x: 71
+        y: 71
+        width: 21
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,10 +237,10 @@ TextureImporter:
       name: spitting_3
       rect:
         serializedVersion: 2
-        x: 96
-        y: 64
-        width: 32
-        height: 32
+        x: 103
+        y: 71
+        width: 21
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -259,10 +259,10 @@ TextureImporter:
       name: spitting_4
       rect:
         serializedVersion: 2
-        x: 128
-        y: 64
-        width: 32
-        height: 32
+        x: 135
+        y: 71
+        width: 21
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,10 +281,10 @@ TextureImporter:
       name: spitting_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
+        x: 7
+        y: 39
+        width: 21
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -303,10 +303,10 @@ TextureImporter:
       name: spitting_6
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
+        x: 39
+        y: 39
+        width: 21
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -325,10 +325,10 @@ TextureImporter:
       name: spitting_7
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
+        x: 71
+        y: 39
+        width: 21
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -347,10 +347,10 @@ TextureImporter:
       name: spitting_8
       rect:
         serializedVersion: 2
-        x: 96
-        y: 32
-        width: 32
-        height: 32
+        x: 103
+        y: 39
+        width: 21
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -369,10 +369,10 @@ TextureImporter:
       name: spitting_9
       rect:
         serializedVersion: 2
-        x: 128
-        y: 32
-        width: 32
-        height: 32
+        x: 135
+        y: 39
+        width: 21
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -391,10 +391,10 @@ TextureImporter:
       name: spitting_10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
+        x: 7
+        y: 7
+        width: 21
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -413,10 +413,10 @@ TextureImporter:
       name: spitting_11
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
+        x: 39
+        y: 7
+        width: 21
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -435,10 +435,10 @@ TextureImporter:
       name: spitting_12
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
+        x: 71
+        y: 7
+        width: 21
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -457,10 +457,10 @@ TextureImporter:
       name: spitting_13
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
+        x: 103
+        y: 7
+        width: 21
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -479,10 +479,10 @@ TextureImporter:
       name: spitting_14
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
+        x: 135
+        y: 7
+        width: 21
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -501,7 +501,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 69b67a047884c3847b1f20550bd02526
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
