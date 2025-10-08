@@ -160,6 +160,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -572,7 +585,25 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Walk bomb_0: -7830975286387113111
+      Walk bomb_1: 4574592081911454034
+      Walk bomb_10: -7012854287475504181
+      Walk bomb_11: -627384169335979240
+      Walk bomb_12: -6414960873782220149
+      Walk bomb_13: 8667271186025283890
+      Walk bomb_14: 4630949064780080817
+      Walk bomb_15: 7975004765373362209
+      Walk bomb_16: -4526633448375121803
+      Walk bomb_17: 913650123405070075
+      Walk bomb_2: 5600821423343376072
+      Walk bomb_3: 1322362661187222875
+      Walk bomb_4: 1673634100872540947
+      Walk bomb_5: -5968623702834921561
+      Walk bomb_6: 7401819360664979805
+      Walk bomb_7: 8251912778356866537
+      Walk bomb_8: 6736683842575611923
+      Walk bomb_9: 6267857106381274314
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
