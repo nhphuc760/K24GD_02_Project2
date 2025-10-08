@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: BeshFishPoint_5
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: 7047691562585567496, guid: 038a06e06fc94c24e890ada1bdd80afe, type: 3}
+  - {fileID: 2544944739038033230, guid: 038a06e06fc94c24e890ada1bdd80afe, type: 3}
+  - {fileID: 2951102800640011336, guid: 038a06e06fc94c24e890ada1bdd80afe, type: 3}
+  - {fileID: 2850131702545663607, guid: 038a06e06fc94c24e890ada1bdd80afe, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
