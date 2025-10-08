@@ -88,7 +88,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -102,7 +102,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,7 +126,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -167,10 +167,10 @@ TextureImporter:
       name: leaving_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 71
-        width: 8
-        height: 9
+        x: 0
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,10 +189,10 @@ TextureImporter:
       name: leaving_1
       rect:
         serializedVersion: 2
-        x: 44
-        y: 71
-        width: 11
-        height: 10
+        x: 32
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -211,10 +211,10 @@ TextureImporter:
       name: leaving_2
       rect:
         serializedVersion: 2
-        x: 73
-        y: 69
-        width: 15
-        height: 14
+        x: 64
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -233,10 +233,10 @@ TextureImporter:
       name: leaving_3
       rect:
         serializedVersion: 2
-        x: 104
-        y: 71
-        width: 19
-        height: 11
+        x: 96
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,10 +255,10 @@ TextureImporter:
       name: leaving_4
       rect:
         serializedVersion: 2
-        x: 135
-        y: 71
-        width: 20
-        height: 14
+        x: 128
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -277,10 +277,10 @@ TextureImporter:
       name: leaving_5
       rect:
         serializedVersion: 2
-        x: 167
-        y: 71
-        width: 21
-        height: 17
+        x: 160
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -299,10 +299,10 @@ TextureImporter:
       name: leaving_6
       rect:
         serializedVersion: 2
-        x: 13
-        y: 39
-        width: 8
-        height: 9
+        x: 0
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -321,10 +321,10 @@ TextureImporter:
       name: leaving_7
       rect:
         serializedVersion: 2
-        x: 44
-        y: 39
-        width: 11
-        height: 10
+        x: 32
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -343,10 +343,10 @@ TextureImporter:
       name: leaving_8
       rect:
         serializedVersion: 2
-        x: 73
-        y: 37
-        width: 15
-        height: 14
+        x: 64
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -365,10 +365,10 @@ TextureImporter:
       name: leaving_9
       rect:
         serializedVersion: 2
-        x: 104
-        y: 39
-        width: 19
-        height: 11
+        x: 96
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -387,10 +387,10 @@ TextureImporter:
       name: leaving_10
       rect:
         serializedVersion: 2
-        x: 135
-        y: 39
-        width: 20
-        height: 14
+        x: 128
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -409,10 +409,10 @@ TextureImporter:
       name: leaving_11
       rect:
         serializedVersion: 2
-        x: 167
-        y: 39
-        width: 21
-        height: 17
+        x: 160
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -431,10 +431,10 @@ TextureImporter:
       name: leaving_12
       rect:
         serializedVersion: 2
-        x: 13
-        y: 7
-        width: 8
-        height: 9
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -453,10 +453,10 @@ TextureImporter:
       name: leaving_13
       rect:
         serializedVersion: 2
-        x: 44
-        y: 7
-        width: 11
-        height: 10
+        x: 32
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -475,10 +475,10 @@ TextureImporter:
       name: leaving_14
       rect:
         serializedVersion: 2
-        x: 73
-        y: 5
-        width: 15
-        height: 14
+        x: 64
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -497,10 +497,10 @@ TextureImporter:
       name: leaving_15
       rect:
         serializedVersion: 2
-        x: 104
-        y: 7
-        width: 19
-        height: 11
+        x: 96
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -519,10 +519,10 @@ TextureImporter:
       name: leaving_16
       rect:
         serializedVersion: 2
-        x: 135
-        y: 7
-        width: 20
-        height: 14
+        x: 128
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -541,10 +541,10 @@ TextureImporter:
       name: leaving_17
       rect:
         serializedVersion: 2
-        x: 167
-        y: 7
-        width: 21
-        height: 17
+        x: 160
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -563,7 +563,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d69e04041f7dabc4894a7f17b5e079c3
     internalID: 0
     vertices: []
     indices: 
@@ -572,7 +572,25 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      leaving_0: 5334106823913447434
+      leaving_1: -7674273947084140436
+      leaving_10: 6274265017853293649
+      leaving_11: -5308788619880872838
+      leaving_12: -5928745944138531093
+      leaving_13: 1127350402103371018
+      leaving_14: -4024143981522530221
+      leaving_15: -1649188643001799753
+      leaving_16: 1751923685465192797
+      leaving_17: -344773393659589426
+      leaving_2: -398448046089268646
+      leaving_3: -8098828544269124642
+      leaving_4: -6780336867601615809
+      leaving_5: 9064314096962618301
+      leaving_6: -4772641686215104043
+      leaving_7: -5080053587466084341
+      leaving_8: -7560960563431684915
+      leaving_9: -935890534098218022
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

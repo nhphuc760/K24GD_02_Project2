@@ -79,7 +79,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -93,7 +93,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,7 +117,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -497,7 +497,22 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Throw a bomb_0: 123862636956788006
+      Throw a bomb_1: 6870103812310536686
+      Throw a bomb_10: -8395758261820291905
+      Throw a bomb_11: -4782785549025519194
+      Throw a bomb_12: -5385120866523249569
+      Throw a bomb_13: 1044479094218135278
+      Throw a bomb_14: -2569478873682427514
+      Throw a bomb_2: 6450788785353415044
+      Throw a bomb_3: -8974846028202524126
+      Throw a bomb_4: -821615574764977879
+      Throw a bomb_5: -7074276970137342689
+      Throw a bomb_6: 5013200239222780077
+      Throw a bomb_7: 8777357712945773063
+      Throw a bomb_8: 5505773813648381604
+      Throw a bomb_9: 6248461764838834846
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

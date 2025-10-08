@@ -58,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -137,10 +137,10 @@ TextureImporter:
       name: Red_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 38
-        width: 6
-        height: 6
+        x: 0
+        y: 0
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,10 +159,10 @@ TextureImporter:
       name: Red_1
       rect:
         serializedVersion: 2
-        x: 45
-        y: 37
-        width: 7
-        height: 7
+        x: 32
+        y: 0
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,10 +181,10 @@ TextureImporter:
       name: Red_2
       rect:
         serializedVersion: 2
-        x: 77
-        y: 36
-        width: 8
-        height: 8
+        x: 64
+        y: 0
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,10 +203,10 @@ TextureImporter:
       name: Red_3
       rect:
         serializedVersion: 2
-        x: 109
-        y: 29
-        width: 8
-        height: 8
+        x: 96
+        y: 0
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,10 +225,10 @@ TextureImporter:
       name: Red_4
       rect:
         serializedVersion: 2
-        x: 141
-        y: 19
-        width: 8
-        height: 8
+        x: 128
+        y: 0
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,10 +247,10 @@ TextureImporter:
       name: Red_5
       rect:
         serializedVersion: 2
-        x: 173
-        y: 10
-        width: 8
-        height: 8
+        x: 160
+        y: 0
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -269,10 +269,10 @@ TextureImporter:
       name: Red_6
       rect:
         serializedVersion: 2
-        x: 206
-        y: 9
-        width: 7
-        height: 6
+        x: 192
+        y: 0
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -291,10 +291,10 @@ TextureImporter:
       name: Red_7
       rect:
         serializedVersion: 2
-        x: 236
-        y: 9
-        width: 75
-        height: 8
+        x: 224
+        y: 0
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -309,11 +309,55 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Red_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99100fc8f9ee6004595806dd12483846
+      internalID: 333450362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 121fbda5764aea74a9c2b1ab9c18395c
+      internalID: -536749135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d84420cd87efbe14b92f55cb8259fd45
     internalID: 0
     vertices: []
     indices: 
@@ -322,7 +366,17 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Red_0: 6286595657586805340
+      Red_1: 1613127925512473047
+      Red_2: 5333967998348892124
+      Red_3: 2398322965701019735
+      Red_4: -7465866551671254797
+      Red_5: -8314221879049074932
+      Red_6: 4744403000761406451
+      Red_7: 7829259069414977506
+      Red_8: 333450362
+      Red_9: -536749135
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

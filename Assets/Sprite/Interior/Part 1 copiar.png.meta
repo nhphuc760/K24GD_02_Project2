@@ -518,10 +518,10 @@ TextureImporter:
       name: Part 1 copiar_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 175
-        width: 29
-        height: 12
+        x: 0
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -540,10 +540,10 @@ TextureImporter:
       name: Part 1 copiar_1
       rect:
         serializedVersion: 2
-        x: 17
-        y: 159
-        width: 14
-        height: 17
+        x: 16
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -559,35 +559,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Part 1 copiar_2
-      rect:
-        serializedVersion: 2
-        x: 36
-        y: 175
-        width: 22
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 032a532905a493550800000000000000
-      internalID: 6141021276807209520
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Part 1 copiar_3
       rect:
         serializedVersion: 2
-        x: 49
-        y: 159
-        width: 14
-        height: 17
+        x: 32
+        y: 176
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -606,10 +584,10 @@ TextureImporter:
       name: Part 1 copiar_4
       rect:
         serializedVersion: 2
-        x: 65
+        x: 64
         y: 176
-        width: 13
-        height: 14
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -629,9 +607,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 159
-        width: 13
-        height: 33
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -651,9 +629,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 159
-        width: 13
-        height: 31
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -673,9 +651,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 159
-        width: 13
-        height: 31
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -691,35 +669,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Part 1 copiar_8
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 159
-        width: 13
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c1e995cf3e8c95690800000000000000
-      internalID: -7612832813576249828
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Part 1 copiar_9
       rect:
         serializedVersion: 2
-        x: 144
-        y: 159
-        width: 15
-        height: 31
+        x: 160
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -735,57 +691,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Part 1 copiar_10
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 176
-        width: 15
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b1820d39e34159960800000000000000
-      internalID: 7608009404512741403
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Part 1 copiar_11
-      rect:
-        serializedVersion: 2
-        x: 161
-        y: 160
-        width: 13
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4b54115d08f3fa2e0800000000000000
-      internalID: -2112399877650430540
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Part 1 copiar_12
       rect:
         serializedVersion: 2
-        x: 179
-        y: 159
-        width: 11
-        height: 20
+        x: 208
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -804,10 +716,10 @@ TextureImporter:
       name: Part 1 copiar_13
       rect:
         serializedVersion: 2
-        x: 195
-        y: 159
-        width: 11
-        height: 23
+        x: 224
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -826,10 +738,10 @@ TextureImporter:
       name: Part 1 copiar_14
       rect:
         serializedVersion: 2
-        x: 208
-        y: 175
-        width: 14
-        height: 11
+        x: 240
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -848,10 +760,10 @@ TextureImporter:
       name: Part 1 copiar_15
       rect:
         serializedVersion: 2
-        x: 224
-        y: 175
-        width: 14
-        height: 11
+        x: 256
+        y: 176
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -870,10 +782,10 @@ TextureImporter:
       name: Part 1 copiar_16
       rect:
         serializedVersion: 2
-        x: 243
-        y: 175
-        width: 10
-        height: 10
+        x: 0
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -892,10 +804,10 @@ TextureImporter:
       name: Part 1 copiar_17
       rect:
         serializedVersion: 2
-        x: 259
-        y: 175
-        width: 11
-        height: 14
+        x: 16
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -914,10 +826,10 @@ TextureImporter:
       name: Part 1 copiar_18
       rect:
         serializedVersion: 2
-        x: 0
-        y: 159
-        width: 17
-        height: 14
+        x: 48
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -936,10 +848,10 @@ TextureImporter:
       name: Part 1 copiar_19
       rect:
         serializedVersion: 2
-        x: 63
-        y: 159
-        width: 18
-        height: 14
+        x: 64
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -958,10 +870,10 @@ TextureImporter:
       name: Part 1 copiar_20
       rect:
         serializedVersion: 2
-        x: 208
-        y: 159
-        width: 14
-        height: 11
+        x: 80
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -980,10 +892,10 @@ TextureImporter:
       name: Part 1 copiar_21
       rect:
         serializedVersion: 2
-        x: 224
-        y: 159
-        width: 14
-        height: 11
+        x: 96
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1002,10 +914,10 @@ TextureImporter:
       name: Part 1 copiar_22
       rect:
         serializedVersion: 2
-        x: 243
-        y: 159
-        width: 10
-        height: 10
+        x: 112
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1024,10 +936,10 @@ TextureImporter:
       name: Part 1 copiar_23
       rect:
         serializedVersion: 2
-        x: 256
+        x: 128
         y: 160
         width: 16
-        height: 12
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1046,10 +958,10 @@ TextureImporter:
       name: Part 1 copiar_24
       rect:
         serializedVersion: 2
-        x: 0
-        y: 143
-        width: 15
-        height: 15
+        x: 144
+        y: 160
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1068,10 +980,10 @@ TextureImporter:
       name: Part 1 copiar_25
       rect:
         serializedVersion: 2
-        x: 18
-        y: 143
-        width: 13
-        height: 12
+        x: 160
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1090,10 +1002,10 @@ TextureImporter:
       name: Part 1 copiar_26
       rect:
         serializedVersion: 2
-        x: 33
-        y: 143
-        width: 13
-        height: 12
+        x: 176
+        y: 160
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1112,10 +1024,10 @@ TextureImporter:
       name: Part 1 copiar_27
       rect:
         serializedVersion: 2
-        x: 48
-        y: 111
+        x: 192
+        y: 160
         width: 16
-        height: 46
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1134,10 +1046,10 @@ TextureImporter:
       name: Part 1 copiar_28
       rect:
         serializedVersion: 2
-        x: 66
-        y: 144
-        width: 10
-        height: 12
+        x: 208
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1156,10 +1068,10 @@ TextureImporter:
       name: Part 1 copiar_29
       rect:
         serializedVersion: 2
-        x: 80
-        y: 127
-        width: 13
-        height: 24
+        x: 224
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1178,10 +1090,10 @@ TextureImporter:
       name: Part 1 copiar_30
       rect:
         serializedVersion: 2
-        x: 96
-        y: 127
-        width: 13
-        height: 24
+        x: 240
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1200,10 +1112,10 @@ TextureImporter:
       name: Part 1 copiar_31
       rect:
         serializedVersion: 2
-        x: 112
-        y: 127
-        width: 13
-        height: 24
+        x: 256
+        y: 160
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1222,10 +1134,10 @@ TextureImporter:
       name: Part 1 copiar_32
       rect:
         serializedVersion: 2
-        x: 128
-        y: 127
-        width: 13
-        height: 24
+        x: 0
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1244,10 +1156,10 @@ TextureImporter:
       name: Part 1 copiar_33
       rect:
         serializedVersion: 2
-        x: 144
-        y: 128
-        width: 15
-        height: 25
+        x: 16
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1266,10 +1178,10 @@ TextureImporter:
       name: Part 1 copiar_34
       rect:
         serializedVersion: 2
-        x: 162
-        y: 143
-        width: 11
-        height: 14
+        x: 32
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1288,10 +1200,10 @@ TextureImporter:
       name: Part 1 copiar_35
       rect:
         serializedVersion: 2
-        x: 179
-        y: 143
-        width: 11
-        height: 15
+        x: 48
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1310,10 +1222,10 @@ TextureImporter:
       name: Part 1 copiar_36
       rect:
         serializedVersion: 2
-        x: 194
-        y: 143
-        width: 13
-        height: 14
+        x: 64
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1329,123 +1241,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Part 1 copiar_37
-      rect:
-        serializedVersion: 2
-        x: 208
-        y: 143
-        width: 14
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3ce1bdfd645c28e50800000000000000
-      internalID: 6810222494731673283
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Part 1 copiar_38
-      rect:
-        serializedVersion: 2
-        x: 210
-        y: 127
-        width: 13
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0fd7d22dcffcdac70800000000000000
-      internalID: 8984065516438912496
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Part 1 copiar_39
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 143
-        width: 14
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c5f4944a3164ba980800000000000000
-      internalID: -8526644419321311396
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Part 1 copiar_40
-      rect:
-        serializedVersion: 2
-        x: 243
-        y: 143
-        width: 10
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d9fe17742507e1630800000000000000
-      internalID: 3899677826037706653
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Part 1 copiar_41
-      rect:
-        serializedVersion: 2
-        x: 260
-        y: 143
-        width: 9
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 11e44fb039f39da00800000000000000
-      internalID: 781725911118794257
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Part 1 copiar_42
       rect:
         serializedVersion: 2
-        x: 1
-        y: 127
-        width: 13
-        height: 12
+        x: 160
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1464,10 +1266,10 @@ TextureImporter:
       name: Part 1 copiar_43
       rect:
         serializedVersion: 2
-        x: 18
-        y: 127
-        width: 11
-        height: 13
+        x: 176
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1486,10 +1288,10 @@ TextureImporter:
       name: Part 1 copiar_44
       rect:
         serializedVersion: 2
-        x: 32
-        y: 111
+        x: 192
+        y: 144
         width: 16
-        height: 29
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1508,10 +1310,10 @@ TextureImporter:
       name: Part 1 copiar_45
       rect:
         serializedVersion: 2
-        x: 68
-        y: 128
-        width: 10
-        height: 12
+        x: 208
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1530,10 +1332,10 @@ TextureImporter:
       name: Part 1 copiar_46
       rect:
         serializedVersion: 2
-        x: 162
-        y: 127
-        width: 11
-        height: 14
+        x: 224
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1552,10 +1354,10 @@ TextureImporter:
       name: Part 1 copiar_47
       rect:
         serializedVersion: 2
-        x: 178
-        y: 127
-        width: 14
-        height: 13
+        x: 240
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1574,10 +1376,10 @@ TextureImporter:
       name: Part 1 copiar_48
       rect:
         serializedVersion: 2
-        x: 195
-        y: 129
-        width: 12
-        height: 13
+        x: 256
+        y: 144
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1596,10 +1398,10 @@ TextureImporter:
       name: Part 1 copiar_49
       rect:
         serializedVersion: 2
-        x: 224
-        y: 127
+        x: 0
+        y: 128
         width: 16
-        height: 13
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1618,10 +1420,10 @@ TextureImporter:
       name: Part 1 copiar_50
       rect:
         serializedVersion: 2
-        x: 242
-        y: 127
-        width: 12
-        height: 13
+        x: 16
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1640,10 +1442,10 @@ TextureImporter:
       name: Part 1 copiar_51
       rect:
         serializedVersion: 2
-        x: 256
+        x: 32
         y: 128
         width: 16
-        height: 11
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1662,8 +1464,8 @@ TextureImporter:
       name: Part 1 copiar_52
       rect:
         serializedVersion: 2
-        x: 0
-        y: 111
+        x: 48
+        y: 128
         width: 16
         height: 16
       alignment: 0
@@ -1684,8 +1486,8 @@ TextureImporter:
       name: Part 1 copiar_53
       rect:
         serializedVersion: 2
-        x: 16
-        y: 111
+        x: 64
+        y: 128
         width: 16
         height: 16
       alignment: 0
@@ -1707,9 +1509,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 95
-        width: 13
-        height: 24
+        y: 128
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1728,10 +1530,10 @@ TextureImporter:
       name: Part 1 copiar_55
       rect:
         serializedVersion: 2
-        x: 114
-        y: 112
-        width: 10
-        height: 13
+        x: 96
+        y: 128
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1750,10 +1552,10 @@ TextureImporter:
       name: Part 1 copiar_56
       rect:
         serializedVersion: 2
-        x: 127
-        y: 111
-        width: 18
-        height: 17
+        x: 112
+        y: 128
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1772,10 +1574,10 @@ TextureImporter:
       name: Part 1 copiar_57
       rect:
         serializedVersion: 2
-        x: 127
-        y: 95
-        width: 17
-        height: 18
+        x: 128
+        y: 128
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1794,10 +1596,10 @@ TextureImporter:
       name: Part 1 copiar_58
       rect:
         serializedVersion: 2
-        x: 151
-        y: 95
-        width: 19
-        height: 24
+        x: 144
+        y: 128
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1816,10 +1618,10 @@ TextureImporter:
       name: Part 1 copiar_59
       rect:
         serializedVersion: 2
-        x: 178
-        y: 111
-        width: 14
-        height: 13
+        x: 160
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1838,10 +1640,10 @@ TextureImporter:
       name: Part 1 copiar_60
       rect:
         serializedVersion: 2
-        x: 195
-        y: 111
-        width: 12
-        height: 13
+        x: 176
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1860,10 +1662,10 @@ TextureImporter:
       name: Part 1 copiar_61
       rect:
         serializedVersion: 2
-        x: 256
-        y: 112
+        x: 192
+        y: 128
         width: 16
-        height: 11
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1882,10 +1684,10 @@ TextureImporter:
       name: Part 1 copiar_62
       rect:
         serializedVersion: 2
-        x: 0
-        y: 79
+        x: 208
+        y: 128
         width: 16
-        height: 31
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1904,10 +1706,10 @@ TextureImporter:
       name: Part 1 copiar_63
       rect:
         serializedVersion: 2
-        x: 16
-        y: 79
+        x: 224
+        y: 128
         width: 16
-        height: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1926,10 +1728,10 @@ TextureImporter:
       name: Part 1 copiar_64
       rect:
         serializedVersion: 2
-        x: 35
-        y: 95
-        width: 10
-        height: 12
+        x: 240
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1948,10 +1750,10 @@ TextureImporter:
       name: Part 1 copiar_65
       rect:
         serializedVersion: 2
-        x: 52
-        y: 96
-        width: 7
-        height: 12
+        x: 256
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1970,10 +1772,10 @@ TextureImporter:
       name: Part 1 copiar_66
       rect:
         serializedVersion: 2
-        x: 95
-        y: 79
-        width: 18
-        height: 17
+        x: 0
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1992,10 +1794,10 @@ TextureImporter:
       name: Part 1 copiar_67
       rect:
         serializedVersion: 2
-        x: 113
-        y: 95
-        width: 11
-        height: 15
+        x: 16
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2014,10 +1816,10 @@ TextureImporter:
       name: Part 1 copiar_68
       rect:
         serializedVersion: 2
-        x: 129
-        y: 79
-        width: 15
-        height: 17
+        x: 32
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2036,10 +1838,10 @@ TextureImporter:
       name: Part 1 copiar_69
       rect:
         serializedVersion: 2
-        x: 178
-        y: 95
-        width: 14
-        height: 13
+        x: 48
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2055,35 +1857,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Part 1 copiar_70
-      rect:
-        serializedVersion: 2
-        x: 194
-        y: 96
-        width: 11
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1f231a46e44a8a250800000000000000
-      internalID: 5956191163800171249
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Part 1 copiar_71
       rect:
         serializedVersion: 2
-        x: 210
-        y: 95
-        width: 11
-        height: 12
+        x: 112
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2102,10 +1882,10 @@ TextureImporter:
       name: Part 1 copiar_72
       rect:
         serializedVersion: 2
-        x: 225
-        y: 95
-        width: 15
-        height: 13
+        x: 128
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2124,10 +1904,10 @@ TextureImporter:
       name: Part 1 copiar_73
       rect:
         serializedVersion: 2
-        x: 243
-        y: 95
-        width: 11
-        height: 13
+        x: 144
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2143,35 +1923,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Part 1 copiar_74
-      rect:
-        serializedVersion: 2
-        x: 260
-        y: 95
-        width: 7
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9cb5540f66f692fe0800000000000000
-      internalID: -1213316136691213367
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Part 1 copiar_75
       rect:
         serializedVersion: 2
-        x: 32
-        y: 79
+        x: 176
+        y: 112
         width: 16
-        height: 10
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2190,10 +1948,10 @@ TextureImporter:
       name: Part 1 copiar_76
       rect:
         serializedVersion: 2
-        x: 52
-        y: 80
-        width: 9
-        height: 10
+        x: 192
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2212,10 +1970,10 @@ TextureImporter:
       name: Part 1 copiar_77
       rect:
         serializedVersion: 2
-        x: 81
-        y: 80
-        width: 10
-        height: 10
+        x: 256
+        y: 112
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2234,10 +1992,10 @@ TextureImporter:
       name: Part 1 copiar_78
       rect:
         serializedVersion: 2
-        x: 114
-        y: 80
-        width: 10
-        height: 11
+        x: 0
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2256,10 +2014,10 @@ TextureImporter:
       name: Part 1 copiar_79
       rect:
         serializedVersion: 2
-        x: 145
-        y: 79
-        width: 13
-        height: 15
+        x: 16
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2278,10 +2036,10 @@ TextureImporter:
       name: Part 1 copiar_80
       rect:
         serializedVersion: 2
-        x: 162
-        y: 79
-        width: 11
-        height: 14
+        x: 32
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2300,10 +2058,10 @@ TextureImporter:
       name: Part 1 copiar_81
       rect:
         serializedVersion: 2
-        x: 182
-        y: 79
-        width: 20
-        height: 14
+        x: 48
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2322,10 +2080,10 @@ TextureImporter:
       name: Part 1 copiar_82
       rect:
         serializedVersion: 2
-        x: 208
-        y: 79
-        width: 6
-        height: 13
+        x: 81
+        y: 96
+        width: 11
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2344,10 +2102,10 @@ TextureImporter:
       name: Part 1 copiar_83
       rect:
         serializedVersion: 2
-        x: 213
-        y: 81
-        width: 6
-        height: 11
+        x: 112
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2366,10 +2124,10 @@ TextureImporter:
       name: Part 1 copiar_84
       rect:
         serializedVersion: 2
-        x: 218
-        y: 79
-        width: 6
-        height: 13
+        x: 128
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2385,57 +2143,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Part 1 copiar_85
-      rect:
-        serializedVersion: 2
-        x: 228
-        y: 80
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f285c7c4d354cce10800000000000000
-      internalID: 2219224845965350959
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Part 1 copiar_86
-      rect:
-        serializedVersion: 2
-        x: 244
-        y: 80
-        width: 6
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7d22d6de6feeacea0800000000000000
-      internalID: -5851602021501820201
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Part 1 copiar_87
       rect:
         serializedVersion: 2
-        x: 258
-        y: 79
-        width: 11
-        height: 13
+        x: 176
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2454,10 +2168,10 @@ TextureImporter:
       name: Part 1 copiar_88
       rect:
         serializedVersion: 2
-        x: 6
-        y: 47
-        width: 35
-        height: 18
+        x: 192
+        y: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2476,9 +2190,9 @@ TextureImporter:
       name: Part 1 copiar_89
       rect:
         serializedVersion: 2
-        x: 81
-        y: 64
-        width: 13
+        x: 208
+        y: 96
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -2498,9 +2212,9 @@ TextureImporter:
       name: Part 1 copiar_90
       rect:
         serializedVersion: 2
-        x: 82
-        y: 48
-        width: 11
+        x: 224
+        y: 96
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -2520,9 +2234,9 @@ TextureImporter:
       name: Part 1 copiar_91
       rect:
         serializedVersion: 2
-        x: 97
-        y: 64
-        width: 13
+        x: 240
+        y: 96
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -2542,9 +2256,9 @@ TextureImporter:
       name: Part 1 copiar_92
       rect:
         serializedVersion: 2
-        x: 98
-        y: 48
-        width: 11
+        x: 256
+        y: 96
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -2564,10 +2278,10 @@ TextureImporter:
       name: Part 1 copiar_93
       rect:
         serializedVersion: 2
-        x: 114
-        y: 47
-        width: 11
-        height: 23
+        x: 0
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2586,10 +2300,10 @@ TextureImporter:
       name: Part 1 copiar_94
       rect:
         serializedVersion: 2
-        x: 131
-        y: 47
-        width: 11
-        height: 23
+        x: 16
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2608,10 +2322,10 @@ TextureImporter:
       name: Part 1 copiar_95
       rect:
         serializedVersion: 2
-        x: 143
-        y: 47
-        width: 34
-        height: 17
+        x: 32
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2630,10 +2344,10 @@ TextureImporter:
       name: Part 1 copiar_96
       rect:
         serializedVersion: 2
-        x: 145
-        y: 63
-        width: 14
-        height: 12
+        x: 48
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2652,10 +2366,10 @@ TextureImporter:
       name: Part 1 copiar_97
       rect:
         serializedVersion: 2
-        x: 159
-        y: 63
-        width: 18
-        height: 13
+        x: 80
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2674,10 +2388,10 @@ TextureImporter:
       name: Part 1 copiar_98
       rect:
         serializedVersion: 2
-        x: 209
-        y: 63
-        width: 14
-        height: 15
+        x: 96
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2696,10 +2410,10 @@ TextureImporter:
       name: Part 1 copiar_99
       rect:
         serializedVersion: 2
-        x: 224
-        y: 63
-        width: 15
-        height: 17
+        x: 112
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2718,10 +2432,10 @@ TextureImporter:
       name: Part 1 copiar_100
       rect:
         serializedVersion: 2
-        x: 240
-        y: 63
-        width: 15
-        height: 15
+        x: 128
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2740,10 +2454,10 @@ TextureImporter:
       name: Part 1 copiar_101
       rect:
         serializedVersion: 2
-        x: 258
-        y: 63
-        width: 11
-        height: 13
+        x: 144
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2762,10 +2476,10 @@ TextureImporter:
       name: Part 1 copiar_102
       rect:
         serializedVersion: 2
-        x: 18
-        y: 31
-        width: 10
-        height: 17
+        x: 160
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2784,10 +2498,10 @@ TextureImporter:
       name: Part 1 copiar_103
       rect:
         serializedVersion: 2
-        x: 34
-        y: 31
-        width: 10
-        height: 17
+        x: 176
+        y: 80
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2803,35 +2517,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Part 1 copiar_104
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 31
-        width: 11
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3cdd118d22ef9e300800000000000000
-      internalID: 282035877294759363
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Part 1 copiar_105
       rect:
         serializedVersion: 2
-        x: 192
-        y: 31
-        width: 13
-        height: 18
+        x: 208
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2850,10 +2542,10 @@ TextureImporter:
       name: Part 1 copiar_106
       rect:
         serializedVersion: 2
-        x: 207
-        y: 33
-        width: 18
-        height: 15
+        x: 224
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2872,10 +2564,10 @@ TextureImporter:
       name: Part 1 copiar_107
       rect:
         serializedVersion: 2
-        x: 210
-        y: 47
-        width: 12
-        height: 14
+        x: 240
+        y: 80
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2894,10 +2586,10 @@ TextureImporter:
       name: Part 1 copiar_108
       rect:
         serializedVersion: 2
-        x: 224
-        y: 47
+        x: 256
+        y: 80
         width: 16
-        height: 12
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2916,10 +2608,10 @@ TextureImporter:
       name: Part 1 copiar_109
       rect:
         serializedVersion: 2
-        x: 239
-        y: 33
-        width: 18
-        height: 15
+        x: 80
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2938,10 +2630,10 @@ TextureImporter:
       name: Part 1 copiar_110
       rect:
         serializedVersion: 2
-        x: 241
-        y: 47
-        width: 15
-        height: 13
+        x: 96
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2957,56 +2649,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Part 1 copiar_111
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 47
-        width: 15
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e36169211388b4ab0800000000000000
-      internalID: -5022771215055055298
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Part 1 copiar_112
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 15
-        width: 13
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 50e100eb0f6d8a1e0800000000000000
-      internalID: -2186261289620201979
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Part 1 copiar_113
       rect:
         serializedVersion: 2
-        x: 15
-        y: 15
-        width: 13
+        x: 144
+        y: 64
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -3026,10 +2674,10 @@ TextureImporter:
       name: Part 1 copiar_114
       rect:
         serializedVersion: 2
-        x: 64
-        y: 16
+        x: 160
+        y: 64
         width: 16
-        height: 19
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3048,10 +2696,10 @@ TextureImporter:
       name: Part 1 copiar_115
       rect:
         serializedVersion: 2
-        x: 79
-        y: 16
-        width: 17
-        height: 19
+        x: 208
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3070,10 +2718,10 @@ TextureImporter:
       name: Part 1 copiar_116
       rect:
         serializedVersion: 2
-        x: 95
-        y: 16
-        width: 50
-        height: 23
+        x: 224
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3092,10 +2740,10 @@ TextureImporter:
       name: Part 1 copiar_117
       rect:
         serializedVersion: 2
-        x: 144
-        y: 16
-        width: 32
-        height: 21
+        x: 240
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3114,10 +2762,10 @@ TextureImporter:
       name: Part 1 copiar_118
       rect:
         serializedVersion: 2
-        x: 179
-        y: 16
-        width: 9
-        height: 23
+        x: 256
+        y: 64
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3136,10 +2784,10 @@ TextureImporter:
       name: Part 1 copiar_119
       rect:
         serializedVersion: 2
-        x: 228
-        y: 31
-        width: 9
-        height: 13
+        x: 7
+        y: 48
+        width: 33
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3155,55 +2803,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Part 1 copiar_120
-      rect:
-        serializedVersion: 2
-        x: 258
-        y: 31
-        width: 12
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9b81e985b8aefecd0800000000000000
-      internalID: -2526542981723449159
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Part 1 copiar_121
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 2
-        width: 14
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 50985f27deecd0710800000000000000
-      internalID: 1661211356800846085
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Part 1 copiar_122
       rect:
         serializedVersion: 2
-        x: 31
-        y: 0
+        x: 80
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -3224,10 +2828,10 @@ TextureImporter:
       name: Part 1 copiar_123
       rect:
         serializedVersion: 2
-        x: 50
-        y: 15
-        width: 10
-        height: 14
+        x: 96
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3246,10 +2850,10 @@ TextureImporter:
       name: Part 1 copiar_124
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 17
-        height: 16
+        x: 112
+        y: 48
+        width: 16
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3268,10 +2872,10 @@ TextureImporter:
       name: Part 1 copiar_125
       rect:
         serializedVersion: 2
-        x: 80
-        y: 0
-        width: 17
-        height: 16
+        x: 128
+        y: 48
+        width: 16
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3290,10 +2894,10 @@ TextureImporter:
       name: Part 1 copiar_126
       rect:
         serializedVersion: 2
-        x: 112
-        y: 0
-        width: 17
-        height: 17
+        x: 144
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3312,10 +2916,10 @@ TextureImporter:
       name: Part 1 copiar_127
       rect:
         serializedVersion: 2
-        x: 210
-        y: 15
-        width: 11
-        height: 14
+        x: 160
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3334,10 +2938,10 @@ TextureImporter:
       name: Part 1 copiar_128
       rect:
         serializedVersion: 2
-        x: 241
-        y: 15
-        width: 13
-        height: 15
+        x: 208
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3356,10 +2960,10 @@ TextureImporter:
       name: Part 1 copiar_129
       rect:
         serializedVersion: 2
-        x: 257
-        y: 15
-        width: 14
-        height: 15
+        x: 224
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3378,10 +2982,10 @@ TextureImporter:
       name: Part 1 copiar_130
       rect:
         serializedVersion: 2
-        x: 17
-        y: 1
-        width: 11
-        height: 12
+        x: 240
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3400,10 +3004,10 @@ TextureImporter:
       name: Part 1 copiar_131
       rect:
         serializedVersion: 2
-        x: 210
-        y: 0
-        width: 11
-        height: 13
+        x: 256
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3422,10 +3026,10 @@ TextureImporter:
       name: Part 1 copiar_132
       rect:
         serializedVersion: 2
-        x: 243
-        y: 1
-        width: 11
-        height: 11
+        x: 16
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3444,10 +3048,10 @@ TextureImporter:
       name: Part 1 copiar_133
       rect:
         serializedVersion: 2
-        x: 257
-        y: 0
-        width: 7
-        height: 10
+        x: 32
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3466,10 +3070,10 @@ TextureImporter:
       name: Part 1 copiar_134
       rect:
         serializedVersion: 2
-        x: 263
-        y: 0
-        width: 8
-        height: 7
+        x: 48
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3484,11 +3088,627 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_143
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e49717cdd8fa2146b882e84c65ab770
+      internalID: 2112620037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_144
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2552fc7af2b6c8b47ad2b1a979bae13e
+      internalID: 1196439225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_145
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae67a708c9cc2d94cbd6d4c3fd884f0e
+      internalID: 711199949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_146
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69e796353c0232d4ba8286cc84e61296
+      internalID: -593037790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_147
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4a4c0aef0a17ad42ab956c0371edabf
+      internalID: -307137783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_148
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d83303582d67e441bc29eed68e016dc
+      internalID: 1755716905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_149
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd0b14bd944097042b3262e205dad119
+      internalID: 901186860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_150
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 295fd9c158dea604986c87e9ede27b3b
+      internalID: -233231876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_151
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63dfe564077adcb4d87fb9b0be1ec3c0
+      internalID: -429487148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_152
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 16
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55a6c8014a9835c4aa294f98199fa9b9
+      internalID: 1501029134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_153
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 16
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05d1d0bcd78f9674691f129e4d0acc0e
+      internalID: -2085872313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_154
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f838432d361a08d42868e5c0340e2ca9
+      internalID: 1156099705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_155
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 16
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 267b508d085159844a2645c00d65d255
+      internalID: 56515662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_156
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 16
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03cc3536ef27e2e46be5e303a1fcc2fb
+      internalID: -2084936806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_157
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 16
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49838a738d7465b40bd0d911dd1bfe64
+      internalID: -1788598863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_158
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 16
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07b7f303854c9524e866e159a4c18a29
+      internalID: -992019004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_159
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce33f0478317dcd408ced33aa7323d3f
+      internalID: 2104503454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_160
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb477c8ec9d0da04f9e677aeb7b34827
+      internalID: 528941170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_161
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8292347451f71e4688f8cd6494064e9
+      internalID: 368809688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_162
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3298d520792fa634da2833daa96a78b2
+      internalID: 472217859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_163
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79af429def22026478b6dc6cdc1ea22a
+      internalID: 722553619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_164
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d17de8ab0cd449f479c90c326a5e2160
+      internalID: 1023742188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_165
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1e7781fba9678d4d97a1b0e8ccf43c4
+      internalID: -788365239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_166
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eaaeb36c52a64c64492c0dcd4f87da8f
+      internalID: 203251219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_167
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69bd8d604ba85814a94b79888dfa054b
+      internalID: -1722823552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_168
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bc43e10d288f404bb872431ea45732e
+      internalID: 1500316699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_169
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f75c6346227d0e4ebc968ee0256021f
+      internalID: 1432993963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Part 1 copiar_170
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4185003ee05e682498e4fb604d8d5857
+      internalID: -605362981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 46c5024b43fdb3d4eba55fb2bfb1a280
     internalID: 0
     vertices: []
     indices: 
@@ -3539,10 +3759,46 @@ TextureImporter:
       Part 1 copiar_132: 4937970577456248542
       Part 1 copiar_133: -6914677116423988580
       Part 1 copiar_134: -8579348871681151535
+      Part 1 copiar_135: -756245216
+      Part 1 copiar_136: -1241368948
+      Part 1 copiar_137: -715953956
+      Part 1 copiar_138: -1362797886
+      Part 1 copiar_139: 1465445495
       Part 1 copiar_14: -2762952466048964778
+      Part 1 copiar_140: -1565840416
+      Part 1 copiar_141: 362123771
+      Part 1 copiar_142: 1274318012
+      Part 1 copiar_143: 2112620037
+      Part 1 copiar_144: 1196439225
+      Part 1 copiar_145: 711199949
+      Part 1 copiar_146: -593037790
+      Part 1 copiar_147: -307137783
+      Part 1 copiar_148: 1755716905
+      Part 1 copiar_149: 901186860
       Part 1 copiar_15: 4557915096517485709
+      Part 1 copiar_150: -233231876
+      Part 1 copiar_151: -429487148
+      Part 1 copiar_152: 1501029134
+      Part 1 copiar_153: -2085872313
+      Part 1 copiar_154: 1156099705
+      Part 1 copiar_155: 56515662
+      Part 1 copiar_156: -2084936806
+      Part 1 copiar_157: -1788598863
+      Part 1 copiar_158: -992019004
+      Part 1 copiar_159: 2104503454
       Part 1 copiar_16: 4243170258307029746
+      Part 1 copiar_160: 528941170
+      Part 1 copiar_161: 368809688
+      Part 1 copiar_162: 472217859
+      Part 1 copiar_163: 722553619
+      Part 1 copiar_164: 1023742188
+      Part 1 copiar_165: -788365239
+      Part 1 copiar_166: 203251219
+      Part 1 copiar_167: -1722823552
+      Part 1 copiar_168: 1500316699
+      Part 1 copiar_169: 1432993963
       Part 1 copiar_17: 4122580531266327689
+      Part 1 copiar_170: -605362981
       Part 1 copiar_18: -9037236000664752717
       Part 1 copiar_19: -3181103699400165127
       Part 1 copiar_2: 6141021276807209520

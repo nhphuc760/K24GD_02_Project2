@@ -106,7 +106,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -120,7 +120,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -185,10 +185,10 @@ TextureImporter:
       name: Running_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 69
-        width: 15
-        height: 20
+        x: 0
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -207,10 +207,10 @@ TextureImporter:
       name: Running_1
       rect:
         serializedVersion: 2
-        x: 41
-        y: 69
-        width: 15
-        height: 19
+        x: 32
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,10 +229,10 @@ TextureImporter:
       name: Running_2
       rect:
         serializedVersion: 2
-        x: 73
-        y: 69
-        width: 15
-        height: 21
+        x: 64
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -251,10 +251,10 @@ TextureImporter:
       name: Running_3
       rect:
         serializedVersion: 2
-        x: 105
-        y: 69
-        width: 15
-        height: 21
+        x: 96
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -273,10 +273,10 @@ TextureImporter:
       name: Running_4
       rect:
         serializedVersion: 2
-        x: 137
-        y: 69
-        width: 15
-        height: 20
+        x: 128
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -295,10 +295,10 @@ TextureImporter:
       name: Running_5
       rect:
         serializedVersion: 2
-        x: 169
-        y: 69
-        width: 15
-        height: 19
+        x: 160
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -317,10 +317,10 @@ TextureImporter:
       name: Running_6
       rect:
         serializedVersion: 2
-        x: 201
-        y: 69
-        width: 15
-        height: 21
+        x: 192
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -339,10 +339,10 @@ TextureImporter:
       name: Running_7
       rect:
         serializedVersion: 2
-        x: 233
-        y: 69
-        width: 15
-        height: 21
+        x: 224
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -361,10 +361,10 @@ TextureImporter:
       name: Running_8
       rect:
         serializedVersion: 2
-        x: 9
-        y: 38
-        width: 16
-        height: 20
+        x: 0
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -383,10 +383,10 @@ TextureImporter:
       name: Running_9
       rect:
         serializedVersion: 2
-        x: 41
-        y: 37
-        width: 15
-        height: 20
+        x: 32
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -405,10 +405,10 @@ TextureImporter:
       name: Running_10
       rect:
         serializedVersion: 2
-        x: 73
-        y: 37
-        width: 15
-        height: 19
+        x: 64
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -427,10 +427,10 @@ TextureImporter:
       name: Running_11
       rect:
         serializedVersion: 2
-        x: 105
-        y: 37
-        width: 15
-        height: 21
+        x: 96
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -449,10 +449,10 @@ TextureImporter:
       name: Running_12
       rect:
         serializedVersion: 2
-        x: 136
-        y: 38
-        width: 16
-        height: 20
+        x: 128
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -471,10 +471,10 @@ TextureImporter:
       name: Running_13
       rect:
         serializedVersion: 2
-        x: 169
-        y: 37
-        width: 15
-        height: 20
+        x: 160
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -493,10 +493,10 @@ TextureImporter:
       name: Running_14
       rect:
         serializedVersion: 2
-        x: 201
-        y: 37
-        width: 15
-        height: 19
+        x: 192
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -515,10 +515,10 @@ TextureImporter:
       name: Running_15
       rect:
         serializedVersion: 2
-        x: 233
-        y: 37
-        width: 15
-        height: 21
+        x: 224
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -537,10 +537,10 @@ TextureImporter:
       name: Running_16
       rect:
         serializedVersion: 2
-        x: 9
-        y: 5
-        width: 15
-        height: 20
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -559,10 +559,10 @@ TextureImporter:
       name: Running_17
       rect:
         serializedVersion: 2
-        x: 41
-        y: 5
-        width: 15
-        height: 19
+        x: 32
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -581,10 +581,10 @@ TextureImporter:
       name: Running_18
       rect:
         serializedVersion: 2
-        x: 73
-        y: 5
-        width: 15
-        height: 20
+        x: 64
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -603,10 +603,10 @@ TextureImporter:
       name: Running_19
       rect:
         serializedVersion: 2
-        x: 105
-        y: 5
-        width: 15
-        height: 21
+        x: 96
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -625,10 +625,10 @@ TextureImporter:
       name: Running_20
       rect:
         serializedVersion: 2
-        x: 137
-        y: 5
-        width: 15
-        height: 21
+        x: 128
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -647,10 +647,10 @@ TextureImporter:
       name: Running_21
       rect:
         serializedVersion: 2
-        x: 169
-        y: 5
-        width: 15
-        height: 19
+        x: 160
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -669,10 +669,10 @@ TextureImporter:
       name: Running_22
       rect:
         serializedVersion: 2
-        x: 201
-        y: 5
-        width: 15
-        height: 21
+        x: 192
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -691,10 +691,10 @@ TextureImporter:
       name: Running_23
       rect:
         serializedVersion: 2
-        x: 233
-        y: 5
-        width: 15
-        height: 21
+        x: 224
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -713,7 +713,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 9c34f5267b15d954e99f1651188f98d9
     internalID: 0
     vertices: []
     indices: 
@@ -722,7 +722,31 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Running_0: -3643998761827717319
+      Running_1: -4707866458138886681
+      Running_10: 6497241835817499410
+      Running_11: 8344637379857900910
+      Running_12: -2449280496364488426
+      Running_13: 4295936485009105211
+      Running_14: 4409182613295485282
+      Running_15: -6018027534394794487
+      Running_16: -1131664532241207784
+      Running_17: -630193777120817602
+      Running_18: 1446754394121554092
+      Running_19: 3454116531194950640
+      Running_2: -7457498982976366407
+      Running_20: 130223768030532334
+      Running_21: -1191532843524510415
+      Running_22: 7780473625943285782
+      Running_23: -823370983414788571
+      Running_3: -5594891616951461250
+      Running_4: 2398275797733112376
+      Running_5: -6865345740338609477
+      Running_6: -4611400358306370047
+      Running_7: -3366806091697730171
+      Running_8: 5294525408286821128
+      Running_9: 3322434517264523616
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

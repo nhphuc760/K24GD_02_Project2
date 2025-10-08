@@ -43,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -57,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 48
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -122,10 +122,10 @@ TextureImporter:
       name: Mermaid Portrait_0
       rect:
         serializedVersion: 2
-        x: 10
+        x: 0
         y: 0
-        width: 45
-        height: 57
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,10 +144,10 @@ TextureImporter:
       name: Mermaid Portrait_1
       rect:
         serializedVersion: 2
-        x: 74
+        x: 64
         y: 0
-        width: 45
-        height: 57
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,10 +166,10 @@ TextureImporter:
       name: Mermaid Portrait_2
       rect:
         serializedVersion: 2
-        x: 138
+        x: 128
         y: 0
-        width: 45
-        height: 57
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 9412980520adf6a448ac11931a6ad3ba
     internalID: 0
     vertices: []
     indices: 
@@ -197,7 +197,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Mermaid Portrait_0: -8711195633535983
+      Mermaid Portrait_1: 4709608323746910833
+      Mermaid Portrait_2: 3608855608208940310
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

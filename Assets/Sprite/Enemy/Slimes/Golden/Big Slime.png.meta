@@ -214,7 +214,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -228,7 +228,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -252,7 +252,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -293,10 +293,10 @@ TextureImporter:
       name: Big Slime_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 457
-        width: 24
-        height: 19
+        x: 0
+        y: 448
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -315,10 +315,10 @@ TextureImporter:
       name: Big Slime_1
       rect:
         serializedVersion: 2
-        x: 34
-        y: 457
-        width: 28
-        height: 17
+        x: 32
+        y: 448
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -337,10 +337,10 @@ TextureImporter:
       name: Big Slime_2
       rect:
         serializedVersion: 2
-        x: 66
-        y: 457
-        width: 26
-        height: 19
+        x: 64
+        y: 448
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -359,10 +359,10 @@ TextureImporter:
       name: Big Slime_3
       rect:
         serializedVersion: 2
-        x: 102
-        y: 457
-        width: 20
-        height: 21
+        x: 96
+        y: 448
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -381,10 +381,10 @@ TextureImporter:
       name: Big Slime_4
       rect:
         serializedVersion: 2
-        x: 4
-        y: 425
-        width: 24
-        height: 19
+        x: 0
+        y: 416
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -403,10 +403,10 @@ TextureImporter:
       name: Big Slime_5
       rect:
         serializedVersion: 2
-        x: 34
-        y: 425
-        width: 28
-        height: 17
+        x: 32
+        y: 416
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -425,10 +425,10 @@ TextureImporter:
       name: Big Slime_6
       rect:
         serializedVersion: 2
-        x: 66
-        y: 425
-        width: 26
-        height: 19
+        x: 64
+        y: 416
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -447,10 +447,10 @@ TextureImporter:
       name: Big Slime_7
       rect:
         serializedVersion: 2
-        x: 102
-        y: 425
-        width: 20
-        height: 21
+        x: 96
+        y: 416
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -469,10 +469,10 @@ TextureImporter:
       name: Big Slime_8
       rect:
         serializedVersion: 2
-        x: 4
-        y: 393
-        width: 24
-        height: 19
+        x: 0
+        y: 384
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -491,10 +491,10 @@ TextureImporter:
       name: Big Slime_9
       rect:
         serializedVersion: 2
-        x: 34
-        y: 393
-        width: 28
-        height: 17
+        x: 32
+        y: 384
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -513,10 +513,10 @@ TextureImporter:
       name: Big Slime_10
       rect:
         serializedVersion: 2
-        x: 66
-        y: 393
-        width: 26
-        height: 19
+        x: 64
+        y: 384
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -535,10 +535,10 @@ TextureImporter:
       name: Big Slime_11
       rect:
         serializedVersion: 2
-        x: 102
-        y: 393
-        width: 20
-        height: 21
+        x: 96
+        y: 384
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -557,10 +557,10 @@ TextureImporter:
       name: Big Slime_12
       rect:
         serializedVersion: 2
-        x: 4
-        y: 361
-        width: 24
-        height: 19
+        x: 0
+        y: 352
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -579,10 +579,10 @@ TextureImporter:
       name: Big Slime_13
       rect:
         serializedVersion: 2
-        x: 36
-        y: 364
-        width: 23
-        height: 21
+        x: 32
+        y: 352
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -601,10 +601,10 @@ TextureImporter:
       name: Big Slime_14
       rect:
         serializedVersion: 2
-        x: 68
-        y: 366
-        width: 24
-        height: 19
+        x: 64
+        y: 352
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -623,10 +623,10 @@ TextureImporter:
       name: Big Slime_15
       rect:
         serializedVersion: 2
-        x: 100
-        y: 361
-        width: 24
-        height: 17
+        x: 96
+        y: 352
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -645,10 +645,10 @@ TextureImporter:
       name: Big Slime_16
       rect:
         serializedVersion: 2
-        x: 4
-        y: 329
-        width: 24
-        height: 19
+        x: 0
+        y: 320
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -667,10 +667,10 @@ TextureImporter:
       name: Big Slime_17
       rect:
         serializedVersion: 2
-        x: 38
-        y: 332
-        width: 20
-        height: 21
+        x: 32
+        y: 320
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -689,10 +689,10 @@ TextureImporter:
       name: Big Slime_18
       rect:
         serializedVersion: 2
-        x: 68
-        y: 334
-        width: 24
-        height: 19
+        x: 64
+        y: 320
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -711,10 +711,10 @@ TextureImporter:
       name: Big Slime_19
       rect:
         serializedVersion: 2
-        x: 98
-        y: 329
-        width: 28
-        height: 17
+        x: 96
+        y: 320
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -733,10 +733,10 @@ TextureImporter:
       name: Big Slime_20
       rect:
         serializedVersion: 2
-        x: 4
-        y: 297
-        width: 24
-        height: 19
+        x: 0
+        y: 288
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -755,10 +755,10 @@ TextureImporter:
       name: Big Slime_21
       rect:
         serializedVersion: 2
-        x: 38
-        y: 300
-        width: 20
-        height: 21
+        x: 32
+        y: 288
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -777,10 +777,10 @@ TextureImporter:
       name: Big Slime_22
       rect:
         serializedVersion: 2
-        x: 68
-        y: 302
-        width: 24
-        height: 19
+        x: 64
+        y: 288
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -799,10 +799,10 @@ TextureImporter:
       name: Big Slime_23
       rect:
         serializedVersion: 2
-        x: 98
-        y: 297
-        width: 28
-        height: 17
+        x: 96
+        y: 288
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -821,10 +821,10 @@ TextureImporter:
       name: Big Slime_24
       rect:
         serializedVersion: 2
-        x: 4
-        y: 265
-        width: 24
-        height: 19
+        x: 0
+        y: 256
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -843,10 +843,10 @@ TextureImporter:
       name: Big Slime_25
       rect:
         serializedVersion: 2
-        x: 33
-        y: 265
-        width: 26
-        height: 22
+        x: 32
+        y: 256
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -865,10 +865,10 @@ TextureImporter:
       name: Big Slime_26
       rect:
         serializedVersion: 2
-        x: 63
-        y: 265
-        width: 28
-        height: 14
+        x: 64
+        y: 256
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -887,10 +887,10 @@ TextureImporter:
       name: Big Slime_27
       rect:
         serializedVersion: 2
-        x: 95
-        y: 265
-        width: 28
-        height: 16
+        x: 96
+        y: 256
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -909,10 +909,10 @@ TextureImporter:
       name: Big Slime_28
       rect:
         serializedVersion: 2
-        x: 3
-        y: 233
-        width: 26
-        height: 17
+        x: 0
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -931,10 +931,10 @@ TextureImporter:
       name: Big Slime_29
       rect:
         serializedVersion: 2
-        x: 36
-        y: 233
-        width: 24
-        height: 13
+        x: 32
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -953,10 +953,10 @@ TextureImporter:
       name: Big Slime_30
       rect:
         serializedVersion: 2
-        x: 69
-        y: 229
-        width: 22
-        height: 23
+        x: 64
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -975,10 +975,10 @@ TextureImporter:
       name: Big Slime_31
       rect:
         serializedVersion: 2
-        x: 70
-        y: 201
-        width: 20
-        height: 23
+        x: 96
+        y: 224
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -997,9 +997,9 @@ TextureImporter:
       name: Big Slime_32
       rect:
         serializedVersion: 2
-        x: 100
-        y: 220
-        width: 24
+        x: 0
+        y: 192
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1019,10 +1019,10 @@ TextureImporter:
       name: Big Slime_33
       rect:
         serializedVersion: 2
-        x: 100
-        y: 201
-        width: 24
-        height: 21
+        x: 32
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1041,10 +1041,10 @@ TextureImporter:
       name: Big Slime_34
       rect:
         serializedVersion: 2
-        x: 3
-        y: 201
-        width: 26
-        height: 17
+        x: 64
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1063,10 +1063,10 @@ TextureImporter:
       name: Big Slime_35
       rect:
         serializedVersion: 2
-        x: 36
-        y: 201
-        width: 24
-        height: 13
+        x: 96
+        y: 192
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1085,10 +1085,10 @@ TextureImporter:
       name: Big Slime_36
       rect:
         serializedVersion: 2
-        x: 4
-        y: 169
-        width: 24
-        height: 19
+        x: 0
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1107,10 +1107,10 @@ TextureImporter:
       name: Big Slime_37
       rect:
         serializedVersion: 2
-        x: 35
-        y: 170
-        width: 26
-        height: 15
+        x: 32
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1129,10 +1129,10 @@ TextureImporter:
       name: Big Slime_38
       rect:
         serializedVersion: 2
-        x: 71
-        y: 170
-        width: 18
-        height: 19
+        x: 64
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1151,10 +1151,10 @@ TextureImporter:
       name: Big Slime_39
       rect:
         serializedVersion: 2
-        x: 98
-        y: 169
-        width: 28
-        height: 17
+        x: 96
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1173,10 +1173,10 @@ TextureImporter:
       name: Big Slime_40
       rect:
         serializedVersion: 2
-        x: 4
-        y: 137
-        width: 24
-        height: 19
+        x: 0
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1195,10 +1195,10 @@ TextureImporter:
       name: Big Slime_41
       rect:
         serializedVersion: 2
-        x: 35
-        y: 138
-        width: 26
-        height: 15
+        x: 32
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1217,10 +1217,10 @@ TextureImporter:
       name: Big Slime_42
       rect:
         serializedVersion: 2
-        x: 71
-        y: 138
-        width: 18
-        height: 19
+        x: 64
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1239,10 +1239,10 @@ TextureImporter:
       name: Big Slime_43
       rect:
         serializedVersion: 2
-        x: 98
-        y: 137
-        width: 28
-        height: 17
+        x: 96
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1261,10 +1261,10 @@ TextureImporter:
       name: Big Slime_44
       rect:
         serializedVersion: 2
-        x: 4
-        y: 105
-        width: 24
-        height: 19
+        x: 0
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1283,10 +1283,10 @@ TextureImporter:
       name: Big Slime_45
       rect:
         serializedVersion: 2
-        x: 35
-        y: 106
-        width: 26
-        height: 15
+        x: 32
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1305,10 +1305,10 @@ TextureImporter:
       name: Big Slime_46
       rect:
         serializedVersion: 2
-        x: 71
-        y: 106
-        width: 18
-        height: 19
+        x: 64
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1327,10 +1327,10 @@ TextureImporter:
       name: Big Slime_47
       rect:
         serializedVersion: 2
-        x: 98
-        y: 105
-        width: 28
-        height: 17
+        x: 96
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1349,10 +1349,10 @@ TextureImporter:
       name: Big Slime_48
       rect:
         serializedVersion: 2
-        x: 2
-        y: 73
-        width: 28
-        height: 17
+        x: 0
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1371,10 +1371,10 @@ TextureImporter:
       name: Big Slime_49
       rect:
         serializedVersion: 2
-        x: 34
-        y: 74
-        width: 28
-        height: 15
+        x: 32
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1393,10 +1393,10 @@ TextureImporter:
       name: Big Slime_50
       rect:
         serializedVersion: 2
-        x: 66
-        y: 74
-        width: 28
-        height: 9
+        x: 64
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1416,9 +1416,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 70
+        y: 64
         width: 32
-        height: 15
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1437,10 +1437,10 @@ TextureImporter:
       name: Big Slime_52
       rect:
         serializedVersion: 2
-        x: 2
-        y: 41
-        width: 28
-        height: 17
+        x: 0
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1459,10 +1459,10 @@ TextureImporter:
       name: Big Slime_53
       rect:
         serializedVersion: 2
-        x: 34
-        y: 42
-        width: 28
-        height: 15
+        x: 32
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1481,10 +1481,10 @@ TextureImporter:
       name: Big Slime_54
       rect:
         serializedVersion: 2
-        x: 66
-        y: 42
-        width: 28
-        height: 9
+        x: 64
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1504,9 +1504,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 38
+        y: 32
         width: 32
-        height: 15
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1525,10 +1525,10 @@ TextureImporter:
       name: Big Slime_56
       rect:
         serializedVersion: 2
-        x: 2
-        y: 9
-        width: 28
-        height: 17
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1547,10 +1547,10 @@ TextureImporter:
       name: Big Slime_57
       rect:
         serializedVersion: 2
-        x: 34
-        y: 10
-        width: 28
-        height: 15
+        x: 32
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1569,10 +1569,10 @@ TextureImporter:
       name: Big Slime_58
       rect:
         serializedVersion: 2
-        x: 66
-        y: 10
-        width: 28
-        height: 9
+        x: 64
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1592,9 +1592,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 6
+        y: 0
         width: 32
-        height: 15
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1613,7 +1613,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b0116362f3bf22343b9a2555fcaf817d
     internalID: 0
     vertices: []
     indices: 
@@ -1622,7 +1622,67 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Big Slime_0: 3413403352333689364
+      Big Slime_1: 1622537944668636451
+      Big Slime_10: 6692825601357399617
+      Big Slime_11: 2873025159554312290
+      Big Slime_12: -5495976237084989292
+      Big Slime_13: -2525855247954469595
+      Big Slime_14: -7015312406212917587
+      Big Slime_15: 9114439766849852615
+      Big Slime_16: 7169891821420732441
+      Big Slime_17: 2935378096005395209
+      Big Slime_18: 4513837488650104914
+      Big Slime_19: -291154205762571535
+      Big Slime_2: -4241378421777206773
+      Big Slime_20: 3920795963463175757
+      Big Slime_21: -6219616179588767829
+      Big Slime_22: -3949873386395976353
+      Big Slime_23: -7869539078552732710
+      Big Slime_24: 6904569862198737982
+      Big Slime_25: -6852082944810511368
+      Big Slime_26: 2073892922609554812
+      Big Slime_27: 3170696936197798797
+      Big Slime_28: 3418162250577079597
+      Big Slime_29: -8568359254199964152
+      Big Slime_3: -7699402266847373376
+      Big Slime_30: -1139397529554610429
+      Big Slime_31: -5645660594221033149
+      Big Slime_32: 8787240835860862492
+      Big Slime_33: 771695376733108711
+      Big Slime_34: -5084815675719455375
+      Big Slime_35: 5278856383190654012
+      Big Slime_36: 1060586046467500328
+      Big Slime_37: -8009452157456739514
+      Big Slime_38: -8830309817077278761
+      Big Slime_39: 6723103611346250205
+      Big Slime_4: 3433433953614298381
+      Big Slime_40: 2676243614598611760
+      Big Slime_41: 1497757770632531448
+      Big Slime_42: -3002135490704298113
+      Big Slime_43: -6340236624010687209
+      Big Slime_44: -111341263068502823
+      Big Slime_45: 8546346325836784684
+      Big Slime_46: 1743011549991812486
+      Big Slime_47: -6760682732806996629
+      Big Slime_48: -71738672520675054
+      Big Slime_49: 6417150529268045688
+      Big Slime_5: -2369117827252183443
+      Big Slime_50: 2942825611010863312
+      Big Slime_51: 9073874898120707151
+      Big Slime_52: -5908645262971741726
+      Big Slime_53: -963850694715388553
+      Big Slime_54: 8903370659692659377
+      Big Slime_55: -5341184354598988733
+      Big Slime_56: -1084103898778841734
+      Big Slime_57: 1032569983258124213
+      Big Slime_58: 6266648412085436938
+      Big Slime_59: 5475141607777040093
+      Big Slime_6: 2806300683607266777
+      Big Slime_7: -5673380288860057623
+      Big Slime_8: 3570208448576399217
+      Big Slime_9: 5578515933344530490
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
