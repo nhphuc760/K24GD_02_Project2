@@ -3,20 +3,32 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Enemy
+  - Animal
+  - Interactable
+  - FarmLand
+  - Crop
+  - Water
+  - Ground
+  - Cliff
+  - Building
+  - Item
+  - Effect
+  - TriggerZone
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Ground
+  - Item
+  - Interacable
+  - Building
+  - TriggerZone
   - 
   - 
   - 
@@ -38,17 +50,41 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Ground
     uniqueID: 2262396013
+    locked: 0
+  - name: FarmLand
+    uniqueID: 1986263647
+    locked: 0
+  - name: Soil_Crop
+    uniqueID: 2388537463
+    locked: 0
+  - name: Decor_Lower
+    uniqueID: 3101632513
     locked: 0
   - name: Water
     uniqueID: 587525487
     locked: 0
+  - name: BuildingLower
+    uniqueID: 522754583
+    locked: 0
+  - name: Player
+    uniqueID: 1293688563
+    locked: 0
+  - name: Building_Upper
+    uniqueID: 3290656913
+    locked: 0
+  - name: Decor_Upper
+    uniqueID: 4167777955
+    locked: 0
   - name: Overlay
     uniqueID: 2405902269
+    locked: 0
+  - name: UI
+    uniqueID: 4251626431
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
   m_RenderingLayers:
   - Default
