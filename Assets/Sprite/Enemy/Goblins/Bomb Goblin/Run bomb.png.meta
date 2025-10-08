@@ -178,6 +178,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -722,7 +735,31 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Run bomb_0: -8262898993223470297
+      Run bomb_1: 5784548884676969106
+      Run bomb_10: 6524138663781053006
+      Run bomb_11: -878909450655720404
+      Run bomb_12: -4525965549084989871
+      Run bomb_13: 4341461077988877442
+      Run bomb_14: 6889434523964129212
+      Run bomb_15: -7762048840556166169
+      Run bomb_16: -498757716790472448
+      Run bomb_17: 3812731913286683080
+      Run bomb_18: 8847083202683408849
+      Run bomb_19: -2128890726142827095
+      Run bomb_2: -1107813342573076355
+      Run bomb_20: -8746334601067911532
+      Run bomb_21: 8436828695401318735
+      Run bomb_22: -7668880452408098103
+      Run bomb_23: -3434223381813449358
+      Run bomb_3: 8190360538238755864
+      Run bomb_4: -3342291218016463161
+      Run bomb_5: 6107329783295597696
+      Run bomb_6: 8352520266662384304
+      Run bomb_7: 2832100428025348081
+      Run bomb_8: -6207222832331218371
+      Run bomb_9: 7613378421376688505
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
