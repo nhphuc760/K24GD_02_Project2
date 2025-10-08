@@ -137,12 +137,12 @@ TextureImporter:
       name: Fence Wood_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 81
-        width: 40
-        height: 79
+        x: 5
+        y: 112
+        width: 38
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -159,12 +159,12 @@ TextureImporter:
       name: Fence Wood_1
       rect:
         serializedVersion: 2
-        x: 47
-        y: 143
-        width: 49
-        height: 17
+        x: 48
+        y: 144
+        width: 48
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -181,12 +181,12 @@ TextureImporter:
       name: Fence Wood_2
       rect:
         serializedVersion: 2
-        x: 47
-        y: 111
-        width: 15
-        height: 22
+        x: 48
+        y: 112
+        width: 48
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -203,10 +203,10 @@ TextureImporter:
       name: Fence Wood_3
       rect:
         serializedVersion: 2
-        x: 82
-        y: 111
-        width: 14
-        height: 22
+        x: 48
+        y: 32
+        width: 48
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,12 +225,12 @@ TextureImporter:
       name: Fence Wood_4
       rect:
         serializedVersion: 2
-        x: 4
-        y: 1
-        width: 40
-        height: 80
+        x: 5
+        y: 32
+        width: 38
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -247,12 +247,12 @@ TextureImporter:
       name: Fence Wood_5
       rect:
         serializedVersion: 2
-        x: 47
-        y: 63
-        width: 49
-        height: 18
+        x: 48
+        y: 64
+        width: 48
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -269,10 +269,10 @@ TextureImporter:
       name: Fence Wood_6
       rect:
         serializedVersion: 2
-        x: 47
-        y: 31
-        width: 15
-        height: 22
+        x: 21
+        y: 96
+        width: 22
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -291,10 +291,10 @@ TextureImporter:
       name: Fence Wood_7
       rect:
         serializedVersion: 2
-        x: 82
-        y: 31
-        width: 14
-        height: 22
+        x: 21
+        y: 82
+        width: 6
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -309,11 +309,99 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Fence Wood_8
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 16
+        width: 23
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7504832b862a94f458c30e21d8b70eee
+      internalID: -1908246089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fence Wood_9
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 2
+        width: 6
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0c7260986de7ed4e82f727ad722aa9c
+      internalID: 1809786453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fence Wood_10
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 82
+        width: 6
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 382f262f488496b4c9e29dbb2ce839bd
+      internalID: 548201181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fence Wood_11
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 2
+        width: 6
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0986920d7c69f64aae216f79d8bd79a
+      internalID: -878626878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b44f277c0f6dd6b47b73967497b68abe
     internalID: 0
     vertices: []
     indices: 
@@ -325,12 +413,16 @@ TextureImporter:
     nameFileIdTable:
       Fence Wood_0: 7253429335775374924
       Fence Wood_1: -59973432651418663
+      Fence Wood_10: 548201181
+      Fence Wood_11: -878626878
       Fence Wood_2: 2110660820308301206
       Fence Wood_3: -1508250310213370009
       Fence Wood_4: 4572339496954188251
       Fence Wood_5: -7395101003225102512
       Fence Wood_6: 3360337419187097183
       Fence Wood_7: -6593133337692683240
+      Fence Wood_8: -1908246089
+      Fence Wood_9: 1809786453
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

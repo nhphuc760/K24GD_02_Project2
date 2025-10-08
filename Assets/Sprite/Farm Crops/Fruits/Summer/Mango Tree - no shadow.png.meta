@@ -149,10 +149,10 @@ TextureImporter:
       name: Mango Tree - no shadow_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 1
-        width: 41
-        height: 12
+        x: 0
+        y: 0
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,10 +171,10 @@ TextureImporter:
       name: Mango Tree - no shadow_1
       rect:
         serializedVersion: 2
-        x: 70
-        y: 1
-        width: 22
-        height: 33
+        x: 32
+        y: 0
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,10 +193,10 @@ TextureImporter:
       name: Mango Tree - no shadow_2
       rect:
         serializedVersion: 2
-        x: 96
-        y: 1
+        x: 64
+        y: 0
         width: 32
-        height: 47
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,10 +215,10 @@ TextureImporter:
       name: Mango Tree - no shadow_3
       rect:
         serializedVersion: 2
-        x: 128
-        y: 1
+        x: 96
+        y: 0
         width: 32
-        height: 47
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,10 +237,10 @@ TextureImporter:
       name: Mango Tree - no shadow_4
       rect:
         serializedVersion: 2
-        x: 160
-        y: 1
+        x: 128
+        y: 0
         width: 32
-        height: 47
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -259,10 +259,10 @@ TextureImporter:
       name: Mango Tree - no shadow_5
       rect:
         serializedVersion: 2
-        x: 192
-        y: 1
+        x: 160
+        y: 0
         width: 32
-        height: 47
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,10 +281,10 @@ TextureImporter:
       name: Mango Tree - no shadow_6
       rect:
         serializedVersion: 2
-        x: 224
-        y: 1
+        x: 192
+        y: 0
         width: 32
-        height: 47
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -303,10 +303,10 @@ TextureImporter:
       name: Mango Tree - no shadow_7
       rect:
         serializedVersion: 2
-        x: 267
-        y: 1
-        width: 12
-        height: 10
+        x: 224
+        y: 0
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -325,10 +325,10 @@ TextureImporter:
       name: Mango Tree - no shadow_8
       rect:
         serializedVersion: 2
-        x: 299
-        y: 1
-        width: 12
-        height: 10
+        x: 256
+        y: 0
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -347,10 +347,10 @@ TextureImporter:
       name: Mango Tree - no shadow_9
       rect:
         serializedVersion: 2
-        x: 326
-        y: 1
-        width: 22
-        height: 33
+        x: 288
+        y: 0
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -369,10 +369,10 @@ TextureImporter:
       name: Mango Tree - no shadow_10
       rect:
         serializedVersion: 2
-        x: 352
-        y: 1
+        x: 320
+        y: 0
         width: 32
-        height: 47
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -391,10 +391,10 @@ TextureImporter:
       name: Mango Tree - no shadow_11
       rect:
         serializedVersion: 2
-        x: 395
-        y: 1
-        width: 12
-        height: 10
+        x: 352
+        y: 0
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -409,11 +409,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Mango Tree - no shadow_12
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78105ee2f23c2bf44a75dc975af7356f
+      internalID: -327655963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 4d4f4b97812d8d340bf4e5dc42108994
     internalID: 0
     vertices: []
     indices: 
@@ -427,6 +449,7 @@ TextureImporter:
       Mango Tree - no shadow_1: -1693988356897791401
       Mango Tree - no shadow_10: -5239158365349687527
       Mango Tree - no shadow_11: 2864014710023274327
+      Mango Tree - no shadow_12: -327655963
       Mango Tree - no shadow_2: 8655209743880763908
       Mango Tree - no shadow_3: -446142188882818335
       Mango Tree - no shadow_4: 1335740143859213072

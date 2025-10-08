@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: SpriteSheet
+    m_Hash: 765656248
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Red_0
+      m_Hash: 472743500
+      m_Sprite: {fileID: 6286595657586805340, guid: 4fdf7513e7c12a34a80bdf16a08dcefd, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -4987337320017983735, guid: 1cb2183264d550843a8f4f4f2d019366, type: 3}
+    - m_Name: Red_1
+      m_Hash: 724192986
+      m_Sprite: {fileID: 1613127925512473047, guid: 4fdf7513e7c12a34a80bdf16a08dcefd, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 3093105817896843584, guid: 1cb2183264d550843a8f4f4f2d019366, type: 3}
+    - m_Name: Red_2
+      m_Hash: 841162592
+      m_Sprite: {fileID: 5333967998348892124, guid: 4fdf7513e7c12a34a80bdf16a08dcefd, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -8195212640869537175, guid: 1cb2183264d550843a8f4f4f2d019366, type: 3}
+    - m_Name: Red_3
+      m_Hash: 86257654
+      m_Sprite: {fileID: 2398322965701019735, guid: 4fdf7513e7c12a34a80bdf16a08dcefd, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 6001012865557676745, guid: 1cb2183264d550843a8f4f4f2d019366, type: 3}
+    - m_Name: Red_4
+      m_Hash: 457226837
+      m_Sprite: {fileID: -7465866551671254797, guid: 4fdf7513e7c12a34a80bdf16a08dcefd, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 4996944730279439149, guid: 1cb2183264d550843a8f4f4f2d019366, type: 3}
+    - m_Name: Red_5
+      m_Hash: 742886083
+      m_Sprite: {fileID: -8314221879049074932, guid: 4fdf7513e7c12a34a80bdf16a08dcefd, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -4317747001417471049, guid: 1cb2183264d550843a8f4f4f2d019366, type: 3}
+    - m_Name: Red_6
+      m_Hash: 894360441
+      m_Sprite: {fileID: 4744403000761406451, guid: 4fdf7513e7c12a34a80bdf16a08dcefd, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -4642531631677103677, guid: 1cb2183264d550843a8f4f4f2d019366, type: 3}
+    - m_Name: Red_7
+      m_Hash: 38398959
+      m_Sprite: {fileID: 7829259069414977506, guid: 4fdf7513e7c12a34a80bdf16a08dcefd, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8342174783345316721, guid: 1cb2183264d550843a8f4f4f2d019366, type: 3}
+    - m_Name: Red_8
+      m_Hash: 318174846
+      m_Sprite: {fileID: 333450362, guid: 4fdf7513e7c12a34a80bdf16a08dcefd, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 278871785, guid: 1cb2183264d550843a8f4f4f2d019366, type: 3}
+    - m_Name: Red_9
+      m_Hash: 636602088
+      m_Sprite: {fileID: -536749135, guid: 4fdf7513e7c12a34a80bdf16a08dcefd, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1570901381, guid: 1cb2183264d550843a8f4f4f2d019366, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 10
+  m_PrimaryLibraryGUID: 1492ce9de31cb8c41961e8c16fc70a2f
+  m_ModificationHash: 638955168823673869
+  m_Version: 1
