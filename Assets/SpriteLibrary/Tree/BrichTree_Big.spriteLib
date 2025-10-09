@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: SpriteSheet
+    m_Hash: 765656248
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Birch Tree Animation_0
+      m_Hash: 127434053
+      m_Sprite: {fileID: 5532870604220976589, guid: cca61b885f756a44b872b295c2793bc0, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1814838961646310044, guid: cca61b885f756a44b872b295c2793bc0, type: 3}
+    - m_Name: Birch Tree Animation_1
+      m_Hash: 815746515
+      m_Sprite: {fileID: -5761423966467757716, guid: cca61b885f756a44b872b295c2793bc0, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 35983209787734872, guid: cca61b885f756a44b872b295c2793bc0, type: 3}
+    - m_Name: Birch Tree Animation_2
+      m_Hash: 697703529
+      m_Sprite: {fileID: -8686845179632887607, guid: cca61b885f756a44b872b295c2793bc0, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8168661752194035362, guid: cca61b885f756a44b872b295c2793bc0, type: 3}
+    - m_Name: Birch Tree Animation_3
+      m_Hash: 512830719
+      m_Sprite: {fileID: 7037746326355700184, guid: cca61b885f756a44b872b295c2793bc0, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -4363077085822543492, guid: cca61b885f756a44b872b295c2793bc0, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  m_PrimaryLibraryGUID: 1b704695ad5d79942af906205394f58a
+  m_ModificationHash: 638956521292342865
+  m_Version: 1
