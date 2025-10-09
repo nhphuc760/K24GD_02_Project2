@@ -50,17 +50,23 @@ TagManager:
   - name: Way
     uniqueID: 1935004297
     locked: 0
+  - name: Water
+    uniqueID: 635457033
+    locked: 0
   - name: Wall
     uniqueID: 3761566521
     locked: 0
   - name: Stone
     uniqueID: 1046969909
     locked: 0
-  - name: Door
-    uniqueID: 1769105491
+  - name: Decorate
+    uniqueID: 3697637739
     locked: 0
   - name: Player
     uniqueID: 1919740805
+    locked: 0
+  - name: Door
+    uniqueID: 1769105491
     locked: 0
   m_RenderingLayers:
   - Default
