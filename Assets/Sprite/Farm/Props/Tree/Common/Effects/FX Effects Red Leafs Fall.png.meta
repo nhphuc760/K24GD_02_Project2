@@ -118,7 +118,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 96
+        width: 32
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -134,11 +134,55 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: FX Effects Red Leafs Fall_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7f8ce69184c91b4eb3f10e7c40d3c76
+      internalID: -187070988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX Effects Red Leafs Fall_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a396dcad99c44044a139491d1213036
+      internalID: 1767044672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ca0e52a815e0f574c975e54c6e0ec117
     internalID: 0
     vertices: []
     indices: 
@@ -149,6 +193,8 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       FX Effects Red Leafs Fall_0: 8765603101715416382
+      FX Effects Red Leafs Fall_1: -187070988
+      FX Effects Red Leafs Fall_2: 1767044672
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

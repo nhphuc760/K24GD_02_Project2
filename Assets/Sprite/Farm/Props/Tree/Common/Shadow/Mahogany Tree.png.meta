@@ -155,10 +155,10 @@ TextureImporter:
       name: Mahogany Tree_0
       rect:
         serializedVersion: 2
-        x: 42
-        y: 49
-        width: 11
-        height: 14
+        x: 0
+        y: 48
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,10 +177,10 @@ TextureImporter:
       name: Mahogany Tree_1
       rect:
         serializedVersion: 2
-        x: 68
-        y: 47
-        width: 26
-        height: 36
+        x: 32
+        y: 48
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,9 +199,9 @@ TextureImporter:
       name: Mahogany Tree_2
       rect:
         serializedVersion: 2
-        x: 95
+        x: 64
         y: 48
-        width: 98
+        width: 32
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -221,9 +221,9 @@ TextureImporter:
       name: Mahogany Tree_3
       rect:
         serializedVersion: 2
-        x: 192
+        x: 96
         y: 48
-        width: 97
+        width: 32
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -243,10 +243,10 @@ TextureImporter:
       name: Mahogany Tree_4
       rect:
         serializedVersion: 2
-        x: 305
-        y: 56
-        width: 11
-        height: 8
+        x: 128
+        y: 48
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -265,10 +265,10 @@ TextureImporter:
       name: Mahogany Tree_5
       rect:
         serializedVersion: 2
-        x: 326
+        x: 160
         y: 48
-        width: 20
-        height: 14
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -287,10 +287,10 @@ TextureImporter:
       name: Mahogany Tree_6
       rect:
         serializedVersion: 2
-        x: 358
+        x: 192
         y: 48
-        width: 20
-        height: 14
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -309,10 +309,10 @@ TextureImporter:
       name: Mahogany Tree_7
       rect:
         serializedVersion: 2
-        x: 11
-        y: 49
-        width: 10
-        height: 6
+        x: 224
+        y: 48
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -331,10 +331,10 @@ TextureImporter:
       name: Mahogany Tree_8
       rect:
         serializedVersion: 2
-        x: 4
-        y: 0
-        width: 26
-        height: 35
+        x: 256
+        y: 48
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -353,9 +353,9 @@ TextureImporter:
       name: Mahogany Tree_9
       rect:
         serializedVersion: 2
-        x: 31
-        y: 0
-        width: 34
+        x: 288
+        y: 48
+        width: 32
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -375,10 +375,10 @@ TextureImporter:
       name: Mahogany Tree_10
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 33
-        height: 44
+        x: 320
+        y: 48
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -397,10 +397,10 @@ TextureImporter:
       name: Mahogany Tree_11
       rect:
         serializedVersion: 2
-        x: 102
-        y: 0
-        width: 20
-        height: 14
+        x: 352
+        y: 48
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -419,9 +419,9 @@ TextureImporter:
       name: Mahogany Tree_12
       rect:
         serializedVersion: 2
-        x: 127
+        x: 0
         y: 0
-        width: 34
+        width: 32
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -441,10 +441,10 @@ TextureImporter:
       name: Mahogany Tree_13
       rect:
         serializedVersion: 2
-        x: 164
+        x: 32
         y: 0
-        width: 26
-        height: 35
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -459,11 +459,99 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Mahogany Tree_14
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfec01575bea8cb48abc712d6ae21d10
+      internalID: 1581690116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mahogany Tree_15
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a91d47e653193db46bc5eb62a59f2d9a
+      internalID: -808118285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mahogany Tree_16
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b795d2d94f093ea4a90ad63fe9148043
+      internalID: -582182705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mahogany Tree_17
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b368fc55ae3d938499b1f0fda44ff3f6
+      internalID: -1079994206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f5128abc57e884c41a10144b6ff15d4e
     internalID: 0
     vertices: []
     indices: 
@@ -479,6 +567,10 @@ TextureImporter:
       Mahogany Tree_11: -3244135672340493227
       Mahogany Tree_12: 1502075986877401925
       Mahogany Tree_13: 3875447241705799146
+      Mahogany Tree_14: 1581690116
+      Mahogany Tree_15: -808118285
+      Mahogany Tree_16: -582182705
+      Mahogany Tree_17: -1079994206
       Mahogany Tree_2: 556388359115899683
       Mahogany Tree_3: -4221183474345692265
       Mahogany Tree_4: 3224983057204659473
