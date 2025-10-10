@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Wall
+  - Water
+  - Stone
+  - Ore
+  - Decorate
+  - Grass
+  - Way
   layers:
   - Default
   - TransparentFX
