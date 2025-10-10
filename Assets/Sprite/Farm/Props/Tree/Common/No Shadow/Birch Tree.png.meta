@@ -140,10 +140,10 @@ TextureImporter:
       name: Birch Tree_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 50
-        width: 6
-        height: 6
+        x: 0
+        y: 48
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,10 +162,10 @@ TextureImporter:
       name: Birch Tree_1
       rect:
         serializedVersion: 2
-        x: 42
-        y: 50
-        width: 11
-        height: 13
+        x: 32
+        y: 48
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,10 +184,10 @@ TextureImporter:
       name: Birch Tree_2
       rect:
         serializedVersion: 2
-        x: 68
-        y: 49
-        width: 26
-        height: 34
+        x: 64
+        y: 48
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,10 +206,10 @@ TextureImporter:
       name: Birch Tree_3
       rect:
         serializedVersion: 2
-        x: 95
+        x: 96
         y: 48
-        width: 98
-        height: 47
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,10 +228,10 @@ TextureImporter:
       name: Birch Tree_4
       rect:
         serializedVersion: 2
-        x: 201
+        x: 128
         y: 48
-        width: 13
-        height: 12
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,10 +250,10 @@ TextureImporter:
       name: Birch Tree_5
       rect:
         serializedVersion: 2
-        x: 233
+        x: 160
         y: 48
-        width: 13
-        height: 12
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -272,10 +272,10 @@ TextureImporter:
       name: Birch Tree_6
       rect:
         serializedVersion: 2
-        x: 4
-        y: 1
-        width: 26
-        height: 34
+        x: 192
+        y: 48
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -294,10 +294,10 @@ TextureImporter:
       name: Birch Tree_7
       rect:
         serializedVersion: 2
-        x: 31
-        y: 0
-        width: 34
-        height: 47
+        x: 224
+        y: 48
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -316,10 +316,10 @@ TextureImporter:
       name: Birch Tree_8
       rect:
         serializedVersion: 2
-        x: 73
+        x: 0
         y: 0
-        width: 13
-        height: 12
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,11 +334,55 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Birch Tree_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a33172105a588e4382520590d402362
+      internalID: 660869430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Birch Tree_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07e48a4435ae9eb4393183c1770d6921
+      internalID: 192701427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: bf8725ea30b25dd46ac7bee5ed40c768
     internalID: 0
     vertices: []
     indices: 
@@ -350,6 +394,7 @@ TextureImporter:
     nameFileIdTable:
       Birch Tree_0: -4603705229771929021
       Birch Tree_1: -7600542981473130955
+      Birch Tree_10: 192701427
       Birch Tree_2: -4057762327342201326
       Birch Tree_3: -8311726213936383893
       Birch Tree_4: 5810931861021058055
@@ -357,6 +402,7 @@ TextureImporter:
       Birch Tree_6: 5983994984575472326
       Birch Tree_7: 3428526095825569114
       Birch Tree_8: -4404704332635222364
+      Birch Tree_9: 660869430
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
