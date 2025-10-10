@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: d4dd17a48d17f964d8d54dda02951d5c
+guid: b35cf29feea863c4e995c62f6e68d8ef
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5067711091003991934
-    second: Big old Tree_0
-  - first:
-      213: 3380070111611510498
-    second: Big old Tree_1
-  - first:
-      213: 7629976971948300696
-    second: Big old Tree_2
-  - first:
-      213: -2239836336084262094
-    second: Big old Tree_3
-  - first:
-      213: -5032373944003367732
-    second: Big old Tree_4
+      213: -6746521503251858855
+    second: FishermanBarn_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -63,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -87,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,17 +109,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Big old Tree_0
+      name: FishermanBarn_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 127
-        width: 124
-        height: 31
+        x: 7
+        y: 7
+        width: 186
+        height: 255
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,96 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e77a99b2360245640800000000000000
-      internalID: 5067711091003991934
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Big old Tree_1
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 0
-        width: 30
-        height: 124
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2eed48eabdb68ee20800000000000000
-      internalID: 3380070111611510498
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Big old Tree_2
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 95
-        width: 58
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 899936171af13e960800000000000000
-      internalID: 7629976971948300696
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Big old Tree_3
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 63
-        width: 58
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2336fa038b08ae0e0800000000000000
-      internalID: -2239836336084262094
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Big old Tree_4
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 31
-        width: 58
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ccc6fb28f8a692ab0800000000000000
-      internalID: -5032373944003367732
+      spriteID: 95a7329ff6a8f52a0800000000000000
+      internalID: -6746521503251858855
       vertices: []
       indices: 
       edges: []
@@ -247,12 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Big old Tree_0: 5067711091003991934
-      Big old Tree_1: 3380070111611510498
-      Big old Tree_2: 7629976971948300696
-      Big old Tree_3: -2239836336084262094
-      Big old Tree_4: -5032373944003367732
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
