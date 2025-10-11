@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3087930661594206770}
   - component: {fileID: 8580989887104017995}
+  - component: {fileID: 6428125475090740160}
   m_Layer: 0
   m_Name: BrichTree_Small
   m_TagString: Untagged
@@ -68,9 +69,23 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.055251915, y: -1.1627012}
-  m_Size: {x: 0.892873, y: 0.6812745}
+  m_Offset: {x: 0.039433766, y: -1.1455644}
+  m_Size: {x: 1.014149, y: 0.7840942}
   m_Direction: 1
+--- !u!114 &6428125475090740160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540968652401062206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58950539673ab614cb4cf342dc49bdbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 7256057679317725453}
+  alpha: 0.6
 --- !u!1 &7236576008810215604
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +184,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7236576008810215604}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d238b6d3d139abc4697192aaa7ccc0f2, type: 2}
   m_CullingMode: 0
@@ -311,7 +326,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8737672463606910502}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d238b6d3d139abc4697192aaa7ccc0f2, type: 2}
   m_CullingMode: 0

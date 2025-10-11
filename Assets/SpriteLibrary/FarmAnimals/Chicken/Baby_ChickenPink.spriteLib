@@ -1,0 +1,200 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Move_Left
+    m_Hash: 382531137
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Baby Chicken Black_0
+      m_Hash: 435172761
+      m_Sprite: {fileID: -4496025807672332217, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -2316236608602408495, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    - m_Name: Baby Chicken Black_1
+      m_Hash: 787940623
+      m_Sprite: {fileID: 5724879528938334501, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -2798000035529786640, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    - m_Name: Baby Chicken Black_2
+      m_Hash: 939414709
+      m_Sprite: {fileID: 6378045263696859537, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -6987675734457398636, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    - m_Name: Baby Chicken Black_3
+      m_Hash: 16344099
+      m_Sprite: {fileID: 5067726156773091887, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -6446563355022426602, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  - m_Name: Move_Right
+    m_Hash: 911492713
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Baby Chicken Black_4
+      m_Hash: 513667456
+      m_Sprite: {fileID: 472412632216257232, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1276542265664666264, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    - m_Name: Baby Chicken Black_5
+      m_Hash: 698007830
+      m_Sprite: {fileID: -5049414983182613409, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1951156481120086675, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    - m_Name: Baby Chicken Black_6
+      m_Hash: 814977196
+      m_Sprite: {fileID: 139566110152014170, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -4613323335230515171, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    - m_Name: Baby Chicken Black_7
+      m_Hash: 127180858
+      m_Sprite: {fileID: 4525177937602786914, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 2705550533575461542, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  - m_Name: Idle_Side
+    m_Hash: 201491526
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Baby Chicken Black_8
+      m_Hash: 388742571
+      m_Sprite: {fileID: 8172848622791197489, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -5761092984271706740, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    - m_Name: Baby Chicken Black_9
+      m_Hash: 539790653
+      m_Sprite: {fileID: 2074113261617199669, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1486048128172747442, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    - m_Name: Baby Chicken Black_10
+      m_Hash: 608843189
+      m_Sprite: {fileID: 2694271868926856519, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -5104861889037285740, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    - m_Name: Baby Chicken Black_11
+      m_Hash: 323814691
+      m_Sprite: {fileID: 2756105589623607696, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -7880265335790052453, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  - m_Name: Flap
+    m_Hash: 840286563
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Baby Chicken Black_12
+      m_Hash: 172250265
+      m_Sprite: {fileID: 2988353190293982168, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 5826568393199220282, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    - m_Name: Baby Chicken Black_13
+      m_Hash: 1027826703
+      m_Sprite: {fileID: -2649114777831330434, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8577181650075294542, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    - m_Name: Baby Chicken Black_14
+      m_Hash: 589820332
+      m_Sprite: {fileID: 1115572767427048718, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -6218856742086696192, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    - m_Name: Baby Chicken Black_15
+      m_Hash: 337690938
+      m_Sprite: {fileID: -6184578176260140103, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -2399131676548727230, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  - m_Name: InEgg
+    m_Hash: 117640101
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Baby Chicken Black_24
+      m_Hash: 134914671
+      m_Sprite: {fileID: -4391903456437472486, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 5201407587916900891, guid: 363499a7cfe6eb94ca3ff90fade88194, type: 3}
+    - m_Name: Baby Chicken Black_25
+      m_Hash: 1057854201
+      m_Sprite: {fileID: -6032108017449121255, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8288953478010248766, guid: 363499a7cfe6eb94ca3ff90fade88194, type: 3}
+    - m_Name: Baby Chicken Black_26
+      m_Hash: 637846339
+      m_Sprite: {fileID: 2446160393536083455, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -4825791631901254472, guid: 363499a7cfe6eb94ca3ff90fade88194, type: 3}
+    - m_Name: Baby Chicken Black_27
+      m_Hash: 285471701
+      m_Sprite: {fileID: -3194683186029817274, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1233350089715049397, guid: 363499a7cfe6eb94ca3ff90fade88194, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  - m_Name: Hatch
+    m_Hash: 863659377
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Baby Chicken Black_16
+      m_Hash: 220827776
+      m_Sprite: {fileID: 608467725020493339, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1371026999961681088, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    - m_Name: Baby Chicken Black_17
+      m_Hash: 976134166
+      m_Sprite: {fileID: -2931255288721807135, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -3549790713234034162, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    - m_Name: Baby Chicken Black_18
+      m_Hash: 714194311
+      m_Sprite: {fileID: -9096994873049795669, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -4386708798389750654, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    - m_Name: Baby Chicken Black_19
+      m_Hash: 496405777
+      m_Sprite: {fileID: 7712763283106313619, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -7330208086306486337, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  - m_Name: Peek_Hatch
+    m_Hash: 357610587
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Baby Chicken Black_20
+      m_Hash: 258434678
+      m_Sprite: {fileID: 8286584823803512217, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -6609301843589447931, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    - m_Name: Baby Chicken Black_21
+      m_Hash: 945837792
+      m_Sprite: {fileID: -7365878692318648314, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 5304298202059651309, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    - m_Name: Baby Chicken Black_22
+      m_Hash: 560531290
+      m_Sprite: {fileID: -8041151090165582545, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -122779604347526895, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    - m_Name: Baby Chicken Black_23
+      m_Hash: 376321996
+      m_Sprite: {fileID: 6765350936854690958, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8409661925978245669, guid: 5b522f6a03f73c14e80dcaa9aaec8721, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  m_PrimaryLibraryGUID: 0a1fb5fd384b4f34f8d3594917634f06
+  m_ModificationHash: 638957907324954328
+  m_Version: 1
