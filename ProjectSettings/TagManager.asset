@@ -4,13 +4,15 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Wall
+  - Ground
+  - Farmland
+  - Soil_Crop
+  - Decor_Lower
   - Water
-  - Stone
-  - Ore
-  - Decorate
-  - Grass
-  - Way
+  - Building_Lower
+  - Building_Upper
+  - Decor_Upper
+  - Overlay
   layers:
   - Default
   - TransparentFX
@@ -51,29 +53,32 @@ TagManager:
   - name: Ground
     uniqueID: 3180619845
     locked: 0
-  - name: Grass
+  - name: Farmland
     uniqueID: 2641153353
     locked: 0
-  - name: Way
+  - name: Soil_Crop
     uniqueID: 1935004297
     locked: 0
   - name: Water
-    uniqueID: 635457033
-    locked: 0
-  - name: Wall
     uniqueID: 3761566521
     locked: 0
-  - name: Stone
+  - name: Decor_Lower
+    uniqueID: 635457033
+    locked: 0
+  - name: Building_Lower
     uniqueID: 1046969909
     locked: 0
-  - name: Decorate
+  - name: Player
     uniqueID: 3697637739
     locked: 0
-  - name: Player
+  - name: Building_Upper
     uniqueID: 1919740805
     locked: 0
-  - name: Door
+  - name: Decor_Upper
     uniqueID: 1769105491
+    locked: 0
+  - name: Overlay
+    uniqueID: 2557805823
     locked: 0
   m_RenderingLayers:
   - Default
