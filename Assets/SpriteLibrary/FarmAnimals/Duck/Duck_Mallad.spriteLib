@@ -1,0 +1,226 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Walk_Left
+    m_Hash: 51154540
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Duck White_0
+      m_Hash: 1025078792
+      m_Sprite: {fileID: -4311572160826663933, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -3769649816904853976, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_1
+      m_Hash: 169756318
+      m_Sprite: {fileID: -5244793500129724091, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -4601408714072107158, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_2
+      m_Hash: 320280356
+      m_Sprite: {fileID: -6190083013749213084, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -6646205874193452426, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_3
+      m_Hash: 605038514
+      m_Sprite: {fileID: 5431946905866294485, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 5452778846993873227, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  - m_Name: Walk_Right
+    m_Hash: 861854308
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Duck White_8
+      m_Hash: 868417082
+      m_Sprite: {fileID: -8993806484237086707, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 6060353717246611176, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_9
+      m_Hash: 80072364
+      m_Sprite: {fileID: 1866061499793080934, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 4743531064149026104, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_10
+      m_Hash: 602308388
+      m_Sprite: {fileID: -612426392949026374, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 7688519575104424038, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_11
+      m_Hash: 350310322
+      m_Sprite: {fileID: -2170149605199566600, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1082302884353810143, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  - m_Name: Idle_Side
+    m_Hash: 201491526
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Duck White_12
+      m_Hash: 233315848
+      m_Sprite: {fileID: 3470670851706975782, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -27870822303681377, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_13
+      m_Hash: 988753566
+      m_Sprite: {fileID: 959304065792432015, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 822171663247936760, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_14
+      m_Hash: 613137213
+      m_Sprite: {fileID: 1365748863817098183, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -3837580218487893663, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_15
+      m_Hash: 327977899
+      m_Sprite: {fileID: 7968436166323411854, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 2708708152773997318, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  - m_Name: Peck
+    m_Hash: 820337089
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Duck White_24
+      m_Hash: 262596862
+      m_Sprite: {fileID: -5844675131546506032, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 4346405778923420922, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_25
+      m_Hash: 950130792
+      m_Sprite: {fileID: -2762780812545453447, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -3227487707714800367, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_26
+      m_Hash: 564693458
+      m_Sprite: {fileID: 4571858887217594966, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1583920904864047922, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_27
+      m_Hash: 380614980
+      m_Sprite: {fileID: 2044277397451292967, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -3104368311003019699, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  - m_Name: Swim_Left
+    m_Hash: 542452598
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Duck White_28
+      m_Hash: 101754069
+      m_Sprite: {fileID: -6345243914788016417, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -9158072068426749412, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_29
+      m_Hash: 823628867
+      m_Sprite: {fileID: 553390532807447267, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1571042715245201762, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_30
+      m_Hash: 298851750
+      m_Sprite: {fileID: -5161001248308616747, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -3998033718248859515, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_31
+      m_Hash: 651636016
+      m_Sprite: {fileID: 6054764579242252467, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -2996650565117413680, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  - m_Name: Swim_Right
+    m_Hash: 241138363
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Duck White_36
+      m_Hash: 951302291
+      m_Sprite: {fileID: 4922202199594854238, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1750292687192390473, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_37
+      m_Hash: 263489541
+      m_Sprite: {fileID: 7178246320757520217, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 2113168198880009589, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_38
+      m_Hash: 520852884
+      m_Sprite: {fileID: -1212636425200681863, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 5548258461677590852, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_39
+      m_Hash: 671917314
+      m_Sprite: {fileID: -1247816859902296791, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -5762771290974543888, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  - m_Name: IdleOnWater
+    m_Hash: 12536218
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Duck White_48
+      m_Hash: 273285971
+      m_Sprite: {fileID: -2185469482913875483, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 3448168278709374870, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_49
+      m_Hash: 659370949
+      m_Sprite: {fileID: -7757923821879226456, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -5812838861053135599, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_50
+      m_Hash: 126532128
+      m_Sprite: {fileID: -7379471532734944022, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 6422849717888223266, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_51
+      m_Hash: 814582454
+      m_Sprite: {fileID: -2635104495354935416, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -5690604036001528786, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  - m_Name: PeckOnWater
+    m_Hash: 821363977
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Duck White_52
+      m_Hash: 696572684
+      m_Sprite: {fileID: -4048132437603986468, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -2840854291365325185, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_53
+      m_Hash: 511962010
+      m_Sprite: {fileID: -3155180614604156165, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -2459772021065384365, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_54
+      m_Hash: 15171129
+      m_Sprite: {fileID: 504178323423912521, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1591560596356984373, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    - m_Name: Duck White_55
+      m_Hash: 937447087
+      m_Sprite: {fileID: 3030951567666374147, guid: 4c5e23b23a376e7469164526cf46bef3, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1357698323097352531, guid: ca88933e5a2b91e43ba4df22c98a50cf, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  m_PrimaryLibraryGUID: 46549958a27171d4ba15322499974eeb
+  m_ModificationHash: 638957984714290768
+  m_Version: 1
