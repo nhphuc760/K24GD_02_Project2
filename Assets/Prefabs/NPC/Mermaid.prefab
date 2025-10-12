@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2032054901678784830}
-  - component: {fileID: 3978478461092748552}
   - component: {fileID: 6752465129357907963}
   m_Layer: 0
   m_Name: Mermaid
@@ -34,19 +33,6 @@ Transform:
   - {fileID: 3591590933739996642}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3978478461092748552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3649857813813704183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb4186f52f5f7204c893837694a9a5ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questInfoForPoint: {fileID: 11400000, guid: bfb39f2af207ac7489fa19dc620316e8, type: 2}
 --- !u!58 &6752465129357907963
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -184,8 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CategoryHash: 0.009161512
-  m_labelHash: 1.0106702e-22
+  m_CategoryHash: 0.000000003115738
+  m_labelHash: 4.4465013e-23
   m_SpriteKey: 0
   m_SpriteHash: 614003747
 --- !u!114 &7630279795640874289
