@@ -1,25 +1,10 @@
 fileFormatVersion: 2
-guid: 63865636f5f109847909b48be1aea9f3
+guid: 29d6ba276613ab0428b418fdc4dc89f1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6853316077166303748
-    second: Tree_0
-  - first:
-      213: 4134985361545656292
-    second: Tree_1
-  - first:
-      213: -1566730818833404899
-    second: Tree_2
-  - first:
-      213: -7301469273254094464
-    second: Tree_3
-  - first:
-      213: 4246777929600769233
-    second: Tree_4
-  - first:
-      213: -1089773682390131457
-    second: Tree_5
+      213: 5675857372675088757
+    second: image-Photoroom_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -66,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -90,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -124,17 +109,37 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tree_0
+      name: image-Photoroom_0
       rect:
         serializedVersion: 2
+<<<<<<< HEAD:Assets/Sprite/Farm/Props/Tree/Common/Effects/FX Effects Dark Forest leafs 2.png.meta
         x: 0
-        y: 82
-        width: 33
-        height: 43
+        y: 0
+        width: 32
+        height: 48
+=======
+        x: 7
+        y: 6
+        width: 104
+        height: 69
+>>>>>>> 6242388ef8ad540ce7c4f334b1c57d0c6179c0dd:Assets/Sprite/FishermanBoat.png.meta
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,118 +148,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 40a98f869aedb1f50800000000000000
-      internalID: 6853316077166303748
+      spriteID: 571a41e5532b4ce40800000000000000
+      internalID: 5675857372675088757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tree_1
-      rect:
-        serializedVersion: 2
-        x: 35
-        y: 82
-        width: 28
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4e77e5a374b626930800000000000000
-      internalID: 4134985361545656292
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tree_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 34
-        width: 33
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d1c27c40f9ad14ae0800000000000000
-      internalID: -1566730818833404899
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tree_3
-      rect:
-        serializedVersion: 2
-        x: 35
-        y: 34
-        width: 28
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 089924d7168fbaa90800000000000000
-      internalID: -7301469273254094464
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tree_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1
-        width: 31
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1dc92ddc6069fea30800000000000000
-      internalID: 4246777929600769233
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tree_5
+      name: FX Effects Dark Forest leafs 2_1
       rect:
         serializedVersion: 2
         x: 32
-        y: 1
-        width: 31
-        height: 25
+        y: 0
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ffc11971c9850e0f0800000000000000
-      internalID: -1089773682390131457
+      spriteID: e8af855948b261a4fba3f7cb87f972dd
+      internalID: -761494327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FX Effects Dark Forest leafs 2_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c91541fda000a874d8abb06764369806
+      internalID: -1045515007
       vertices: []
       indices: 
       edges: []
@@ -263,7 +202,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 80a1549bf1c9a9a4b8a0e4384ac82700
     internalID: 0
     vertices: []
     indices: 
@@ -273,12 +212,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Tree_0: 6853316077166303748
-      Tree_1: 4134985361545656292
-      Tree_2: -1566730818833404899
-      Tree_3: -7301469273254094464
-      Tree_4: 4246777929600769233
-      Tree_5: -1089773682390131457
+<<<<<<< HEAD:Assets/Sprite/Farm/Props/Tree/Common/Effects/FX Effects Dark Forest leafs 2.png.meta
+      FX Effects Dark Forest leafs 2_0: -8161665833954991201
+      FX Effects Dark Forest leafs 2_1: -761494327
+      FX Effects Dark Forest leafs 2_2: -1045515007
+=======
+      image-Photoroom_0: 5675857372675088757
+>>>>>>> 6242388ef8ad540ce7c4f334b1c57d0c6179c0dd:Assets/Sprite/FishermanBoat.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

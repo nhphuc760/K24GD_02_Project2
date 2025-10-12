@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0c26cb0839b93b3499f68e71bc396ac0
+guid: b35cf29feea863c4e995c62f6e68d8ef
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1571786891402097675
-    second: Effects_0
+      213: -6746521503251858855
+    second: FishermanBarn_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -109,17 +109,37 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Effects_0
+      name: FishermanBarn_0
       rect:
         serializedVersion: 2
+<<<<<<< HEAD:Assets/Sprite/Farm/Props/Tree/Common/Effects/Effects.png.meta
         x: 0
         y: 304
         width: 32
         height: 32
+=======
+        x: 7
+        y: 7
+        width: 186
+        height: 255
+>>>>>>> 6242388ef8ad540ce7c4f334b1c57d0c6179c0dd:Assets/Sprite/FishermanBarn.png.meta
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +148,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b0433ac99db10d510800000000000000
-      internalID: 1571786891402097675
+      spriteID: 95a7329ff6a8f52a0800000000000000
+      internalID: -6746521503251858855
       vertices: []
       indices: 
       edges: []
@@ -785,6 +805,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
+<<<<<<< HEAD:Assets/Sprite/Farm/Props/Tree/Common/Effects/Effects.png.meta
     nameFileIdTable:
       Effects_0: 1571786891402097675
       Effects_1: 1888027941
@@ -816,6 +837,9 @@ TextureImporter:
       Effects_7: 1845111688
       Effects_8: -1140497524
       Effects_9: -513943016
+=======
+    nameFileIdTable: {}
+>>>>>>> 6242388ef8ad540ce7c4f334b1c57d0c6179c0dd:Assets/Sprite/FishermanBarn.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
