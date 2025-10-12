@@ -122,6 +122,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -129,17 +142,10 @@ TextureImporter:
       name: image-Photoroom_0
       rect:
         serializedVersion: 2
-<<<<<<< HEAD:Assets/Sprite/Farm/Props/Tree/Common/Effects/FX Effects Dark Forest leafs 2.png.meta
         x: 0
         y: 0
-        width: 32
-        height: 48
-=======
-        x: 7
-        y: 6
-        width: 104
-        height: 69
->>>>>>> 6242388ef8ad540ce7c4f334b1c57d0c6179c0dd:Assets/Sprite/FishermanBoat.png.meta
+        width: 0
+        height: 0
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,55 +160,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: FX Effects Dark Forest leafs 2_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e8af855948b261a4fba3f7cb87f972dd
-      internalID: -761494327
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FX Effects Dark Forest leafs 2_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c91541fda000a874d8abb06764369806
-      internalID: -1045515007
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 80a1549bf1c9a9a4b8a0e4384ac82700
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -212,13 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-<<<<<<< HEAD:Assets/Sprite/Farm/Props/Tree/Common/Effects/FX Effects Dark Forest leafs 2.png.meta
-      FX Effects Dark Forest leafs 2_0: -8161665833954991201
-      FX Effects Dark Forest leafs 2_1: -761494327
-      FX Effects Dark Forest leafs 2_2: -1045515007
-=======
       image-Photoroom_0: 5675857372675088757
->>>>>>> 6242388ef8ad540ce7c4f334b1c57d0c6179c0dd:Assets/Sprite/FishermanBoat.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
