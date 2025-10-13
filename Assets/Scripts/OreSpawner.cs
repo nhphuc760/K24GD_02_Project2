@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+[System.Serializable]
+public class OreInfo
+{
+    public GameObject orePrefab;    //Prefab của quặng
+    public int oreCount;            //Số lượng quặng spawn
+}
 public class OreSpawner : MonoBehaviour
 {
-    [Header("Ore Prefabs")]
-    public GameObject copperOrePrefab;
-    public GameObject ironOrePrefab;
-    public GameObject goldOrePrefab;
+    
 
     [Header("Ore Setting")]
-    public int copperOreCount = 10;
-    public int ironOreCount = 5;
-    public int goldOreCount = 3;
+    public List<OreInfo> oreList = new List<OreInfo>(); // Danh sách các loại quặng
     public float respawnDelay = 10f; //Thời gian spawn lại sau khi đập
     public float spawnRadius = 20f; //Bán kính khu vực spawn quanh vị trí gốc \
 
@@ -19,17 +21,12 @@ public class OreSpawner : MonoBehaviour
     public float checkRadius = 0.3f;//bán kính kiểm tra va chạm khi spawn 
     void Start()
     {
-        for(int i = 0; i < copperOreCount; i++)
+        foreach (OreInfo oreInfo in oreList)
         {
-            SpawnOre(copperOrePrefab);
-        }
-        for (int i = 0; i < ironOreCount; i++)
-        {
-            SpawnOre(ironOrePrefab);
-        }
-        for (int i = 0; i < goldOreCount; i++)
-        {
-            SpawnOre(goldOrePrefab);
+            for (int i = 0; i < oreInfo.oreCount; i++)
+            {
+                SpawnOre(oreInfo.orePrefab);
+            }
         }
     }
     //Hàm spawn 1 quặng được gắn Prefab
@@ -52,7 +49,7 @@ public class OreSpawner : MonoBehaviour
         {
             Vector2 randomPos = (Vector2)transform.position + Random.insideUnitCircle * spawnRadius;
             Collider2D hit = Physics2D.OverlapCircle(randomPos, checkRadius, obstacleLayer);
-            if (hit == null || (!hit.CompareTag("Building_Lower") && !hit.CompareTag("Decor_Lower")))
+            if (hit == null)
                 return randomPos;
         }
         //Nếu ko tìm thấy vị trí hợp lệ sau nhìu lần => spawn ra vị trí trung tâm
