@@ -14,12 +14,17 @@ public class OreSpawner : MonoBehaviour
     [Header("Ore Setting")]
     public List<OreInfo> oreList = new List<OreInfo>(); // Danh sách các loại quặng
     public float respawnDelay = 10f; //Thời gian spawn lại sau khi đập
-    public float spawnRadius = 20f; //Bán kính khu vực spawn quanh vị trí gốc \
+    //public float spawnRadius = 20f; //Bán kính khu vực spawn quanh vị trí gốc \
 
     [Header("Spawn Area")]
+    public BoxCollider2D spawnArea; //Vùng Spawn
     public LayerMask obstacleLayer; //Tránh spawm đè lên tường và vật cản
     public float checkRadius = 0.3f;//bán kính kiểm tra va chạm khi spawn 
     void Start()
+    {
+        SpawnAllOre();
+    }
+    void SpawnAllOre()
     {
         foreach (OreInfo oreInfo in oreList)
         {
@@ -28,7 +33,7 @@ public class OreSpawner : MonoBehaviour
                 SpawnOre(oreInfo.orePrefab);
             }
         }
-    }
+    }    
     //Hàm spawn 1 quặng được gắn Prefab
     public void SpawnOre(GameObject orePrefab)
     {
@@ -47,7 +52,14 @@ public class OreSpawner : MonoBehaviour
         int maxAttempts = 50; //tránh vòng lặp vô hạn
         for (int i = 0; i < maxAttempts; i++)
         {
-            Vector2 randomPos = (Vector2)transform.position + Random.insideUnitCircle * spawnRadius;
+            Vector2 areaCenter = spawnArea.transform.position;
+            Vector2 areaSize = spawnArea.size;
+
+            Vector2 randomPos = new Vector2(
+                Random.Range(areaCenter.x - areaSize.x / 2,  areaCenter.x + areaSize.x / 2),
+                Random.Range(areaCenter.y - areaSize.y / 2, areaCenter.y + areaSize.y / 2)
+                );
+
             Collider2D hit = Physics2D.OverlapCircle(randomPos, checkRadius, obstacleLayer);
             if (hit == null)
                 return randomPos;
