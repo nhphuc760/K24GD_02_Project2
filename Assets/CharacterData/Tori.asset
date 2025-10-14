@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ab13fffac5f724783251f729e8e484, type: 3}
+  m_Name: Tori
+  m_EditorClassIdentifier: 
+  characterName: Tori
+  portrait: {fileID: -5627119044930137330, guid: b274a482e4543734ab7c913f13d3042d, type: 3}
+  SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 7315c201994dd2e4a911e3adafc74bd4, type: 3}
+  description: 
