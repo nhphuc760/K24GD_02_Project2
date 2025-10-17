@@ -14,7 +14,7 @@ public class OreSpawner : MonoBehaviour
     [Header("Ore Setting")]
     public List<OreInfo> oreList = new List<OreInfo>(); // Danh sách các loại quặng
     public float respawnDelay = 10f; //Thời gian spawn lại sau khi đập
-    //public float spawnRadius = 20f; //Bán kính khu vực spawn quanh vị trí gốc \
+    
 
     [Header("Spawn Area")]
     public BoxCollider2D spawnArea; //Vùng Spawn
@@ -24,6 +24,7 @@ public class OreSpawner : MonoBehaviour
     {
         SpawnAllOre();
     }
+    //Hàm spawn ra tất cả các quặng theo List
     void SpawnAllOre()
     {
         foreach (OreInfo oreInfo in oreList)
@@ -43,6 +44,7 @@ public class OreSpawner : MonoBehaviour
         if (oreScript != null)
         {
             oreScript.spawner = this;
+            oreScript.orePrefab = orePrefab;
             oreScript.respawnDelay = respawnDelay;
         }
     }    

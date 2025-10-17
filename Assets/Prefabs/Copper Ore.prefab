@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2773363101591850450}
   - component: {fileID: 7116533903612479588}
   - component: {fileID: 2783163602581794009}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Copper Ore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,3 +191,7 @@ MonoBehaviour:
   spawner: {fileID: 0}
   orePrefab: {fileID: 3639777610272869884}
   respawnDelay: 10
+  maxHitPoints: 3
+  dropPrefab: {fileID: 0}
+  dropCount: 2
+  dropForce: 3
