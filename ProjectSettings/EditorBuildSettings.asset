@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/PersistentSystem.unity
+    guid: 4c2219fcc1b041b4ba4ac233919cfee3
+  - enabled: 1
     path: Assets/Scenes/LoginScene.unity
     guid: 9b0693ba8ae939342b62de220aa83c10
   - enabled: 1
@@ -17,6 +20,24 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WaterFall.unity
     guid: 18f747fd7e7120a4eb922d7ce8b1144a
+  - enabled: 1
+    path: Assets/Scenes/CustomizeCharacter.unity
+    guid: 1bf1bbc0a6ecc1d4ab7fcfa62d327c5d
+  - enabled: 1
+    path: Assets/Scenes/Farm.unity
+    guid: d582bd17a96744408a97fe5abd900cb7
+  - enabled: 1
+    path: Assets/Scenes/BeachScene.unity
+    guid: 595881716c2283f40ac65d97c3839b18
+  - enabled: 1
+    path: Assets/Scenes/FishingScene.unity
+    guid: b67c849e02c49f049b090e50f5193d8e
+  - enabled: 1
+    path: Assets/Scenes/MiningScene.unity
+    guid: 99b62be6c35b2214f9bf0a68f252d2b3
+  - enabled: 1
+    path: Assets/Scenes/Village.unity
+    guid: b811ed03f3754a34487f3d402fd29c39
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

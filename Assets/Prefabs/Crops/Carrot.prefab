@@ -31,7 +31,8 @@ Transform:
   m_LocalPosition: {x: -14.502261, y: -11.17393, z: -0.12752733}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 96933777638359713}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7035329981321669889
@@ -101,6 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dda44317e4cd19d4caa7f16c7a12502c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  harvestIndicatorPrefab: {fileID: 7068805685387326167, guid: c0685d91769654a449934561a867205b, type: 3}
+  indicatorAnchor: {fileID: 96933777638359713}
 --- !u!61 &-8653407189818991256
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -147,3 +150,34 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &5001250052618783530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 96933777638359713}
+  m_Layer: 0
+  m_Name: IndicatorAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &96933777638359713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5001250052618783530}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.16, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2330346102776764636}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
