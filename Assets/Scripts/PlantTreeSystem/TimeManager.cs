@@ -66,4 +66,12 @@ public class TimeManager : MonoBehaviour
             UIManager.instance.UpdateClock(currentHour, currentMinute);
         }
     }
+    public int GetCurrentHour()
+    {
+        return currentHour;
+    }
+    public int GetCurrentMinute()
+    {
+        return currentMinute;
+    }
 }

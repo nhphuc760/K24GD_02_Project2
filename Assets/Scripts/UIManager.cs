@@ -1,5 +1,6 @@
-﻿// UIManager.cs
-using TMPro; // Bắt buộc phải có để dùng TextMeshPro
+﻿
+using System.Collections;
+using TMPro; 
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -8,25 +9,29 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instance;
     [Header("Player Info UI")]
     public Image avatarImage;
     public TextMeshProUGUI playerNameText;
-
     [Header("Clock UI")]
     public TextMeshProUGUI clockText;
-
-    // Singleton Pattern để dễ dàng truy cập từ mọi nơi
-    public static UIManager instance;
-
     //tham chiếu đến toNàn bộ canvas
     public GameObject inGameCanvas;
 
     [Header("Day/Night Cycle (Global Volume)")]
-    public Volume globalVolume; 
-    public Gradient colorGradient; // Dùng để chỉnh màu (Color Filter)
-    public AnimationCurve exposureCurve; // Dùng để chỉnh độ sáng (Post Exposure)
+    //public Volume globalVolume; 
+    public Gradient lightColorGradient; // Dùng để chỉnh màu (Color Filter)
+    public AnimationCurve lightIntensityCurve; // Dùng để chỉnh độ sáng (Post Exposure)
+    public float lightTransitionSpeed = 3f; // tốc độ chuyển ánh sáng mượt
 
-    private ColorAdjustments colorAdjustments;
+
+    //Biến lưu trữ tham chiếu đến ColorAdjustments Override
+    private Light2D globalLight;
+    private bool nightLightsOn = false;//đèn ban đêm
+
+    private float targetLightIntensity;
+    private Color targetLightColor;
+
     private void Awake()
     {
         if (instance == null)
@@ -35,27 +40,10 @@ public class UIManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else
-        { 
+        {
             Destroy(gameObject);
         }
 
-        // Tìm 1 Override trong Profile và lưu lại
-        if (globalVolume != null)
-        {
-            // Chỉ cần tìm "ColorAdjustments"
-            if (globalVolume.profile.TryGet(out colorAdjustments))
-            {
-                Debug.Log("<color=green>[UIManager] Đã tìm thấy ColorAdjustments!</color>");
-            }
-            else
-            {
-                Debug.LogError("<color=red>[UIManager] KHÔNG TÌM THẤY ColorAdjustments trong Profile! Hãy kiểm tra lại Global Volume!</color>");
-            }
-        }
-        else
-        {
-            Debug.LogError("<color=red>[UIManager] Global Volume CHƯA ĐƯỢC GÁN vào Inspector!</color>");
-        }
     }
     // Đăng ký lắng nghe sự kiện khi scene thay đổi
     private void OnEnable()
@@ -72,16 +60,84 @@ public class UIManager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         //tắt UI khi khởi động scene LOGIN, CUStome hoặc chọn nhân vật
-        if (scene.name == "LoginScene" || scene.name == "CustomizeCharacter" || scene.name =="LoadingScene")
+        if (scene.name == "LoginScene" || scene.name == "CustomizeCharacter" || scene.name == "LoadingScene")
         {
             // Nếu là các scene trên, ẩn 
-            inGameCanvas.SetActive(false);
+            if (inGameCanvas != null) inGameCanvas.SetActive(false);
         }
         else
         {
             // hiện  giao diện game lên
-            inGameCanvas.SetActive(true);
+            if (inGameCanvas != null) inGameCanvas.SetActive(true);
+            //Tìm Global Light trong scene mới
+            FindGlobalLight();
+
+            if (TimeManager.instance != null)
+            {
+                int currentHour = TimeManager.instance.GetCurrentHour();
+                // Thiết lập trạng thái đèn đêm
+                nightLightsOn = (currentHour >= 18 || currentHour < 6);
+                SetNightLights(nightLightsOn);
+
+                // Cập nhật ánh sáng lần đầu
+                UpdateLighting(currentHour, TimeManager.instance.GetCurrentMinute());
+            }
         }
+    }
+    // Tìm và lưu tham chiếu đến Global Light trong scene hiện tại
+    void FindGlobalLight()
+    {
+        globalLight = FindObjectOfType<Light2D>(true); // 'true' để tìm cả object bị disable
+        while (globalLight != null && globalLight.lightType != Light2D.LightType.Global) 
+        { 
+           // Nếu tìm thấy đèn khác không phải Global, tìm tiếp
+           Light2D[] allLights = FindObjectsOfType<Light2D>(true); 
+           globalLight = null; // Reset
+           foreach (var light in allLights) 
+           { 
+                if (light.lightType == Light2D.LightType.Global) 
+                { 
+                    globalLight = light; 
+                    break; 
+                } 
+            }
+        } 
+        if (globalLight == null) 
+        { 
+            Debug.LogWarning("Không tìm thấy Global Light 2D trong scene này!"); 
+        } 
+        else 
+        { 
+            Debug.Log("Đã tìm thấy Global Light 2D: " + globalLight.gameObject.name); 
+        }
+    }
+    // Hàm bật/tắt tất cả đèn có tag "NightLight".
+        void SetNightLights(bool isOn)
+    {
+        GameObject[] nightLights = GameObject.FindGameObjectsWithTag("NightLight");
+        foreach (GameObject lightObj in nightLights)
+        {
+            var lightComp = lightObj.GetComponent<Light2D>();
+            if (lightComp != null)
+            {
+                StartCoroutine(FadeLight(lightComp, isOn ? 1f : 0f));
+            }
+        }
+        if (nightLights.Length > 0)
+            Debug.Log($"Đã {(isOn ? "bật" : "tắt")} {nightLights.Length} đèn đêm.");
+    }
+    //fade để chuyển ánh sáng cho mượt
+    private System.Collections.IEnumerator FadeLight(Light2D light, float target)
+    {
+        float start = light.intensity;
+        float t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime * 2f;
+            light.intensity = Mathf.Lerp(start, target, t);
+            yield return null;
+        }
+        light.enabled = target > 0.1f;
     }
     // Hàm để thiết lập thông tin ban đầu
     public void SetupPlayerInfo(string playerName, Sprite playerAvatar)
@@ -107,16 +163,34 @@ public class UIManager : MonoBehaviour
             clockText.text = $"{hour:00}:{minute:00}";
         }
         //CẬP NHẬT ÁNH SÁNG THẾ GIỚI
-        if (colorAdjustments != null)
+
+        UpdateLighting(hour, minute);
+
+        // Bật/tắt đèn đêm (Luôn chạy)
+        bool shouldLightsBeOn = (hour >= 18 || hour < 6);
+        if (shouldLightsBeOn != nightLightsOn) // Chỉ gọi SetNightLights khi trạng thái thay đổi
         {
-            float totalMinutes = (hour * 60) + minute;
-            float timePercentage = totalMinutes / 1440f;
-
-            // Cập nhật Tông Màu (Color Filter)
-            colorAdjustments.colorFilter.value = colorGradient.Evaluate(timePercentage);
-
-            // Cập nhật Độ Sáng (Post Exposure)
-            colorAdjustments.postExposure.value = exposureCurve.Evaluate(timePercentage);
+            SetNightLights(shouldLightsBeOn);
+            nightLightsOn = shouldLightsBeOn;
         }
+    }
+    //Hàm riêng để cập nhật Global Light (được gọi từ UpdateClock và OnSceneLoaded).
+    void UpdateLighting(int hour, int minute)
+    {
+        if (globalLight == null && lightColorGradient == null && lightIntensityCurve == null)
+            return; // Không có gì để cập nhật
+
+        float totalMinutes = (hour * 60) + minute;
+        float timePercentage = totalMinutes / 1440f;
+
+        // Mục tiêu ánh sáng
+        targetLightColor = lightColorGradient.Evaluate(timePercentage);
+        targetLightIntensity = lightIntensityCurve.Evaluate(timePercentage);
+
+        // Lerp để ánh sáng chuyển mượt
+        globalLight.color = Color.Lerp(globalLight.color, targetLightColor, Time.deltaTime * lightTransitionSpeed);
+        globalLight.intensity = Mathf.Lerp(globalLight.intensity, targetLightIntensity, Time.deltaTime * lightTransitionSpeed);
+
+
     }
 }
