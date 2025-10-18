@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.U2D.Animation;
 using UnityEngine.UI;
 
@@ -78,15 +79,29 @@ public class CharacterSelectManagement : MonoBehaviour
 
     public void ConfirmSelection()
     {
-        if (string.IsNullOrWhiteSpace(playerName))
+        Debug.Log($"[KIỂM TRA] Giá trị của playerName ngay khi nhấn Confirm là: '{playerName}'");
+        if (string.IsNullOrWhiteSpace(playerNameInput.text))
         {
             Debug.LogWarning("Player name is empty. Please enter a name.");
             return;
         }
         CharacterData selectedCharacter = database.characters[currentIndex];
-        PlayerPrefs.SetString("PlayerName", playerName);
-        PlayerPrefs.SetString("SelectedCharacter", selectedCharacter.characterName);
+
+        playerName = playerNameInput.text;
+        // === KIỂM TRA DỮ LIỆU GỐC ===
+        Debug.Log("--- Dữ liệu đang được gửi đi ---");
+        Debug.Log("Tên người chơi: " + playerName);
+        Debug.Log("Avatar Sprite: " + (selectedCharacter.portrait != null ? selectedCharacter.portrait.name : "NULL"));
+        Debug.Log("Sprite Library Asset: " + (selectedCharacter.SpriteLibraryAsset != null ? selectedCharacter.SpriteLibraryAsset.name : "NULL"));
+        Debug.Log("------------------------------------");
+        //gửi dữ liệu cho người đưa thư
+        PlayerDataHolder.instance.selectedCharacterName = playerName;
+        PlayerDataHolder.instance.selectedPlayerAvatar = selectedCharacter.portrait;
+        PlayerDataHolder.instance.selectedPlayerSpriteLibrary = selectedCharacter.SpriteLibraryAsset;
         Debug.Log($"Character Selected: {selectedCharacter.characterName} with Player Name: {playerName}");
         // Here you can add code to save the selected character and player name to a persistent game manager or pass it to the next scene.
+        // === THÊM DÒNG NÀY ĐỂ DỪNG GAME LẠI ===
+        Debug.Log($"<color=yellow>[GỬI ĐI] PlayerDataHolder vừa nhận được tên: '{PlayerDataHolder.instance.selectedCharacterName}'</color>");
+        SceneManager.LoadScene("Farm");
     }
 }

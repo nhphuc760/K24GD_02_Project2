@@ -6,6 +6,7 @@ public class CropData : ScriptableObject
 {
     [Header("Crop Info")]
     public string cropName;
+    public Sprite icon; // Icon for UI representation
     public string cropDescription;
     public int DaysToGrow; // Number of days to fully grow
 
