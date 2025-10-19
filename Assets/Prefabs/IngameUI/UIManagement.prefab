@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 497, y: -37.638306}
-  m_SizeDelta: {x: 100, y: 139.3572}
+  m_AnchoredPosition: {x: 647, y: -12}
+  m_SizeDelta: {x: 134.0618, y: 183.3081}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4867271547860959359
 CanvasRenderer:
@@ -233,8 +233,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 635.08, y: 226.86}
+  m_AnchoredPosition: {x: -11.750916, y: 8.563477}
+  m_SizeDelta: {x: 646.8309, y: 244.7655}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &264510632406215501
 CanvasRenderer:
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5305920875277099408, guid: f2e48de66f3bde34288c0776c6154da8, type: 3}
+  m_Sprite: {fileID: 2162835647659434884, guid: f2e48de66f3bde34288c0776c6154da8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -324,10 +324,9 @@ MonoBehaviour:
   playerNameText: {fileID: 6034018676382175671}
   clockText: {fileID: 11495476205343527}
   inGameCanvas: {fileID: 1400537279524289079}
-  globalVolume: {fileID: 0}
-  colorGradient:
+  lightColorGradient:
     serializedVersion: 2
-    key0: {r: 0.89433956, g: 0.34997907, b: 0.24313726, a: 1}
+    key0: {r: 1, g: 1, b: 1, a: 1}
     key1: {r: 1, g: 1, b: 1, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
@@ -355,48 +354,18 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  exposureCurve:
+  lightIntensityCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0.00027492922
-      value: -5
-      inSlope: 0
-      outSlope: 20.022018
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.25
-      value: 0
-      inSlope: 20.022018
-      outSlope: 0
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.75
-      value: 0
-      inSlope: -0
-      outSlope: -20
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: -5
-      inSlope: -20
-      outSlope: 0
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  lightTransitionSpeed: 1
+  maxNightLightIntensity: 0.8
+  turnOnHour: 18
+  fullyOnHour: 19
+  turnOffHour: 5
+  fullyOffHour: 6
 --- !u!1001 &2464474600538354454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -419,7 +388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2367429212257561923, guid: d450165676230ff469eb93114087de83, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -109
+      value: -140
       objectReference: {fileID: 0}
     - target: {fileID: 2457634457527640113, guid: d450165676230ff469eb93114087de83, type: 3}
       propertyPath: m_fontColor.b
@@ -543,7 +512,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5164386744472852516, guid: d450165676230ff469eb93114087de83, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 146.9919
+      value: 149.8276
       objectReference: {fileID: 0}
     - target: {fileID: 5164386744472852516, guid: d450165676230ff469eb93114087de83, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -551,7 +520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5164386744472852516, guid: d450165676230ff469eb93114087de83, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -43
+      value: -31
       objectReference: {fileID: 0}
     - target: {fileID: 6921172888333722106, guid: d450165676230ff469eb93114087de83, type: 3}
       propertyPath: m_SizeDelta.x
@@ -570,6 +539,10 @@ PrefabInstance:
       value: -81
       objectReference: {fileID: 0}
     - target: {fileID: 8182678318657217185, guid: d450165676230ff469eb93114087de83, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6bd01b3b9f22d264f891124fe5430987, type: 2}
+    - target: {fileID: 8182678318657217185, guid: d450165676230ff469eb93114087de83, type: 3}
       propertyPath: m_fontColor.b
       value: 0.02868635
       objectReference: {fileID: 0}
@@ -582,8 +555,16 @@ PrefabInstance:
       value: 0.2981131
       objectReference: {fileID: 0}
     - target: {fileID: 8182678318657217185, guid: d450165676230ff469eb93114087de83, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8718191804606293394, guid: 6bd01b3b9f22d264f891124fe5430987, type: 2}
+    - target: {fileID: 8182678318657217185, guid: d450165676230ff469eb93114087de83, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4278650700
+      objectReference: {fileID: 0}
+    - target: {fileID: 8182678318657217185, guid: d450165676230ff469eb93114087de83, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9102940053609611538, guid: d450165676230ff469eb93114087de83, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -591,7 +572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9102940053609611538, guid: d450165676230ff469eb93114087de83, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 469
+      value: 465
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

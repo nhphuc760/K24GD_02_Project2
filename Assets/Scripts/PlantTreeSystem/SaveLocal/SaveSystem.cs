@@ -48,4 +48,12 @@ public class SaveSystem
             return new GameData();//trả về data mới
         }
     }
+    //kiểm tra có file save hay không
+    public static bool DoesSaveFileExist()
+    {
+        // Lấy đường dẫn đến file save
+        string path = Path.Combine(Application.persistentDataPath, saveFileName);
+        // Trả về true nếu file tồn tại, ngược lại trả về false
+        return File.Exists(path);
+    }
 }
