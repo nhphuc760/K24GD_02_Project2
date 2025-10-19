@@ -30,7 +30,7 @@ TagManager:
   - Interacable
   - Building
   - TriggerZone
-  - 
+  - Collision
   - 
   - 
   - 
@@ -65,6 +65,12 @@ TagManager:
     locked: 0
   - name: Water
     uniqueID: 587525487
+    locked: 0
+  - name: AboveWater
+    uniqueID: 2556096907
+    locked: 0
+  - name: AboveWaterGround
+    uniqueID: 1042855417
     locked: 0
   - name: BuildingLower
     uniqueID: 522754583
