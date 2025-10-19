@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class Ore : MonoBehaviour
 {
@@ -13,13 +14,25 @@ public class Ore : MonoBehaviour
     bool isDestroyed = false;
 
     [Header("Drop Setting")]
-    public GameObject dropPrefab;   //prefab vật phẩm rớt ra 
-    public int dropCount = 2;       //số lượng vật phẩm rớt ra
-    public float dropForce = 3f;    //lực bắn khi rớt
+    public GameObject dropPrefab;        //prefab vật phẩm rớt ra 
+    public int dropCount = 2;            //số lượng vật phẩm rớt ra
+    public float dropForce = 3f;         //lực bắn khi rớt
+
+    [Header("Shake Settings")]          //Setting hiệu ứng rung khi đập quặng
+    public float shakeDuration = 0.1f;  //Thời gian rung
+    public float shakeAmount = 0.1f;    //Độ mạnh rung
+
+    [Header("Knockback Settings")]
+    public float knockbackForce = 2f;   //Lực văng của quặng khi bị phá
+    private Rigidbody2D rb;
+
+    private Vector3 originalPos;
 
     private void Start()
     {
         currentHitPoints = maxHitPoints;
+        originalPos = transform.localPosition;
+        rb = GetComponent<Rigidbody2D>();
     }
     public void MineOre()
     {
@@ -29,13 +42,15 @@ public class Ore : MonoBehaviour
 
         Debug.Log($"Ore hit! Remaining HP: {currentHitPoints}");
 
+        //Gọi hiệu ứng rung mỗi khi đập
+        StartCoroutine(ShakeOre());
+
         // Nếu vẫn còn HP thì chỉ rung nhẹ hoặc hiệu ứng nứt
         if (currentHitPoints > 0)
         {
             // bạn có thể thêm hiệu ứng rung hoặc âm thanh ở đây
             return;
         }
-
         // Hết HP thì phá quặng
         BreakOre();
     }
@@ -43,18 +58,36 @@ public class Ore : MonoBehaviour
     {
         if (isDestroyed) return;
         isDestroyed = true;       
-        Debug.Log("Ore destroyed!");
 
-        //Gọi hàm spawn vật phẩm rớt ra
-        DropItem();
+        Debug.Log("Ore destroyed!");       
+
+        // Văng cục quặng ra nhẹ trước khi phá
+        StartCoroutine(KnockbackAndDestroy());
 
         // Gọi spawn lại quặng sau delay
         if (spawner != null)
         {
             spawner.StartCoroutine(spawner.RespawnOre(orePrefab));
-        }
-        Destroy(gameObject);
+        }       
     }
+    IEnumerator KnockbackAndDestroy()
+    {
+       
+        //Tạo hướng văng nhẹ ngẫu nhiên 
+        Vector2 randomDir = new Vector2(Random.Range(-1f, 1f), Random.Range(-0.3f, 1f)).normalized;
+
+        if(rb != null)
+        {
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            yield return null;
+            rb.AddForce(randomDir * knockbackForce, ForceMode2D.Impulse);
+        }
+        // Chờ 0.1s để cục quặng văng xong
+        yield return new WaitForSeconds(0.1f);
+
+        DropItem();
+        Destroy(gameObject);
+    }    
     void DropItem()
     {
         if (dropPrefab == null) return;
@@ -68,8 +101,20 @@ public class Ore : MonoBehaviour
             {
                 Vector2 randomDir = new Vector2(Random.Range(-1f, 1f), Random.Range(-0.5f, 1f)).normalized;
                 rb.AddForce(randomDir * dropForce, ForceMode2D.Impulse);
+                rb.AddTorque(Random.Range(-5f, 5f)); //xoay nhẹ
             }    
-
         }
+    }
+    IEnumerator ShakeOre() 
+    {
+        float elapsed = 0f;
+        while (elapsed < shakeDuration)
+        {
+            Vector3 randomPoint = originalPos + (Vector3)Random.insideUnitCircle * shakeAmount;
+            transform.localPosition = randomPoint;
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        transform.localPosition = originalPos; //trả về vị trí ban đầu
     }
 }

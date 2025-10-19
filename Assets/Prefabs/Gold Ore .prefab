@@ -191,3 +191,10 @@ MonoBehaviour:
   spawner: {fileID: 0}
   orePrefab: {fileID: 3639777610272869884}
   respawnDelay: 10
+  maxHitPoints: 3
+  dropPrefab: {fileID: 0}
+  dropCount: 3
+  dropForce: 3
+  shakeDuration: 0.1
+  shakeAmount: 0.1
+  knockbackForce: 2
