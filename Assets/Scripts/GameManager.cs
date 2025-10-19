@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 using UnityEngine.SceneManagement;
+using NUnit.Framework;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,7 +14,7 @@ public class GameManager : MonoBehaviour
     public Sprite testPlayerAvatar;
     public SpriteLibraryAsset testSpriteLibrary;
 
-
+    public CropDatabase cropDatabase; // Cơ sở dữ liệu cây trồng chung cho toàn game
     //portal
     private Vector3 nextPlayerPosition; // vị trí người chơi sau khi chuyển scene
     private void Awake()
@@ -45,6 +47,9 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        //tải lại cây trồng khi load scene
+        GameData data = SaveSystem.LoadGame();
+        LoadCropsForScene(scene.name, data);
         // Chỉ chạy logic này khi chúng ta vào một scene game (không phải Main Menu hay CharacterSelect),login,loadscene...
         if (scene.name != "PersistentSystems" && scene.name != "CustomizeCharacter")
         {
@@ -87,6 +92,7 @@ public class GameManager : MonoBehaviour
     //Hàm được Portal gọi để bắt đầu chuyển scene
     public void StartSceneTransition(string sceneName, Vector3 newPos)
     {
+        SaveCurrentSceneState(); //nếu cần lưu trạng thái hiện tại thì làm ở đây
         //Lưu lại vị trí mà người chơi sẽ đến
         this.nextPlayerPosition = newPos;
 
@@ -117,5 +123,55 @@ public class GameManager : MonoBehaviour
                 Debug.LogWarning("Không tìm thấy 'Player' trong scene mới");
             }
         }
+    }
+    private void SaveCurrentSceneState()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+        //chỉ lưu khi là game scene có thể trồng cây
+        if(currentScene == "Farm")
+        {
+            GameData data = SaveSystem.LoadGame();
+            data.plantedCrops.RemoveAll(crop => crop.SceneName == currentScene);//xóa cây trồng trong scene hiện tại
+            Crop[] cropsInScene = FindObjectsOfType<Crop>();
+            foreach (Crop crop in cropsInScene)
+            {
+                data.plantedCrops.Add(crop.GetSaveData());//thêm cây trồng hiện tại vào dữ liệu
+            }
+            SaveSystem.SaveGame(data);//lưu dữ liệu vào file
+            Debug.Log("Saved current scene state before transition.");
+        }
+    }
+
+    private void LoadCropsForScene(string sceneName, GameData data)
+    {
+        if(cropDatabase == null)
+        {
+            Debug.LogError("Crop Database is not assigned in GameManager!");
+            return;
+        }
+        Debug.Log("Đang tải lại cây trồng cho Scene: " + sceneName);
+        int cropsLoaded = 0;
+        //tạo một bản sao để duyệt, tránh lỗi khi xóa phần tử trong vòng lặp
+        List<CropSaveData> cropsToLoad = new List<CropSaveData>(data.plantedCrops);
+
+        foreach(CropSaveData cropData in cropsToLoad)
+        {
+            if(cropData.SceneName == sceneName)
+            {
+                CropData dataAsset = cropDatabase.GetCropDataByID(cropData.cropDataID);
+                if(dataAsset != null && dataAsset.cropPrefab != null)
+                {
+                    GameObject cropInstance = Instantiate(dataAsset.cropPrefab, cropData.worldPosition, Quaternion.identity);
+                    Crop cropScript = cropInstance.GetComponent<Crop>();
+                    if(cropScript != null)
+                    {
+                        cropScript.LoadCropState(dataAsset, cropData.timePlanted);
+                        cropsLoaded++;
+                    }
+                }
+                else Debug.LogWarning($"Không tìm thấy CropData hoặc Prefab cho ID: {cropData.cropDataID}");
+            }
+        }
+        Debug.Log($"Tải xong cây trồng cho Scene: {sceneName}. Tổng số cây đã tải: {cropsLoaded}");
     }
 }

@@ -1,5 +1,6 @@
 ﻿
 using System.Collections;
+using System.Collections.Generic;
 using TMPro; 
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -22,15 +23,29 @@ public class UIManager : MonoBehaviour
     //public Volume globalVolume; 
     public Gradient lightColorGradient; // Dùng để chỉnh màu (Color Filter)
     public AnimationCurve lightIntensityCurve; // Dùng để chỉnh độ sáng (Post Exposure)
-    public float lightTransitionSpeed = 3f; // tốc độ chuyển ánh sáng mượt
+    public float lightTransitionSpeed = 1f; // tốc độ chuyển ánh sáng mượt
 
 
     //Biến lưu trữ tham chiếu đến ColorAdjustments Override
     private Light2D globalLight;
-    private bool nightLightsOn = false;//đèn ban đêm
+  
 
-    private float targetLightIntensity;
-    private Color targetLightColor;
+    private float targetGlobalIntensity;
+    private Color targetGlobalColor;
+
+    [Header("Night Lights")]
+    [Tooltip("Cường độ sáng tối đa cho đèn đêm")]
+    public float maxNightLightIntensity = 0.8f;
+    [Tooltip("Giờ bắt đầu bật đèn (ví dụ: 18 = 6 giờ tối)")]
+    public int turnOnHour = 18; // Giờ bắt đầu sáng dần
+    [Tooltip("Giờ đèn sáng tối đa (ví dụ: 19 = 7 giờ tối)")]
+    public int fullyOnHour = 19; // Giờ sáng hẳn
+    [Tooltip("Giờ bắt đầu tắt đèn (ví dụ: 5 = 5 giờ sáng)")]
+    public int turnOffHour = 5; // Giờ bắt đầu tối dần
+    [Tooltip("Giờ đèn tắt hẳn (ví dụ: 6 = 6 giờ sáng)")]
+    public int fullyOffHour = 6; // Giờ tắt hẳn
+
+    private List<Light2D> nightLightsInScene = new List<Light2D>();
 
     private void Awake()
     {
@@ -71,73 +86,85 @@ public class UIManager : MonoBehaviour
             if (inGameCanvas != null) inGameCanvas.SetActive(true);
             //Tìm Global Light trong scene mới
             FindGlobalLight();
-
+            //tìm là lưu đèn đêm trong scene mới
+            FindAndStoreNightLights();
             if (TimeManager.instance != null)
             {
                 int currentHour = TimeManager.instance.GetCurrentHour();
-                // Thiết lập trạng thái đèn đêm
-                nightLightsOn = (currentHour >= 18 || currentHour < 6);
-                SetNightLights(nightLightsOn);
+                int currentMinute = TimeManager.instance.GetCurrentMinute();
 
                 // Cập nhật ánh sáng lần đầu
-                UpdateLighting(currentHour, TimeManager.instance.GetCurrentMinute());
+                SetInitialLighting(currentHour, currentMinute);
+                SetInitialNightLightState(currentHour, currentMinute);
             }
         }
     }
     // Tìm và lưu tham chiếu đến Global Light trong scene hiện tại
     void FindGlobalLight()
     {
-        globalLight = FindObjectOfType<Light2D>(true); // 'true' để tìm cả object bị disable
-        while (globalLight != null && globalLight.lightType != Light2D.LightType.Global) 
-        { 
-           // Nếu tìm thấy đèn khác không phải Global, tìm tiếp
-           Light2D[] allLights = FindObjectsOfType<Light2D>(true); 
-           globalLight = null; // Reset
-           foreach (var light in allLights) 
-           { 
-                if (light.lightType == Light2D.LightType.Global) 
-                { 
-                    globalLight = light; 
-                    break; 
-                } 
+        globalLight = FindObjectOfType<Light2D>(true);
+        bool foundGlobal = false; // Flag to check if we found one
+
+        // Check if the first one found is already Global
+        if (globalLight != null && globalLight.lightType == Light2D.LightType.Global)
+        {
+            foundGlobal = true;
+        }
+        else // If not global or null, search all lights
+        {
+            Light2D[] allLights = FindObjectsOfType<Light2D>(true);
+            globalLight = null; // Reset
+            foreach (var light in allLights)
+            {
+                if (light.lightType == Light2D.LightType.Global)
+                {
+                    globalLight = light;
+                    foundGlobal = true;
+                    break; // Found it, exit foreach loop
+                }
             }
-        } 
-        if (globalLight == null) 
-        { 
-            Debug.LogWarning("Không tìm thấy Global Light 2D trong scene này!"); 
-        } 
-        else 
-        { 
-            Debug.Log("Đã tìm thấy Global Light 2D: " + globalLight.gameObject.name); 
+        }
+
+        if (!foundGlobal) // Use the flag to report status
+        {
+            Debug.LogWarning("Không tìm thấy Global Light 2D trong scene này!");
+        }
+        else
+        {
+            Debug.Log("Đã tìm thấy Global Light 2D: " + globalLight.gameObject.name);
         }
     }
-    // Hàm bật/tắt tất cả đèn có tag "NightLight".
-        void SetNightLights(bool isOn)
+    //tìm đèn đêm và lưu vào ds
+    void FindAndStoreNightLights()
     {
-        GameObject[] nightLights = GameObject.FindGameObjectsWithTag("NightLight");
-        foreach (GameObject lightObj in nightLights)
+        nightLightsInScene.Clear();
+        Debug.Log("--- Bắt đầu tìm kiếm đèn đêm ---"); // Log mới
+
+        // Tìm TẤT CẢ các object có tag này
+        GameObject[] nightLightObjects = GameObject.FindGameObjectsWithTag("NightLight");
+
+        // In ra số lượng tìm thấy NGAY LẬP TỨC
+        Debug.Log($"Tìm thấy {nightLightObjects.Length} GameObject có tag 'NightLight'."); // Log mới
+
+        // Duyệt qua danh sách tìm được
+        foreach (GameObject lightObj in nightLightObjects)
         {
+            // In tên của từng object tìm được
+            Debug.Log($"Kiểm tra GameObject: {lightObj.name}"); // Log mới
+
             var lightComp = lightObj.GetComponent<Light2D>();
             if (lightComp != null)
             {
-                StartCoroutine(FadeLight(lightComp, isOn ? 1f : 0f));
+                nightLightsInScene.Add(lightComp);
+                Debug.Log($"--> Đã thêm Light2D từ {lightObj.name} vào danh sách."); // Log mới
+            }
+            else
+            {
+                Debug.LogWarning($"--> {lightObj.name} có tag 'NightLight' nhưng KHÔNG có component Light2D!"); // Log cảnh báo mới
             }
         }
-        if (nightLights.Length > 0)
-            Debug.Log($"Đã {(isOn ? "bật" : "tắt")} {nightLights.Length} đèn đêm.");
-    }
-    //fade để chuyển ánh sáng cho mượt
-    private System.Collections.IEnumerator FadeLight(Light2D light, float target)
-    {
-        float start = light.intensity;
-        float t = 0f;
-        while (t < 1f)
-        {
-            t += Time.deltaTime * 2f;
-            light.intensity = Mathf.Lerp(start, target, t);
-            yield return null;
-        }
-        light.enabled = target > 0.1f;
+
+        Debug.Log($"--- Kết thúc tìm kiếm. Danh sách nightLightsInScene có {nightLightsInScene.Count} đèn. ---"); // Log mới
     }
     // Hàm để thiết lập thông tin ban đầu
     public void SetupPlayerInfo(string playerName, Sprite playerAvatar)
@@ -162,35 +189,86 @@ public class UIManager : MonoBehaviour
             // Định dạng lại giờ và phút để luôn có 2 chữ số (ví dụ: 08:05)
             clockText.text = $"{hour:00}:{minute:00}";
         }
-        //CẬP NHẬT ÁNH SÁNG THẾ GIỚI
+        // Tính toán giá trị MỤC TIÊU cho ánh sáng môi trường
+        CalculateTargetLighting(hour, minute);
 
-        UpdateLighting(hour, minute);
-
-        // Bật/tắt đèn đêm (Luôn chạy)
-        bool shouldLightsBeOn = (hour >= 18 || hour < 6);
-        if (shouldLightsBeOn != nightLightsOn) // Chỉ gọi SetNightLights khi trạng thái thay đổi
+        // Cập nhật cường độ MỤC TIÊU cho đèn đêm
+        UpdateNightLightState(hour, minute);
+    }
+    void Update()
+    {
+        // Chỉ Lerp nếu Global Light tồn tại
+        if (globalLight != null)
         {
-            SetNightLights(shouldLightsBeOn);
-            nightLightsOn = shouldLightsBeOn;
+            // Lerp ánh sáng môi trường
+            globalLight.color = Color.Lerp(globalLight.color, targetGlobalColor, Time.deltaTime * lightTransitionSpeed);
+            globalLight.intensity = Mathf.Lerp(globalLight.intensity, targetGlobalIntensity, Time.deltaTime * lightTransitionSpeed);
+
+            // Lerp đèn đêm (Logic tính toán target đã ở UpdateNightLightState)
+            // Việc áp dụng cường độ đã được xử lý trong UpdateNightLightState, không cần Lerp riêng ở đây nữa
+            // vì UpdateClock được gọi thường xuyên.
         }
     }
-    //Hàm riêng để cập nhật Global Light (được gọi từ UpdateClock và OnSceneLoaded).
-    void UpdateLighting(int hour, int minute)
+    //Tính toán giá trị mục tiêu cho Global Light.
+    void CalculateTargetLighting(int hour, int minute)
     {
-        if (globalLight == null && lightColorGradient == null && lightIntensityCurve == null)
-            return; // Không có gì để cập nhật
+        if (lightColorGradient != null && lightIntensityCurve != null)
+        {
+            float totalMinutes = (hour * 60) + minute;
+            float timePercentage = totalMinutes / 1440f;
+            targetGlobalColor = lightColorGradient.Evaluate(timePercentage);
+            targetGlobalIntensity = lightIntensityCurve.Evaluate(timePercentage);
+        }
+    }
+    //thiết lập ánh sáng ban đầu ngay lập tức khi vào scene.
+    void SetInitialLighting(int hour, int minute)
+    {
+        CalculateTargetLighting(hour, minute); // Tính giá trị
+        if (globalLight != null)
+        {
+            globalLight.color = targetGlobalColor; // Gán trực tiếp
+            globalLight.intensity = targetGlobalIntensity; // Gán trực tiếp
+        }
+    }
+    //update Night light theo thời gian
+    void UpdateNightLightState(int hour, int minute)
+    {
+        float targetIntensity = 0f;
+        float lerpFactor = (float)minute / 60f; // Tỷ lệ phút trong giờ (0.0 đến 1.0)
 
-        float totalMinutes = (hour * 60) + minute;
-        float timePercentage = totalMinutes / 1440f;
+        if (hour < turnOffHour || hour >= fullyOnHour) // Hoàn toàn tối -> Sáng max
+        {
+            targetIntensity = maxNightLightIntensity;
+        }
+        else if (hour >= fullyOffHour && hour < turnOnHour) // Hoàn toàn sáng -> Tắt hẳn
+        {
+            targetIntensity = 0f;
+        }
+        else if (hour == turnOffHour) // Giờ bắt đầu tắt (ví dụ: 5h sáng)
+        {
+            // Lerp từ sáng max xuống 0
+            targetIntensity = Mathf.Lerp(maxNightLightIntensity, 0f, lerpFactor);
+        }
+        else if (hour == turnOnHour) // Giờ bắt đầu bật (ví dụ: 18h tối)
+        {
+            // Lerp từ 0 lên sáng max
+            targetIntensity = Mathf.Lerp(0f, maxNightLightIntensity, lerpFactor);
+        }
 
-        // Mục tiêu ánh sáng
-        targetLightColor = lightColorGradient.Evaluate(timePercentage);
-        targetLightIntensity = lightIntensityCurve.Evaluate(timePercentage);
-
-        // Lerp để ánh sáng chuyển mượt
-        globalLight.color = Color.Lerp(globalLight.color, targetLightColor, Time.deltaTime * lightTransitionSpeed);
-        globalLight.intensity = Mathf.Lerp(globalLight.intensity, targetLightIntensity, Time.deltaTime * lightTransitionSpeed);
-
-
+        // Áp dụng cường độ cho tất cả đèn đêm
+        foreach (Light2D light in nightLightsInScene)
+        {
+            if (light != null)
+            {
+                light.intensity = targetIntensity;
+                // Bật/tắt component để tiết kiệm hiệu năng (tùy chọn)
+                light.enabled = (targetIntensity > 0.01f);
+            }
+        }
+    }
+    void SetInitialNightLightState(int hour, int minute)
+    {
+        // Gọi hàm tính toán và áp dụng ngay lập tức
+        UpdateNightLightState(hour, minute);
     }
 }

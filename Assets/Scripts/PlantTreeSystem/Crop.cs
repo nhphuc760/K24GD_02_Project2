@@ -1,5 +1,6 @@
 ﻿using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Crop : MonoBehaviour, IInteractable
 {
@@ -21,8 +22,17 @@ public class Crop : MonoBehaviour, IInteractable
     public void Plant(CropData cropData)
     {
         currentCropData = cropData;
+
         // Lấy thời gian chính xác từ TimeManager
-        timePlanted = TimeManager.instance.totalTimeElapsed;
+        if (TimeManager.instance != null)
+        {
+            timePlanted = TimeManager.instance.totalTimeElapsed;
+        }
+        else
+        {
+            Debug.LogError("TimeManager chưa sẵn sàng khi Plant!");
+            timePlanted = 0;
+        }
         growthProgress = 0;
         isMature = false;
         // Tắt mọi bảng hiệu cũ (nếu có) khi trồng
@@ -113,6 +123,51 @@ public class Crop : MonoBehaviour, IInteractable
 
             // Bật hoặc tắt bảng hiệu
             currentIndicator.SetActive(show);
+        }
+    }
+    public CropSaveData GetSaveData()
+    {
+        CropSaveData data = new CropSaveData();
+        data.SceneName = SceneManager.GetActiveScene().name;
+        data.worldPosition = transform.position;
+        // Lưu tên của CropData để tái tạo sau này(lấy tên file Asset) 
+        data.cropDataID = currentCropData.name;
+        data.timePlanted = this.timePlanted;
+        return data;
+    }
+
+    public void LoadCropState(CropData dataAsset, double plantedTime)
+    {
+        this.currentCropData = dataAsset;
+        this.timePlanted = plantedTime;
+
+        //Gọi lại Growth() để tính toán tiến độ dựa theo thời gian đã trôi qua
+        if (TimeManager.instance != null)
+        {
+            //tính toán thời gian đã trôi qua từ lúc trồng đến hiện tại dựa trên timePlanted và totalTimeElapsed
+            double timeSincePlanted = TimeManager.instance.totalTimeElapsed - this.timePlanted;
+            growthProgress = (int)(timeSincePlanted / TimeManager.instance.secondsperDay);
+
+            //Cập nhật isMature và sprite dựa trên growthProgress mới tính
+            if (growthProgress >= currentCropData.DaysToGrow)
+            {
+                growthProgress = currentCropData.DaysToGrow;
+                isMature = true;
+                ShowHarvestIndicator(true);
+            }
+            else
+            {
+                isMature = false;
+                ShowHarvestIndicator(false);
+            }
+            UpdateSprite();
+        }
+        else
+        {
+            Debug.LogWarning("TimeManager chưa sẵn sàng khi LoadCropState!");
+            growthProgress = 0;
+            isMature = false;
+            UpdateSprite();
         }
     }
 }

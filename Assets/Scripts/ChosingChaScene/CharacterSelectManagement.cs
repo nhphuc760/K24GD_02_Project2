@@ -100,7 +100,12 @@ public class CharacterSelectManagement : MonoBehaviour
         PlayerDataHolder.instance.selectedPlayerSpriteLibrary = selectedCharacter.SpriteLibraryAsset;
         Debug.Log($"Character Selected: {selectedCharacter.characterName} with Player Name: {playerName}");
         // Here you can add code to save the selected character and player name to a persistent game manager or pass it to the next scene.
-        // === THÊM DÒNG NÀY ĐỂ DỪNG GAME LẠI ===
+        //Tạo file save mới hoàn toàn với dữ liệu mới chọn
+        GameData newGameData = new GameData();
+        newGameData.selectedCharacterName = playerName;
+        newGameData.characterSpriteLibraryAssetName = selectedCharacter.SpriteLibraryAsset.name;
+        SaveSystem.SaveGame(newGameData);
+        GameLoader.NewGame();
         Debug.Log($"<color=yellow>[GỬI ĐI] PlayerDataHolder vừa nhận được tên: '{PlayerDataHolder.instance.selectedCharacterName}'</color>");
         SceneManager.LoadScene("Farm");
     }

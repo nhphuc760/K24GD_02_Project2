@@ -187,6 +187,10 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 6011047769654960049, guid: 77908d138c1468c4b9fb06b8a85dc30b, type: 3}
+      propertyPath: cropDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: 21d5ab6889bb59049909b5e523e99f17, type: 2}
+    - target: {fileID: 6011047769654960049, guid: 77908d138c1468c4b9fb06b8a85dc30b, type: 3}
       propertyPath: testPlayerAvatar
       value: 
       objectReference: {fileID: -1759625251817994413, guid: 52e47c6385398154f894200b93221061, type: 3}
@@ -590,11 +594,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[2].time
-      value: 0.25
+      value: 0.30999756
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[3].time
-      value: 0.49700928
+      value: 0.52033997
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[4].time
@@ -602,7 +606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[5].time
-      value: 0.75
+      value: 0.71987814
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[6].time
@@ -610,7 +614,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[0].value
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[1].value
@@ -618,11 +622,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[2].value
-      value: 1.0000001
+      value: 0.9245988
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[3].value
-      value: 1
+      value: 0.92648315
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[4].value
@@ -630,35 +634,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[5].value
-      value: 0.3
+      value: 0.39271772
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[6].value
-      value: 0
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[1].inSlope
-      value: 1.7647059
+      value: 0.58823526
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[2].inSlope
-      value: 7.500002
+      value: 3.7472
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[3].inSlope
-      value: -0.0000004826106
+      value: 0.008958447
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[4].inSlope
-      value: -2.3122623
+      value: -2.1814983
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[5].inSlope
-      value: -3.750001
+      value: -4.155776
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[6].inSlope
-      value: -1.2
+      value: -0.3309906
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[0].inWeight
@@ -666,7 +670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[0].outSlope
-      value: 1.7647059
+      value: 0.58823526
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[1].inWeight
@@ -674,7 +678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[1].outSlope
-      value: 7.500002
+      value: 3.7472
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[2].inWeight
@@ -682,7 +686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[2].outSlope
-      value: -0.0000004826106
+      value: 0.008958447
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[3].inWeight
@@ -690,15 +694,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[3].outSlope
-      value: -2.3122623
+      value: -2.1814983
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[4].outSlope
-      value: -3.750001
+      value: -4.155776
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[5].outSlope
-      value: -1.2
+      value: -0.3309906
       objectReference: {fileID: 0}
     - target: {fileID: 7639986223285953522, guid: d9b6fb3c89ac92d48bb49588881748a5, type: 3}
       propertyPath: lightIntensityCurve.m_Curve.Array.data[0].outWeight
