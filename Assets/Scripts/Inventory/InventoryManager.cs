@@ -26,6 +26,7 @@ public class InventoryManager : MonoBehaviour
         else
         {
             Instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
         reference = FirebaseDatabase.DefaultInstance.RootReference;
         //Lay so luong slot tu firebase
@@ -66,15 +67,8 @@ public class InventoryManager : MonoBehaviour
 
         }
         inventory.LoadData("InventoryOfPlayer");
-        GameInput.Ins.openBagPressed += () =>
-        {
-            gameObject.SetActive(!gameObject.activeSelf);
-            if (gameObject.activeSelf)
-            {
-                UpdateUI();
-            }
-           
-        };
+        GameInput.Ins.openBagPressed += ToggleInventory;
+        GameInput.Ins.openInventoryPressed += ToggleInventory;
         gameObject.SetActive(false);
 
     }
@@ -102,6 +96,16 @@ public class InventoryManager : MonoBehaviour
         foreach (var slot in cachedSlotUIs)
         {
             slot.UpdateUI();
+        }
+    }
+
+    private void ToggleInventory()
+    {
+        Debug.Log("ToggleInventory called, current active: " + gameObject.activeSelf);
+        gameObject.SetActive(!gameObject.activeSelf);
+        if (gameObject.activeSelf)
+        {
+            UpdateUI();
         }
     }
 

@@ -57,6 +57,11 @@ public class Crop : MonoBehaviour, IInteractable
             Harvest();
         }
     }
+
+    public bool CanInteract()
+    {
+        return isMature;
+    }
     private void Harvest()//thu hoạch
     {
         // Logic to add the crop to the player's inventory would go here

@@ -114,7 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39433b9dace8c2c4fa2b766d359edc08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1402103027682105741}
   moveSpeed: 4
   swimSpeed: 0
   CheckGroundPoint: {fileID: 6652994349822577654}
@@ -231,6 +230,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a1b5a995-374b-49cd-8afd-7c2ca0e61c76
+    m_ActionName: 'Player/OpenBag[/Keyboard/tab]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -406,7 +409,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a8b2d14384706409ba1069bd9eef10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SortingPoint: {fileID: 6652994349822577654}
 --- !u!1 &6437618104088906854
 GameObject:
   m_ObjectHideFlags: 0

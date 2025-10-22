@@ -4,17 +4,20 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine.EventSystems;
+
 public class ShopManagerScript : MonoBehaviour
 {
     public int[,] shopItems = new int[5, 10];
     public float coin;
     public Text coinText;
+    public GameObject coinIcon; // Thay đổi thành GameObject để kéo từ Hierarchy
+    public float rotationSpeed = 100f; // Tốc độ quay của icon đồng xu
 
 
     void Start()
     {
         if (coinText != null)
-            coinText.text = "Coins: " + coin.ToString();
+            coinText.text = coin.ToString();
         else
             Debug.LogWarning("ShopManagerScript: coinText is not assigned in the inspector.");
         //ID 
@@ -48,6 +51,19 @@ public class ShopManagerScript : MonoBehaviour
         shopItems[3, 8] = 0;
         shopItems[3, 9] = 0;
         
+    }
+
+    void Update()
+    {
+        // Quay vòng icon đồng xu
+        if (coinIcon != null)
+        {
+            Image img = coinIcon.GetComponent<Image>();
+            if (img != null)
+            {
+                img.rectTransform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
+            }
+        }
     }
 
     public void Buy()
@@ -88,7 +104,7 @@ public class ShopManagerScript : MonoBehaviour
             coin -= price;
             shopItems[3, itemID]++;
             if (coinText != null)
-                coinText.text = "Coins: " + coin.ToString();
+                coinText.text = coin.ToString();
             info.quantityText.text = shopItems[3, itemID].ToString();
         }
         else
