@@ -85,7 +85,16 @@ public class animalMovement : MonoBehaviour
         if (dropItems != null && dropItems.Count > 0)
         {
             int randomIndex = Random.Range(0, dropItems.Count);
-            Instantiate(dropItems[randomIndex], transform.position, Quaternion.identity);
+            GameObject droppedItem = Instantiate(dropItems[randomIndex], transform.position, Quaternion.identity);
+            
+            // Thêm component DroppedItem nếu chưa có
+            DroppedItem droppedItemScript = droppedItem.GetComponent<DroppedItem>();
+            if (droppedItemScript == null)
+            {
+                droppedItemScript = droppedItem.AddComponent<DroppedItem>();
+            }
+            // Giả sử dropItems có ItemDataSO, hoặc set mặc định
+            // droppedItemScript.itemData = ...; // Cần set ItemDataSO tương ứng
         }
     }
 }
