@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class animalMovement : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class animalMovement : MonoBehaviour
     private Vector2 movement;
     public Animator animator;
     public AnimalManager_Random manager;
+    public List<GameObject> dropItems; 
 
     private float lifetime = 300f;
 
@@ -33,6 +35,7 @@ public class animalMovement : MonoBehaviour
         lifetime -= Time.deltaTime;
         if (lifetime <= 0f)
         {
+            DropItem();
             if (manager != null)
             {
                 manager.OnAnimalDied(gameObject);
@@ -41,7 +44,6 @@ public class animalMovement : MonoBehaviour
             return;
         }
 
-        // Thay đổi hướng ngẫu nhiên sau mỗi khoảng thời gian
         directionTimer += Time.deltaTime;
         if (directionTimer >= changeDirectionInterval)
         {
@@ -52,7 +54,6 @@ public class animalMovement : MonoBehaviour
         Vector2 direction = (currentTarget - rb.position).normalized;
         movement = direction;
 
-        // Kiểm tra va chạm với farmland hoặc obstacle
         Vector2 nextPosition = rb.position + movement * speed * Time.deltaTime;
         if (Physics2D.OverlapCircle(nextPosition, 0.5f, farmlandMask) != null || Physics2D.OverlapCircle(nextPosition, 0.5f, obstacleMask) != null)
         {
@@ -77,5 +78,14 @@ public class animalMovement : MonoBehaviour
         float x = Random.Range(spawnAreaMin.x, spawnAreaMax.x);
         float y = Random.Range(spawnAreaMin.y, spawnAreaMax.y);
         return new Vector2(x, y);
+    }
+
+    private void DropItem()
+    {
+        if (dropItems != null && dropItems.Count > 0)
+        {
+            int randomIndex = Random.Range(0, dropItems.Count);
+            Instantiate(dropItems[randomIndex], transform.position, Quaternion.identity);
+        }
     }
 }
