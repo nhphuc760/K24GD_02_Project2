@@ -15,6 +15,15 @@ public class AnimalManager_Random : MonoBehaviour
 
     void Start()
     {
+        // Ẩn tất cả animal hiện có khi bắt đầu play
+        foreach (GameObject animal in activeAnimals)
+        {
+            if (animal != null)
+            {
+                animal.SetActive(false);
+            }
+        }
+        activeAnimals.Clear();
     }
 
     void Update()
@@ -24,7 +33,11 @@ public class AnimalManager_Random : MonoBehaviour
         spawnTimer += Time.deltaTime;
         if (spawnTimer >= spawnInterval && activeAnimals.Count < minAnimals)
         {
-            SpawnAtRandomPosition();
+            int spawnCount = minAnimals - activeAnimals.Count;
+            for (int i = 0; i < spawnCount; i++)
+            {
+                SpawnAtRandomPosition();
+            }
             spawnTimer = 0f;
         }
     }
@@ -36,9 +49,8 @@ public class AnimalManager_Random : MonoBehaviour
         int randomIndex = Random.Range(0, animalPrefabs.Count);
         GameObject selectedPrefab = animalPrefabs[randomIndex];
 
-        float randomX = Random.Range(spawnAreaMin.x, spawnAreaMax.x);
-        float randomY = Random.Range(spawnAreaMin.y, spawnAreaMax.y);
-        Vector2 spawnPosition = new Vector2(randomX, randomY);
+        // Spawn tại vị trí cố định (60, 6, 0)
+        Vector2 spawnPosition = new Vector2(60f, 6f);
 
         GameObject newAnimal = Instantiate(selectedPrefab, spawnPosition, Quaternion.identity);
         activeAnimals.Add(newAnimal);
