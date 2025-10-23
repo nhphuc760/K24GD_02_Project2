@@ -41,8 +41,8 @@ public class AnimalManager_Random : MonoBehaviour
         int randomIndex = Random.Range(0, animalPrefabs.Count);
         GameObject selectedPrefab = animalPrefabs[randomIndex];
 
-        // Spawn tại vị trí cố định (60, 6, 0)
-        Vector2 spawnPosition = new Vector2(60f, 6f);
+        // Spawn tại vị trí cố định (-30, -9, 0)
+        Vector2 spawnPosition = new Vector2(-30f, -9f);
 
         GameObject newAnimal = Instantiate(selectedPrefab, spawnPosition, Quaternion.identity);
         activeAnimals.Add(newAnimal);
