@@ -19,6 +19,8 @@ public class AnimalManager_Random : MonoBehaviour
 
     void Update()
     {
+        if (!Application.isPlaying) return;
+
         spawnTimer += Time.deltaTime;
         if (spawnTimer >= spawnInterval && activeAnimals.Count < minAnimals)
         {
