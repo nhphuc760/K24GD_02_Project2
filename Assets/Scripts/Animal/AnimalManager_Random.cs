@@ -11,14 +11,32 @@ public class AnimalManager_Random : MonoBehaviour
     public float spawnInterval = 5f; 
 
     private List<GameObject> activeAnimals = new List<GameObject>();
+    private List<GameObject> animalPool = new List<GameObject>();
     private float spawnTimer = 0f;
 
     void Start()
     {
-        // Spawn thêm để đủ minAnimals (10), giả sử map đã có 6 con pre-placed
+        // Tạo object pool
+        for (int i = 0; i < minAnimals; i++)
+        {
+            GameObject newAnimal = Instantiate(GetRandomPrefab(), Vector2.zero, Quaternion.identity);
+            newAnimal.SetActive(false);
+            animalPool.Add(newAnimal);
+
+            AnimalTracker tracker = newAnimal.AddComponent<AnimalTracker>();
+            tracker.manager = this;
+
+            animalMovement movement = newAnimal.GetComponent<animalMovement>();
+            if (movement != null)
+            {
+                movement.manager = this;
+            }
+        }
+
+        // Spawn thêm để đủ minAnimals (giả sử map đã có pre-placed)
         while (activeAnimals.Count < minAnimals)
         {
-            SpawnAtRandomPosition();
+            SpawnFromPool();
         }
     }
 
@@ -29,32 +47,31 @@ public class AnimalManager_Random : MonoBehaviour
         spawnTimer += Time.deltaTime;
         if (spawnTimer >= spawnInterval && activeAnimals.Count < minAnimals)
         {
-            SpawnAtRandomPosition();
+            SpawnFromPool();
             spawnTimer = 0f;
         }
     }
 
-    private void SpawnAtRandomPosition()
+    private GameObject GetRandomPrefab()
     {
-        if (animalPrefabs.Count == 0) return;
-
+        if (animalPrefabs.Count == 0) return null;
         int randomIndex = Random.Range(0, animalPrefabs.Count);
-        GameObject selectedPrefab = animalPrefabs[randomIndex];
+        return animalPrefabs[randomIndex];
+    }
+
+    private void SpawnFromPool()
+    {
+        if (animalPool.Count == 0) return;
+
+        GameObject animal = animalPool[0];
+        animalPool.RemoveAt(0);
 
         // Spawn tại vị trí cố định (-30, -9, 0)
         Vector2 spawnPosition = new Vector2(-30f, -9f);
+        animal.transform.position = spawnPosition;
+        animal.SetActive(true);
 
-        GameObject newAnimal = Instantiate(selectedPrefab, spawnPosition, Quaternion.identity);
-        activeAnimals.Add(newAnimal);
-
-        AnimalTracker tracker = newAnimal.AddComponent<AnimalTracker>();
-        tracker.manager = this;
-
-        animalMovement movement = newAnimal.GetComponent<animalMovement>();
-        if (movement != null)
-        {
-            movement.manager = this;
-        }
+        activeAnimals.Add(animal);
     }
 
     public void OnAnimalDied(GameObject animal)
@@ -62,6 +79,8 @@ public class AnimalManager_Random : MonoBehaviour
         if (activeAnimals.Contains(animal))
         {
             activeAnimals.Remove(animal);
+            animal.SetActive(false);
+            animalPool.Add(animal);
         }
     }
 }
