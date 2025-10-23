@@ -5,7 +5,7 @@ public class AnimalManager_Random : MonoBehaviour
 {
     public List<GameObject> animalPrefabs;
 
-    public int minAnimals = 7;
+    public int minAnimals = 1;
     public Vector2 spawnAreaMin = new Vector2(-42f, -26f);
     public Vector2 spawnAreaMax = new Vector2(44.5f, 11.6f);
     public float spawnInterval = 5f; 
@@ -33,11 +33,7 @@ public class AnimalManager_Random : MonoBehaviour
         spawnTimer += Time.deltaTime;
         if (spawnTimer >= spawnInterval && activeAnimals.Count < minAnimals)
         {
-            int spawnCount = minAnimals - activeAnimals.Count;
-            for (int i = 0; i < spawnCount; i++)
-            {
-                SpawnAtRandomPosition();
-            }
+            SpawnAtRandomPosition();
             spawnTimer = 0f;
         }
     }
