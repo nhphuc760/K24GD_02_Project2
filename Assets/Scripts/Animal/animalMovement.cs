@@ -12,7 +12,6 @@ public class animalMovement : MonoBehaviour
 
     private float lifetime = 300f;
 
-    // Vùng di chuyển ngẫu nhiên
     private Vector2 spawnAreaMin = new Vector2(-42f, -26f);
     private Vector2 spawnAreaMax = new Vector2(44.5f, 11.6f);
 
@@ -22,12 +21,14 @@ public class animalMovement : MonoBehaviour
     private float directionTimer = 0f;
     private LayerMask farmlandMask;
     private LayerMask obstacleMask;
+    private LayerMask waterMask;
 
     void Start()
     {
         currentTarget = GetRandomPointInArea();
         farmlandMask = LayerMask.GetMask("Farmland");
         obstacleMask = LayerMask.GetMask("Obstacle");
+        waterMask = LayerMask.GetMask("Water");
     }
 
     void Update()
@@ -55,9 +56,8 @@ public class animalMovement : MonoBehaviour
         movement = direction;
 
         Vector2 nextPosition = rb.position + movement * speed * Time.deltaTime;
-        if (Physics2D.OverlapCircle(nextPosition, 0.5f, farmlandMask) != null || Physics2D.OverlapCircle(nextPosition, 0.5f, obstacleMask) != null)
+        if (Physics2D.OverlapCircle(nextPosition, 0.5f, farmlandMask) != null || Physics2D.OverlapCircle(nextPosition, 0.5f, obstacleMask) != null || Physics2D.OverlapCircle(nextPosition, 0.5f, waterMask) != null)
         {
-            // Nếu va chạm, chọn hướng mới
             currentTarget = GetRandomPointInArea();
             direction = (currentTarget - rb.position).normalized;
             movement = direction;
