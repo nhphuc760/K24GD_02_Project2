@@ -5,7 +5,7 @@ public class AnimalManager_Random : MonoBehaviour
 {
     public List<GameObject> animalPrefabs;
 
-    public int minAnimals = 1;
+    public int minAnimals = 10;
     public Vector2 spawnAreaMin = new Vector2(-42f, -26f);
     public Vector2 spawnAreaMax = new Vector2(44.5f, 11.6f);
     public float spawnInterval = 5f; 
@@ -15,15 +15,11 @@ public class AnimalManager_Random : MonoBehaviour
 
     void Start()
     {
-        // Ẩn tất cả animal hiện có khi bắt đầu play
-        foreach (GameObject animal in activeAnimals)
+        // Spawn thêm để đủ minAnimals (10), giả sử map đã có 6 con pre-placed
+        while (activeAnimals.Count < minAnimals)
         {
-            if (animal != null)
-            {
-                animal.SetActive(false);
-            }
+            SpawnAtRandomPosition();
         }
-        activeAnimals.Clear();
     }
 
     void Update()

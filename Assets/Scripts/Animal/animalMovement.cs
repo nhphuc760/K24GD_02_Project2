@@ -10,7 +10,7 @@ public class animalMovement : MonoBehaviour
     public AnimalManager_Random manager;
     public List<GameObject> dropItems; 
 
-    private float lifetime = 300f;
+    private float lifetime = 100f;
 
     private Vector2 spawnAreaMin = new Vector2(-42f, -26f);
     private Vector2 spawnAreaMax = new Vector2(44.5f, 11.6f);
@@ -46,7 +46,7 @@ public class animalMovement : MonoBehaviour
         }
 
         directionTimer += Time.deltaTime;
-        if (directionTimer >= changeDirectionInterval)
+        if (directionTimer >= changeDirectionInterval || Vector2.Distance(rb.position, currentTarget) < waypointThreshold)
         {
             currentTarget = GetRandomPointInArea();
             directionTimer = 0f;
