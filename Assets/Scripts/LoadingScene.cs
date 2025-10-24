@@ -23,7 +23,7 @@ public class LoadingScene : MonoBehaviour
             fill.fillAmount =1f - (timeCoolDown/timeLoad);
             yield return null;
         }
-        SceneManager.LoadScene("PlayScene");
+        SceneManager.LoadScene("WaterFall");
     }
 
     

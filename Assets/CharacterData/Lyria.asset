@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ab13fffac5f724783251f729e8e484, type: 3}
+  m_Name: Lyria
+  m_EditorClassIdentifier: 
+  characterName: Lyria
+  SpriteLibraryAsset: {fileID: 7108339969198208228, guid: f95d262dc57d85d4ba8fc1b4dd74f16c, type: 3}
+  portrait: {fileID: 3948553092171686793, guid: 823c34a1b5af48f42aed91867c936f4a, type: 3}
+  idlecategory: Idle_Front
+  idlelabel: Idle_0
+  description: Female

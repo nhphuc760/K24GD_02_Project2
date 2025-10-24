@@ -1,0 +1,174 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Walk_Side
+    m_Hash: 451572401
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Pig Pink_0
+      m_Hash: 601915890
+      m_Sprite: {fileID: 3260968486745836879, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 3260968486745836879, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    - m_Name: Pig Pink_1
+      m_Hash: 350728548
+      m_Sprite: {fileID: 5396592731802678729, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 5396592731802678729, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    - m_Name: Pig Pink_2
+      m_Hash: 233758942
+      m_Sprite: {fileID: -811152862711855073, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -811152862711855073, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    - m_Name: Pig Pink_3
+      m_Hash: 988401736
+      m_Sprite: {fileID: 7748652004571624113, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 7748652004571624113, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  - m_Name: Walk_Front
+    m_Hash: 963628422
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Pig Pink_4
+      m_Hash: 613238251
+      m_Sprite: {fileID: 4443716446334064995, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 4443716446334064995, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    - m_Name: Pig Pink_5
+      m_Hash: 327841149
+      m_Sprite: {fileID: 3792444308022492621, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 3792444308022492621, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    - m_Name: Pig Pink_6
+      m_Hash: 176366791
+      m_Sprite: {fileID: 5273426840820866748, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 5273426840820866748, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    - m_Name: Pig Pink_7
+      m_Hash: 1032066129
+      m_Sprite: {fileID: -6311247686661159686, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -6311247686661159686, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  - m_Name: Walk_Back
+    m_Hash: 346400819
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Pig Pink_8
+      m_Hash: 758843840
+      m_Sprite: {fileID: -6086292526028801660, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -6086292526028801660, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    - m_Name: Pig Pink_9
+      m_Hash: 440154454
+      m_Sprite: {fileID: -6787647206734505290, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -6787647206734505290, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    - m_Name: Pig Pink_10
+      m_Hash: 1053859281
+      m_Sprite: {fileID: -7261867305963689587, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -7261867305963689587, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    - m_Name: Pig Pink_11
+      m_Hash: 165129543
+      m_Sprite: {fileID: -755081017022090399, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -755081017022090399, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  - m_Name: Sleep
+    m_Hash: 250801576
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Pig Pink_12
+      m_Hash: 283049213
+      m_Sprite: {fileID: 8987059567692351267, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 8987059567692351267, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    - m_Name: Pig Pink_13
+      m_Hash: 668585067
+      m_Sprite: {fileID: 8596516682531373573, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 8596516682531373573, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    - m_Name: Pig Pink_14
+      m_Hash: 968710600
+      m_Sprite: {fileID: 4653299597782129839, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 4653299597782129839, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    - m_Name: Pig Pink_15
+      m_Hash: 247097694
+      m_Sprite: {fileID: 7653122090883227012, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 7653122090883227012, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  - m_Name: Eat_Side
+    m_Hash: 563685611
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Pig Pink_28
+      m_Hash: 455493152
+      m_Sprite: {fileID: -171000478114696674, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -171000478114696674, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    - m_Name: Pig Pink_29
+      m_Hash: 740390582
+      m_Sprite: {fileID: 7747007487444070848, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 7747007487444070848, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    - m_Name: Pig Pink_30
+      m_Hash: 216465235
+      m_Sprite: {fileID: 927792482747668100, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 927792482747668100, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    - m_Name: Pig Pink_31
+      m_Hash: 1004654533
+      m_Sprite: {fileID: -8607885403058503751, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -8607885403058503751, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  - m_Name: Eat_Front
+    m_Hash: 850003510
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Pig Pink_32
+      m_Hash: 585670271
+      m_Sprite: {fileID: -3427019077124555736, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -3427019077124555736, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    - m_Name: Pig Pink_33
+      m_Hash: 368029417
+      m_Sprite: {fileID: 8467163983684338060, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 8467163983684338060, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    - m_Name: Pig Pink_34
+      m_Hash: 193674058
+      m_Sprite: {fileID: -5219012893749492187, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -5219012893749492187, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    - m_Name: Pig Pink_35
+      m_Hash: 1015811036
+      m_Sprite: {fileID: 573789572514758933, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 573789572514758933, guid: 27af88bc1a597a849b6217d618152ada, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  m_PrimaryLibraryGUID: 
+  m_ModificationHash: 638957990245280499
+  m_Version: 1

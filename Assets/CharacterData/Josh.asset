@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ab13fffac5f724783251f729e8e484, type: 3}
+  m_Name: Josh
+  m_EditorClassIdentifier: 
+  characterName: Josh
+  SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 5803b884ed2db3746b554050d7b930c4, type: 3}
+  portrait: {fileID: -3047479865224132323, guid: 56b09007cca0cb345bddeb1d928c07b4, type: 3}
+  idlecategory: Idle_Front
+  idlelabel: Idle_0
+  description: Male
