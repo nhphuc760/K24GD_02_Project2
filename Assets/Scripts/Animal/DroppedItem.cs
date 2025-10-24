@@ -2,15 +2,14 @@ using UnityEngine;
 
 public class DroppedItem : MonoBehaviour
 {
-    public ItemDataSO itemData; // Item data để add vào inventory
-    public int amount = 1; // Số lượng
-    public float pickupDistance = 1.5f; // Khoảng cách nhặt
+    public ItemDataSO itemData; 
+    public int amount = 1; 
+    public float pickupDistance = 1.5f; 
 
     private Transform player;
 
     void Start()
     {
-        // Tìm player
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
         {

@@ -22,6 +22,9 @@ public class animalMovement : MonoBehaviour
     private LayerMask farmlandMask;
     private LayerMask obstacleMask;
     private LayerMask waterMask;
+    private bool hasHorizontalParam = false;
+    private bool hasVerticalParam = false;
+    private bool hasSpeedParam = false;
 
     void Start()
     {
@@ -29,6 +32,26 @@ public class animalMovement : MonoBehaviour
         farmlandMask = LayerMask.GetMask("Farmland");
         obstacleMask = LayerMask.GetMask("Obstacle");
         waterMask = LayerMask.GetMask("Water");
+
+        if (animator == null)
+        {
+            Debug.LogWarning("animalMovement.Start: Animator reference is null. Please assign an Animator in the inspector.");
+        }
+        else
+        {
+            // Cache which parameters exist to avoid runtime errors when calling SetFloat
+            var parameters = animator.parameters;
+            foreach (var p in parameters)
+            {
+                if (p.name == "Horizontal") hasHorizontalParam = true;
+                if (p.name == "Vertical") hasVerticalParam = true;
+                if (p.name == "Speed") hasSpeedParam = true;
+            }
+
+            if (!hasHorizontalParam) Debug.LogWarning("animalMovement.Start: Animator is missing parameter 'Horizontal'.");
+            if (!hasVerticalParam) Debug.LogWarning("animalMovement.Start: Animator is missing parameter 'Vertical'.");
+            if (!hasSpeedParam) Debug.LogWarning("animalMovement.Start: Animator is missing parameter 'Speed'.");
+        }
     }
 
     void Update()
@@ -63,9 +86,12 @@ public class animalMovement : MonoBehaviour
             movement = direction;
         }
 
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
-        animator.SetFloat("Speed", movement.sqrMagnitude);
+        if (animator != null)
+        {
+            if (hasHorizontalParam) animator.SetFloat("Horizontal", movement.x);
+            if (hasVerticalParam) animator.SetFloat("Vertical", movement.y);
+            if (hasSpeedParam) animator.SetFloat("Speed", movement.sqrMagnitude);
+        }
     }
     
     private void FixedUpdate()
@@ -82,19 +108,51 @@ public class animalMovement : MonoBehaviour
 
     private void DropItem()
     {
-        if (dropItems != null && dropItems.Count > 0)
+        if (dropItems == null || dropItems.Count == 0)
         {
-            int randomIndex = Random.Range(0, dropItems.Count);
-            GameObject droppedItem = Instantiate(dropItems[randomIndex], transform.position, Quaternion.identity);
-            
-            // Thêm component DroppedItem nếu chưa có
-            DroppedItem droppedItemScript = droppedItem.GetComponent<DroppedItem>();
-            if (droppedItemScript == null)
-            {
-                droppedItemScript = droppedItem.AddComponent<DroppedItem>();
-            }
-            // Giả sử dropItems có ItemDataSO, hoặc set mặc định
-            // droppedItemScript.itemData = ...; // Cần set ItemDataSO tương ứng
+            Debug.LogWarning("animalMovement.DropItem: dropItems list is empty or null. Assign prefabs in inspector.");
+            return;
         }
+
+        int randomIndex = Random.Range(0, dropItems.Count);
+        GameObject prefab = dropItems[randomIndex];
+        if (prefab == null)
+        {
+            Debug.LogWarning($"animalMovement.DropItem: Selected dropItems[{randomIndex}] is null.");
+            return;
+        }
+
+        // Small random offset so the spawned object isn't exactly overlapping the animal
+        Vector3 spawnPos = transform.position + new Vector3(Random.Range(-0.3f, 0.3f), Random.Range(-0.1f, 0.3f), 0f);
+        GameObject droppedItem = Instantiate(prefab, spawnPos, Quaternion.identity);
+        droppedItem.transform.SetParent(null);
+
+        // Ensure visibility on top of the scene (2D sprite) if a SpriteRenderer exists
+        var sr = droppedItem.GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            // bump sorting order so it is likely visible above other sprites
+            sr.sortingOrder = Mathf.Max(sr.sortingOrder, 50);
+        }
+
+        // Ensure it has a Rigidbody2D so physics/pickup systems can interact with it
+        var itemRb = droppedItem.GetComponent<Rigidbody2D>();
+        if (itemRb == null)
+        {
+            itemRb = droppedItem.AddComponent<Rigidbody2D>();
+        }
+        itemRb.gravityScale = 0.5f;
+        itemRb.linearVelocity = Vector2.zero;
+        itemRb.AddForce(new Vector2(Random.Range(-20f, 20f), Random.Range(30f, 60f)));
+
+        // Attach or ensure a DroppedItem script exists for pickup logic
+        DroppedItem droppedItemScript = droppedItem.GetComponent<DroppedItem>();
+        if (droppedItemScript == null)
+        {
+            droppedItemScript = droppedItem.AddComponent<DroppedItem>();
+            Debug.Log("animalMovement.DropItem: Added DroppedItem component to instantiated prefab.");
+        }
+
+        Debug.Log($"animalMovement.DropItem: Spawned '{droppedItem.name}' at {spawnPos} (prefab index {randomIndex}).");
     }
 }

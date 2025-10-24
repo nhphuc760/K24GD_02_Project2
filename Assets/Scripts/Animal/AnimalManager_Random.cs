@@ -16,7 +16,6 @@ public class AnimalManager_Random : MonoBehaviour
 
     void Start()
     {
-        // Tạo object pool
         for (int i = 0; i < minAnimals; i++)
         {
             GameObject newAnimal = Instantiate(GetRandomPrefab(), Vector2.zero, Quaternion.identity);
@@ -33,7 +32,6 @@ public class AnimalManager_Random : MonoBehaviour
             }
         }
 
-        // Spawn thêm để đủ minAnimals (giả sử map đã có pre-placed)
         while (activeAnimals.Count < minAnimals)
         {
             SpawnFromPool();
