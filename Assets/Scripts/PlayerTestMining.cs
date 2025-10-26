@@ -71,6 +71,11 @@ public class PlayerTestMining : MonoBehaviour
                 {
                     ore.MineOre();
                 }
+                var tree = hit.GetComponent<Tree>();
+                if(tree != null)
+                {
+                    tree.OnChop();
+                }    
             }
         }
     }    
