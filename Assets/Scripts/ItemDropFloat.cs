@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-public class OreDropFloat : MonoBehaviour
+public class ItemDropFloat : MonoBehaviour
 {
     float floatAmplitude = 0.1f;    //Biên độ dao động (cao thấp)
     float floatFrequency = 2f;      //tốc độ dao động
