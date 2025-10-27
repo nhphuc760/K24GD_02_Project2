@@ -9,6 +9,7 @@ public class PlayerMovement:MonoBehaviour
     public Transform CheckGroundPoint;
     private Tilemap[] _groundTilemaps;
     bool isMoving;
+    bool isFishing;
     float horizontalMovement;
     float verticalMovement;
     private bool _isGrounded;
@@ -21,6 +22,7 @@ public class PlayerMovement:MonoBehaviour
             //Upgrade later: Change animation state if have swimming or flying
         }
     }
+    public bool IsFishing { get => isFishing; set => isFishing = value; }
     public bool IsMoving { get => isMoving; set => isMoving = value; }
     public float HorizontalMovement { get => horizontalMovement; }
     public float VerticalMovement { get => verticalMovement; }
@@ -38,9 +40,8 @@ public class PlayerMovement:MonoBehaviour
     {
         Vector2 direct = GameInput.Ins.GetInputMovementNormalize();
 
-
         isMoving = direct != Vector2.zero;
-        if (isMoving)
+        if (isMoving && !isFishing)
         {
             horizontalMovement = direct.x;
             verticalMovement = direct.y;
