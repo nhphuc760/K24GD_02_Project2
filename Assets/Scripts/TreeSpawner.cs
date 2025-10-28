@@ -46,7 +46,7 @@ public class TreeSpawner : MonoBehaviour
         Vector2 spawnPos = GetValidSpawnPosition(spawnArea);
         GameObject tree = Instantiate(treePrefab, spawnPos, Quaternion.identity);
 
-        Tree treeScript = tree.GetComponent<Tree>();
+        TreeInfor treeScript = tree.GetComponent<TreeInfor>();
         if (treeScript != null)
         {
             treeScript.spawner = this;

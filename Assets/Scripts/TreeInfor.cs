@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Tree : MonoBehaviour
+public class TreeInfor : MonoBehaviour
 {
     [Header("Tree Setting")]
     [HideInInspector] public TreeSpawner spawner;
