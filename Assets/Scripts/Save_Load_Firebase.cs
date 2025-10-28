@@ -1,10 +1,10 @@
 using System;
+using System.Threading.Tasks;
 using Firebase.Database;
-using Firebase.Extensions;
-using Newtonsoft.Json;
 using UnityEngine;
 public static class Save_Load_Firebase 
 {
+    static DatabaseReference reference = FirebaseDatabase.DefaultInstance.RootReference;
     public static string GetUserID()
     {
         var user = Firebase.Auth.FirebaseAuth.DefaultInstance.CurrentUser;
@@ -19,37 +19,40 @@ public static class Save_Load_Firebase
         }
     }  
     
-    public static void SaveData<T>(string path, T value, Action actionContinueWithMain)
+    public static async Task SaveData(string path, object value)
     {
-        var reference = FirebaseDatabase.DefaultInstance.RootReference;
-        reference.Child(GetUserID()).Child(path).SetValueAsync(value).ContinueWithOnMainThread(task =>
-        {
-            if (task.IsFaulted || task.IsCanceled)
-            {
-                Debug.LogError("Data could not be saved: " + task.Exception);
-            }
-            else
-            {
-                Debug.Log("Data saved successfully.");
-                actionContinueWithMain?.Invoke();
-            }
-        });
+       
+        await reference.Child(GetUserID()).Child(path).SetValueAsync(value);
+       
     }
 
-    public static void LoadData<T>(string path, Action<T> actionContinueWithMain)
+    public static async Task<DataSnapshot> LoadData(string path)
     {
-        var reference = Firebase.Database.FirebaseDatabase.DefaultInstance.RootReference;
-        reference.Child(GetUserID()).Child(path).GetValueAsync().ContinueWithOnMainThread(task =>
-        {
-            if (task.IsFaulted || task.IsCanceled)
-            {
-                Debug.LogError("Data could not be loaded: " + task.Exception);
-              
-            }
-            else if (task.IsCompleted)
-            {
-               
-            }
-        });
+        
+        DataSnapshot snapshot = await reference.Child(GetUserID()).Child(path).GetValueAsync();
+        return snapshot;
+
     }
+    public static async Task<DateTime?> GetSeverDateTime()
+    {
+
+        try
+        {
+            await reference.Child("SeverTime").SetValueAsync(Firebase.Database.ServerValue.Timestamp);
+            var task = reference.Child("SeverTime").GetValueAsync();
+            await task;
+            if (task.IsCompleted)
+            {
+                DataSnapshot dataSnapshot = task.Result;
+                long severMiliseconds = (long)dataSnapshot.Value;
+                return DateTimeOffset.FromUnixTimeMilliseconds(severMiliseconds).UtcDateTime;
+            }
+        }catch(Exception e)
+        {
+            Debug.LogError($"GetServerDateTime error: {e.Message}");
+        }
+        return null;
+    }
+
+  
 }

@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class InventorySlot 
@@ -22,6 +23,15 @@ public class InventorySlot
     {
         ItemData = null;
         quantity = 0;
+    }
+
+    public void Remove(int quantity)
+    {
+       this.quantity -= quantity;
+      if(this.quantity <= 0)
+        {
+            Clear();
+        }
     }
 
     public void Assign(ItemDataSO itemDataSO, int newQuantity)

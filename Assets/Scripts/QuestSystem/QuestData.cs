@@ -1,16 +1,16 @@
-using System;
 using UnityEngine;
 
-[Serializable]
 public class QuestData 
 {
+    public string questID;
     public QuestState questState;
-    public int questStepIndex;
-    public QuestStepState[] questStepStates;
-    public QuestData(QuestState state, int questStepIndex, QuestStepState[] questStepStates)
+    public QuestStepState questStepState;
+    public bool isClaimedReward;
+    public QuestData(string questI, QuestState state, QuestStepState questStepState, bool isClaimedReward)
     {
+        this.questID = questI;
         this.questState = state;
-        this.questStepIndex = questStepIndex;
-        this.questStepStates = questStepStates;
+        this.questStepState = questStepState;
+        this.isClaimedReward = isClaimedReward;
     }
 }

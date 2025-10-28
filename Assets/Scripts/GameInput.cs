@@ -9,6 +9,7 @@ public class GameInput : MonoBehaviour
     public event Action submitPressed;
     public event Action openBagPressed;
 
+
     private void Awake()
     {
        
@@ -33,6 +34,7 @@ public class GameInput : MonoBehaviour
 
     private void Interact_performed()
     {
+        Debug.Log("OnSubmit pressed");
         submitPressed?.Invoke();
     }
 

@@ -3,9 +3,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler, IPointerClickHandler
+public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] Image backGround;
+   public Image backGround;
     [SerializeField] Image _icon;
     [SerializeField] TextMeshProUGUI _quantityText;
     Image dragIcon;
@@ -39,9 +39,13 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler
 
     public void OnDrag(PointerEventData eventData) // Ham callback unity, duoc goi khi keo
     {
+        if (inventoryManager.inventory.itemSlots[slotIndex].IsEmpty) return;
         if (dragIcon != null)
             dragIcon.transform.position = eventData.position;
+      
+
     }
+
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -72,5 +76,31 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler
     {
 
         inventoryManager.OnDropItem(eventData);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (eventData.pointerDrag == null)
+        {
+            backGround.color = Color.gray;
+            return;
+        }
+        if (!eventData.pointerDrag.TryGetComponent<InventorySlotUI>(out InventorySlotUI start))
+        {
+            return;
+        }
+        if (inventoryManager.inventory.TryDropItem(inventoryManager.inventory.itemSlots[start.slotIndex], inventoryManager.inventory.itemSlots[slotIndex]))
+        {
+            backGround.color = Color.green;
+        }
+        else
+        {
+            backGround.color = Color.red;
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+      backGround.color = Color.white;
     }
 }

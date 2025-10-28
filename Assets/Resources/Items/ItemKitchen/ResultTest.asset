@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8cfeb0668ba179449373005050c6480, type: 3}
+  m_Name: ResultTest
+  m_EditorClassIdentifier: 
+  _id: 3721
+  _itemName: KitchenItemDataSO
+  _icon: {fileID: -3881899911555437960, guid: 411200b0858c6f947ba34a5ef44c7e5b, type: 3}
+  _description: Test KitchenItem
+  _maxStack: 1
+  isStackable: 0
+  itemType: 0
+  recipeSO: {fileID: 11400000, guid: c540ae57f37b89442bb7995f302a9646, type: 2}
+  price: 100
