@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Ore : MonoBehaviour
+public class OreInfor : MonoBehaviour
 {
     [Header("Ore Settings")]
     public OreSpawner spawner;

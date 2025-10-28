@@ -66,7 +66,7 @@ public class PlayerTestMining : MonoBehaviour
             if (dist <= interactRange)
             {
                 // Gọi script quặng để xử lý đào
-                var ore = hit.GetComponent<Ore>(); // class quặng của bạn
+                var ore = hit.GetComponent<OreInfor>(); // class quặng của bạn
                 if (ore != null)
                 {
                     ore.MineOre();

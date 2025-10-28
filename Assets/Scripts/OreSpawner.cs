@@ -40,7 +40,7 @@ public class OreSpawner : MonoBehaviour
     {
         Vector2 spawnPos = GetValidSpawnPosition();
         GameObject ore = Instantiate(orePrefab, spawnPos, Quaternion.identity);
-        Ore oreScript = ore.GetComponent<Ore>();
+        OreInfor oreScript = ore.GetComponent<OreInfor>();
         if (oreScript != null)
         {
             oreScript.spawner = this;
