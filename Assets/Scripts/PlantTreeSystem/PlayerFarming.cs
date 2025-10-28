@@ -40,6 +40,7 @@ public class PlayerFarming : MonoBehaviour
             Collider2D hit = Physics2D.OverlapCircle(transform.position, interactionRadius, interactableLayerMask);
             if(hit != null && hit.GetComponent<IInteractable>() != null)
             {
+                Debug.Log("Harvest");
                 hit.GetComponent<IInteractable>().Interact();
             }
             else if(selectedSeed != null)
