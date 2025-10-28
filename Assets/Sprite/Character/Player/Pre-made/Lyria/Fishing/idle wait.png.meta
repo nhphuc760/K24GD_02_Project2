@@ -162,10 +162,10 @@ TextureImporter:
       name: idle wait_0
       rect:
         serializedVersion: 2
-        x: 25
-        y: 129
-        width: 15
-        height: 40
+        x: 0
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,10 +184,10 @@ TextureImporter:
       name: idle wait_1
       rect:
         serializedVersion: 2
-        x: 89
+        x: 64
         y: 128
-        width: 15
-        height: 42
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,10 +206,10 @@ TextureImporter:
       name: idle wait_2
       rect:
         serializedVersion: 2
-        x: 153
+        x: 128
         y: 128
-        width: 15
-        height: 41
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,10 +228,10 @@ TextureImporter:
       name: idle wait_3
       rect:
         serializedVersion: 2
-        x: 217
+        x: 192
         y: 128
-        width: 15
-        height: 42
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,10 +250,10 @@ TextureImporter:
       name: idle wait_4
       rect:
         serializedVersion: 2
-        x: 25
-        y: 85
-        width: 15
-        height: 32
+        x: 0
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -272,10 +272,10 @@ TextureImporter:
       name: idle wait_5
       rect:
         serializedVersion: 2
-        x: 89
-        y: 85
-        width: 15
-        height: 31
+        x: 64
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -294,10 +294,10 @@ TextureImporter:
       name: idle wait_6
       rect:
         serializedVersion: 2
-        x: 153
-        y: 85
-        width: 15
-        height: 31
+        x: 128
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -316,10 +316,10 @@ TextureImporter:
       name: idle wait_7
       rect:
         serializedVersion: 2
-        x: 217
-        y: 85
-        width: 15
-        height: 33
+        x: 192
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -338,10 +338,10 @@ TextureImporter:
       name: idle wait_8
       rect:
         serializedVersion: 2
-        x: 25
-        y: 15
-        width: 29
-        height: 26
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -360,10 +360,10 @@ TextureImporter:
       name: idle wait_9
       rect:
         serializedVersion: 2
-        x: 89
-        y: 14
-        width: 29
-        height: 28
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -382,10 +382,10 @@ TextureImporter:
       name: idle wait_10
       rect:
         serializedVersion: 2
-        x: 153
-        y: 14
-        width: 29
-        height: 27
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -404,10 +404,10 @@ TextureImporter:
       name: idle wait_11
       rect:
         serializedVersion: 2
-        x: 217
-        y: 14
-        width: 29
-        height: 28
+        x: 192
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -426,7 +426,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 21966c29dd6edfa48b502120b0efe61c
     internalID: 0
     vertices: []
     indices: 
