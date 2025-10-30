@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BrichTree_Big
       objectReference: {fileID: 0}
+    - target: {fileID: 540968652401062206, guid: 32a8440559b3c4e46adb098bce8fff8b, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 2455913673430908366, guid: 32a8440559b3c4e46adb098bce8fff8b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.006
@@ -69,6 +73,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7236576008810215604, guid: 32a8440559b3c4e46adb098bce8fff8b, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236576008810215604, guid: 32a8440559b3c4e46adb098bce8fff8b, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -92,8 +100,42 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -1.2121004
       objectReference: {fileID: 0}
+    - target: {fileID: 8737672463606910502, guid: 32a8440559b3c4e46adb098bce8fff8b, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 540968652401062206, guid: 32a8440559b3c4e46adb098bce8fff8b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7989053398173325327}
   m_SourcePrefab: {fileID: 100100000, guid: 32a8440559b3c4e46adb098bce8fff8b, type: 3}
+--- !u!1 &4813063949189871515 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 540968652401062206, guid: 32a8440559b3c4e46adb098bce8fff8b, type: 3}
+  m_PrefabInstance: {fileID: 4992970497614399141}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7989053398173325327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4813063949189871515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc96dff9b75010b479bf2556ce2b4f8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner: {fileID: 0}
+  treePrefab: {fileID: 0}
+  respawnDelay: 10
+  spawnArea: {fileID: 0}
+  maxHitPoints: 3
+  woodPrefab: {fileID: 0}
+  dropCount: 2
+  dropForce: 2
+  shakeDuration: 0.1
+  shakeAmount: 0.08

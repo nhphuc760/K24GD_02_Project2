@@ -2,8 +2,8 @@
 using System.Collections;
 public class ItemDropFloat : MonoBehaviour
 {
-    float floatAmplitude = 0.1f;    //Biên độ dao động (cao thấp)
-    float floatFrequency = 2f;      //tốc độ dao động
+    public float floatAmplitude = 0.1f;    //Biên độ dao động (cao thấp)
+    public float floatFrequency = 2f;      //tốc độ dao động
     public float floatDelay = 0.5f;        // Thời gian chờ trước khi bắt đầu lơ lửng
     Vector3 startPos;
     float floatTimer;

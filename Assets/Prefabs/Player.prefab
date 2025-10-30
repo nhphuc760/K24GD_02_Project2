@@ -77,8 +77,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39433b9dace8c2c4fa2b766d359edc08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1402103027682105741}
   moveSpeed: 4
+  swimSpeed: 0
+  CheckGroundPoint: {fileID: 3572962789849340261}
 --- !u!70 &6612567390884234309
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

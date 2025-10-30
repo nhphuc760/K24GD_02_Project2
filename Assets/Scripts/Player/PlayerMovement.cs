@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class PlayerMovement : MonoBehaviour
@@ -30,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        if (SceneManager.GetActiveScene().name.Equals("Farm")) return;
         Tilemap[] allTilemaps = FindObjectsByType<Tilemap>(FindObjectsSortMode.None);
         _groundTilemaps = System.Array.FindAll(allTilemaps, tm => tm.gameObject.layer == LayerMask.NameToLayer("Ground"));
     }
@@ -39,33 +41,29 @@ public class PlayerMovement : MonoBehaviour
         // Use old Input system for simplicity
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
-        Debug.Log("Horizontal: " + h + ", Vertical: " + v + ", moveSpeed: " + moveSpeed);
         Vector2 direct = new Vector2(h, v).normalized;
-        Debug.Log("Input direction: " + direct);
         isMoving = direct != Vector2.zero;
         if (isMoving)
         {
             horizontalMovement = direct.x;
             verticalMovement = direct.y;
         }
-        IsGrounded = CheckOnGround(direct);
-        Debug.Log("IsGrounded: " + IsGrounded + ", swimSpeed: " + swimSpeed);
-        if (IsGrounded)
-        {
-            rb.linearVelocity = direct * moveSpeed;
-        }
-        else
-        {
-            rb.linearVelocity = direct * swimSpeed;
-        }
-        Debug.Log("Velocity set to: " + rb.linearVelocity);
+        rb.linearVelocity = direct * moveSpeed;
+        //IsGrounded = CheckOnGround(direct);
+        //if (IsGrounded)
+        //{
+        //    rb.linearVelocity = direct * moveSpeed;
+        //}
+        //else
+        //{
+        //    rb.linearVelocity = direct * swimSpeed;
+        //}
     }
 
     private bool CheckOnGround(Vector2 direction)
     {
         if (CheckGroundPoint == null)
         {
-            Debug.LogWarning("CheckGroundPoint is not assigned!");
             return false;
         }
         Vector3 nextPos = CheckGroundPoint.transform.position + (Vector3)(direction * 0.1f);
@@ -79,5 +77,9 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         return false;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(collision.gameObject.name);
     }
 }
