@@ -23,9 +23,20 @@ public class InventoryEvent
     {
         onRemoveItemByData?.Invoke(item, quantity);
     }
-    public event Action<ItemDataSO, int> onAddItem;
-    public void AddItem(ItemDataSO item, int quantity)
+    public event Func<ItemDataSO, int, bool> onAddItem;
+    public bool AddItem(ItemDataSO item, int quantity)
     {
-        onAddItem?.Invoke(item, quantity);
+       return onAddItem?.Invoke(item, quantity) ?? false ;
+    }
+    public event Action<Inventory> onInitSuccess;
+    public void InitSuccess(Inventory inventory)
+    {
+        onInitSuccess?.Invoke(inventory);
+    }
+
+    public event Action opendBagPressed;
+    public void OpenBagPress()
+    {
+        opendBagPressed?.Invoke();
     }
 }

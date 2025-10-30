@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class InventorySlotUI : MonoBehaviour, IDragDrop, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
    public Image backGround;
     [SerializeField] Image _icon;
@@ -102,5 +102,10 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler
     public void OnPointerExit(PointerEventData eventData)
     {
       backGround.color = Color.white;
+    }
+
+    public ItemDataSO GetItemDataSO()
+    {
+        return inventoryManager.inventory.itemSlots[slotIndex].ItemData;
     }
 }

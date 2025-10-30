@@ -13,9 +13,9 @@ public class Portal : MonoBehaviour
             Debug.Log($"Player đã chạm vào cổng, chuẩn bị tải scene: {sceneToLoad}");
 
             // Ra lệnh cho GameManager "bất tử" xử lý việc chuyển cảnh
-            if (GameManager.instance != null)
+            if (GameManager.Ins != null)
             {
-                GameManager.instance.StartSceneTransition(sceneToLoad, targetPosition);
+                GameManager.Ins.StartSceneTransition(sceneToLoad, targetPosition);
             }
         }
     }

@@ -7,11 +7,12 @@ public class GameEventManager : MonoBehaviour
     public event Action OnCollectCoins;//cho vào questEvent
     public event Action OnFishingCaught;//
     public event Action<string> triggerDialog;
-
+    public event Action<int> onCoinChange;
 
     public QuestEvents questEvents;
     public CookingEvent cookingEvent;
     public InventoryEvent inventoryEvent;
+    public ShopEvent shopEvent;
     private void Awake()
     {
        if(Ins != null && Ins != this)
@@ -22,6 +23,7 @@ public class GameEventManager : MonoBehaviour
         questEvents = new QuestEvents();
         cookingEvent = new CookingEvent();
         inventoryEvent = new InventoryEvent();
+        shopEvent = new ShopEvent();
     }
 
     private void Update()
@@ -41,7 +43,10 @@ public class GameEventManager : MonoBehaviour
         //    OnFishingCaught?.Invoke();
         //}
     }
-
+    public void CoinChange(int coin)
+    {
+        onCoinChange?.Invoke(coin);
+    }
     public void TriggerDialog(string log)
     {
         triggerDialog?.Invoke(log);

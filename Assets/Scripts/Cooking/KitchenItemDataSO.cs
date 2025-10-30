@@ -4,5 +4,5 @@ using UnityEngine;
 public class KitchenItemDataSO : ItemDataSO
 {
     public RecipeSO recipeSO;
-    public int price;
+    public int sale_Price;
 }

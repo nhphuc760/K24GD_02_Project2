@@ -2,12 +2,12 @@
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 using UnityEngine.SceneManagement;
-using NUnit.Framework;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager Ins;
 
     [Header("Editor Test Data")]
     public string testPlayerName = "Test Dũng";
@@ -16,17 +16,40 @@ public class GameManager : MonoBehaviour
 
     public CropDatabase cropDatabase; // Cơ sở dữ liệu cây trồng chung cho toàn game
     //portal
-    private Vector3 nextPlayerPosition; // vị trí người chơi sau khi chuyển scene
-    private void Awake()
+    
+    int _coins;
+    public int Coin 
     {
-        if (instance == null)
+        get => _coins;
+        set
         {
-            instance = this;
+            if (_coins != value)
+            {
+                _coins = value;
+                GameEventManager.Ins.CoinChange(Coin);
+            }
+        }
+    }
+    private Vector3 nextPlayerPosition; // vị trí người chơi sau khi chuyển scene
+    private async void Awake()
+    {
+        if (Ins == null)
+        {
+            Ins = this;
             DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
+        }
+        var task = await Save_Load_Firebase.LoadData("Coins");
+        if (task.Exists)
+        {
+            _coins = (int)task.Value;
+        }
+        else
+        {
+            _coins = 500;// số tiền mặc định cho beginer
         }
     }
     //Để Script giúp cho GManager "lắng nghe" sự kiện khi scene thay đổi không bị mất đi
@@ -40,6 +63,10 @@ public class GameManager : MonoBehaviour
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    private async void OnDestroy()
+    {
+      await Save_Load_Firebase.SaveData("Coins", _coins);
     }
 
     /// <summary>

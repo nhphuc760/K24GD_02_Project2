@@ -65,7 +65,8 @@ public class InventoryManager : MonoBehaviour
         }
         UpdateUI();
         GameEventManager.Ins.questEvents.onClaimReward += QuestEvents_onClaimReward;
-        GameInput.Ins.openBagPressed += Ins_openBagPressed;   
+        GameEventManager.Ins.inventoryEvent.opendBagPressed+= Ins_openBagPressed;
+        GameEventManager.Ins.inventoryEvent.InitSuccess(inventory);
         gameObject.SetActive(false);
     }
 
@@ -116,7 +117,8 @@ public class InventoryManager : MonoBehaviour
     }
     private void OnDestroy()
     {
-        GameInput.Ins.openBagPressed -= Ins_openBagPressed;
+        //GameInput.Ins.openBagPressed -= Ins_openBagPressed;
+        GameEventManager.Ins.inventoryEvent.opendBagPressed -= Ins_openBagPressed;
         GameEventManager.Ins.questEvents.onClaimReward -= QuestEvents_onClaimReward;
         GameEventManager.Ins.inventoryEvent.onRemoveItemClick -= RemoveItem;
         GameEventManager.Ins.inventoryEvent.onRemoveItemCompleted -= OnRemoveItemCompleted;
@@ -160,12 +162,12 @@ public class InventoryManager : MonoBehaviour
 
    
 
-    public void AddItem(ItemDataSO itemDataSO, int quantity = 1)
+    public bool AddItem(ItemDataSO itemDataSO, int quantity = 1)
     {
         if(itemDataSO == null)
         {
             Debug.Log($"ItemdataSo is null");
-            return;
+            return false;
         }
         Debug.Log($"ItemDataSO {itemDataSO.name}");
         if (inventory.AddItem(itemDataSO, quantity))
@@ -173,10 +175,12 @@ public class InventoryManager : MonoBehaviour
             GameEventManager.Ins.TriggerDialog($"<color=green>{itemDataSO._itemName} đã được thêm vào kho đồ của bạn</color>");
             if (gameObject.activeSelf)
                 UpdateUI();
+            return true;
         }
         else
         {
             GameEventManager.Ins.TriggerDialog("<color=red>Vui lòng kiểm tra kho đồ, hiện tại không thể thêm vật phẩm</color>");
+            return false;
         }
         
     }

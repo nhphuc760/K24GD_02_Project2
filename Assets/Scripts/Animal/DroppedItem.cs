@@ -25,11 +25,11 @@ public class DroppedItem : MonoBehaviour
             if (distance < pickupDistance)
             {
                 // Nhặt item
-                if (InventoryManager.Instance != null && itemData != null)
-                {
-                    InventoryManager.Instance.inventory.AddItem(itemData, amount);
-                    InventoryManager.Instance.UpdateUI();
-                }
+                //if (InventoryManager.Instance != null && itemData != null)
+                //{
+                //    InventoryManager.Instance.inventory.AddItem(itemData, amount);
+                //    InventoryManager.Instance.UpdateUI();
+                //}
                 Destroy(gameObject);
             }
         }

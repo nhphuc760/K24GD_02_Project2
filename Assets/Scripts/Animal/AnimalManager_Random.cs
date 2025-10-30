@@ -4,7 +4,6 @@ using System.Collections.Generic;
 public class AnimalManager_Random : MonoBehaviour
 {
     public List<GameObject> animalPrefabs;
-
     public int minAnimals = 10;
     public Vector2 spawnAreaMin = new Vector2(-42f, -26f);
     public Vector2 spawnAreaMax = new Vector2(44.5f, 11.6f);
@@ -13,7 +12,6 @@ public class AnimalManager_Random : MonoBehaviour
     private List<GameObject> activeAnimals = new List<GameObject>();
     private List<GameObject> animalPool = new List<GameObject>();
     private float spawnTimer = 0f;
-
     void Start()
     {
         for (int i = 0; i < minAnimals; i++)
