@@ -1,39 +1,36 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
-public class GameInput : MonoBehaviour 
+public class GameInput
 {
-    public static GameInput Ins { get; private set; }
-    public InputActionAsset inputActionAsset;
-    private InputAction moveAction;
+    InputSystem_Actions inputAction;
     public event Action interacPressed;
-
-
-    private void Awake()
+    
+    public GameInput()
     {
-       
-        if(Ins!= null && Ins != this)
+        inputAction = new InputSystem_Actions();
+    }
+
+    public GameInput(InputSystem_Actions inputActions)
+    {
+        this.inputAction = inputActions;
+    }
+
+    public void Init()
+    {
+        inputAction.Player.Enable();
+        inputAction.Player.OpenBag.performed += _ => { GameEventManager.Ins.inventoryEvent.OpenBagPress(); };
+        inputAction.Player.Interact.performed += _ => { Interact_performed(); };
+        inputAction.Player.SelectToolKit.performed += SelectToolKit_performed;
+    }
+
+    private void SelectToolKit_performed(InputAction.CallbackContext context)
+    {
+        string key = context.control.name;
+        if(int.TryParse(key, out int num))
         {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            Ins = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-      
-        if (inputActionAsset != null)
-        {
-            moveAction = inputActionAsset.FindAction("Move");
-            if (moveAction != null) moveAction.Enable();
-            var interactAction = inputActionAsset.FindAction("Interact");                                                               
-            if (interactAction != null) 
-                interactAction.performed += _ => { Interact_performed(); };                                     
-            var openBagAction = inputActionAsset.FindAction("OpenBag");                                                                 
-            if (openBagAction != null) 
-                openBagAction.performed += _ => { GameEventManager.Ins.inventoryEvent.OpenBagPress(); };                                    
+            GameEventManager.Ins.toolKitEvent.CallInput(num);
         }
     }
 
@@ -45,11 +42,15 @@ public class GameInput : MonoBehaviour
 
     public Vector2 GetInputMovementNormalize()
     {
-        if (moveAction != null)
-        {
-            return moveAction.ReadValue<Vector2>().normalized;
-        }
-        return Vector2.zero;
+        return inputAction.Player.Move.ReadValue<Vector2>().normalized;
     }
-    
+    public void Enable_InputAction()
+    {
+        inputAction.Player.Enable();
+    }
+
+    public void Disable_InputAction()
+    {
+        inputAction.Player.Disable();
+    }
 }

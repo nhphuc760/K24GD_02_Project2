@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class PlayerFarming : MonoBehaviour
@@ -26,15 +27,15 @@ public class PlayerFarming : MonoBehaviour
     {
         HandleInput();
     }
-    void HandleSeedSelection()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1) && seedHotbar.Count >= 1) { selectedSeed = seedHotbar[0]; Debug.Log("Đã chọn: " + selectedSeed.cropName); }
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && seedHotbar.Count >= 2) { selectedSeed = seedHotbar[1]; Debug.Log("Đã chọn: " + selectedSeed.cropName); }
-    }
+    //void HandleSeedSelection()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Alpha1) && seedHotbar.Count >= 1) { selectedSeed = seedHotbar[0]; Debug.Log("Đã chọn: " + selectedSeed.cropName); }
+    //    else if (Input.GetKeyDown(KeyCode.Alpha2) && seedHotbar.Count >= 2) { selectedSeed = seedHotbar[1]; Debug.Log("Đã chọn: " + selectedSeed.cropName); }
+    //}
     void HandleInput()
     {
-        HandleSeedSelection();
-        
+        //HandleSeedSelection();
+        if (!SceneManager.GetActiveScene().name.Equals("Farm")) return;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Collider2D hit = Physics2D.OverlapCircle(transform.position, interactionRadius, interactableLayerMask);

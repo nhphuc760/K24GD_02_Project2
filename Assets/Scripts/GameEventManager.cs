@@ -13,6 +13,8 @@ public class GameEventManager : MonoBehaviour
     public CookingEvent cookingEvent;
     public InventoryEvent inventoryEvent;
     public ShopEvent shopEvent;
+    public ToolKitEvent toolKitEvent;
+    public GameInput gameInput;
     private void Awake()
     {
        if(Ins != null && Ins != this)
@@ -24,6 +26,13 @@ public class GameEventManager : MonoBehaviour
         cookingEvent = new CookingEvent();
         inventoryEvent = new InventoryEvent();
         shopEvent = new ShopEvent();
+        toolKitEvent = new ToolKitEvent();
+        gameInput = new GameInput();
+    }
+
+    private void Start()
+    {
+        gameInput.Init();
     }
 
     private void Update()

@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -51,6 +51,18 @@ public class ItemInforUI : MonoBehaviour
     {
         descriptionUI.SetActive(true);
         removeItemUI.SetActive(false);
+    }
+
+
+    //Các hàm này gắn cho các button bật tắt lớp UI
+    //dùng để đảm không nhận input game khi nhập dữ liệu
+    public void Back()
+    {
+        GameEventManager.Ins.gameInput.Enable_InputAction();
+    }
+    public void Remove_StartBTN()
+    {
+        GameEventManager.Ins.gameInput.Disable_InputAction();
     }
 
 }

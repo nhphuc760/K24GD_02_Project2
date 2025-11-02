@@ -66,7 +66,7 @@ public class InventoryManager : MonoBehaviour
         UpdateUI();
         GameEventManager.Ins.questEvents.onClaimReward += QuestEvents_onClaimReward;
         GameEventManager.Ins.inventoryEvent.opendBagPressed+= Ins_openBagPressed;
-        GameEventManager.Ins.inventoryEvent.InitSuccess(inventory);
+        GameEventManager.Ins.toolKitEvent.InitSuccess(inventory);
         gameObject.SetActive(false);
     }
 
@@ -81,6 +81,8 @@ public class InventoryManager : MonoBehaviour
         GameEventManager.Ins.inventoryEvent.onRemoveItemCompleted += OnRemoveItemCompleted;
         GameEventManager.Ins.inventoryEvent.onRemoveItemByData += RemoveItemByData;
         GameEventManager.Ins.inventoryEvent.onAddItem += AddItem;
+        GameEventManager.Ins.inventoryEvent.onDropItem += OnDropItem;
+
     }
 
     private void Ins_openBagPressed()
@@ -100,12 +102,12 @@ public class InventoryManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            AddItem(Resources.Load<ItemDataSO>("Items/ConsumpItem/TestItem"), 1);
+            AddItem(Resources.Load<ItemDataSO>("Items/ConsumpItem/TestItem"), 1);// Giả lập thêm Item
          
         }
         if(Input.GetKeyDown(KeyCode.T))
         {
-           AddItem(Resources.Load<ItemDataSO>("Items/ConsumpItem/TestItem2"), 2);
+           AddItem(Resources.Load<ItemDataSO>("Items/ConsumpItem/TestItem2"), 2); //Giả lập thêm item
      
         }
     }
@@ -127,6 +129,7 @@ public class InventoryManager : MonoBehaviour
         GameEventManager.Ins.inventoryEvent.checkHasItem -= CheckHasItem;
         GameEventManager.Ins.inventoryEvent.onRemoveItemByData -= RemoveItemByData;
         GameEventManager.Ins.inventoryEvent.onAddItem -= AddItem;
+        GameEventManager.Ins.inventoryEvent.onDropItem -= OnDropItem;
     }
 
     private void OnValidate()
@@ -138,12 +141,17 @@ public class InventoryManager : MonoBehaviour
     public void OnDropItem(PointerEventData eventData)
     {
        
-        if(!eventData.pointerDrag.TryGetComponent<InventorySlotUI>(out InventorySlotUI start) || !eventData.pointerEnter.TryGetComponent<InventorySlotUI>(out InventorySlotUI end))
+        if(!eventData.pointerDrag.TryGetComponent<IDragDrop>(out IDragDrop start) || !eventData.pointerEnter.TryGetComponent<IDragDrop>(out IDragDrop end))
         {
             return;
         }
-        inventory.MergeItem(inventory.itemSlots[start.slotIndex], inventory.itemSlots[end.slotIndex]);
+        if (start.GetIndex() == end.GetIndex())
+        {
+            return;
+        }
+        inventory.MergeItem(inventory.itemSlots[start.GetIndex()], inventory.itemSlots[end.GetIndex()]);
         UpdateUI();
+      
     }
 
 
@@ -193,6 +201,7 @@ public class InventoryManager : MonoBehaviour
         {
             slot.UpdateUI();
         }
+        GameEventManager.Ins.toolKitEvent.UpdateUI();
     }
 
 

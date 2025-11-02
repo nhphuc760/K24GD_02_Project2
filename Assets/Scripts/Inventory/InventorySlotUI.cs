@@ -55,7 +55,7 @@ public class InventorySlotUI : MonoBehaviour, IDragDrop, IPointerClickHandler, I
         dragIcon.sprite = slot.ItemData._icon;
         dragIcon.color = Color.white;
         dragIcon.raycastTarget = false;
-        dragIcon.transform.SetParent(inventoryManager.transform);
+        dragIcon.transform.SetParent(inventoryManager.transform.parent);
         dragIcon.rectTransform.sizeDelta = new Vector2(64, 64);
     }
 
@@ -84,12 +84,12 @@ public class InventorySlotUI : MonoBehaviour, IDragDrop, IPointerClickHandler, I
         {
             backGround.color = Color.gray;
             return;
-        }
-        if (!eventData.pointerDrag.TryGetComponent<InventorySlotUI>(out InventorySlotUI start))
+        } 
+        if (!eventData.pointerDrag.TryGetComponent<IDragDrop>(out IDragDrop start))
         {
             return;
         }
-        if (inventoryManager.inventory.TryDropItem(inventoryManager.inventory.itemSlots[start.slotIndex], inventoryManager.inventory.itemSlots[slotIndex]))
+        if (inventoryManager.inventory.TryDropItem(inventoryManager.inventory.itemSlots[start.GetIndex()], inventoryManager.inventory.itemSlots[slotIndex]))
         {
             backGround.color = Color.green;
         }
@@ -107,5 +107,10 @@ public class InventorySlotUI : MonoBehaviour, IDragDrop, IPointerClickHandler, I
     public ItemDataSO GetItemDataSO()
     {
         return inventoryManager.inventory.itemSlots[slotIndex].ItemData;
+    }
+
+    public int GetIndex()
+    {
+       return slotIndex;
     }
 }

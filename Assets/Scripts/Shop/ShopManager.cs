@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -53,6 +53,11 @@ public class ShopManager : MonoBehaviour
     public void Buy(ItemShopDataSO itemShopDataSO, int quantity = 1)
     {
         int price = itemShopDataSO.purchase_Price;
+        if (GameManager.Ins.Coin < price)
+        {
+            GameEventManager.Ins.TriggerDialog($"<color=red>Không đủ tiền để mua, còn thiếu {price - GameManager.Ins.Coin}</color>");
+            return;
+        }
         if(GameEventManager.Ins.inventoryEvent.AddItem(itemShopDataSO, quantity))
         {
             GameManager.Ins.Coin -= itemShopDataSO.purchase_Price;

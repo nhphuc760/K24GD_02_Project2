@@ -38,10 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Use old Input system for simplicity
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-        Vector2 direct = new Vector2(h, v).normalized;
+        Vector2 direct = GameEventManager.Ins.gameInput.GetInputMovementNormalize();
         isMoving = direct != Vector2.zero;
         if (isMoving)
         {

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InventoryEvent 
 {
@@ -28,15 +29,17 @@ public class InventoryEvent
     {
        return onAddItem?.Invoke(item, quantity) ?? false ;
     }
-    public event Action<Inventory> onInitSuccess;
-    public void InitSuccess(Inventory inventory)
-    {
-        onInitSuccess?.Invoke(inventory);
-    }
+    
 
     public event Action opendBagPressed;
     public void OpenBagPress()
     {
         opendBagPressed?.Invoke();
+    }
+
+    public event Action<PointerEventData> onDropItem;
+    public void DropItem(PointerEventData eventData)
+    {
+        onDropItem?.Invoke(eventData);
     }
 }
