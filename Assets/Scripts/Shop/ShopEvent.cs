@@ -14,4 +14,14 @@ public class ShopEvent
     {
         onShowToolTip?.Invoke(message);
     }
+    public event Action onShow;
+    public void Show()
+    {
+        onShow?.Invoke();
+    }
+    public event Action onHide;
+    public void Hide()
+    {
+        onHide?.Invoke();
+    }
 }

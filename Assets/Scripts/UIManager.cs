@@ -102,7 +102,7 @@ public class UIManager : MonoBehaviour
     // Tìm và lưu tham chiếu đến Global Light trong scene hiện tại
     void FindGlobalLight()
     {
-        globalLight = FindObjectOfType<Light2D>(true);
+        globalLight = FindFirstObjectByType<Light2D>(findObjectsInactive: FindObjectsInactive.Include);
         bool foundGlobal = false; // Flag to check if we found one
 
         // Check if the first one found is already Global
@@ -112,7 +112,7 @@ public class UIManager : MonoBehaviour
         }
         else // If not global or null, search all lights
         {
-            Light2D[] allLights = FindObjectsOfType<Light2D>(true);
+            Light2D[] allLights = FindObjectsByType<Light2D>(findObjectsInactive: FindObjectsInactive.Include, FindObjectsSortMode.None);
             globalLight = null; // Reset
             foreach (var light in allLights)
             {

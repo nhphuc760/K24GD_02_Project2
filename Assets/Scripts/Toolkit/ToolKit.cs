@@ -8,12 +8,11 @@ public class ToolKit : MonoBehaviour
     public Inventory inventory;
     List<ToolKitSlotUI> cachedToolkitUI = new();
     [SerializeField] Transform container;
-    InventorySlot curChoosing;
+    InventorySlot curChoosing = null;
     int curIndex = -1;
     private void Awake()
     {
         inventory = new Inventory(9, null); //Lấy tham chiếu tới 10 ô đầu tiên trong inventory
-       
         
     }
 
@@ -22,6 +21,12 @@ public class ToolKit : MonoBehaviour
         GameEventManager.Ins.toolKitEvent.onInitSuccess += InitInventorySuccess;
         GameEventManager.Ins.toolKitEvent.onCallInput += OnInputCalled;
         GameEventManager.Ins.toolKitEvent.onUpdateUI += UpdateUI;
+        GameEventManager.Ins.toolKitEvent.onGetDataChooseSlot += GetCurDataChoosing;
+    }
+
+    private InventorySlot GetCurDataChoosing()
+    {
+        return curChoosing;
     }
 
     private void OnInputCalled(int input)//input là các số từ 1-9 nhưng mảng thì lưu tử 0-8
@@ -35,6 +40,7 @@ public class ToolKit : MonoBehaviour
         GameEventManager.Ins.toolKitEvent.onInitSuccess -= InitInventorySuccess;
         GameEventManager.Ins.toolKitEvent.onCallInput -= OnInputCalled;
         GameEventManager.Ins.toolKitEvent.onUpdateUI -= UpdateUI;
+        GameEventManager.Ins.toolKitEvent.onGetDataChooseSlot -= GetCurDataChoosing;
     }
 
     private void InitInventorySuccess(Inventory inventory)

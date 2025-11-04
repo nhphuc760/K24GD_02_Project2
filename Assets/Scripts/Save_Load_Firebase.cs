@@ -1,6 +1,9 @@
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using Firebase.Database;
+using Newtonsoft.Json;
+using Unity.VisualScripting;
 using UnityEngine;
 public static class Save_Load_Firebase 
 {
@@ -54,5 +57,40 @@ public static class Save_Load_Firebase
         return null;
     }
 
-  
+    public static async Task<GameData> LoadGame()
+    {
+        try
+        {
+           var task = await LoadData("GameData");
+            if (task.Exists)
+            {
+                GameData data = JsonConvert.DeserializeObject<GameData>(task.Value.ToString());
+                return data;
+            }
+            else
+            {
+                return new GameData();
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e.Message);
+            return new GameData();
+        }
+    }
+
+    public static async Task SaveGame(GameData data)
+    {
+      
+        string json = JsonConvert.SerializeObject(data);
+        try
+        {
+            await SaveData("GameData", json);
+        }
+        catch (System.Exception e)
+        {
+            Debug.Log(e.Message + "\n" + "From SaveGame() - Save_Load_Firebase");
+        }
+    }
+
 }

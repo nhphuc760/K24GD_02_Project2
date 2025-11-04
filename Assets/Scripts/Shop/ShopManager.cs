@@ -8,7 +8,6 @@ public class ShopManager : MonoBehaviour
     [SerializeField] ShopDataBaseSO shopDataBaseSO;
     [SerializeField] ShopUISlot slotPrefab;
     [SerializeField] Transform Container;
-    [SerializeField] Canvas Canvas;
     [SerializeField] TextMeshProUGUI coinText;
     
     private void Start()
@@ -20,12 +19,17 @@ public class ShopManager : MonoBehaviour
             item.UpdateUI(shopDataBaseSO.shopDatabase[i]);
         }
         GameEventManager.Ins.onCoinChange += OnCoinChange;
-       
+        GameEventManager.Ins.shopEvent.onShow += Show;
+        GameEventManager.Ins.shopEvent.onHide += Hide;
+        Hide();
+
     }
 
     private void OnDestroy()
     {
         GameEventManager.Ins.onCoinChange -= OnCoinChange;
+        GameEventManager.Ins.shopEvent.onShow -= Show;
+        GameEventManager.Ins.shopEvent.onHide -= Hide;
     }
 
     private void OnCoinChange(int coin)
@@ -53,6 +57,7 @@ public class ShopManager : MonoBehaviour
     public void Buy(ItemShopDataSO itemShopDataSO, int quantity = 1)
     {
         int price = itemShopDataSO.purchase_Price;
+        if (GameManager.Ins == null) return;
         if (GameManager.Ins.Coin < price)
         {
             GameEventManager.Ins.TriggerDialog($"<color=red>Không đủ tiền để mua, còn thiếu {price - GameManager.Ins.Coin}</color>");
@@ -66,5 +71,14 @@ public class ShopManager : MonoBehaviour
     public void Sell()
     {
 
+    }
+
+    void Show()
+    {
+        gameObject.SetActive(true);
+    }
+    void Hide()
+    {
+        gameObject.SetActive(false);
     }
 }

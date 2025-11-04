@@ -10,19 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0114063b82b843b4bbbeed4f1d83a0fd, type: 3}
-  m_Name: Strawberry
+  m_Name: Seed_Strawberry
   m_EditorClassIdentifier: 
-  cropName: Strawberry
-  icon: {fileID: 3706471016571915744, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
-  cropDescription: Strawberry
+  _id: 401
+  _itemName: Seed_Strawberry
+  _icon: {fileID: 8369948372191450990, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
+  _description: "H\u1EA1t gi\u1ED1ng d\xE2u t\xE2y"
+  _maxStack: 99
+  isStackable: 1
+  itemType: 0
   DaysToGrow: 3
-  seedSprite: {fileID: 8369948372191450990, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
+  cropData: {fileID: 11400000, guid: 1f94f111a1ac56c48a45d4d530c74c24, type: 2}
   growhtSprites:
   - {fileID: -3402868906910896487, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
   - {fileID: 7953443401717196921, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
   - {fileID: 240733362411572873, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
   - {fileID: 1734387795819554390, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
   - {fileID: 8578180459406042070, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
-  cropPrefab: {fileID: 4577774381029248203, guid: 7474e75fa2dd96646ba56fef8b8ab9b5, type: 3}
   purchasePrice: 4
   sellPrice: 5
+  yield: 10

@@ -38,7 +38,7 @@ public class ToolTip : MonoBehaviour
         float textPaddingSize = 4f;
         background.sizeDelta = new Vector2(description.preferredWidth + textPaddingSize *2f, description.preferredHeight + textPaddingSize *2f);
         Vector2 localPos;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponent<RectTransform>(), Input.mousePosition, canvas.worldCamera, out localPos);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponent<RectTransform>(), Input.mousePosition, null, out localPos);
         //CheckVisible
         //Kiểm tra biên phải
         Vector2 pivotSetup = Vector2.zero;

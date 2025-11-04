@@ -609,7 +609,7 @@ GameObject:
   - component: {fileID: 396433471}
   - component: {fileID: 396433470}
   m_Layer: 5
-  m_Name: LoadGameButton
+  m_Name: ContinueGameButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1183,7 +1183,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LOAD
+  m_text: CONTINUE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6bd01b3b9f22d264f891124fe5430987, type: 2}
   m_sharedMaterial: {fileID: 8718191804606293394, guid: 6bd01b3b9f22d264f891124fe5430987, type: 2}

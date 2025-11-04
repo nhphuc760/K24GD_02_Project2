@@ -37,6 +37,11 @@ public class GameInput
     private void Interact_performed()
     {
         Debug.Log("OnSubmit pressed");
+        if(interacPressed == null)
+        {
+            Debug.Log("interact is not asign");
+        }
+       
         interacPressed?.Invoke();
     }
 

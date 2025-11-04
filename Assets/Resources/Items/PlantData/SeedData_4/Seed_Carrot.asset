@@ -10,18 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0114063b82b843b4bbbeed4f1d83a0fd, type: 3}
-  m_Name: Carrot
+  m_Name: Seed_Carrot
   m_EditorClassIdentifier: 
-  cropName: Carrot
-  icon: {fileID: -4121517270082971212, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
-  cropDescription: Carrot
+  _id: 402
+  _itemName: Seed_Carrot
+  _icon: {fileID: 2109489747490457824, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
+  _description: "H\u1EA1t gi\u1ED1ng c\xE0 r\u1ED1t"
+  _maxStack: 99
+  isStackable: 1
+  itemType: 0
   DaysToGrow: 2
-  seedSprite: {fileID: 2109489747490457824, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
+  cropData: {fileID: 11400000, guid: 23567b50437f9a34d996177f9dec4ae2, type: 2}
   growhtSprites:
   - {fileID: 7952700809700035530, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
   - {fileID: 2303892717736303439, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
   - {fileID: -5752873257389657301, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
   - {fileID: -8286018175113047878, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
-  cropPrefab: {fileID: 2335489243911748184, guid: 6c9a3d2b06c734d4ab08cc5194e8869a, type: 3}
   purchasePrice: 2
   sellPrice: 4
+  yield: 0

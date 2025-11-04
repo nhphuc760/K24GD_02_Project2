@@ -24,4 +24,10 @@ public class ToolKitEvent
     {
         onUpdateUI?.Invoke();
     }
+
+    public event Func<InventorySlot> onGetDataChooseSlot;
+    public InventorySlot GetCurDataChoose()
+    {
+       return onGetDataChooseSlot?.Invoke();
+    }
 }
