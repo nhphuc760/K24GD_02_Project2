@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameEventManager : MonoBehaviour
 {
@@ -28,13 +29,32 @@ public class GameEventManager : MonoBehaviour
         shopEvent = new ShopEvent();
         toolKitEvent = new ToolKitEvent();
         gameInput = new GameInput();
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
     {
         gameInput.Init();
-    }
+        SceneManager.sceneLoaded += OnSceneLoad;
 
+    }
+    private void OnSceneLoad(Scene arg0, LoadSceneMode arg1)
+    {
+        string path = arg0.path;
+
+        if(path.StartsWith("Assets/Scenes/ScenePlay"))
+        {
+            this.enabled = true;
+        }
+        else
+        {
+            this.enabled = false;
+        }
+    }
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoad;
+    }
     private void Update()
     {
         //if (Input.GetKeyDown(KeyCode.V))

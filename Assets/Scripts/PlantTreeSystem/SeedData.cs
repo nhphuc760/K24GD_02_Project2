@@ -9,6 +9,7 @@ public class SeedData : ItemDataSO
     public CropDataSO cropData; //Dữ liệu cây thu hoạch
     [Header("Crop Stages Sprites adn prefab")]
     public List<Sprite> growhtSprites; // Sprite for the mature stage
+    public Sprite harvestIndicator;
     [Header("Crop Economic Value")]
     public int purchasePrice; // Price to buy the seed
     public int sellPrice; // Price to sell the mature crop

@@ -61,6 +61,6 @@ public class KitchenInventoryManager : MonoBehaviour
 
     private void OnValidate()
     {
-        kitchenItemList = Resources.LoadAll<KitchenItemDataSO>("Items/ItemKitchen").ToList();
+        kitchenItemList = Resources.LoadAll<KitchenItemDataSO>("Items").ToList();
     }
 }

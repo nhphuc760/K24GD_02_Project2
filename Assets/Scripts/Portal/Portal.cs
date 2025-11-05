@@ -7,7 +7,7 @@ public class Portal : MonoBehaviour
     public Vector3 targetPosition; // Vị trí mục tiêu trong cảnh mới
 
 
-    private async void OnTriggerEnter2D(Collider2D other)
+    private  void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
@@ -16,7 +16,7 @@ public class Portal : MonoBehaviour
             // Ra lệnh cho GameManager "bất tử" xử lý việc chuyển cảnh
             if (GameManager.Ins != null)
             {
-               await GameManager.Ins.StartSceneTransition(sceneToLoad, targetPosition);
+                GameManager.Ins.StartSceneTransition(sceneToLoad, targetPosition);
             }
         }
     }

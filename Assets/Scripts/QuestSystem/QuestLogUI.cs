@@ -7,23 +7,24 @@ public class QuestLogUI : MonoBehaviour
 {
     [SerializeField] QuestManger manager;
     [SerializeField] QuestUI prefab;
-
+    [SerializeField] Transform container;
     private void Start()
     {
         if (manager == null)
         {
-            Debug.LogError("[QuestLogUI] QuestManger reference is null. Assign it in the Inspector.");
+            Debug.Log("[QuestLogUI] QuestManger reference is null. Assign it in the Inspector.");
             return;
         }
         if (prefab == null)
         {
-            Debug.LogError("[QuestLogUI] QuestUI prefab is null. Assign it in the Inspector.");
+            Debug.Log("[QuestLogUI] QuestUI prefab is null. Assign it in the Inspector.");
             return;
         }
 
         GameEventManager.Ins.questEvents.OnLoadQuestMapSuccess += Manger_OnLoadQuestMapSuccess;
         GameEventManager.Ins.questEvents.onQuestInforClick += QuestEvents_onQuestInforClick;
         GameEventManager.Ins.questEvents.onRewardClick += QuestEvents_onRewardClick;
+        Hide();
         //sub event <string id>
     }
 
@@ -96,7 +97,7 @@ public class QuestLogUI : MonoBehaviour
         {
             if (quest == null) continue;
 
-            QuestUI questUI = Instantiate(prefab, this.transform);
+            QuestUI questUI = Instantiate(prefab, container);
             questUI.Init(manager, quest.questInforSO._id);
             questUI.ChangedState(quest.questState);
             if(quest.questStepStates == null)
@@ -121,32 +122,12 @@ public class QuestLogUI : MonoBehaviour
         }
     }
 
-
-    //IEnumerator DisplayDialogText(string message, Color? color)
-    //{
-    //   if(color == null)
-    //    {
-    //        dialogText.color = Color.white;
-    //    }
-    //    else
-    //    {
-    //        dialogText.color = (Color)color;
-    //    }
-    //    dialogText.enabled = true;
-    //    dialogText.text = message;
-    //    float timeCouting = timeDisplayDialogText;
-    //    Color colorComponent = dialogText.color;
-    //    isCoroutine = true;
-    //    while (timeCouting > 0)
-    //    {
-    //        timeCouting -= Time.deltaTime;
-            
-    //       colorComponent.a = timeCouting / timeDisplayDialogText;
-    //        dialogText.color = colorComponent;
-    //        yield return null;
-    //    }
-    //    dialogText.enabled = false;
-    //    isCoroutine = false;
-    //}
-
+    void Show()
+    {
+        gameObject.SetActive(true);
+    }
+    void Hide()
+    {
+        gameObject.SetActive(false);
+    }
 }

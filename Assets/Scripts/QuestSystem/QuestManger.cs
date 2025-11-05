@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Firebase.Database;
-using Firebase.Extensions;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -18,32 +16,7 @@ public class QuestManger : MonoBehaviour
     QuestInforSO[] questInforSOs;
     private  void Awake()
     {
-        // await CreateQuestMap().ContinueWithOnMainThread(task => { 
-        //    if(task.IsFaulted || task.IsCanceled)
-        //    {
-
-        //    }else if (task.IsCompleted)
-        //    {
-        //         questMap = task.Result;
-        //        foreach (var quest in questMap.Values)
-        //        {
-        //             if(quest.questState.Equals( QuestState.IN_PROGRESS))
-        //             {
-        //                 quest.InstantiateQuestStep(this.transform);
-        //             }
-        //             if (quest.questState.Equals( QuestState.REQUIREMENTS_NOT_MET) && CheckQuestCondition(quest))
-        //             {
-        //                 ChangeQuestState(quest.questInforSO._id, QuestState.CAN_START);
-
-        //             }
-        //             GameEventManager.Ins.questEvents.QuestStateChanged(quest);
-        //        }
-        //         OnLoadQuestMapSuccess?.Invoke(questMap.Values.ToList());
-        //    }
-        //});
-       
-
-
+     
     }
 
     private void OnEnable()
@@ -83,7 +56,6 @@ public class QuestManger : MonoBehaviour
             }
             GameEventManager.Ins.questEvents.QuestStateChanged(quest);
         }
-        //OnLoadQuestMapSuccess?.Invoke(questMap.Values.ToList());
         GameEventManager.Ins.questEvents.LoadQuestMapSuccess(questMap.Values.ToList());
 
     }

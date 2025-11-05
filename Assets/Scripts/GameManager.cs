@@ -46,11 +46,11 @@ public class GameManager : MonoBehaviour
         var task = await Save_Load_Firebase.LoadData("Coins");
         if (task.Exists)
         {
-            _coins = Convert.ToInt32(_coins);
+            Coin = Convert.ToInt32(_coins);
         }
         else
         {
-            _coins = 500;// số tiền mặc định cho beginer
+            Coin = 500;// số tiền mặc định cho beginer
         }
     }
     //Để Script giúp cho GManager "lắng nghe" sự kiện khi scene thay đổi không bị mất đi
@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
             UIManager.instance.SetupPlayerInfo(nameFromSelection, avatarFromSelection);
     }
     //Hàm được Portal gọi để bắt đầu chuyển scene
-    public async Task StartSceneTransition(string sceneName, Vector3 newPos)
+    public async void StartSceneTransition(string sceneName, Vector3 newPos)
     {
         await SaveCurrentSceneState(); //nếu cần lưu trạng thái hiện tại thì làm ở đây
         //Lưu lại vị trí mà người chơi sẽ đến
@@ -156,11 +156,18 @@ public class GameManager : MonoBehaviour
         if(currentScene == "Farm")
         {
             GameData data = await Save_Load_Firebase.LoadGame();
-            data.plantedCrops.RemoveAll(crop => crop.SceneName == currentScene);//xóa cây trồng trong scene hiện tại
+            if(data != null)
+            {
+                data.plantedCrops.Clear();
+            }
+            else
+            {
+                return;
+            }
             Seed[] cropsInScene = FindObjectsByType<Seed>(FindObjectsSortMode.None);
             foreach (Seed crop in cropsInScene)
             {
-                data.plantedCrops.Add(crop.GetSaveData());//thêm cây trồng hiện tại vào dữ liệu
+                data.plantedCrops.Add(crop.GetSaveData());
             }
             await Save_Load_Firebase.SaveGame(data);//lưu dữ liệu vào file
             Debug.Log("Saved current scene state before transition.");
@@ -177,6 +184,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Đang tải lại cây trồng cho Scene: " + sceneName);
         int cropsLoaded = 0;
         //tạo một bản sao để duyệt, tránh lỗi khi xóa phần tử trong vòng lặp
+        if (data.plantedCrops == null) return;
         List<SeedSaveData> cropsToLoad = new List<SeedSaveData>(data.plantedCrops);
 
         foreach(SeedSaveData cropData in cropsToLoad)
@@ -187,7 +195,7 @@ public class GameManager : MonoBehaviour
                 var cropPrefab = dataAsset.cropData.prefab;
                 if(dataAsset != null && cropPrefab != null)
                 {
-                    GameObject cropInstance = Instantiate(cropPrefab, cropData.worldPosition, Quaternion.identity);
+                    GameObject cropInstance = Instantiate(cropPrefab, cropData.worldPosition.ToVector3(), Quaternion.identity);
                     Seed cropScript = cropInstance.GetComponent<Seed>();
                     if(cropScript != null)
                     {

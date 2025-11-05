@@ -110,6 +110,10 @@ public class InventoryManager : MonoBehaviour
            AddItem(Resources.Load<ItemDataSO>("Items/ConsumpItem/TestItem2"), 2); //Giả lập thêm item
      
         }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            AddItem(Resources.Load<SeedData>("Items/PlantData/SeedData_4/Seed_Carrot"), 10);
+        }
     }
     private void OnDisable()
     {

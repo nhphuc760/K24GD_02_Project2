@@ -15,7 +15,7 @@ public class PlayerFarming : MonoBehaviour
 
     private void Start()
     {
-        GameEventManager.Ins.gameInput.interacPressed += HandleInput;
+      
         SceneManager.sceneLoaded += OnSceneLoad; //Tắt script nếu không cần thiết
     }
 
@@ -30,6 +30,10 @@ public class PlayerFarming : MonoBehaviour
             this.enabled = true;
         }
     }
+    private void OnEnable()
+    {
+        GameEventManager.Ins.gameInput.interacPressed += HandleInput;
+    }
 
     private void OnDisable()
     {
@@ -40,52 +44,32 @@ public class PlayerFarming : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoad;
     }
-    //void HandleSeedSelection()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Alpha1) && seedHotbar.Count >= 1) { selectedSeed = seedHotbar[0]; Debug.Log("Đã chọn: " + selectedSeed.cropName); }
-    //    else if (Input.GetKeyDown(KeyCode.Alpha2) && seedHotbar.Count >= 2) { selectedSeed = seedHotbar[1]; Debug.Log("Đã chọn: " + selectedSeed.cropName); }
-    //}
     void HandleInput()
     {
-        //HandleSeedSelection();
         InventorySlot curSelected = GameEventManager.Ins.toolKitEvent.GetCurDataChoose();
-        var seedData = curSelected.ItemData as SeedData;
-        if(curSelected == null || seedData == null)
+        if(curSelected == null)
         {
-            GameEventManager.Ins.TriggerDialog("Bạn chưa chọn hạt giống");
+            GameEventManager.Ins.TriggerDialog("<color=red>Bạn chưa chọn hạt giống</color>");
             return;
-        } 
+        }
+        var seedData = curSelected.ItemData as SeedData;
+        
         Collider2D hit = Physics2D.OverlapCircle(transform.position, interactionRadius, interactableLayerMask);
         if (hit != null && hit.GetComponent<IInteractable>() != null)
         {
             Debug.Log("Harvest");
             hit.GetComponent<IInteractable>().Interact();
+            return;
         }
-        else if (seedData!= null)
+
+        if (seedData == null)
         {
-            Plant(seedData);
+            GameEventManager.Ins.TriggerDialog("<color=red>Bạn chưa chọn hạt giống</color>");
+            return;
         }
+        Plant(seedData);
+        
     }
-    //void TryInteract()
-    //{
-    //    Collider2D hit  = Physics2D.OverlapCircle(transform.position, interactionRadius);
-    //    if(hit != null)
-    //    {
-    //        //Thữ lấy IInteraactable từ đối tượng bị va chạm
-    //        IInteractable interactableObject = hit.GetComponent<IInteractable>();
-    //        if(interactableObject != null)
-    //        {
-    //            //Néu có thì gọi hàm Interact
-    //            interactableObject.Interact();
-    //            return;
-    //            Debug.Log("Đã tương tác với " + hit.name);
-    //        }
-    //    }
-    //    if(selectedSeed != null)
-    //    {
-    //        Plant(selectedSeed);
-    //    }
-    //}
 
 
     //Trồng, thu hoạch cây.

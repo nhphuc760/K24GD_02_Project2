@@ -9,7 +9,6 @@ public class Seed : MonoBehaviour, IInteractable
     private SeedData currentSeedData; // Reference to the CropData ScriptableObject
     private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
     private bool isMature = false;//kiểm tra cây đã trưởng thành chưa
-
     [Header("Harvest Indicator")]
     public GameObject harvestIndicatorPrefab; // Kéo HarvestIndicator_Prefab vào đây
     public Transform indicatorAnchor;         // Kéo "giá treo" IndicatorAnchor vào đây
@@ -96,6 +95,10 @@ public class Seed : MonoBehaviour, IInteractable
         {
             Harvest();
         }
+        else
+        {
+            GameEventManager.Ins.TriggerDialog("<color=red>Cây trồng chưa thu hoạch được</color>");
+        }
     }
 
     public bool CanInteract()
@@ -125,7 +128,7 @@ public class Seed : MonoBehaviour, IInteractable
         {
             // Tìm component Image trong các con của bảng hiệu và gán icon vào
             // Lưu ý: ItemData là lớp cha của CropData, chứa biến 'icon'
-            currentIndicator.GetComponentInChildren<UnityEngine.UI.Image>().sprite = currentSeedData._icon;
+            currentIndicator.GetComponentInChildren<UnityEngine.UI.Image>().sprite = currentSeedData.harvestIndicator; 
 
             // Bật hoặc tắt bảng hiệu
             currentIndicator.SetActive(show);
@@ -135,7 +138,7 @@ public class Seed : MonoBehaviour, IInteractable
     {
         SeedSaveData data = new SeedSaveData();
         data.SceneName = SceneManager.GetActiveScene().name;
-        data.worldPosition = transform.position;
+        data.worldPosition = new SerializableVector3(transform.position);
         // Lưu tên của CropData để tái tạo sau này(lấy tên file Asset) 
         data.cropDataID = currentSeedData._id;
         data.timePlanted = this.timePlanted;
