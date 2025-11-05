@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public string testPlayerName = "Test Dũng";
     public Sprite testPlayerAvatar;
     public SpriteLibraryAsset testSpriteLibrary;
-
+    [SerializeField] GameObject playerPrefab;
     public SeedDatabase seedDataBase; // Cơ sở dữ liệu cây trồng chung cho toàn game
     //portal
     
@@ -122,9 +122,9 @@ public class GameManager : MonoBehaviour
         this.nextPlayerPosition = newPos;
 
         // Gọi UIManager để bật hiệu ứng fade-out đen màn hình ở đây) // làm sau
-
+        LoadingScene.sceneTarget = sceneName;
         //Tải scene mới
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene("LoadingScene");
     }
     //hàm để di chuyển người chơi đến vị trí đã lưu sau khi tải xong scene mới
     private void MovePlayerToPosition()
@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Không tìm thấy 'Player' trong scene mới");
+                Instantiate(playerPrefab, this.nextPlayerPosition, Quaternion.identity);
             }
         }
     }
@@ -156,18 +156,11 @@ public class GameManager : MonoBehaviour
         if(currentScene == "Farm")
         {
             GameData data = await Save_Load_Firebase.LoadGame();
-            if(data != null)
-            {
-                data.plantedCrops.Clear();
-            }
-            else
-            {
-                return;
-            }
+            List<SeedSaveData> seedSaveDatas = new List<SeedSaveData>();
             Seed[] cropsInScene = FindObjectsByType<Seed>(FindObjectsSortMode.None);
             foreach (Seed crop in cropsInScene)
             {
-                data.plantedCrops.Add(crop.GetSaveData());
+                seedSaveDatas.Add(crop.GetSaveData());
             }
             await Save_Load_Firebase.SaveGame(data);//lưu dữ liệu vào file
             Debug.Log("Saved current scene state before transition.");

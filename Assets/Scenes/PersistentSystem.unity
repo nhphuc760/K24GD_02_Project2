@@ -191,6 +191,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 21d5ab6889bb59049909b5e523e99f17, type: 2}
     - target: {fileID: 6011047769654960049, guid: 77908d138c1468c4b9fb06b8a85dc30b, type: 3}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 1164331866957732423, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
+    - target: {fileID: 6011047769654960049, guid: 77908d138c1468c4b9fb06b8a85dc30b, type: 3}
       propertyPath: seedDataBase
       value: 
       objectReference: {fileID: 11400000, guid: b7ef27eaf327d7a4198a7c978e77166d, type: 2}

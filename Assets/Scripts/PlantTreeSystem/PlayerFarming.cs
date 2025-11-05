@@ -75,6 +75,10 @@ public class PlayerFarming : MonoBehaviour
     //Trồng, thu hoạch cây.
     void Plant(SeedData cropToPlant)
     {
+        if(plowableLayer == null)
+        {
+            plowableLayer = GameObject.FindGameObjectWithTag("FarmLand").GetComponent<Tilemap>();
+        }
         Vector3Int cellPosition = plowableLayer.WorldToCell(transform.position);
         Vector3 cellCenterPosition = plowableLayer.GetCellCenterWorld(cellPosition);
         TileBase currentTile = plowableLayer.GetTile(cellPosition);
