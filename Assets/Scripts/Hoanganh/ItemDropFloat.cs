@@ -5,10 +5,11 @@ public class ItemDropFloat : MonoBehaviour
     public float floatAmplitude = 0.1f;    //Biên độ dao động (cao thấp)
     public float floatFrequency = 2f;      //tốc độ dao động
     public float floatDelay = 0.5f;        // Thời gian chờ trước khi bắt đầu lơ lửng
+    [SerializeField] float timeDestroy = 10f; //trong 10s nếu không nhặt sẽ hủy
     Vector3 startPos;
     float floatTimer;
     Rigidbody2D rb;
-    bool startFloating = false;
+  
 
     void Start()
     {
@@ -28,20 +29,32 @@ public class ItemDropFloat : MonoBehaviour
     IEnumerator StartFloating()
     {
         yield return new WaitForSeconds(floatDelay);
+        GetComponent<Collider2D>().isTrigger = true;
         if(rb  != null )
         {
             rb.linearVelocity = Vector2.zero;
             rb.gravityScale = 0f;
             rb.bodyType = RigidbodyType2D.Kinematic;
         }
-        startFloating = true;
         startPos = transform.position;
+        float timeHolder = timeDestroy;
+        while (timeHolder > 0)
+        {
+            timeHolder -= Time.deltaTime;
+            floatTimer += Time.deltaTime * floatFrequency;
+            transform.position = startPos + new Vector3(0, Mathf.Sin(floatTimer) * floatAmplitude, 0);
+            yield return null;
+        }
+        Destroy(this.gameObject);
     }
-    void Update()
-    {
-        if(!startFloating) return;
 
-        floatTimer += Time.deltaTime * floatFrequency;
-        transform.position = startPos + new Vector3(0, Mathf.Sin(floatTimer) * floatAmplitude, 0);
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            Debug.Log("Get Resource");
+        }
     }
+
 }

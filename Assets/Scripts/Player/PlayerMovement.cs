@@ -62,8 +62,8 @@ public class PlayerMovement : MonoBehaviour
     //    }
     //    return false;
     //}
-    private void OnCollisionEnter2D(Collision2D collision)
+    public Vector2 GetDirection()
     {
-        Debug.Log(collision.gameObject.name);
+        return new Vector2 (horizontalMovement, verticalMovement);
     }
 }

@@ -162,6 +162,7 @@ public class GameManager : MonoBehaviour
             {
                 seedSaveDatas.Add(crop.GetSaveData());
             }
+            data.plantedCrops = seedSaveDatas;
             await Save_Load_Firebase.SaveGame(data);//lưu dữ liệu vào file
             Debug.Log("Saved current scene state before transition.");
         }

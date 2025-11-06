@@ -1,5 +1,7 @@
-﻿using Unity.VisualScripting;
+﻿using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerTestMining : MonoBehaviour
 {
@@ -7,51 +9,74 @@ public class PlayerTestMining : MonoBehaviour
     [SerializeField] float interactRange = 1.5f; // khoảng cách có thể đập quặng
     [SerializeField] LayerMask oreLayer; //Layer quặng
     [SerializeField] Transform groundCheck;
+    [SerializeField]
+    PlayerMovement playerMovement;
 
-    private void Update()
+
+    private void Awake()
     {
-        HandleMining();
-    }
-    void HandleMining()
-    {
-        if (Input.GetMouseButtonDown(0))
+        if(playerMovement == null)
         {
-            TryMineOre();
+           playerMovement = GetComponent<PlayerMovement>();
         }
+    }
+
+    private void Start()
+    {
+        SceneManager.sceneLoaded += OnSceneLoad;
+    }
+
+    private void OnSceneLoad(Scene arg0, LoadSceneMode arg1)
+    {
+       if(arg0.name.Equals("MiningScene") || arg0.name.Equals("ForestScene"))
+        {
+            this.enabled = true;
+        }
+        else
+        { 
+            this.enabled = false;
+        }
+    }
+
+
+    private void OnEnable()
+    {
+        GameEventManager.Ins.gameInput.interacPressed += TryMineOre;
+    }
+
+    private void OnDisable()
+    {
+        GameEventManager.Ins.gameInput.interacPressed -= TryMineOre;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoad;
     }
    
     void TryMineOre()
     {
 
-        // Lấy vị trí con trỏ chuột trong thế giới (world space)
-        Vector3 mouseScreen = Input.mousePosition;
-        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(mouseScreen);
-        Vector2 mousePos2D = new Vector2(mouseWorld.x, mouseWorld.y);
-        Collider2D hit = Physics2D.OverlapPoint(mousePos2D, oreLayer);
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, interactRange,   oreLayer);
 
         if (hit != null)
         {
-            float dist = Vector2.Distance(groundCheck.position, hit.transform.position);
-            if (dist <= interactRange)
-            {
+           
                 // Gọi script quặng để xử lý đào
+                bool checkDirect = CheckDirection(hit.transform);
                 var ore = hit.GetComponent<OreInfor>(); // class quặng của bạn
-                if (ore != null)
+                if (ore != null && checkDirect)
                 {
-                    Debug.Log("Hit is ore");
-                    ore.MineOre();
+                        ore.MineOre();
+                    return;
                 }
                 var tree = hit.GetComponent<TreeInfor>();
-                if(tree != null)
+                if(tree != null && checkDirect)
                 {
-                    Debug.Log("hit is tree");
+                   
                     tree.OnChop();
                 }    
-            }
-        }
-        else
-        {
-            Debug.Log("hit is null");
+            
         }
     }
 
@@ -59,5 +84,22 @@ public class PlayerTestMining : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(groundCheck.position, interactRange);
+    }
+
+
+    bool CheckDirection(Transform obj)
+    {
+        if (playerMovement == null) return false;
+        Vector2 direct = (obj.position - transform.position).normalized;
+        float t  = Vector2.Dot(direct, playerMovement.GetDirection());
+        if (t > 0)
+        {
+            return true;
+        }
+        else if(t < 0) 
+        {
+            return false;
+        }
+        return false;
     }
 }

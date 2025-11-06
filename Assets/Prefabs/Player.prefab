@@ -78,8 +78,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
-  swimSpeed: 0
-  CheckGroundPoint: {fileID: 3572962789849340261}
 --- !u!70 &6612567390884234309
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -130,10 +128,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plowableLayer: {fileID: 0}
-  seedHotbar:
-  - {fileID: 11400000, guid: 08a4836648013e246bbdad8f590dbf05, type: 2}
-  - {fileID: 11400000, guid: 40d6d17bb6472b040a1a06370f2dea22, type: 2}
-  selectedSeed: {fileID: 11400000, guid: 08a4836648013e246bbdad8f590dbf05, type: 2}
   farmPlotTile: {fileID: 11400000, guid: 987f01ef8c6ab8041aab3708c9cae31a, type: 2}
   cropsLayerMask:
     serializedVersion: 2
@@ -234,7 +228,7 @@ SpriteRenderer:
   m_SortingLayerID: 1293688563
   m_SortingLayer: -5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2315132830120601726, guid: 7e5bd3d7035872548af23be64725db42, type: 3}
+  m_Sprite: {fileID: 5807921338739458136, guid: ff8dd2bed4c75cc40b3c95492640a4bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -296,7 +290,7 @@ MonoBehaviour:
   m_CategoryHash: 9.6965426e-23
   m_labelHash: 6.268214e-19
   m_SpriteKey: 0
-  m_SpriteHash: 4237331
+  m_SpriteHash: 761848416
 --- !u!114 &6265629970169200554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,7 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Library: []
-  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 5803b884ed2db3746b554050d7b930c4, type: 3}
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 24bab6445dbb25b4fbfd22b131a479bd, type: 3}
 --- !u!1 &2610162572001070063
 GameObject:
   m_ObjectHideFlags: 0
