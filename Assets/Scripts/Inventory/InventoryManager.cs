@@ -1,125 +1,163 @@
-using System.Collections.Generic;
-using Firebase.Database;
-using Firebase.Extensions;
-using NUnit.Framework;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class InventoryManager : MonoBehaviour
 {
-    public static InventoryManager Instance;
+  
     public InventorySlotUI slotUIPrefab;
     public Inventory inventory;
     public int slotAmount = 20;
     public Transform itemSlotContainer;
     public InventoryDataBaseSO itemDataBase;
     [SerializeField] ItemInforUI itemInforUI;
-    DatabaseReference reference;
+    bool isLoaded = false;
 
     List<InventorySlotUI> cachedSlotUIs = new List<InventorySlotUI>();
-    private void Awake()
+    private async void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            Instance = this;
-        }
-        reference = FirebaseDatabase.DefaultInstance.RootReference;
-        //Lay so luong slot tu firebase
-        reference.Child(Save_Load_Firebase.GetUserID()).Child("Inventory/InventoryOfPlayer/SlotAmount").GetValueAsync().ContinueWithOnMainThread(task =>
-        {
-            if (task.IsFaulted)
-            {
-                Debug.LogError("Failed to retrieve inventory data: " + task.Exception);
-            }
-            else if (task.IsCompleted)
-            {
-                DataSnapshot snapshot = task.Result;
-                if (snapshot.Exists)
-                {
-                   slotAmount = int.Parse(snapshot.Value.ToString());
-                 
-                }
-                
-            }
-        });
 
-        inventory = new Inventory(slotAmount, itemDataBase);
-        inventory.OnExpandSlot += () =>
+        if(itemDataBase == null)
         {
+            itemDataBase = Resources.Load<InventoryDataBaseSO>("Items/InventoryDataBase");
+        }
+        if (itemDataBase == null)
+        {
+            Debug.LogWarning("InventoryManager.Awake: itemDataBase is null after Resources.Load. Make sure Resources/Items/InventoryDataBase exists.");
+        }
+
+        isLoaded = false;
+
+        var slotSnapshot = await Save_Load_Firebase.LoadData("Inventory/InventoryOfPlayer/SlotAmount");
+        if (slotSnapshot != null && slotSnapshot.Exists)
+        {
+            int parsed;
+            if (int.TryParse(slotSnapshot.Value.ToString(), out parsed))
+                slotAmount = parsed;
+            else
+                Debug.LogWarning("InventoryManager.Awake: failed to parse SlotAmount, using default slotAmount.");
+        }
+        // create inventory even if itemDataBase is null — Inventory handles itemDataBase null safely now
+        inventory = new Inventory(slotAmount, itemDataBase);
+
+        // load saved slots with try/catch to catch any runtime errors and log them
+        try
+        {
+            await inventory.LoadData("InventoryOfPlayer");
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"InventoryManager.Awake: inventory.LoadData threw exception: {e}");
+        }
+
+        isLoaded = true;
+
+        inventory.OnExpandSlot += () => {
             var slotUI = Instantiate(slotUIPrefab, itemSlotContainer);
             slotUI.Init(this, cachedSlotUIs.Count);
             cachedSlotUIs.Add(slotUI);
         };
-    }
-    private void Start()
-    {
-        //khoi tao slot UI
         for (int i = 0; i < slotAmount; i++)
         {
             var slotUI = Instantiate(slotUIPrefab, itemSlotContainer);
             slotUI.Init(this, i);
             cachedSlotUIs.Add(slotUI);
-
         }
-        inventory.LoadData("InventoryOfPlayer");
-        GameInput.Ins.openBagPressed += () =>
-        {
-            gameObject.SetActive(!gameObject.activeSelf);
-            if (gameObject.activeSelf)
-            {
-                UpdateUI();
-            }
-           
-        };
+        UpdateUI();
+        GameEventManager.Ins.questEvents.onClaimReward += QuestEvents_onClaimReward;
+        GameEventManager.Ins.inventoryEvent.opendBagPressed+= Ins_openBagPressed;
+        GameEventManager.Ins.toolKitEvent.InitSuccess(inventory);
         gameObject.SetActive(false);
+    }
 
+   
+
+    private void Start()
+    {
+        GameEventManager.Ins.cookingEvent.onGetTotalItem += GetTotalItem;
+        GameEventManager.Ins.cookingEvent.onGetItem += CookingEvent_onGetItem;
+        GameEventManager.Ins.inventoryEvent.checkHasItem += CheckHasItem;
+        GameEventManager.Ins.inventoryEvent.onRemoveItemClick += RemoveItem;
+        GameEventManager.Ins.inventoryEvent.onRemoveItemCompleted += OnRemoveItemCompleted;
+        GameEventManager.Ins.inventoryEvent.onRemoveItemByData += RemoveItemByData;
+        GameEventManager.Ins.inventoryEvent.onAddItem += AddItem;
+        GameEventManager.Ins.inventoryEvent.onDropItem += OnDropItem;
+
+    }
+
+    private void Ins_openBagPressed()
+    {
+        if(inventory == null)
+        {
+            Debug.Log("Inventory null");
+        }
+        gameObject.SetActive(!gameObject.activeSelf);
+        if (gameObject.activeSelf)
+        {
+            UpdateUI();
+        }
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            inventory.AddItem(Resources.Load<ItemDataSO>("Items/ConsumpItem/TestItem"), 1);
-            UpdateUI();
+            AddItem(Resources.Load<ItemDataSO>("Items/ConsumpItem/TestItem"), 1);// Giả lập thêm Item
+         
         }
         if(Input.GetKeyDown(KeyCode.T))
         {
-            inventory.AddItem(Resources.Load<ItemDataSO>("Items/ConsumpItem/TestItem2"), 2);
-            UpdateUI();
+           AddItem(Resources.Load<ItemDataSO>("Items/ConsumpItem/TestItem2"), 2); //Giả lập thêm item
+     
         }
-    }
-    private async void OnDisable()
-    {
-        await inventory.SaveData("InventoryOfPlayer");
-    }
-
-    public void UpdateUI()
-    {
-        foreach (var slot in cachedSlotUIs)
+        if (Input.GetKeyDown(KeyCode.L))
         {
-            slot.UpdateUI();
+            AddItem(Resources.Load<SeedData>("Items/PlantData/SeedData_4/Seed_Carrot"), 10);
         }
     }
-
-    public void OnDropItem(PointerEventData eventData)
+    private void OnDisable()
     {
-       
-        if(!eventData.pointerDrag.TryGetComponent<InventorySlotUI>(out InventorySlotUI start) || !eventData.pointerEnter.TryGetComponent<InventorySlotUI>(out InventorySlotUI end))
-        {
-            return;
-        }
-        inventory.MergeItem(inventory.itemSlots[start.slotIndex], inventory.itemSlots[end.slotIndex]);
-        UpdateUI();
+        if(isLoaded)
+         inventory.SaveData("InventoryOfPlayer");
+        itemInforUI.gameObject?.SetActive(false);
+    }
+    private void OnDestroy()
+    {
+        //GameInput.Ins.openBagPressed -= Ins_openBagPressed;
+        GameEventManager.Ins.inventoryEvent.opendBagPressed -= Ins_openBagPressed;
+        GameEventManager.Ins.questEvents.onClaimReward -= QuestEvents_onClaimReward;
+        GameEventManager.Ins.inventoryEvent.onRemoveItemClick -= RemoveItem;
+        GameEventManager.Ins.inventoryEvent.onRemoveItemCompleted -= OnRemoveItemCompleted;
+        GameEventManager.Ins.cookingEvent.onGetTotalItem -= GetTotalItem;
+        GameEventManager.Ins.cookingEvent.onGetItem -= CookingEvent_onGetItem;
+        GameEventManager.Ins.inventoryEvent.checkHasItem -= CheckHasItem;
+        GameEventManager.Ins.inventoryEvent.onRemoveItemByData -= RemoveItemByData;
+        GameEventManager.Ins.inventoryEvent.onAddItem -= AddItem;
+        GameEventManager.Ins.inventoryEvent.onDropItem -= OnDropItem;
     }
 
     private void OnValidate()
     {
         itemDataBase = Resources.Load<InventoryDataBaseSO>("Items/InventoryDataBase");
     }
+
+  
+    public void OnDropItem(PointerEventData eventData)
+    {
+       
+        if(!eventData.pointerDrag.TryGetComponent<IDragDrop>(out IDragDrop start) || !eventData.pointerEnter.TryGetComponent<IDragDrop>(out IDragDrop end))
+        {
+            return;
+        }
+        if (start.GetIndex() == end.GetIndex())
+        {
+            return;
+        }
+        inventory.MergeItem(inventory.itemSlots[start.GetIndex()], inventory.itemSlots[end.GetIndex()]);
+        UpdateUI();
+      
+    }
+
 
 
     public void OnPointerClickSlotUI(int indexSlotUI)
@@ -129,11 +167,94 @@ public class InventoryManager : MonoBehaviour
             ItemDataSO itemData = inventory.itemSlots[indexSlotUI].ItemData;     
             itemInforUI.UpdateUI(itemData);
             itemInforUI.gameObject.SetActive(true);
-            
-        }
-
-        
+            itemInforUI.SlotIndex = indexSlotUI;
+        }    
 
     }
 
+   
+
+    public bool AddItem(ItemDataSO itemDataSO, int quantity = 1)
+    {
+        if(itemDataSO == null)
+        {
+            Debug.Log($"ItemdataSo is null");
+            return false;
+        }
+        Debug.Log($"ItemDataSO {itemDataSO.name}");
+        if (inventory.AddItem(itemDataSO, quantity))
+        {
+            GameEventManager.Ins.TriggerDialog($"<color=green>{itemDataSO._itemName} đã được thêm vào kho đồ của bạn</color>");
+            if (gameObject.activeSelf)
+                UpdateUI();
+            return true;
+        }
+        else
+        {
+            GameEventManager.Ins.TriggerDialog("<color=red>Vui lòng kiểm tra kho đồ, hiện tại không thể thêm vật phẩm</color>");
+            return false;
+        }
+        
+    }
+
+
+
+    public void UpdateUI()
+    {
+        foreach (var slot in cachedSlotUIs)
+        {
+            slot.UpdateUI();
+        }
+        GameEventManager.Ins.toolKitEvent.UpdateUI();
+    }
+
+
+
+    private void QuestEvents_onClaimReward(Quest quest)
+    {
+        if (quest == null || quest.questInforSO == null || quest.questInforSO.reward == null || quest.questInforSO.reward.items == null)
+            return;
+
+        RewardData reward = quest.questInforSO.reward;
+        foreach (var item in reward.items)
+        {
+            if (item != null && item.itemSO != null && item.quantity > 0)
+            {
+                AddItem(item.itemSO, item.quantity);
+            }
+        }
+    }
+
+    void RemoveItem(int slotIndex, int quantity)
+    {
+        inventory.RemoveItem(slotIndex, quantity);
+        UpdateUI();
+
+    }
+
+    void RemoveItemByData(ItemDataSO item, int quantity)
+    {
+        inventory.RemoveItem(item, quantity);
+    }
+
+    void OnRemoveItemCompleted(bool isActiveFalse) {
+        if (isActiveFalse)
+        {
+            itemInforUI.gameObject.SetActive(false);
+        }
+    }
+
+    private int GetTotalItem(ItemDataSO itemData)
+    {
+        return inventory.GetTotal(itemData);
+    }
+    private void CookingEvent_onGetItem(ItemDataSO itemDataSO, int quantity)
+    {
+        AddItem(itemDataSO, quantity);
+    }
+
+    bool CheckHasItem(ItemDataSO itemDataSO, int quantity)
+    {
+        return inventory.HasItem(itemDataSO, quantity);
+    }
 }

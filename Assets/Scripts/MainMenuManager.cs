@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Threading.Tasks;
+using UnityEditor.VersionControl;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,13 +11,17 @@ public class MainMenuManager : MonoBehaviour
     public string newGameScene = "CustomizeCharacter";
 
     public string mainGameScene = "Farm";
-
-    private void Start()
+    bool isDataExists = false;
+    private async void Start()
     {
+        var task = await Save_Load_Firebase.LoadGame();
+        isDataExists = task != null;
         //kiểm tra có file save hay không để kích hoat nút Load Game
-        if(loadGameButton != null)
+        if (loadGameButton != null)
         {
-            loadGameButton.interactable = SaveSystem.DoesSaveFileExist();
+          
+
+            loadGameButton.interactable = isDataExists;
         }
     }
 
@@ -26,11 +32,11 @@ public class MainMenuManager : MonoBehaviour
         SceneManager.LoadScene(newGameScene);//chuyển đến
     }
 
-    public void OnLoadGameButton()
+    public async void OnLoadGameButton()
     {
-        if (SaveSystem.DoesSaveFileExist())
+        if (isDataExists)
         {
-            GameData data = SaveSystem.LoadGame();//tải dữ liệu từ file
+            GameData data = await Save_Load_Firebase.LoadGame();//tải dữ liệu từ file
             GameLoader.LoadGame(data);//đặt cờ tải game và lưu dữ liệu tạm thời
             SceneManager.LoadScene(mainGameScene);//chuyển đến cảnh chính của game
         }

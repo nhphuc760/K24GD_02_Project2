@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.U2D.Animation;
@@ -15,8 +16,6 @@ public class CharacterSelectManagement : MonoBehaviour
     public TMP_InputField playerNameInput;
 
     [Header("Character Info")]
-    private SpriteLibrary spriteLibrary;
-    private SpriteResolver spriteResolver;
     public GameObject characterPreview; // GameObject to display character's sprite
     private int currentIndex = 0;
     private string playerName = "";
@@ -77,7 +76,7 @@ public class CharacterSelectManagement : MonoBehaviour
         }
     }
 
-    public void ConfirmSelection()
+    public async void ConfirmSelection()
     {
         Debug.Log($"[KIỂM TRA] Giá trị của playerName ngay khi nhấn Confirm là: '{playerName}'");
         if (string.IsNullOrWhiteSpace(playerNameInput.text))
@@ -104,7 +103,7 @@ public class CharacterSelectManagement : MonoBehaviour
         GameData newGameData = new GameData();
         newGameData.selectedCharacterName = playerName;
         newGameData.characterSpriteLibraryAssetName = selectedCharacter.SpriteLibraryAsset.name;
-        SaveSystem.SaveGame(newGameData);
+        await Save_Load_Firebase.SaveGame(newGameData);
         GameLoader.NewGame();
         Debug.Log($"<color=yellow>[GỬI ĐI] PlayerDataHolder vừa nhận được tên: '{PlayerDataHolder.instance.selectedCharacterName}'</color>");
         SceneManager.LoadScene("Farm");

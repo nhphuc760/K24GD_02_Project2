@@ -1,0 +1,27 @@
+using System;
+using UnityEngine;
+
+public class ShopEvent 
+{
+    public event Action onPointerEnter;
+    public void PointerEnter() { 
+        onPointerEnter?.Invoke();
+    }
+    public event Action onPointerExit;
+    public   void PointerExit() { onPointerExit?.Invoke(); }
+    public event Action<string> onShowToolTip;
+    public void ShowToolTip(string message)
+    {
+        onShowToolTip?.Invoke(message);
+    }
+    public event Action onShow;
+    public void Show()
+    {
+        onShow?.Invoke();
+    }
+    public event Action onHide;
+    public void Hide()
+    {
+        onHide?.Invoke();
+    }
+}

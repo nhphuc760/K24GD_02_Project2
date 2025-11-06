@@ -11,6 +11,7 @@ public class InventoryDataBaseSO : ScriptableObject
     {
         return itemDataSOs.Find(x => x._id == id);
     }
+    public int GetCount() => itemDataSOs.Count;
     private void OnValidate()
     {
         itemDataSOs = Resources.LoadAll<ItemDataSO>("Items").ToList();

@@ -1,16 +1,19 @@
 using System;
 using UnityEngine;
-
-[Serializable]
 public class QuestStepState 
 {
-    public string state;
-    public QuestStepState(string state)
+    public int current;
+    public int target;
+    public QuestStepState(int current)
     {
-        this.state = state;
+        this.current = current;
     }
     public QuestStepState()
     {
-        this.state = "";
+        this.current = 0;
+    }
+    public override string ToString()
+    {
+        return $"{current}/{target}";
     }
 }

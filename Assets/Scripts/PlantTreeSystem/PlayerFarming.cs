@@ -1,14 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class PlayerFarming : MonoBehaviour
 {
     public Tilemap plowableLayer; // Tilemap for plowable ground
-
-    public List<CropData> seedHotbar;
-    public CropData selectedSeed;
     public TileBase farmPlotTile;
     public LayerMask cropsLayerMask;//quét tìm cropsLayerMask
     public LayerMask interactableLayerMask;//quét tìm interactableLayerMask
@@ -16,61 +15,70 @@ public class PlayerFarming : MonoBehaviour
 
     private void Start()
     {
-        if(seedHotbar.Count > 0)
-        {
-            selectedSeed = seedHotbar[0]; // Mặc định chọn loại hạt giống đầu tiên trong danh sách
-        }
+      
+        SceneManager.sceneLoaded += OnSceneLoad; //Tắt script nếu không cần thiết
     }
 
-    private void Update()
+    private void OnSceneLoad(Scene arg0, LoadSceneMode arg1)
     {
-        HandleInput();
+        if (!arg0.name.Equals("Farm"))
+        {
+            this.enabled = false;
+        }
+        else
+        {
+            this.enabled = true;
+        }
     }
-    void HandleSeedSelection()
+    private void OnEnable()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1) && seedHotbar.Count >= 1) { selectedSeed = seedHotbar[0]; Debug.Log("Đã chọn: " + selectedSeed.cropName); }
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && seedHotbar.Count >= 2) { selectedSeed = seedHotbar[1]; Debug.Log("Đã chọn: " + selectedSeed.cropName); }
+        GameEventManager.Ins.gameInput.interacPressed += HandleInput;
+    }
+
+    private void OnDisable()
+    {
+        GameEventManager.Ins.gameInput.interacPressed -= HandleInput;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoad;
     }
     void HandleInput()
     {
-        HandleSeedSelection();
-        
-        if (Input.GetKeyDown(KeyCode.Space))
+        InventorySlot curSelected = GameEventManager.Ins.toolKitEvent.GetCurDataChoose();
+        if(curSelected == null)
         {
-            Collider2D hit = Physics2D.OverlapCircle(transform.position, interactionRadius, interactableLayerMask);
-            if(hit != null && hit.GetComponent<IInteractable>() != null)
-            {
-                hit.GetComponent<IInteractable>().Interact();
-            }
-            else if(selectedSeed != null)
-            {
-                Plant(selectedSeed);
-            }
+            GameEventManager.Ins.TriggerDialog("<color=red>Bạn chưa chọn hạt giống</color>");
+            return;
         }
-    }
-    //void TryInteract()
-    //{
-    //    Collider2D hit  = Physics2D.OverlapCircle(transform.position, interactionRadius);
-    //    if(hit != null)
-    //    {
-    //        //Thữ lấy IInteraactable từ đối tượng bị va chạm
-    //        IInteractable interactableObject = hit.GetComponent<IInteractable>();
-    //        if(interactableObject != null)
-    //        {
-    //            //Néu có thì gọi hàm Interact
-    //            interactableObject.Interact();
-    //            return;
-    //            Debug.Log("Đã tương tác với " + hit.name);
-    //        }
-    //    }
-    //    if(selectedSeed != null)
-    //    {
-    //        Plant(selectedSeed);
-    //    }
-    //}
+        var seedData = curSelected.ItemData as SeedData;
+        
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, interactionRadius, interactableLayerMask);
+        if (hit != null && hit.GetComponent<IInteractable>() != null)
+        {
+            Debug.Log("Harvest");
+            hit.GetComponent<IInteractable>().Interact();
+            return;
+        }
 
-    void Plant(CropData cropToPlant)
+        if (seedData == null)
+        {
+            GameEventManager.Ins.TriggerDialog("<color=red>Bạn chưa chọn hạt giống</color>");
+            return;
+        }
+        Plant(seedData);
+        
+    }
+
+
+    //Trồng, thu hoạch cây.
+    void Plant(SeedData cropToPlant)
     {
+        if(plowableLayer == null)
+        {
+            plowableLayer = GameObject.FindGameObjectWithTag("FarmLand").GetComponent<Tilemap>();
+        }
         Vector3Int cellPosition = plowableLayer.WorldToCell(transform.position);
         Vector3 cellCenterPosition = plowableLayer.GetCellCenterWorld(cellPosition);
         TileBase currentTile = plowableLayer.GetTile(cellPosition);
@@ -80,14 +88,13 @@ public class PlayerFarming : MonoBehaviour
             if (existingCrop == null)
             {
                 // Thì mới tiến hành trồng cây
-                GameObject cropInstance = Instantiate(cropToPlant.cropPrefab, cellCenterPosition, Quaternion.identity);
-                cropInstance.GetComponent<Crop>().Plant(cropToPlant);
-                Debug.Log($"Đã trồng {cropToPlant.cropName} tại ô {cellPosition}");
+                GameObject cropInstance = Instantiate(cropToPlant.cropData.prefab, cellCenterPosition, Quaternion.identity);
+                cropInstance.GetComponent<Seed>().Plant(cropToPlant);
+                Debug.Log($"Đã trồng {cropToPlant._itemName} tại ô {cellPosition}");
             }
             else
             {
-                // Nếu đã có cây, báo cho chúng ta biết
-                Debug.Log("Ô này đã được trồng rồi!");
+                GameEventManager.Ins.TriggerDialog("Ô này đã được trồng rồi");
             }
         }
     }

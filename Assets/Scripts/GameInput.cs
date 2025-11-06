@@ -2,45 +2,60 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class GameInput : MonoBehaviour 
+public class GameInput
 {
-    public static GameInput Ins { get; private set; }
-    InputSystem_Actions inputActions;
-    public event Action submitPressed;
-    public event Action openBagPressed;
-
-    private void Awake()
+    InputSystem_Actions inputAction;
+    public event Action interacPressed;
+    
+    public GameInput()
     {
-       
-        if(Ins!= null && Ins != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            Ins = this;
-        }
-            inputActions = new InputSystem_Actions();
-        inputActions.Player.Enable();
-        inputActions.Player.Interact.performed += _ => { Interact_performed(); };
-        inputActions.Player.OpenBag.performed += _ => { OpenBag_performed(); };
+        inputAction = new InputSystem_Actions();
     }
 
-    private void OpenBag_performed()
+    public GameInput(InputSystem_Actions inputActions)
     {
-       openBagPressed?.Invoke();
+        this.inputAction = inputActions;
+    }
+
+    public void Init()
+    {
+        inputAction.Player.Enable();
+        inputAction.Player.OpenBag.performed += _ => { GameEventManager.Ins.inventoryEvent.OpenBagPress(); };
+        inputAction.Player.Interact.performed += _ => { Interact_performed(); };
+        inputAction.Player.SelectToolKit.performed += SelectToolKit_performed;
+    }
+
+    private void SelectToolKit_performed(InputAction.CallbackContext context)
+    {
+        string key = context.control.name;
+        if(int.TryParse(key, out int num))
+        {
+            GameEventManager.Ins.toolKitEvent.CallInput(num);
+        }
     }
 
     private void Interact_performed()
     {
-        submitPressed?.Invoke();
+        Debug.Log("OnSubmit pressed");
+        if(interacPressed == null)
+        {
+            Debug.Log("interact is not asign");
+        }
+       
+        interacPressed?.Invoke();
     }
 
-   
-   
     public Vector2 GetInputMovementNormalize()
     {
-        return inputActions.Player.Move.ReadValue<Vector2>().normalized;
+        return inputAction.Player.Move.ReadValue<Vector2>().normalized;
     }
-    
+    public void Enable_InputAction()
+    {
+        inputAction.Player.Enable();
+    }
+
+    public void Disable_InputAction()
+    {
+        inputAction.Player.Disable();
+    }
 }

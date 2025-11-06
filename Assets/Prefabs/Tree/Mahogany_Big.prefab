@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mahogany_Big
       objectReference: {fileID: 0}
+    - target: {fileID: 540968652401062206, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 2455913673430908366, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.004
@@ -65,6 +69,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7108339969198208228, guid: 9250771830c31164284d29748bdc4d1f, type: 3}
     - target: {fileID: 7236576008810215604, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236576008810215604, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -88,8 +96,72 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -1.1208991
       objectReference: {fileID: 0}
+    - target: {fileID: 8737672463606910502, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 540968652401062206, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 229941974851165642}
+    - targetCorrespondingSourceObject: {fileID: 540968652401062206, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1823001278935332341}
   m_SourcePrefab: {fileID: 100100000, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
+--- !u!1 &5785825276416862927 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 540968652401062206, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
+  m_PrefabInstance: {fileID: 6326019743504473073}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &229941974851165642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5785825276416862927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc96dff9b75010b479bf2556ce2b4f8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner: {fileID: 0}
+  treePrefab: {fileID: 0}
+  respawnDelay: 10
+  spawnArea: {fileID: 0}
+  maxHitPoints: 3
+  woodPrefab: {fileID: 3186487738297421167, guid: 75d6e39dc172c9b408eb648c05c1a32a, type: 3}
+  dropCount: 2
+  dropForce: 2
+  shakeDuration: 0.1
+  shakeAmount: 0.08
+--- !u!50 &1823001278935332341
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5785825276416862927}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

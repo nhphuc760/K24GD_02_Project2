@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Threading.Tasks;
+using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
@@ -6,16 +7,16 @@ public class Portal : MonoBehaviour
     public Vector3 targetPosition; // Vị trí mục tiêu trong cảnh mới
 
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private  void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             Debug.Log($"Player đã chạm vào cổng, chuẩn bị tải scene: {sceneToLoad}");
 
             // Ra lệnh cho GameManager "bất tử" xử lý việc chuyển cảnh
-            if (GameManager.instance != null)
+            if (GameManager.Ins != null)
             {
-                GameManager.instance.StartSceneTransition(sceneToLoad, targetPosition);
+                GameManager.Ins.StartSceneTransition(sceneToLoad, targetPosition);
             }
         }
     }

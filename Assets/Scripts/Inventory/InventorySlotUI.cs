@@ -3,9 +3,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler, IPointerClickHandler
+public class InventorySlotUI : MonoBehaviour, IDragDrop, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] Image backGround;
+   public Image backGround;
     [SerializeField] Image _icon;
     [SerializeField] TextMeshProUGUI _quantityText;
     Image dragIcon;
@@ -39,9 +39,13 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler
 
     public void OnDrag(PointerEventData eventData) // Ham callback unity, duoc goi khi keo
     {
+        if (inventoryManager.inventory.itemSlots[slotIndex].IsEmpty) return;
         if (dragIcon != null)
             dragIcon.transform.position = eventData.position;
+      
+
     }
+
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -51,7 +55,7 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler
         dragIcon.sprite = slot.ItemData._icon;
         dragIcon.color = Color.white;
         dragIcon.raycastTarget = false;
-        dragIcon.transform.SetParent(inventoryManager.transform);
+        dragIcon.transform.SetParent(inventoryManager.transform.parent);
         dragIcon.rectTransform.sizeDelta = new Vector2(64, 64);
     }
 
@@ -72,5 +76,41 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler
     {
 
         inventoryManager.OnDropItem(eventData);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (eventData.pointerDrag == null)
+        {
+            backGround.color = Color.gray;
+            return;
+        } 
+        if (!eventData.pointerDrag.TryGetComponent<IDragDrop>(out IDragDrop start))
+        {
+            return;
+        }
+        if (inventoryManager.inventory.TryDropItem(inventoryManager.inventory.itemSlots[start.GetIndex()], inventoryManager.inventory.itemSlots[slotIndex]))
+        {
+            backGround.color = Color.green;
+        }
+        else
+        {
+            backGround.color = Color.red;
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+      backGround.color = Color.white;
+    }
+
+    public ItemDataSO GetItemDataSO()
+    {
+        return inventoryManager.inventory.itemSlots[slotIndex].ItemData;
+    }
+
+    public int GetIndex()
+    {
+       return slotIndex;
     }
 }

@@ -1,84 +1,75 @@
+﻿using System;
 using UnityEngine;
 
-public class Quest
+[Serializable]
+public class Quest 
 {
-    public QuestInfoSO info;
-    public QuestState state;
-    int currentQuestStepIndex;
-    QuestStepState[] questStepStates;
-    public Quest(QuestInfoSO infor)
+    public QuestInforSO questInforSO;
+    private QuestState _questState;
+    private QuestStepState _questStepStates;
+    public bool isClaimRewards = false;
+
+    // Public properties use backing fields and only invoke events when state actually changes
+    public QuestState questState
     {
-        this.info = infor;
-        this.state = QuestState.REQUIREMENTS_NOT_MET;
-        this.currentQuestStepIndex = 0;
-        this.questStepStates = new QuestStepState[infor.questStepPrefabs.Length];
-        currentQuestStepIndex = 0;
-        for(int i = 0; i <  infor.questStepPrefabs.Length; i++)
-        {
-            questStepStates[i] = new QuestStepState();
+        get => _questState;
+        set
+        {    
+            _questState = value;
+            questStateChanged?.Invoke(value);
         }
     }
-    public Quest(QuestInfoSO questInfoSO, QuestState questState, int currentQuestStepIndex, QuestStepState[] questStepStates )
+
+    public QuestStepState questStepStates
     {
-        this.info = questInfoSO;
-        this.state = questState;
-        this.currentQuestStepIndex = currentQuestStepIndex;
+        get => _questStepStates;
+        set
+        {
+            _questStepStates = value;
+            questStepStateChanged?.Invoke(value);
+        }
+    }
+
+    public event Action<QuestState> questStateChanged;
+    public event Action<QuestStepState> questStepStateChanged;
+
+    public Quest(QuestInforSO questInforSO)
+    {
+        this.questInforSO = questInforSO;
+        this.questState = QuestState.REQUIREMENTS_NOT_MET;
+        this.questStepStates = new QuestStepState();
+    }
+
+    public Quest(QuestInforSO questInforSO, QuestState questState, QuestStepState questStepStates, bool isClaimed)
+    {
+        this.questInforSO = questInforSO;
+        this.questState = questState;
         this.questStepStates = questStepStates;
-        if(this.questStepStates.Length != this.info.questStepPrefabs.Length)
-        {
-            Debug.LogWarning("");
-        }
+        this.isClaimRewards = isClaimed;
     }
 
-    public void MoveToNextStep()
+    /// <summary>
+    /// Instantitate gameObject QuestStep
+    /// </summary>
+    /// <param name="parent"></param>
+    public void InstantiateQuestStep(Transform parent)
     {
-        currentQuestStepIndex++;
-       
-
-    }
-    public bool CurrentStepExists()
-    {
-        return currentQuestStepIndex < info.questStepPrefabs.Length;
-    }
-    public void InstantiateCurrentQuestStep(Transform parent)
-    {
-        GameObject questStepPrefab = GetCurrentQuestStepPrefab();
-        if(questStepPrefab != null)
-        {
-            QuestStep questStep =  Object.Instantiate<GameObject>(questStepPrefab, parent).GetComponent<QuestStep>();
-            questStep.InitializeQuestStep(info.id, currentQuestStepIndex, questStepStates[currentQuestStepIndex].state);
-        }
+        QuestStep questStep = GameObject.Instantiate(questInforSO.questStepPrefab, parent).GetComponent<QuestStep>();
+        questStep.IniteialQuestStep(questInforSO._id, questStepStates);
     }
 
-    public GameObject GetCurrentQuestStepPrefab()
+    /// <summary>
+    ///  Cập nhật questStepState vào quest
+    /// </summary>
+    /// <param name="questStepState"></param>
+    /// <param name="index"></param>
+    public void StoreQuestStepState(QuestStepState questStepState)
     {
-        GameObject questStepPrefab = null;
-        if (CurrentStepExists())
-        {
-            questStepPrefab = info.questStepPrefabs[currentQuestStepIndex];
-        }
-        else
-        {
-
-        }
-        return questStepPrefab; 
+        this.questStepStates = questStepState;
     }
 
-    public void StoreQuestStepState(QuestStepState questStepState, int stepIndex)
-    {
-        if(stepIndex < questStepStates.Length)
-        {
-            questStepStates[stepIndex].state = questStepState.state;
-        }
-        else
-        {
-            Debug.Log("Tried to access out of range");
-        }
-    }
     public QuestData GetQuestData()
     {
-        return new QuestData(state, currentQuestStepIndex, questStepStates);
+        return new QuestData(questInforSO._id, questState, questStepStates, isClaimRewards);
     }
-
-
 }

@@ -7,9 +7,10 @@ public class LoadingScene : MonoBehaviour
 {
     [SerializeField] Image fill;
     [SerializeField] float timeLoad = 3f;
+    public static string sceneTarget;
     void Start()
     {
-        StartCoroutine(Loading());
+        StartCoroutine(LoadSceneAsync());
     }
 
     // Update is called once per frame
@@ -25,6 +26,14 @@ public class LoadingScene : MonoBehaviour
         }
         SceneManager.LoadScene("WaterFall");
     }
-
     
+    IEnumerator LoadSceneAsync()
+    {
+        var task = SceneManager.LoadSceneAsync(sceneTarget);
+        while (!task.isDone)
+        {
+            fill.fillAmount = Mathf.Clamp01( task.progress/0.9f);
+            yield return null;
+        }
+    }  
 }

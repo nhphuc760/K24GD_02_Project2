@@ -1,10 +1,13 @@
 using System;
+using System.IO;
+using System.Threading.Tasks;
 using Firebase.Database;
-using Firebase.Extensions;
 using Newtonsoft.Json;
+using Unity.VisualScripting;
 using UnityEngine;
 public static class Save_Load_Firebase 
 {
+    static DatabaseReference reference = FirebaseDatabase.DefaultInstance.RootReference;
     public static string GetUserID()
     {
         var user = Firebase.Auth.FirebaseAuth.DefaultInstance.CurrentUser;
@@ -19,37 +22,75 @@ public static class Save_Load_Firebase
         }
     }  
     
-    public static void SaveData<T>(string path, T value, Action actionContinueWithMain)
+    public static async Task SaveData(string path, object value)
     {
-        var reference = FirebaseDatabase.DefaultInstance.RootReference;
-        reference.Child(GetUserID()).Child(path).SetValueAsync(value).ContinueWithOnMainThread(task =>
+       
+        await reference.Child(GetUserID()).Child(path).SetValueAsync(value);
+       
+    }
+
+    public static async Task<DataSnapshot> LoadData(string path)
+    {
+        
+        DataSnapshot snapshot = await reference.Child(GetUserID()).Child(path).GetValueAsync();
+        return snapshot;
+
+    }
+    public static async Task<DateTime?> GetSeverDateTime()
+    {
+
+        try
         {
-            if (task.IsFaulted || task.IsCanceled)
+            await reference.Child("SeverTime").SetValueAsync(Firebase.Database.ServerValue.Timestamp);
+            var task = reference.Child("SeverTime").GetValueAsync();
+            await task;
+            if (task.IsCompleted)
             {
-                Debug.LogError("Data could not be saved: " + task.Exception);
+                DataSnapshot dataSnapshot = task.Result;
+                long severMiliseconds = (long)dataSnapshot.Value;
+                return DateTimeOffset.FromUnixTimeMilliseconds(severMiliseconds).UtcDateTime;
+            }
+        }catch(Exception e)
+        {
+            Debug.LogError($"GetServerDateTime error: {e.Message}");
+        }
+        return null;
+    }
+
+    public static async Task<GameData> LoadGame()
+    {
+        try
+        {
+           var task = await LoadData("GameData");
+            if (task.Exists)
+            {
+                GameData data = JsonConvert.DeserializeObject<GameData>(task.Value.ToString());
+                return data;
             }
             else
             {
-                Debug.Log("Data saved successfully.");
-                actionContinueWithMain?.Invoke();
+                return new GameData();
             }
-        });
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e.Message);
+            return new GameData();
+        }
     }
 
-    public static void LoadData<T>(string path, Action<T> actionContinueWithMain)
+    public static async Task SaveGame(GameData data)
     {
-        var reference = Firebase.Database.FirebaseDatabase.DefaultInstance.RootReference;
-        reference.Child(GetUserID()).Child(path).GetValueAsync().ContinueWithOnMainThread(task =>
+      
+        string json = JsonConvert.SerializeObject(data);
+        try
         {
-            if (task.IsFaulted || task.IsCanceled)
-            {
-                Debug.LogError("Data could not be loaded: " + task.Exception);
-              
-            }
-            else if (task.IsCompleted)
-            {
-               
-            }
-        });
+            await SaveData("GameData", json);
+        }
+        catch (System.Exception e)
+        {
+            Debug.Log(e.Message + "\n" + "From SaveGame() - Save_Load_Firebase");
+        }
     }
+
 }
