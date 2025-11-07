@@ -8,7 +8,6 @@ public class PlayerTestMining : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float interactRange = 1.5f; // khoảng cách có thể đập quặng
     [SerializeField] LayerMask oreLayer; //Layer quặng
-    [SerializeField] Transform groundCheck;
     [SerializeField]
     PlayerMovement playerMovement;
 
@@ -78,12 +77,6 @@ public class PlayerTestMining : MonoBehaviour
                 }    
             
         }
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(groundCheck.position, interactRange);
     }
 
 

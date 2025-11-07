@@ -9,25 +9,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0114063b82b843b4bbbeed4f1d83a0fd, type: 3}
-  m_Name: Seed_Strawberry
+  m_Script: {fileID: 11500000, guid: 5e90ab3f715a7ab40947acd3c0c41720, type: 3}
+  m_Name: Seed_StrawBerry
   m_EditorClassIdentifier: 
-  _id: 401
-  _itemName: Seed_Strawberry
-  _icon: {fileID: 8369948372191450990, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
+  _id: 402
+  _itemName: Seed_StrawBerry
+  _icon: {fileID: 0}
   _description: "H\u1EA1t gi\u1ED1ng d\xE2u t\xE2y"
   _maxStack: 99
   isStackable: 1
   itemType: 0
-  DaysToGrow: 3
+  DaysToGrow: 1
   cropData: {fileID: 11400000, guid: 1f94f111a1ac56c48a45d4d530c74c24, type: 2}
   growhtSprites:
+  - {fileID: 8369948372191450990, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
   - {fileID: -3402868906910896487, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
   - {fileID: 7953443401717196921, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
   - {fileID: 240733362411572873, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
   - {fileID: 1734387795819554390, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
   - {fileID: 8578180459406042070, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
   harvestIndicator: {fileID: -7998690685759499793, guid: 5fa6f306aca02f84497c285587e49872, type: 3}
-  purchasePrice: 4
+  purchasePrice: 3
   sellPrice: 5
   yield: 10

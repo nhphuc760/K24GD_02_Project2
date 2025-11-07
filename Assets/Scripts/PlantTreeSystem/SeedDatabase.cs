@@ -8,14 +8,14 @@ using UnityEngine;
 public class SeedDatabase: ScriptableObject
 {
     //Danh sach các loại cây trồng trong game
-    public List<SeedData> allSeedData;
+    public List<SeedDataSO> allSeedData;
 
     //tìm cropData theo id
-    public SeedData GetSeedDataByID(int id)
+    public SeedDataSO GetSeedDataByID(int id)
     {
         if (allSeedData == null)
             return null;
-        foreach(SeedData data in allSeedData)
+        foreach(SeedDataSO data in allSeedData)
         {
             if (data != null && data._id == id)
             {
@@ -28,7 +28,7 @@ public class SeedDatabase: ScriptableObject
 
     private void OnValidate()
     {
-        allSeedData = Resources.LoadAll<SeedData>("Items").ToList();
+        allSeedData = Resources.LoadAll<SeedDataSO>("Items").ToList();
     }
 
 }

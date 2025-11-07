@@ -61,6 +61,7 @@ public class Inventory
 
     public bool TryDropItem(InventorySlot start, InventorySlot end)
     {
+        
         if (start.ItemData == end.ItemData && start.ItemData.isStackable)
         {
             int totalQuantity = start.quantity + end.quantity;

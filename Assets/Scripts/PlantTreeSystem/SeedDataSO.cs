@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SeedData", menuName = "Scriptable Objects/SeedData")]
-public class SeedData : ItemDataSO 
+[CreateAssetMenu(fileName = "SeedDataSO", menuName = "Scriptable Objects/SeedDataSO")]
+public class SeedDataSO : ItemDataSO 
 {
     [Header("Crop Info")]
     public int DaysToGrow; // Number of days to fully grow

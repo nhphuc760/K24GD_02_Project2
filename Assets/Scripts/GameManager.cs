@@ -5,18 +5,16 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System;
-
+using Newtonsoft.Json;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Ins;
-
-    [Header("Editor Test Data")]
-    public string testPlayerName = "Test Dũng";
-    public Sprite testPlayerAvatar;
-    public SpriteLibraryAsset testSpriteLibrary;
+    [Header("Reference")]
+    [SerializeField] CharacterDatabase characterDatabase;
     [SerializeField] GameObject playerPrefab;
-    public SeedDatabase seedDataBase; // Cơ sở dữ liệu cây trồng chung cho toàn game
-    //portal
+    [SerializeField] SeedDatabase seedDataBase; // Cơ sở dữ liệu cây trồng chung cho toàn game
+    public event Action<PlayerData, CharacterDataSO> onLoadDataCompleted;
+
     
     int _coins;
     public int Coin 
@@ -55,6 +53,31 @@ public class GameManager : MonoBehaviour
     }
     //Để Script giúp cho GManager "lắng nghe" sự kiện khi scene thay đổi không bị mất đi
     // Đăng ký "lắng nghe" sự kiện khi scene thay đổi
+
+
+    private async void Start()
+    {
+        try
+        {
+            var task = await Save_Load_Firebase.LoadData("PlayerData");
+            if (task.Exists)
+            {
+                PlayerData data = JsonConvert.DeserializeObject<PlayerData>(task.Value.ToString());
+                CharacterDataSO characterDataSO = characterDatabase.characters[data.indexAsset];
+                onLoadDataCompleted?.Invoke(data, characterDataSO);
+            }
+            else
+            {
+                onLoadDataCompleted?.Invoke(null, characterDatabase.characters[0]);
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e.Message);
+        }
+    }
+
+
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -73,46 +96,19 @@ public class GameManager : MonoBehaviour
     private async void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         //tải lại cây trồng khi load scene
-        GameData data = await Save_Load_Firebase.LoadGame();
-        LoadCropsForScene(scene.name, data);
-        // Chỉ chạy logic này khi chúng ta vào một scene game (không phải Main Menu hay CharacterSelect),login,loadscene...
-        if (scene.name != "PersistentSystems" && scene.name != "CustomizeCharacter")
+        string path = scene.path;
+        //chỉ load khi vào scene Play;
+        if (!path.StartsWith("Assets/Scenes/ScenePlay"))
         {
-            // Kiểm tra xem có phải đang chạy test và PlayerDataHolder có trống không
-            if (Application.isEditor && string.IsNullOrWhiteSpace(PlayerDataHolder.instance.selectedCharacterName))
-            {
-                Debug.LogWarning("--- GameManager: Tải dữ liệu TEST ---");
-                LoadTestData();
-            }
-            else
-            {
-                Debug.Log("--- GameManager: Tải dữ liệu GAME MỚI ---");
-                LoadNewGameData();
-            }
+            return;
         }
-        //sau khi tải xong nv và UI dịch chuyển họ
+        var task = await Save_Load_Firebase.LoadData("SeedData");
+        if (task.Exists)
+        {
+            List<SeedSaveData> seedDatas = JsonConvert.DeserializeObject<List<SeedSaveData>>(task.Value.ToString());
+            LoadCropsForScene(scene.name, seedDatas);
+        }
         MovePlayerToPosition();
-    }
-    // Hàm để tải dữ liệu test trong Editor phòng khi không chạy từ hàm select character mà muốn test thẳng
-    private void LoadTestData()
-    {
-        if (UIManager.instance != null)
-            UIManager.instance.SetupPlayerInfo(testPlayerName, testPlayerAvatar);
-
-        PlayerCharacterChanger changer = FindFirstObjectByType<PlayerCharacterChanger>();
-        if (changer != null && testSpriteLibrary != null)
-            changer.ApplyCharacterData(testSpriteLibrary);
-    }
-    //h̀n để tải dữ liệu khi bắt đầu game mới
-    private void LoadNewGameData()
-    {
-        if (PlayerDataHolder.instance == null) return;
-
-        string nameFromSelection = PlayerDataHolder.instance.selectedCharacterName;
-        Sprite avatarFromSelection = PlayerDataHolder.instance.selectedPlayerAvatar;
-
-        if (UIManager.instance != null)
-            UIManager.instance.SetupPlayerInfo(nameFromSelection, avatarFromSelection);
     }
     //Hàm được Portal gọi để bắt đầu chuyển scene
     public async void StartSceneTransition(string sceneName, Vector3 newPos)
@@ -122,9 +118,7 @@ public class GameManager : MonoBehaviour
         this.nextPlayerPosition = newPos;
 
         // Gọi UIManager để bật hiệu ứng fade-out đen màn hình ở đây) // làm sau
-        LoadingScene.sceneTarget = sceneName;
-        //Tải scene mới
-        SceneManager.LoadScene("LoadingScene");
+        LoadingScene.Ins.LoadScene("", sceneName, "Loading...", LoadSceneMode.Single);
     }
     //hàm để di chuyển người chơi đến vị trí đã lưu sau khi tải xong scene mới
     private void MovePlayerToPosition()
@@ -155,20 +149,18 @@ public class GameManager : MonoBehaviour
         //chỉ lưu khi là game scene có thể trồng cây
         if(currentScene == "Farm")
         {
-            GameData data = await Save_Load_Firebase.LoadGame();
             List<SeedSaveData> seedSaveDatas = new List<SeedSaveData>();
             Seed[] cropsInScene = FindObjectsByType<Seed>(FindObjectsSortMode.None);
             foreach (Seed crop in cropsInScene)
             {
                 seedSaveDatas.Add(crop.GetSaveData());
             }
-            data.plantedCrops = seedSaveDatas;
-            await Save_Load_Firebase.SaveGame(data);//lưu dữ liệu vào file
-            Debug.Log("Saved current scene state before transition.");
+
+            await Save_Load_Firebase.SaveData("SeedData", JsonConvert.SerializeObject(seedSaveDatas));
         }
     }
 
-    private void LoadCropsForScene(string sceneName, GameData data)
+    private void LoadCropsForScene(string sceneName, List<SeedSaveData> data)
     {
         if(seedDataBase == null)
         {
@@ -176,16 +168,14 @@ public class GameManager : MonoBehaviour
             return;
         }
         Debug.Log("Đang tải lại cây trồng cho Scene: " + sceneName);
-        int cropsLoaded = 0;
-        //tạo một bản sao để duyệt, tránh lỗi khi xóa phần tử trong vòng lặp
-        if (data.plantedCrops == null) return;
-        List<SeedSaveData> cropsToLoad = new List<SeedSaveData>(data.plantedCrops);
+         //tạo một bản sao để duyệt, tránh lỗi khi xóa phần tử trong vòng lặp
+        if (data == null) return;
 
-        foreach(SeedSaveData cropData in cropsToLoad)
+        foreach(SeedSaveData cropData in data)
         {
             if(cropData.SceneName == sceneName)
             {
-                SeedData dataAsset = seedDataBase.GetSeedDataByID(cropData.cropDataID);
+                SeedDataSO dataAsset = seedDataBase.GetSeedDataByID(cropData.cropDataID);
                 var cropPrefab = dataAsset.cropData.prefab;
                 if(dataAsset != null && cropPrefab != null)
                 {
@@ -194,16 +184,22 @@ public class GameManager : MonoBehaviour
                     if(cropScript != null)
                     {
                         cropScript.LoadCropState(dataAsset, cropData.timePlanted);
-                        cropsLoaded++;
                     }
                 }
-                else Debug.LogWarning($"Không tìm thấy CropData hoặc Prefab cho ID: {cropData.cropDataID}");
             }
         }
-        Debug.Log($"Tải xong cây trồng cho Scene: {sceneName}. Tổng số cây đã tải: {cropsLoaded}");
+     
     }
     private async void OnDestroy()
     {
         await Save_Load_Firebase.SaveData("Coins", _coins);
+    }
+
+    private void OnValidate()
+    {
+        if(characterDatabase == null)
+        {
+            characterDatabase = Resources.Load<CharacterDatabase>("CharacterData");
+        }
     }
 }

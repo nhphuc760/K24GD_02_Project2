@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7116533903612479588}
   - component: {fileID: 6421607268250443590}
   - component: {fileID: 2540632769902621660}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: 'Gold Ore '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1653813943
-  m_SortingLayer: 2
+  m_SortingLayerID: 1293688563
+  m_SortingLayer: -5
   m_SortingOrder: 0
   m_Sprite: {fileID: 1742332050046661332, guid: 1465e899cd8252b458eb6fccf081fe25, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -128,7 +128,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.3125, y: 1.125}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1.3125, y: 1.125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

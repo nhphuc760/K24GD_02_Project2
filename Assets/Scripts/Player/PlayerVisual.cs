@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 public class PlayerVisual : MonoBehaviour
 {
@@ -7,6 +9,24 @@ public class PlayerVisual : MonoBehaviour
     static int ISMOVING = Animator.StringToHash("isMoving");
     static int HORIZONTAL_MOVEMENT = Animator.StringToHash("horizontalMovement");
     static int VERTICAL_MOVEMENT = Animator.StringToHash("verticalMovement");
+
+
+
+    private void Awake()
+    {
+        GameManager.Ins.onLoadDataCompleted += LoadDataPlayerCompleted;
+    }
+
+    private void LoadDataPlayerCompleted(PlayerData data, CharacterDataSO sO)
+    {
+       if(sO == null)
+        {
+            Debug.Log("From PlayerVisual: CharacterDataSO is null" );
+            return;
+        }
+        GetComponent<SpriteLibrary>().spriteLibraryAsset = sO.SpriteLibraryAsset;
+    }
+
     private void Update()
     {
         animator.SetBool(ISMOVING, playerMovement.IsMoving);
@@ -27,5 +47,9 @@ public class PlayerVisual : MonoBehaviour
         {
             transform.localScale = Vector3.one;
         }
+    }
+    private void OnDestroy()
+    {
+        GameManager.Ins.onLoadDataCompleted -= LoadDataPlayerCompleted;
     }
 }

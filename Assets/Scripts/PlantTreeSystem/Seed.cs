@@ -6,7 +6,7 @@ public class Seed : MonoBehaviour, IInteractable
 {
     private int growthProgress = 0;
     private double timePlanted = 0;//lưu lại thời điểm được trồng
-    private SeedData currentSeedData; // Reference to the CropData ScriptableObject
+    private SeedDataSO currentSeedData; // Reference to the CropData ScriptableObject
     private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
     private bool isMature = false;//kiểm tra cây đã trưởng thành chưa
     [Header("Harvest Indicator")]
@@ -18,7 +18,7 @@ public class Seed : MonoBehaviour, IInteractable
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
     //Hàm được gọi ngay sau khi PlayerFarming trồng cây
-    public void Plant(SeedData cropData)
+    public void Plant(SeedDataSO cropData)
     {
         currentSeedData = cropData;
 
@@ -145,7 +145,7 @@ public class Seed : MonoBehaviour, IInteractable
         return data;
     }
 
-    public void LoadCropState(SeedData dataAsset, double plantedTime)
+    public void LoadCropState(SeedDataSO dataAsset, double plantedTime)
     {
         this.currentSeedData = dataAsset;
         this.timePlanted = plantedTime;

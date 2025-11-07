@@ -52,7 +52,7 @@ public class PlayerFarming : MonoBehaviour
             GameEventManager.Ins.TriggerDialog("<color=red>Bạn chưa chọn hạt giống</color>");
             return;
         }
-        var seedData = curSelected.ItemData as SeedData;
+        var seedData = curSelected.ItemData as SeedDataSO;
         
         Collider2D hit = Physics2D.OverlapCircle(transform.position, interactionRadius, interactableLayerMask);
         if (hit != null && hit.GetComponent<IInteractable>() != null)
@@ -73,7 +73,7 @@ public class PlayerFarming : MonoBehaviour
 
 
     //Trồng, thu hoạch cây.
-    void Plant(SeedData cropToPlant)
+    void Plant(SeedDataSO cropToPlant)
     {
         if(plowableLayer == null)
         {
