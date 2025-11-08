@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8709494649186995945}
   - component: {fileID: 3814747655412814384}
-  - component: {fileID: 6556788115171936263}
-  m_Layer: 0
+  - component: {fileID: 8849921190401759875}
+  m_Layer: 2
   m_Name: "\u0110\xE8n tr\u1EAFng"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6426515485915361859}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 24.473454, y: -6.5399094, z: 0.042912688}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1293688563
+  m_SortingLayer: -5
   m_SortingOrder: 0
   m_Sprite: {fileID: -1540665275713046549, guid: 46b3139a169505e43a9b838db30430ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -89,8 +89,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &6556788115171936263
-BoxCollider2D:
+--- !u!58 &8849921190401759875
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -123,18 +123,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.8712075}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.9375, y: 2.4375}
-    newSize: {x: 0.9375, y: 2.4375}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.9375, y: 0.69508505}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: -0.8513365}
+  m_Radius: 0.32698584
 --- !u!1 &8525126244578844288
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,7 +135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8078504335078040517}
   - component: {fileID: 1453857416486187205}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Light 2D (3)
   m_TagString: NightLight
   m_Icon: {fileID: 0}

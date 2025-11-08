@@ -1036,7 +1036,7 @@ GameObject:
   - component: {fileID: 105550312}
   - component: {fileID: 105550311}
   - component: {fileID: 105550313}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ice cream cart_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1654,7 +1654,7 @@ GameObject:
   - component: {fileID: 136594738}
   - component: {fileID: 136594737}
   - component: {fileID: 136594739}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Temple_1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2437,108 +2437,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 185807110}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &194189096
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1164331866957732423, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164331866957732423, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1402103027682105741, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1402103027682105741, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1999429466720765727, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1999429466720765727, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1999429466720765727, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1999429466720765727, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1999429466720765727, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3111731524284281785, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
-      propertyPath: m_SortingLayer
-      value: -5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3111731524284281785, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1293688563
-      objectReference: {fileID: 0}
-    - target: {fileID: 3416348921239499229, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -19.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 3416348921239499229, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 18.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3416348921239499229, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3416348921239499229, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3416348921239499229, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3416348921239499229, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3416348921239499229, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3416348921239499229, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3416348921239499229, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3416348921239499229, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
---- !u!4 &194189097 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3416348921239499229, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
-  m_PrefabInstance: {fileID: 194189096}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &195992818
 GameObject:
   m_ObjectHideFlags: 0
@@ -4510,7 +4408,7 @@ GameObject:
   - component: {fileID: 365136474}
   - component: {fileID: 365136473}
   - component: {fileID: 365136475}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Exterior Beach_52
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4731,7 +4629,7 @@ GameObject:
   - component: {fileID: 367424979}
   - component: {fileID: 367424978}
   - component: {fileID: 367424980}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Halloween Content_15 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5272,7 +5170,7 @@ GameObject:
   - component: {fileID: 372941391}
   - component: {fileID: 372941390}
   - component: {fileID: 372941392}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Telephone_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5801,7 +5699,7 @@ GameObject:
   - component: {fileID: 425718894}
   - component: {fileID: 425718893}
   - component: {fileID: 425718895}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Exterior Beach_52 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6454,7 +6352,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 194189097}
+    TrackingTarget: {fileID: 0}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
@@ -6522,7 +6420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 471909415}
   - component: {fileID: 471909414}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Exterior Beach_52 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7801,12 +7699,12 @@ GameObject:
   - component: {fileID: 614641195}
   - component: {fileID: 614641194}
   - component: {fileID: 614641196}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Halloween Content_15 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!212 &614641194
 SpriteRenderer:
@@ -8046,7 +7944,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.34660006}
+  m_Offset: {x: 0, y: -0.17585611}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.3}
@@ -8056,7 +7954,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.1875, y: 1.1764116}
+  m_Size: {x: 3.1875, y: 0.83492374}
   m_EdgeRadius: 0
 --- !u!1 &618599534
 GameObject:
@@ -10321,7 +10219,7 @@ GameObject:
   - component: {fileID: 835110687}
   - component: {fileID: 835110688}
   - component: {fileID: 835110689}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Exterior Beach_52 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11666,7 +11564,7 @@ GameObject:
   - component: {fileID: 913362512}
   - component: {fileID: 913362511}
   - component: {fileID: 913362513}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Halloween Content_15 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13030,12 +12928,12 @@ GameObject:
   - component: {fileID: 1057169602}
   - component: {fileID: 1057169601}
   - component: {fileID: 1057169603}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Halloween Content_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!212 &1057169601
 SpriteRenderer:
@@ -14497,7 +14395,7 @@ GameObject:
   - component: {fileID: 1159898060}
   - component: {fileID: 1159898059}
   - component: {fileID: 1159898061}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Temple_1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24564,7 +24462,7 @@ GameObject:
   - component: {fileID: 1263047426}
   - component: {fileID: 1263047425}
   - component: {fileID: 1263047427}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Exterior Beach_53
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24872,12 +24770,12 @@ GameObject:
   - component: {fileID: 1312396380}
   - component: {fileID: 1312396379}
   - component: {fileID: 1312396381}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Halloween Content_15 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!212 &1312396379
 SpriteRenderer:
@@ -63552,7 +63450,7 @@ BoxCollider2D:
   m_Offset: {x: 0.0838213, y: -1.0597563}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.6958364, y: 0.274416}
+    pivot: {x: 0.5038022, y: 0.52066755}
     oldSize: {x: 4, y: 3.8125}
     newSize: {x: 4, y: 3.8125}
     adaptiveTilingThreshold: 0.5
@@ -80246,7 +80144,7 @@ Tilemap:
       - {fileID: -5683532186990113554, guid: f790b42fe7aad824daca90c556370d50, type: 3}
       - {fileID: -8424827297058688254, guid: f790b42fe7aad824daca90c556370d50, type: 3}
       - {fileID: -2073615749911051416, guid: f790b42fe7aad824daca90c556370d50, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 65, y: -10, z: 0}
@@ -133375,7 +133273,7 @@ GameObject:
   - component: {fileID: 1413278973}
   - component: {fileID: 1413278972}
   - component: {fileID: 1413278974}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Temple_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133509,12 +133407,12 @@ GameObject:
   - component: {fileID: 1427692071}
   - component: {fileID: 1427692070}
   - component: {fileID: 1427692072}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Halloween Content_15 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!212 &1427692070
 SpriteRenderer:
@@ -136481,7 +136379,7 @@ GameObject:
   - component: {fileID: 1694544253}
   - component: {fileID: 1694544252}
   - component: {fileID: 1694544254}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Exterior Beach_52 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137568,7 +137466,7 @@ GameObject:
   - component: {fileID: 1794543272}
   - component: {fileID: 1794543271}
   - component: {fileID: 1794543273}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Popcorn _0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150898,7 +150796,7 @@ Tilemap:
       - {fileID: 1965489075, guid: a9f949d20bae71a41b417c14e1357655, type: 3}
       - {fileID: 1853462022, guid: a9f949d20bae71a41b417c14e1357655, type: 3}
       - {fileID: -408737325, guid: a9f949d20bae71a41b417c14e1357655, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 63, y: -5, z: 0}
@@ -151241,7 +151139,7 @@ Tilemap:
       - {fileID: 1426825928, guid: 6660c81b79e0cc84f8299372980c8c55, type: 3}
       - {fileID: 1816180986, guid: 6660c81b79e0cc84f8299372980c8c55, type: 3}
       - {fileID: 1402138904, guid: 6660c81b79e0cc84f8299372980c8c55, type: 3}
-      m_AnimationSpeed: 7
+      m_AnimationSpeed: 7.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 22, y: 17, z: 0}
@@ -151256,7 +151154,7 @@ Tilemap:
       - {fileID: 1264429456, guid: 6660c81b79e0cc84f8299372980c8c55, type: 3}
       - {fileID: 355684544, guid: 6660c81b79e0cc84f8299372980c8c55, type: 3}
       - {fileID: -172667645, guid: 6660c81b79e0cc84f8299372980c8c55, type: 3}
-      m_AnimationSpeed: 7.0000005
+      m_AnimationSpeed: 7
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 24, y: 17, z: 0}
@@ -151293,7 +151191,7 @@ Tilemap:
       - {fileID: -908463848, guid: 2ebc3795774b3154c8326453c3e1a401, type: 3}
       - {fileID: 626089680, guid: 2ebc3795774b3154c8326453c3e1a401, type: 3}
       - {fileID: 1205274652, guid: 2ebc3795774b3154c8326453c3e1a401, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 17, y: 18, z: 0}
@@ -151585,7 +151483,7 @@ Tilemap:
       - {fileID: -1060495461, guid: 6660c81b79e0cc84f8299372980c8c55, type: 3}
       - {fileID: 43679094, guid: 6660c81b79e0cc84f8299372980c8c55, type: 3}
       - {fileID: -114755889, guid: 6660c81b79e0cc84f8299372980c8c55, type: 3}
-      m_AnimationSpeed: 7
+      m_AnimationSpeed: 7.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 21, y: 20, z: 0}
@@ -151819,7 +151717,7 @@ Tilemap:
       - {fileID: -7569352470194963473, guid: 21a09ff2ae4f45a4cab8cc3e4a1fa633, type: 3}
       - {fileID: 2069178342881102101, guid: 21a09ff2ae4f45a4cab8cc3e4a1fa633, type: 3}
       - {fileID: 7810668209800365930, guid: 21a09ff2ae4f45a4cab8cc3e4a1fa633, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 42, y: 21, z: 0}
@@ -151882,7 +151780,7 @@ Tilemap:
       - {fileID: -1060495461, guid: 6660c81b79e0cc84f8299372980c8c55, type: 3}
       - {fileID: 43679094, guid: 6660c81b79e0cc84f8299372980c8c55, type: 3}
       - {fileID: -114755889, guid: 6660c81b79e0cc84f8299372980c8c55, type: 3}
-      m_AnimationSpeed: 7
+      m_AnimationSpeed: 7.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 18, y: 22, z: 0}
@@ -151990,7 +151888,7 @@ Tilemap:
       - {fileID: 301644735, guid: 905a3b2879fb83d4591acb7f4c996195, type: 3}
       - {fileID: 48038463, guid: 905a3b2879fb83d4591acb7f4c996195, type: 3}
       - {fileID: 724909556, guid: 905a3b2879fb83d4591acb7f4c996195, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 29, y: 23, z: 0}
@@ -152256,7 +152154,7 @@ Tilemap:
       - {fileID: 6478257391751793891, guid: 972ba679fbe75f14faded3a4fffd5585, type: 3}
       - {fileID: -731398924223430143, guid: 972ba679fbe75f14faded3a4fffd5585, type: 3}
       - {fileID: -2945000169822019874, guid: 972ba679fbe75f14faded3a4fffd5585, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 27, y: 26, z: 0}
@@ -152879,7 +152777,7 @@ Tilemap:
       - {fileID: 6478257391751793891, guid: 972ba679fbe75f14faded3a4fffd5585, type: 3}
       - {fileID: -731398924223430143, guid: 972ba679fbe75f14faded3a4fffd5585, type: 3}
       - {fileID: -2945000169822019874, guid: 972ba679fbe75f14faded3a4fffd5585, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 18, y: 33, z: 0}
@@ -152979,7 +152877,7 @@ Tilemap:
       - {fileID: -7569352470194963473, guid: 21a09ff2ae4f45a4cab8cc3e4a1fa633, type: 3}
       - {fileID: 2069178342881102101, guid: 21a09ff2ae4f45a4cab8cc3e4a1fa633, type: 3}
       - {fileID: 7810668209800365930, guid: 21a09ff2ae4f45a4cab8cc3e4a1fa633, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 25, y: 34, z: 0}
@@ -153546,7 +153444,7 @@ GameObject:
   - component: {fileID: 1834933932}
   - component: {fileID: 1834933931}
   - component: {fileID: 1834933933}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Table_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154802,7 +154700,7 @@ GameObject:
   - component: {fileID: 1918236892}
   - component: {fileID: 1918236891}
   - component: {fileID: 1918236893}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Halloween Content_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155023,12 +154921,12 @@ GameObject:
   - component: {fileID: 1923799094}
   - component: {fileID: 1923799093}
   - component: {fileID: 1923799095}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Halloween Content_15 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!212 &1923799093
 SpriteRenderer:
@@ -155157,7 +155055,7 @@ GameObject:
   - component: {fileID: 1943665885}
   - component: {fileID: 1943665884}
   - component: {fileID: 1943665886}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Exterior Beach_52 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157153,7 +157051,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
-  - {fileID: 194189096}
   - {fileID: 287651821}
   - {fileID: 276452601}
   - {fileID: 835110687}

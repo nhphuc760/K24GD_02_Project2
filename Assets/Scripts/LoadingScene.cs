@@ -15,6 +15,8 @@ public class LoadingScene : MonoBehaviour
     [SerializeField] float speedFade = 0.3f;
     public static LoadingScene Ins;
     public bool isLoading;
+    public bool isFading;
+    public bool IsBusy => isLoading || isFading;
     private void Awake()
     {
       if(Ins != null &&  Ins != this)
@@ -30,24 +32,25 @@ public class LoadingScene : MonoBehaviour
         HideInstant();
     }
 
-    public void LoadScene(string oldSceneName, string newSceneName, string description, LoadSceneMode loadSceneMode)
+    public void LoadScene( string newSceneName, string description, LoadSceneMode loadSceneMode, bool fadeOut = true)
     {
         Show();
-        StartCoroutine(LoadSceneAsync(oldSceneName, newSceneName, description, loadSceneMode));
+        StartCoroutine(LoadSceneAsync(newSceneName, description, loadSceneMode, fadeOut));
     }
 
-    public void LoadScene(int oldIndex, int newIndex, string description, LoadSceneMode loadSceneMode)
+    public void LoadScene( int newIndex, string description, LoadSceneMode loadSceneMode, bool fadeOut = true)
     {
         Show();
-        StartCoroutine(LoadSceneAsync(oldIndex, newIndex, description, loadSceneMode));
+        StartCoroutine(LoadSceneAsync( newIndex, description, loadSceneMode, fadeOut));
     }
 
-    IEnumerator LoadSceneAsync(int oldIndex, int newIndex, string description, LoadSceneMode loadMode)
+    IEnumerator LoadSceneAsync( int newIndex, string description, LoadSceneMode loadMode, bool fadeOut)
     {
         isLoading = true;
         var task = SceneManager.LoadSceneAsync(newIndex, loadMode);
         float progress = 0f;
         task.allowSceneActivation = false;
+        this.description.text = description;
         while (!task.isDone)
         {
             float target = Mathf.Clamp01(task.progress / 0.9f);
@@ -62,23 +65,18 @@ public class LoadingScene : MonoBehaviour
             yield return null;
 
         }
-        if (loadMode.Equals(LoadSceneMode.Additive))
-        {
-            SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(newIndex));
-            SceneManager.UnloadSceneAsync(oldIndex);
-        }
-
-        Hide();
         isLoading = false;
+        Hide(fadeOut);
 
     }
-    IEnumerator LoadSceneAsync(string oldSceneName, string newSceneName, string description, LoadSceneMode loadMode)
+    IEnumerator LoadSceneAsync( string newSceneName, string description, LoadSceneMode loadMode, bool fadeOut)
     {
        
         isLoading = true;
         var task = SceneManager.LoadSceneAsync(newSceneName, loadMode);
         float progress = 0f;
         task.allowSceneActivation = false;
+        this.description.text = description;
         while (!task.isDone)
         {
             float target = Mathf.Clamp01( task.progress/0.9f);
@@ -94,13 +92,9 @@ public class LoadingScene : MonoBehaviour
 
         }
 
-        if (loadMode.Equals(LoadSceneMode.Additive))
-        {
-            SceneManager.SetActiveScene(SceneManager.GetSceneByName(newSceneName));
-            SceneManager.UnloadSceneAsync(oldSceneName);
-        }
-        Hide();
-        isLoading=false;
+        isLoading = false;
+        Hide(fadeOut);
+       
 
     }
 
@@ -112,11 +106,12 @@ public class LoadingScene : MonoBehaviour
         canvasGroup.blocksRaycasts = true;
     }
 
-    void Hide()
+    void Hide(bool fading)
     {
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
-        StartCoroutine(FadeOut());
+        if(fading)
+            StartCoroutine(FadeOut());
     }
 
     void HideInstant()
@@ -128,6 +123,7 @@ public class LoadingScene : MonoBehaviour
 
     IEnumerator FadeOut()
     {
+        isFading = true;
         float t = 0;
         while (t < speedFade)
         {
@@ -135,6 +131,7 @@ public class LoadingScene : MonoBehaviour
             canvasGroup.alpha = 1 - t / speedFade;
             yield return null;
         }
+       isFading = false;
         gameObject.SetActive(false);
     }
 }

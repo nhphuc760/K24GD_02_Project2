@@ -235,6 +235,7 @@ public class InventoryManager : MonoBehaviour
     void RemoveItemByData(ItemDataSO item, int quantity)
     {
         inventory.RemoveItem(item, quantity);
+        UpdateUI();
     }
 
     void OnRemoveItemCompleted(bool isActiveFalse) {

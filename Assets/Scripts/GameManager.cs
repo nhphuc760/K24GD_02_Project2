@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
         this.nextPlayerPosition = newPos;
 
         // Gọi UIManager để bật hiệu ứng fade-out đen màn hình ở đây) // làm sau
-        LoadingScene.Ins.LoadScene("", sceneName, "Loading...", LoadSceneMode.Single);
+        LoadingScene.Ins.LoadScene( sceneName, "Loading...", LoadSceneMode.Single, true);
     }
     //hàm để di chuyển người chơi đến vị trí đã lưu sau khi tải xong scene mới
     private void MovePlayerToPosition()

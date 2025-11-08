@@ -15,11 +15,11 @@ public class Bootstrapper : MonoBehaviour
     IEnumerator WaitLoadingScene()
     {
         yield return null;
-        while (LoadingScene.Ins.isLoading)
+        while (LoadingScene.Ins.IsBusy)
         {
             yield return null;  
         }
-        LoadingScene.Ins.LoadScene(SceneManager.GetActiveScene().name, nextScene, "Dữ liệu đã sẵn sàng", LoadSceneMode.Additive);
-    
+        LoadingScene.Ins.LoadScene( nextScene, "Dữ liệu đã sẵn sàng", LoadSceneMode.Single, true);
+
     }
 }

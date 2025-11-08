@@ -66,7 +66,7 @@ public class FirebaseAuthManager : MonoBehaviour
             }
             else if (task.IsCompleted)
             {
-                LoadingScene.Ins.LoadScene("", "MainMenu", "Loading...", LoadSceneMode.Single);
+                LoadingScene.Ins.LoadScene( "MainMenu", "Loading...", LoadSceneMode.Single);
             }
         });
     }
