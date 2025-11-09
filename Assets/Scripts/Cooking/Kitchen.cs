@@ -178,9 +178,16 @@ public class Kitchen : MonoBehaviour
        
         timerText.enabled = false;
         _iconItemCooking.enabled = false;
-        isCooking = false;
+        isCooking = false;    
+        if (GameEventManager.Ins.inventoryEvent.AddItem(curRecipeSO.result, 1))
+        {
+            Debug.Log("Thêm thành công");
+        }
+        else
+        {
+            Debug.Log("Oops");
+        }
         curRecipeSO = null;
-        GameEventManager.Ins.inventoryEvent.AddItem(curRecipeSO.result, 1);
     }
 
     async Task Save()

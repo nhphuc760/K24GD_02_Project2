@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
@@ -9,12 +10,27 @@ public class PlayerVisual : MonoBehaviour
     static int ISMOVING = Animator.StringToHash("isMoving");
     static int HORIZONTAL_MOVEMENT = Animator.StringToHash("horizontalMovement");
     static int VERTICAL_MOVEMENT = Animator.StringToHash("verticalMovement");
-
-
+    bool isPickAxe = false;
 
     private void Awake()
     {
         GameManager.Ins.onLoadDataCompleted += LoadDataPlayerCompleted;
+    }
+
+    private void Start()
+    {
+        GameEventManager.Ins.animationEvent.onPickAxe += AnimationEvent_onPickAxe;
+    }
+
+    private void AnimationEvent_onPickAxe(OreInfor obj)
+    {
+        if(!isPickAxe)
+        {
+            isPickAxe = true;
+            animator.Play("PickAxe_BlendTree");
+            StartCoroutine(MineOre(obj));
+        }
+      
     }
 
     private void LoadDataPlayerCompleted(PlayerData data, CharacterDataSO sO)
@@ -51,5 +67,15 @@ public class PlayerVisual : MonoBehaviour
     private void OnDestroy()
     {
         GameManager.Ins.onLoadDataCompleted -= LoadDataPlayerCompleted;
+        GameEventManager.Ins.animationEvent.onPickAxe -= AnimationEvent_onPickAxe;
+    }
+
+    IEnumerator MineOre(OreInfor ore)
+    {
+        yield return null;
+        float duration = animator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(duration);
+        ore.MineOre();
+        isPickAxe = false;
     }
 }

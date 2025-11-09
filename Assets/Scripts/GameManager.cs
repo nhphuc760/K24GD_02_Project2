@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void LoadCropsForScene(string sceneName, List<SeedSaveData> data)
+    public void LoadCropsForScene(string sceneName, List<SeedSaveData> data)
     {
         if(seedDataBase == null)
         {

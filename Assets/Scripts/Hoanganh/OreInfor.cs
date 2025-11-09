@@ -4,17 +4,18 @@ using System.Collections;
 public class OreInfor : MonoBehaviour
 {
     [Header("Ore Settings")]
+    [HideInInspector]
     public OreSpawner spawner;
     public GameObject orePrefab; // prefab chính của quặng này
     public float respawnDelay = 10f;
-
+    [SerializeField] Animator animator;
     [Header("Hit Settings")]
     [SerializeField] int maxHitPoints = 3; // số lần đập để bể
     int currentHitPoints;
     bool isDestroyed = false;
 
     [Header("Drop Setting")]
-    public GameObject dropPrefab;        //prefab vật phẩm rớt ra 
+    public GameObject dropPrefab;        //prefab vật phẩm rớt ra
     public int dropCount = 2;            //số lượng vật phẩm rớt ra
     public float dropForce = 3f;         //lực bắn khi rớt
 
@@ -28,6 +29,14 @@ public class OreInfor : MonoBehaviour
 
     private Vector3 originalPos;
 
+    int takeDamage = Animator.StringToHash("TakeDamage");
+    private void Awake()
+    {
+       if(animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
+    }
     private void Start()
     {
         currentHitPoints = maxHitPoints;
@@ -39,16 +48,13 @@ public class OreInfor : MonoBehaviour
         if (isDestroyed) return;
 
         currentHitPoints--;
-
-        Debug.Log($"Ore hit! Remaining HP: {currentHitPoints}");
-
-        //Gọi hiệu ứng rung mỗi khi đập
-        StartCoroutine(ShakeOre());
+  
 
         // Nếu vẫn còn HP thì chỉ rung nhẹ hoặc hiệu ứng nứt
         if (currentHitPoints > 0)
         {
-            // bạn có thể thêm hiệu ứng rung hoặc âm thanh ở đây
+            //triger damage
+            animator.SetTrigger(takeDamage);
             return;
         }
         // Hết HP thì phá quặng

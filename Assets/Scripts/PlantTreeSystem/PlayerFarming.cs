@@ -88,9 +88,12 @@ public class PlayerFarming : MonoBehaviour
             if (existingCrop == null)
             {
                 // Thì mới tiến hành trồng cây
+                //trừ hạt giống trong inventory
+                int curIndex = GameEventManager.Ins.toolKitEvent.GetCurrentIndex();
+                if (curIndex < 0) return;
+                GameEventManager.Ins.inventoryEvent.RemoveItem(curIndex, 1);
                 GameObject cropInstance = Instantiate(cropToPlant.cropData.prefab, cellCenterPosition, Quaternion.identity);
                 cropInstance.GetComponent<Seed>().Plant(cropToPlant);
-                Debug.Log($"Đã trồng {cropToPlant._itemName} tại ô {cellPosition}");
             }
             else
             {

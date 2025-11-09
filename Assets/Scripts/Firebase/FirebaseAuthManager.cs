@@ -45,6 +45,7 @@ public class FirebaseAuthManager : MonoBehaviour
             }else if (task.IsCompleted)
             {
                 regiterNotify.text = "Registration successful";
+
             }
         });
     }
@@ -67,6 +68,7 @@ public class FirebaseAuthManager : MonoBehaviour
             else if (task.IsCompleted)
             {
                 LoadingScene.Ins.LoadScene( "MainMenu", "Loading...", LoadSceneMode.Single);
+                signBTN.interactable = false;
             }
         });
     }

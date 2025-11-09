@@ -98,6 +98,22 @@ public class LoadingScene : MonoBehaviour
 
     }
 
+
+    private void OnEnable()
+    {
+        if(GameEventManager.Ins != null)
+        {
+            GameEventManager.Ins.gameInput.Disable_InputAction();
+        }
+    }
+    private void OnDisable()
+    {
+        if (GameEventManager.Ins != null)
+        {
+            GameEventManager.Ins.gameInput.Enable_InputAction();
+        }
+    }
+
     void Show()
     {
         gameObject.SetActive(true);

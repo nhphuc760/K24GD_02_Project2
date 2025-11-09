@@ -56,6 +56,8 @@ public class PlayerTestMining : MonoBehaviour
     void TryMineOre()
     {
 
+        if (playerMovement.IsMoving) return;
+
         Collider2D hit = Physics2D.OverlapCircle(transform.position, interactRange,   oreLayer);
 
         if (hit != null)
@@ -66,14 +68,15 @@ public class PlayerTestMining : MonoBehaviour
                 var ore = hit.GetComponent<OreInfor>(); // class quặng của bạn
                 if (ore != null && checkDirect)
                 {
-                        ore.MineOre();
+                //ore.MineOre();
+                GameEventManager.Ins.animationEvent.PickAxe(ore);
                     return;
                 }
                 var tree = hit.GetComponent<TreeInfor>();
                 if(tree != null && checkDirect)
                 {
-                   
-                    tree.OnChop();
+                   GameEventManager.Ins.animationEvent.Axe();
+                    //tree.OnChop();
                 }    
             
         }
