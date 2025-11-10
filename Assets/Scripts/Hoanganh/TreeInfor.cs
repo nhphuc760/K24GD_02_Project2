@@ -8,7 +8,8 @@ public class TreeInfor : MonoBehaviour
     [HideInInspector] public GameObject treePrefab;
     [HideInInspector] public float respawnDelay = 10f;
     [HideInInspector] public BoxCollider2D spawnArea;
-
+    [SerializeField] Animator bodyAnim;
+    [SerializeField] Animator rootAnim;
     [Header("Hit Setting")]
     [SerializeField] public int maxHitPoints = 3;             // Số lần chặt để đốn hạ cây
     int currentHitPoints;             // Số lần đã chặt
@@ -18,15 +19,25 @@ public class TreeInfor : MonoBehaviour
     public GameObject woodPrefab;
     public int dropCount = 2;
     public float dropForce = 2f;
-    [Header("Shake Setting")]
-    public float shakeDuration = 0.1f;
-    public float shakeAmount = 0.08f;
+    int rootHit;
 
-    private Vector3 originalPos;
+    private void Awake()
+    {
+        if(bodyAnim == null)
+        {
+            bodyAnim = transform.Find("Body").GetComponent<Animator>();
+        }
+        if(rootAnim == null)
+        {
+            rootAnim = transform.Find("Root").GetComponent<Animator>();
+        }
+    }
     private void Start()
     {
         currentHitPoints = maxHitPoints;
-        originalPos = transform.position;
+        //Tính số lần chặt (70% body và 30% root)
+        int bodyHit = Mathf.CeilToInt(.7f * maxHitPoints);
+        rootHit = maxHitPoints - bodyHit;
     }
     //Gọi người chơi khi chặt cây
     public void OnChop()
@@ -35,10 +46,24 @@ public class TreeInfor : MonoBehaviour
 
         currentHitPoints--;
 
-        //Gọi hiệu ứng rung khi chặt cây
-        StartCoroutine(ShakeTree());
-       
-        if (currentHitPoints > 0) return;
+        ////Gọi hiệu ứng rung khi chặt cây
+        //StartCoroutine(ShakeTree());
+        if(currentHitPoints > 0)
+        {
+            if (currentHitPoints > rootHit)
+            {
+                bodyAnim.SetTrigger("Interact");
+                return;
+            }
+            else
+            {
+                HideBody();
+                ShowRoot();
+                rootAnim.SetTrigger("Interact");
+                return;
+            }
+        }
+      
         //Khi chặt cây
         ChopDown();
     }
@@ -58,6 +83,7 @@ public class TreeInfor : MonoBehaviour
     }
     void DropWood()
     {
+        
         if(woodPrefab == null) return;
         for (int i = 0; i < dropCount; i++)
         {
@@ -72,17 +98,15 @@ public class TreeInfor : MonoBehaviour
             }
         }
     }
-    IEnumerator ShakeTree()
+
+
+    void ShowRoot()
     {
-        float elapsed = 0f;
-        while (elapsed < shakeDuration)
-        {
-            Vector3 randomPoint = originalPos + (Vector3)Random.insideUnitCircle * shakeAmount;
-            transform.localPosition = randomPoint;
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-        transform.localPosition = originalPos; // Reset vị trí
-        
+
+        rootAnim.gameObject.SetActive(true);
+    }
+    void HideBody()
+    {
+        bodyAnim.gameObject.SetActive(false);
     }
 }

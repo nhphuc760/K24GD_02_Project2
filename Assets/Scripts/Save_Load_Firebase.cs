@@ -60,4 +60,9 @@ public static class Save_Load_Firebase
         await reference.Child(GetUserID()).RemoveValueAsync();
         Debug.Log("Xóa dữ liệu thành công");
     }
+
+    public static async Task RemoveAsync(string path)
+    {
+        await reference.Child(GetUserID()).Child(path).RemoveValueAsync();
+    }
 }

@@ -75,7 +75,7 @@ public class PlayerTestMining : MonoBehaviour
                 var tree = hit.GetComponent<TreeInfor>();
                 if(tree != null && checkDirect)
                 {
-                   GameEventManager.Ins.animationEvent.Axe();
+                   GameEventManager.Ins.animationEvent.Axe(tree);
                     //tree.OnChop();
                 }    
             

@@ -18,7 +18,7 @@ public class Portal : MonoBehaviour
             {
                 GameManager.Ins.StartSceneTransition(sceneToLoad, targetPosition);
             }
-            if (!Physics2D.GetIgnoreLayerCollision(0, 2))
+            if (Physics2D.GetIgnoreLayerCollision(0, 2))
             {
                 Physics2D.IgnoreLayerCollision(0, 2, false);
                 SpriteRenderer playerVisual = other.gameObject.GetComponentInChildren<SpriteRenderer>();

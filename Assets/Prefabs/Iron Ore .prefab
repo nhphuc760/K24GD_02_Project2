@@ -110,11 +110,9 @@ MonoBehaviour:
   respawnDelay: 10
   animator: {fileID: 1170319105806800699}
   maxHitPoints: 3
-  dropPrefab: {fileID: 0}
+  dropPrefab: {fileID: 4968870224503612978, guid: bd510a4aeb7cc6b4c96623584f2fb838, type: 3}
   dropCount: 2
   dropForce: 3
-  shakeDuration: 0.1
-  shakeAmount: 0.1
   knockbackForce: 2
 --- !u!50 &2690189392786812834
 Rigidbody2D:

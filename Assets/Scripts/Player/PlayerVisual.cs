@@ -10,8 +10,7 @@ public class PlayerVisual : MonoBehaviour
     static int ISMOVING = Animator.StringToHash("isMoving");
     static int HORIZONTAL_MOVEMENT = Animator.StringToHash("horizontalMovement");
     static int VERTICAL_MOVEMENT = Animator.StringToHash("verticalMovement");
-    bool isPickAxe = false;
-
+    bool isInteract = false;
     private void Awake()
     {
         GameManager.Ins.onLoadDataCompleted += LoadDataPlayerCompleted;
@@ -20,13 +19,26 @@ public class PlayerVisual : MonoBehaviour
     private void Start()
     {
         GameEventManager.Ins.animationEvent.onPickAxe += AnimationEvent_onPickAxe;
+        GameEventManager.Ins.animationEvent.onAxe += AnimationEvent_onAxe;
+    }
+
+    private void AnimationEvent_onAxe(TreeInfor obj)
+    {
+        if (!isInteract)
+        {
+
+            isInteract = true;
+            animator.Play("Axe_BlendTree");
+            StartCoroutine(AxeTree(obj));
+           
+        }
     }
 
     private void AnimationEvent_onPickAxe(OreInfor obj)
     {
-        if(!isPickAxe)
+        if(!isInteract)
         {
-            isPickAxe = true;
+            isInteract = true;
             animator.Play("PickAxe_BlendTree");
             StartCoroutine(MineOre(obj));
         }
@@ -68,6 +80,7 @@ public class PlayerVisual : MonoBehaviour
     {
         GameManager.Ins.onLoadDataCompleted -= LoadDataPlayerCompleted;
         GameEventManager.Ins.animationEvent.onPickAxe -= AnimationEvent_onPickAxe;
+        GameEventManager.Ins.animationEvent.onAxe -= AnimationEvent_onAxe;
     }
 
     IEnumerator MineOre(OreInfor ore)
@@ -76,6 +89,15 @@ public class PlayerVisual : MonoBehaviour
         float duration = animator.GetCurrentAnimatorStateInfo(0).length;
         yield return new WaitForSeconds(duration);
         ore.MineOre();
-        isPickAxe = false;
+        isInteract = false;
+    }
+
+    IEnumerator AxeTree(TreeInfor treeInfor)
+    {
+        yield return null;
+        float duration = animator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(duration);
+        treeInfor.OnChop();
+        isInteract = false;
     }
 }

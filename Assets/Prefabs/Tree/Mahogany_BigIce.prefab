@@ -28,6 +28,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mahogany_BigIce
       objectReference: {fileID: 0}
+    - target: {fileID: 6034308113153141507, guid: 8326641c7960235448b117eb557f92c2, type: 3}
+      propertyPath: m_Size.x
+      value: 0.75439966
+      objectReference: {fileID: 0}
+    - target: {fileID: 6034308113153141507, guid: 8326641c7960235448b117eb557f92c2, type: 3}
+      propertyPath: m_Size.y
+      value: 0.29641148
+      objectReference: {fileID: 0}
+    - target: {fileID: 6034308113153141507, guid: 8326641c7960235448b117eb557f92c2, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.016077155
+      objectReference: {fileID: 0}
+    - target: {fileID: 6034308113153141507, guid: 8326641c7960235448b117eb557f92c2, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.0565264
+      objectReference: {fileID: 0}
     - target: {fileID: 9011704932510534083, guid: 8326641c7960235448b117eb557f92c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

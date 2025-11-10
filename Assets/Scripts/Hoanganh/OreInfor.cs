@@ -19,15 +19,9 @@ public class OreInfor : MonoBehaviour
     public int dropCount = 2;            //số lượng vật phẩm rớt ra
     public float dropForce = 3f;         //lực bắn khi rớt
 
-    [Header("Shake Settings")]          //Setting hiệu ứng rung khi đập quặng
-    public float shakeDuration = 0.1f;  //Thời gian rung
-    public float shakeAmount = 0.1f;    //Độ mạnh rung
-
     [Header("Knockback Settings")]
     public float knockbackForce = 2f;   //Lực văng của quặng khi bị phá
     private Rigidbody2D rb;
-
-    private Vector3 originalPos;
 
     int takeDamage = Animator.StringToHash("TakeDamage");
     private void Awake()
@@ -40,7 +34,6 @@ public class OreInfor : MonoBehaviour
     private void Start()
     {
         currentHitPoints = maxHitPoints;
-        originalPos = transform.localPosition;
         rb = GetComponent<Rigidbody2D>();
     }
     public void MineOre()
@@ -110,17 +103,5 @@ public class OreInfor : MonoBehaviour
                 rb.AddTorque(Random.Range(-5f, 5f)); //xoay nhẹ
             }    
         }
-    }
-    IEnumerator ShakeOre() 
-    {
-        float elapsed = 0f;
-        while (elapsed < shakeDuration)
-        {
-            Vector3 randomPoint = originalPos + (Vector3)Random.insideUnitCircle * shakeAmount;
-            transform.localPosition = randomPoint;
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-        transform.localPosition = originalPos; //trả về vị trí ban đầu
     }
 }

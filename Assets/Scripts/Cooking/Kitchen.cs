@@ -22,9 +22,9 @@ public class Kitchen : MonoBehaviour
         timerText.enabled = false;
         _iconItemCooking.enabled = false;
         var task = await Save_Load_Firebase.LoadData("Kitchen/KitchenDatabase");
-        var task2 = await Save_Load_Firebase.GetSeverDateTime();
         if (task.Exists)
         {
+            var task2 = await Save_Load_Firebase.GetSeverDateTime();
             var kitchenData = JsonConvert.DeserializeObject<KitchenData>(task.Value.ToString());
             if(task2 != null)
             {
@@ -169,7 +169,6 @@ public class Kitchen : MonoBehaviour
     {
         GameEventManager.Ins.cookingEvent.onCookClick -= CookingEvent_onCookClick;
         GameEventManager.Ins.cookingEvent.confirmCookingChange -= CookingEvent_confirmCookingChange;
-        if (curRecipeSO == null) return;
         await Save();
       
     }
@@ -192,14 +191,27 @@ public class Kitchen : MonoBehaviour
 
     async Task Save()
     {
-        KitchenData kitchenData = new KitchenData
+        try
         {
-            coolDownStart = this.coolDownStart,
-            coolDownEnd = this.coolDownEnd,
-            isCooking = this.isCooking,
-            _idItemKitchen = curRecipeSO.result._id
-        };
+            if (curRecipeSO == null)
+            {
+                await Save_Load_Firebase.RemoveAsync("Kitchen/KitchenDatabase");
+                return;
+            }
+            KitchenData kitchenData = new KitchenData
+            {
+                coolDownStart = this.coolDownStart,
+                coolDownEnd = this.coolDownEnd,
+                isCooking = this.isCooking,
+                _idItemKitchen = curRecipeSO.result._id
+            };
 
-        await Save_Load_Firebase.SaveData("Kitchen/KitchenDatabase", kitchenData.ToString());
+            await Save_Load_Firebase.SaveData("Kitchen/KitchenDatabase", kitchenData.ToString());
+        }
+        catch 
+        {
+           
+        }
+       
     }
 }

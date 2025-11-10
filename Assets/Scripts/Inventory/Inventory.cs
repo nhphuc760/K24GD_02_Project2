@@ -232,7 +232,7 @@ public class Inventory
     /// <summary>
     /// </summary>
     /// param name="idInventory">ID của kho</param>
-    public async void SaveData(string keyInventory)
+    public async Task SaveData(string keyInventory)
     {
         List<InventorySlotData> itemDataSlots = new List<InventorySlotData>();
         foreach (var child in itemSlots)
