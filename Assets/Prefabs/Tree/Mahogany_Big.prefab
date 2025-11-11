@@ -8,13 +8,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 321059806271058162, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
+      propertyPath: m_Size.x
+      value: 0.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 321059806271058162, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
+      propertyPath: m_Offset.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 321059806271058162, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.04
+      objectReference: {fileID: 0}
     - target: {fileID: 540968652401062206, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
       propertyPath: m_Name
       value: Mahogany_Big
       objectReference: {fileID: 0}
     - target: {fileID: 540968652401062206, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1077206393273797761, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2455913673430908366, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -82,19 +98,19 @@ PrefabInstance:
       objectReference: {fileID: -7043006855757235749, guid: ce53f8a4df9db26429b9ecb8a9eabcef, type: 3}
     - target: {fileID: 8580989887104017995, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
       propertyPath: m_Size.x
-      value: 1.3408786
+      value: 1.3408787
       objectReference: {fileID: 0}
     - target: {fileID: 8580989887104017995, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
       propertyPath: m_Size.y
-      value: 0.9778863
+      value: 0.56928766
       objectReference: {fileID: 0}
     - target: {fileID: 8580989887104017995, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
       propertyPath: m_Offset.x
-      value: 0.0012319541
+      value: 0.0012319929
       objectReference: {fileID: 0}
     - target: {fileID: 8580989887104017995, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
       propertyPath: m_Offset.y
-      value: -1.1208991
+      value: 0.20430005
       objectReference: {fileID: 0}
     - target: {fileID: 8737672463606910502, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
       propertyPath: m_Layer

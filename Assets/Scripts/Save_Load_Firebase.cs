@@ -34,6 +34,11 @@ public static class Save_Load_Firebase
         return snapshot;
 
     }
+
+    /// <summary>
+    /// Lấy thời gian quốc tế (UTC + 0)
+    /// </summary>
+    /// <returns></returns>
     public static async Task<DateTime?> GetSeverDateTime()
     {
 

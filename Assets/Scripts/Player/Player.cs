@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    public DateTime dateTime;
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);

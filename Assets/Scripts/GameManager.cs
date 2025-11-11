@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public event Action<PlayerData, CharacterDataSO> onLoadDataCompleted;
 
     
-    int _coins;
+    int _coins = -1;
     public int Coin 
     {
         get => _coins;
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         var task = await Save_Load_Firebase.LoadData("Coins");
         if (task.Exists)
         {
-            Coin = Convert.ToInt32(_coins);
+            Coin = Convert.ToInt32(task.Value);
         }
         else
         {
@@ -118,7 +118,9 @@ public class GameManager : MonoBehaviour
         this.nextPlayerPosition = newPos;
 
         // Gọi UIManager để bật hiệu ứng fade-out đen màn hình ở đây) // làm sau
-        LoadingScene.Ins.LoadScene( sceneName, "Loading...", LoadSceneMode.Single, true);
+        if (LoadingScene.Ins != null)
+            LoadingScene.Ins.LoadScene(sceneName, "Loading...", LoadSceneMode.Single, true);
+        else SceneManager.LoadScene(sceneName);
     }
     //hàm để di chuyển người chơi đến vị trí đã lưu sau khi tải xong scene mới
     private void MovePlayerToPosition()
@@ -160,15 +162,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void LoadCropsForScene(string sceneName, List<SeedSaveData> data)
+    public async void LoadCropsForScene(string sceneName, List<SeedSaveData> data)
     {
         if(seedDataBase == null)
         {
             Debug.LogError("Crop Database is not assigned in GameManager!");
             return;
         }
-        Debug.Log("Đang tải lại cây trồng cho Scene: " + sceneName);
-         //tạo một bản sao để duyệt, tránh lỗi khi xóa phần tử trong vòng lặp
+        var task = await Save_Load_Firebase.GetSeverDateTime();
+        DateTime curTime;
+        if (task.HasValue)
+        {
+            curTime = task.Value;
+        }
+        else
+        {
+            curTime = DateTime.UtcNow;
+        }
         if (data == null) return;
 
         foreach(SeedSaveData cropData in data)
@@ -183,7 +193,7 @@ public class GameManager : MonoBehaviour
                     Seed cropScript = cropInstance.GetComponent<Seed>();
                     if(cropScript != null)
                     {
-                        cropScript.LoadCropState(dataAsset, cropData.timePlanted);
+                        cropScript.LoadCropState(dataAsset, cropData.timeHarvest, curTime);
                     }
                 }
             }

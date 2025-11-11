@@ -191,8 +191,7 @@ public class InventoryManager : MonoBehaviour
         if (inventory.AddItem(itemDataSO, quantity))
         {
             GameEventManager.Ins.TriggerDialog($"<color=green>{itemDataSO._itemName} đã được thêm vào kho đồ của bạn</color>");
-            if (gameObject.activeSelf)
-                UpdateUI();
+            UpdateUI();
             return true;
         }
         else

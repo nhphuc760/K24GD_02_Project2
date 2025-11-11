@@ -9,7 +9,11 @@ public class ShopManager : MonoBehaviour
     [SerializeField] ShopUISlot slotPrefab;
     [SerializeField] Transform Container;
     [SerializeField] TextMeshProUGUI coinText;
-    
+
+    private void Awake()
+    {
+        GameEventManager.Ins.onCoinChange += OnCoinChange;
+    }
     private void Start()
     {
         for (int i = 0; i< shopDataBaseSO.shopDatabase.Count; i++)
@@ -18,7 +22,7 @@ public class ShopManager : MonoBehaviour
             item.Init(i, this);
             item.UpdateUI(shopDataBaseSO.shopDatabase[i]);
         }
-        GameEventManager.Ins.onCoinChange += OnCoinChange;
+     
         GameEventManager.Ins.shopEvent.onShow += Show;
         GameEventManager.Ins.shopEvent.onHide += Hide;
         Hide();

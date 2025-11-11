@@ -101,10 +101,4 @@ public class PlayerFarming : MonoBehaviour
             }
         }
     }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        // Sửa ở đây: dùng biến interactionRadius để hình vẽ luôn khớp
-        Gizmos.DrawWireSphere(transform.position, interactionRadius);
-    }
 }

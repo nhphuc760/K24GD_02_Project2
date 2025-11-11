@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 public class SeedSaveData
 {
     public string SceneName;//scene được trồng cây
     public SerializableVector3 worldPosition;//vị trí cây trồng trong thế giới
     public int cropDataID;//tên file CropData được tham chiếu
-    public double timePlanted;//thời gian trồng cây (dùng để tính thời gian phát triển của cây)
+    public DateTime timeHarvest;//thời gian trồng cây (dùng để tính thời gian phát triển của cây)
 }
 public class SerializableVector3
 {

@@ -1,11 +1,12 @@
-﻿using Unity.VisualScripting;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Seed : MonoBehaviour, IInteractable
 {
     private int growthProgress = 0;
-    private double timePlanted = 0;//lưu lại thời điểm được trồng
+    DateTime timeHarvest; //lưu thời điểm thu hoạch được cây trồng
     private SeedDataSO currentSeedData; // Reference to the CropData ScriptableObject
     private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
     private bool isMature = false;//kiểm tra cây đã trưởng thành chưa
@@ -17,20 +18,20 @@ public class Seed : MonoBehaviour, IInteractable
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    //Hàm được gọi ngay sau khi PlayerFarming trồng cây
-    public void Plant(SeedDataSO cropData)
+    public async void Plant(SeedDataSO cropData)
     {
         currentSeedData = cropData;
 
         // Lấy thời gian chính xác từ TimeManager
-        if (TimeManager.instance != null)
+        var task = await Save_Load_Firebase.GetSeverDateTime();
+        if (task.HasValue)
         {
-            timePlanted = TimeManager.instance.totalTimeElapsed;
+         
+            timeHarvest = task.Value;
         }
         else
         {
-            Debug.LogError("TimeManager chưa sẵn sàng khi Plant!");
-            timePlanted = 0;
+            timeHarvest = DateTime.UtcNow;
         }
         growthProgress = 0;
         isMature = false;
@@ -45,40 +46,40 @@ public class Seed : MonoBehaviour, IInteractable
     //Hàm được gọi bởi TimeManager mỗi khi một ngày trôi qua trong trò chơi
     public void Grow()
     {
-        if (isMature) return;
-        //Tính toán xem đã bao nhiêu giây trôi qua từ lúc trồng
-        double timeSincePlanted = TimeManager.instance.totalTimeElapsed - timePlanted;
-        //Tính số giây đó tương đương bao nhiêu "ngày game"
-        int newGrowthProgress = (int)(timeSincePlanted / TimeManager.instance.secondsperDay);
-        //cập nhật sprite nếu tiến độ mới lớn hơn tiến độ cũ
-        if (newGrowthProgress > growthProgress)
-        {
-            growthProgress = newGrowthProgress;
+        //if (isMature) return;
+        ////Tính toán xem đã bao nhiêu giây trôi qua từ lúc trồng
+        //double timeSincePlanted = TimeManager.instance.totalTimeElapsed - curTime;
+        ////Tính số giây đó tương đương bao nhiêu "ngày game"
+        //int newGrowthProgress = (int)(timeSincePlanted / TimeManager.instance.secondsperDay);
+        ////cập nhật sprite nếu tiến độ mới lớn hơn tiến độ cũ
+        //if (newGrowthProgress > growthProgress)
+        //{
+        //    growthProgress = newGrowthProgress;
 
-            // Kiểm tra xem đã chín chưa
-            if (growthProgress >= currentSeedData.DaysToGrow)
-            {
-                growthProgress = currentSeedData.DaysToGrow;
-                isMature = true;
-                ShowHarvestIndicator(true);
-            }
+        //    // Kiểm tra xem đã chín chưa
+        //    if (growthProgress >= currentSeedData.DaysToGrow)
+        //    {
+        //        growthProgress = currentSeedData.DaysToGrow;
+        //        isMature = true;
+        //        ShowHarvestIndicator(true);
+        //    }
 
-            // Cập nhật hình ảnh
-            UpdateSprite();
-        }
+        //    // Cập nhật hình ảnh
+        //    UpdateSprite();
+        //}
     }
     // Cập nhật lại UpdateSprite để dùng biến "growthProgress"
     private void UpdateSprite()
     {
-        int growthStageCount = currentSeedData.growhtSprites.Count;
+        //int growthStageCount = currentSeedData.growhtSprites.Count;
 
-        if (growthStageCount > 0)
-        {
-            // Tính toán giai đoạn dựa trên tiến độ
-            int currentStage = (int)((float)growthProgress / currentSeedData.DaysToGrow * (growthStageCount - 1));
-            currentStage = Mathf.Clamp(currentStage, 0, growthStageCount - 1);
-            spriteRenderer.sprite = currentSeedData.growhtSprites[currentStage];
-        }
+        //if (growthStageCount > 0)
+        //{
+        //    // Tính toán giai đoạn dựa trên tiến độ
+        //    int currentStage = (int)((float)growthProgress / currentSeedData.DaysToGrow * (growthStageCount - 1));
+        //    currentStage = Mathf.Clamp(currentStage, 0, growthStageCount - 1);
+        //    spriteRenderer.sprite = currentSeedData.growhtSprites[currentStage];
+        //}
     }
 
     private void OnEnable()
@@ -141,26 +142,17 @@ public class Seed : MonoBehaviour, IInteractable
         data.worldPosition = new SerializableVector3(transform.position);
         // Lưu tên của CropData để tái tạo sau này(lấy tên file Asset) 
         data.cropDataID = currentSeedData._id;
-        data.timePlanted = this.timePlanted;
+        data.timeHarvest = this.timeHarvest;
         return data;
     }
 
-    public void LoadCropState(SeedDataSO dataAsset, double plantedTime)
+    public void LoadCropState(SeedDataSO dataAsset, DateTime timeHarvest, DateTime curTime)
     {
         this.currentSeedData = dataAsset;
-        this.timePlanted = plantedTime;
-
-        //Gọi lại Growth() để tính toán tiến độ dựa theo thời gian đã trôi qua
-        if (TimeManager.instance != null)
-        {
-            //tính toán thời gian đã trôi qua từ lúc trồng đến hiện tại dựa trên timePlanted và totalTimeElapsed
-            double timeSincePlanted = TimeManager.instance.totalTimeElapsed - this.timePlanted;
-            growthProgress = (int)(timeSincePlanted / TimeManager.instance.secondsperDay);
-
-            //Cập nhật isMature và sprite dựa trên growthProgress mới tính
-            if (growthProgress >= currentSeedData.DaysToGrow)
+        TimeSpan t = timeHarvest - curTime;
+            if (t < TimeSpan.Zero)
             {
-                growthProgress = currentSeedData.DaysToGrow;
+               
                 isMature = true;
                 ShowHarvestIndicator(true);
             }
@@ -168,15 +160,19 @@ public class Seed : MonoBehaviour, IInteractable
             {
                 isMature = false;
                 ShowHarvestIndicator(false);
+           // StartCoroutine(Growth());
             }
             UpdateSprite();
-        }
-        else
-        {
-            Debug.LogWarning("TimeManager chưa sẵn sàng khi LoadCropState!");
-            growthProgress = 0;
-            isMature = false;
-            UpdateSprite();
-        }
+      
+    }
+
+    IEnumerator Growth(TimeSpan timeSpan)
+    {
+        yield return new WaitForSeconds((float)timeSpan.TotalSeconds);
+    }
+
+    public void LoadDataForSeed(SeedSaveData data)
+    {
+        timeHarvest = data.timeHarvest;
     }
 }

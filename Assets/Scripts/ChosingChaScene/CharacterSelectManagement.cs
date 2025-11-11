@@ -88,6 +88,8 @@ public class CharacterSelectManagement : MonoBehaviour
             indexAsset = currentIndex
         };
         await Save_Load_Firebase.SaveData("PlayerData", player.ToString());
-        LoadingScene.Ins.LoadScene( nextScene, "Loading...", LoadSceneMode.Single, false);
+        if (LoadingScene.Ins != null)
+            LoadingScene.Ins.LoadScene(nextScene, "Loading...", LoadSceneMode.Single, false);
+        else SceneManager.LoadScene(nextScene);
     }
 }

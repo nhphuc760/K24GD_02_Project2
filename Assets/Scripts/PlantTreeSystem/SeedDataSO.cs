@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SeedDataSO", menuName = "Scriptable Objects/SeedDataSO")]
 public class SeedDataSO : ItemDataSO 
 {
     [Header("Crop Info")]
-    public int DaysToGrow; // Number of days to fully grow
+    [Tooltip("Khoảng thời gian từ lúc trồng đến lúc thu hoạch, tính bằng giây")]
+    public float timeSpandHarvest;// khoảng thời gian phát triển
     public CropDataSO cropData; //Dữ liệu cây thu hoạch
     [Header("Crop Stages Sprites adn prefab")]
     public List<Sprite> growhtSprites; // Sprite for the mature stage
@@ -14,4 +16,14 @@ public class SeedDataSO : ItemDataSO
     public int purchasePrice; // Price to buy the seed
     public int sellPrice; // Price to sell the mature crop
     public int yield;// sản lượng thu được mỗi khi thu hoạch
+
+
+    /// <summary>
+    /// Lấy khoảng thời gian mỗi giai đoạn của cây
+    /// </summary>
+    /// <returns></returns>
+    public float GetTimeSpanPerProgress()
+    {
+        return timeSpandHarvest / (growhtSprites.Count - 1);
+    }
 }
