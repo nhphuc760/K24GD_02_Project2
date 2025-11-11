@@ -1,9 +1,6 @@
-﻿
-using System.Collections;
-using System.Collections.Generic;
-using TMPro; 
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -52,37 +49,56 @@ public class UIManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
-
+        GameManager.Ins.onLoadDataCompleted += LoadDataPlayerCompleted;
     }
-    // Đăng ký lắng nghe sự kiện khi scene thay đổi
-    private void OnEnable()
+
+    private void LoadDataPlayerCompleted(PlayerData playerData, CharacterDataSO sO)
     {
+        if (playerData == null)
+        {
+            SetupPlayerInfo("NoName", sO.portrait);
+        }
+        else
+        {
+            SetupPlayerInfo(playerData._name, sO.portrait);
+        }
+    }
+
+    // Đăng ký lắng nghe sự kiện khi scene thay đổi
+    private void Start()
+    {
+
         SceneManager.sceneLoaded += OnSceneLoaded;
+        inGameCanvas.SetActive(false);
     }
 
     // Hủy đăng ký khi đối tượng bị hủy
-    private void OnDisable()
+    private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        GameManager.Ins.onLoadDataCompleted -= LoadDataPlayerCompleted;
     }
     // Hàm này sẽ được gọi mỗi khi một scene MỚI được tải xong
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         //tắt UI khi khởi động scene LOGIN, CUStome hoặc chọn nhân vật
-        if (scene.name == "LoginScene" || scene.name == "CustomizeCharacter" || scene.name == "LoadingScene")
+        Debug.Log("Canvas: Scene" + scene.name);
+        if (!scene.path.StartsWith("Assets/Scenes/ScenePlay"))
         {
             // Nếu là các scene trên, ẩn 
+            Debug.Log(scene.path + "not startWith");
             if (inGameCanvas != null) inGameCanvas.SetActive(false);
         }
         else
         {
             // hiện  giao diện game lên
+            Debug.Log(scene.path + "start with");
             if (inGameCanvas != null) inGameCanvas.SetActive(true);
             //Tìm Global Light trong scene mới
             FindGlobalLight();

@@ -30,4 +30,10 @@ public class ToolKitEvent
     {
        return onGetDataChooseSlot?.Invoke();
     }
+
+    public event Func<int> onGetCurrentIndexChoose;
+    public int GetCurrentIndex()
+    {
+        return onGetCurrentIndexChoose?.Invoke() ?? -1;
+    }
 }

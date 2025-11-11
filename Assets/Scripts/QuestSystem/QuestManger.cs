@@ -137,7 +137,14 @@ public class QuestManger : MonoBehaviour
 
     private async void OnDestroy()
     {
-       await SaveQuest();
+        try {
+            await SaveQuest();
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e.Message);
+        }
+      
     }
 
     async Task SaveQuest()
@@ -160,27 +167,39 @@ public class QuestManger : MonoBehaviour
     {
       
         List<Quest> quests = new();
-        var snapshot = await Save_Load_Firebase.LoadData("Quest/QuestDatabase");
-        if (snapshot.Exists)
+        try
         {
-            Debug.Log("QuestDatabase is Exists");
-            List<QuestData> questDatas = JsonConvert.DeserializeObject<List<QuestData>>(snapshot.Value.ToString());
-            foreach (var child in questDatas)
+            var snapshot = await Save_Load_Firebase.LoadData("Quest/QuestDatabase");
+            if (snapshot.Exists)
             {
-                QuestInforSO infor = GetQuestInforSoByQuestID(child.questID);
-                Quest quest = new Quest(infor, child.questState, child.questStepState, child.isClaimedReward);
-                quests.Add(quest);
+                Debug.Log("QuestDatabase is Exists");
+                List<QuestData> questDatas = JsonConvert.DeserializeObject<List<QuestData>>(snapshot.Value.ToString());
+                foreach (var child in questDatas)
+                {
+                    QuestInforSO infor = GetQuestInforSoByQuestID(child.questID);
+                    Quest quest = new Quest(infor, child.questState, child.questStepState, child.isClaimedReward);
+                    quests.Add(quest);
+                }
             }
+            else
+            {
+                Debug.Log("QuestDatabase is not exists");
+                foreach (var info in questInforSOs)
+                {
+                    quests.Add(new Quest(info));
+                }
+            }
+            return quests;
         }
-        else
+        catch 
         {
-            Debug.Log("QuestDatabase is not exists");
+            quests.Clear();
             foreach (var info in questInforSOs)
             {
                 quests.Add(new Quest(info));
             }
+            return quests;
         }
-        return quests;
 
     }
 

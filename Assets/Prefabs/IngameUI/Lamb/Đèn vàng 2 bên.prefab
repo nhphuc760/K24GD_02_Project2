@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2933837323228866354}
   - component: {fileID: 5065188221175371561}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Light 2D (1)
   m_TagString: NightLight
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3265952334859729963}
   - component: {fileID: 3974627720638271965}
   - component: {fileID: 5396670712673338922}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: "\u0110\xE8n v\xE0ng 2 b\xEAn"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4892601165530394039}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 28.220564, y: 14.534225, z: 0.042912688}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -160,8 +160,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1293688563
+  m_SortingLayer: -5
   m_SortingOrder: 0
   m_Sprite: {fileID: -6159636267940615074, guid: 46b3139a169505e43a9b838db30430ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -208,7 +208,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0068454742, y: -0.8386941}
+  m_Offset: {x: -0.0068969727, y: -0.852437}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -218,7 +218,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.67422104, y: 0.6094904}
+  m_Size: {x: 0.60746765, y: 0.54273605}
   m_EdgeRadius: 0
 --- !u!1 &6029618172978660344
 GameObject:
@@ -230,7 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3186544901115360453}
   - component: {fileID: 7263283338651254548}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Light 2D (2)
   m_TagString: NightLight
   m_Icon: {fileID: 0}

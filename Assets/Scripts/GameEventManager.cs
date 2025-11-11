@@ -16,6 +16,7 @@ public class GameEventManager : MonoBehaviour
     public ShopEvent shopEvent;
     public ToolKitEvent toolKitEvent;
     public GameInput gameInput;
+    public AnimationEvent animationEvent;
     private void Awake()
     {
        if(Ins != null && Ins != this)
@@ -29,6 +30,7 @@ public class GameEventManager : MonoBehaviour
         shopEvent = new ShopEvent();
         toolKitEvent = new ToolKitEvent();
         gameInput = new GameInput();
+        animationEvent = new AnimationEvent();
         DontDestroyOnLoad(this.gameObject);
     }
 

@@ -10,10 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 3137271875322136701}
   - component: {fileID: 2773363101591850450}
-  - component: {fileID: 7116533903612479588}
   - component: {fileID: 2783163602581794009}
   - component: {fileID: -678826968472582790}
-  m_Layer: 7
+  - component: {fileID: 7333635360728887803}
+  - component: {fileID: 255887927597483318}
+  - component: {fileID: 5281899413045931722}
+  - component: {fileID: 4553124777809896328}
+  m_Layer: 2
   m_Name: Gold Ore 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,8 +79,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1653813943
-  m_SortingLayer: 2
+  m_SortingLayerID: 1293688563
+  m_SortingLayer: -5
   m_SortingOrder: 0
   m_Sprite: {fileID: -7969849070436703693, guid: 1465e899cd8252b458eb6fccf081fe25, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -90,8 +93,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &7116533903612479588
-PolygonCollider2D:
+--- !u!114 &2783163602581794009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3639777610272869884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37af4e17037732943bae391f6646baa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner: {fileID: 0}
+  orePrefab: {fileID: 3639777610272869884}
+  respawnDelay: 10
+  animator: {fileID: 4553124777809896328}
+  maxHitPoints: 3
+  dropPrefab: {fileID: 0}
+  dropCount: 2
+  dropForce: 3
+  knockbackForce: 2
+--- !u!50 &-678826968472582790
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3639777610272869884}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &7333635360728887803
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -124,45 +175,19 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0019145012, y: -0.07275438}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8125, y: 0.75}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1.3125, y: 1.125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.34621334, y: 0.31629467}
-      - {x: 0.15270138, y: 0.3148389}
-      - {x: 0.15241098, y: 0.2533722}
-      - {x: 0.09097862, y: 0.2538905}
-      - {x: 0.09154034, y: 0.19122362}
-      - {x: -0.15551567, y: 0.19297695}
-      - {x: -0.2846012, y: 0.19172335}
-      - {x: -0.28433466, y: 0.12835836}
-      - {x: -0.3472352, y: 0.12954617}
-      - {x: -0.34736538, y: -0.0026979446}
-      - {x: -0.28653526, y: -0.004681587}
-      - {x: -0.28322458, y: -0.06880045}
-      - {x: -0.2243123, y: -0.06799841}
-      - {x: -0.22228909, y: -0.11914444}
-      - {x: -0.2884407, y: -0.116485596}
-      - {x: -0.28573275, y: -0.19567919}
-      - {x: -0.2297492, y: -0.19562054}
-      - {x: -0.22931767, y: -0.25983}
-      - {x: -0.16611099, y: -0.2592702}
-      - {x: -0.16592789, y: -0.3206501}
-      - {x: 0.29324055, y: -0.32344913}
-      - {x: 0.29418325, y: -0.26021194}
-      - {x: 0.35716867, y: -0.26078415}
-      - {x: 0.35838795, y: -0.061510086}
-      - {x: 0.35060835, y: 0.1199913}
-  m_UseDelaunayMesh: 0
---- !u!114 &2783163602581794009
+  m_Size: {x: 0.6668606, y: 0.5175228}
+  m_EdgeRadius: 0
+--- !u!114 &255887927597483318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,43 +196,46 @@ MonoBehaviour:
   m_GameObject: {fileID: 3639777610272869884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37af4e17037732943bae391f6646baa9, type: 3}
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: {fileID: 0}
-  orePrefab: {fileID: 3639777610272869884}
-  respawnDelay: 10
-  maxHitPoints: 3
-  dropPrefab: {fileID: 0}
-  dropCount: 2
-  dropForce: 3
-  shakeDuration: 0.1
-  shakeAmount: 0.1
-  knockbackForce: 2
---- !u!50 &-678826968472582790
-Rigidbody2D:
-  serializedVersion: 5
+  m_CategoryHash: 0
+  m_labelHash: 0
+  m_SpriteKey: 0
+  m_SpriteHash: 0
+--- !u!114 &5281899413045931722
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3639777610272869884}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: d973b9d0d4424924eb35ede318a67be0, type: 3}
+--- !u!95 &4553124777809896328
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3639777610272869884}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3256d5069db079f4eb9a5baf53dfc3b5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -1,17 +1,32 @@
+using System;
+using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created                             
-    void Start()
+    public DateTime dateTime;
+    private void Awake()
     {
-        
+        DontDestroyOnLoad(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        SceneManager.sceneLoaded += OnSceneLoad;
+
     }
-   
+
+    private void OnSceneLoad(Scene arg0, LoadSceneMode arg1)
+    {
+        if (arg0.path.StartsWith("Assets/Scenes/ScenePlay"))
+        {
+            FindAnyObjectByType<CinemachineCamera>().Follow = this.transform;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoad;
+    }
 }

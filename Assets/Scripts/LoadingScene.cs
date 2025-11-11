@@ -1,39 +1,153 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LoadingScene : MonoBehaviour
 {
+    [Header("UI")]
     [SerializeField] Image fill;
-    [SerializeField] float timeLoad = 3f;
-    public static string sceneTarget;
-    void Start()
+    [SerializeField] TextMeshProUGUI description;
+    [SerializeField] TextMeshProUGUI percentageTxt;
+    [Header("Config")]
+    [SerializeField] CanvasGroup canvasGroup;
+    [SerializeField] float speedFade = 0.3f;
+    public static LoadingScene Ins;
+    public bool isLoading;
+    public bool isFading;
+    public bool IsBusy => isLoading || isFading;
+    private void Awake()
     {
-        StartCoroutine(LoadSceneAsync());
-    }
-
-    // Update is called once per frame
-   IEnumerator Loading()
-    {
-
-        float timeCoolDown = timeLoad;
-        while (timeCoolDown > 0f)
+      if(Ins != null &&  Ins != this)
         {
-            timeCoolDown -= Time.deltaTime;
-            fill.fillAmount =1f - (timeCoolDown/timeLoad);
-            yield return null;
-        }
-        SceneManager.LoadScene("WaterFall");
+            Destroy(Ins.gameObject);
+        }   
+      Ins = this;
+      DontDestroyOnLoad(gameObject);
     }
-    
-    IEnumerator LoadSceneAsync()
+
+    private void Start()
     {
-        var task = SceneManager.LoadSceneAsync(sceneTarget);
+        HideInstant();
+    }
+
+    public void LoadScene( string newSceneName, string description, LoadSceneMode loadSceneMode, bool fadeOut = true)
+    {
+        Show();
+        StartCoroutine(LoadSceneAsync(newSceneName, description, loadSceneMode, fadeOut));
+    }
+
+    public void LoadScene( int newIndex, string description, LoadSceneMode loadSceneMode, bool fadeOut = true)
+    {
+        Show();
+        StartCoroutine(LoadSceneAsync( newIndex, description, loadSceneMode, fadeOut));
+    }
+
+    IEnumerator LoadSceneAsync( int newIndex, string description, LoadSceneMode loadMode, bool fadeOut)
+    {
+        isLoading = true;
+        var task = SceneManager.LoadSceneAsync(newIndex, loadMode);
+        float progress = 0f;
+        task.allowSceneActivation = false;
+        this.description.text = description;
         while (!task.isDone)
         {
-            fill.fillAmount = Mathf.Clamp01( task.progress/0.9f);
+            float target = Mathf.Clamp01(task.progress / 0.9f);
+            progress = Mathf.MoveTowards(progress, target, Time.deltaTime * 9f);
+            fill.fillAmount = progress;
+            percentageTxt.text = $"{(progress * 100).ToString("F1")}%";
+            if (progress >= 1f)
+            {
+                yield return new WaitForSeconds(.2f);
+                task.allowSceneActivation = true;
+            }
+            yield return null;
+
+        }
+        isLoading = false;
+        Hide(fadeOut);
+
+    }
+    IEnumerator LoadSceneAsync( string newSceneName, string description, LoadSceneMode loadMode, bool fadeOut)
+    {
+       
+        isLoading = true;
+        var task = SceneManager.LoadSceneAsync(newSceneName, loadMode);
+        float progress = 0f;
+        task.allowSceneActivation = false;
+        this.description.text = description;
+        while (!task.isDone)
+        {
+            float target = Mathf.Clamp01( task.progress/0.9f);
+            progress = Mathf.MoveTowards(progress, target, Time.deltaTime * 9f);
+            fill.fillAmount = progress;
+            percentageTxt.text = $"{(progress *100).ToString("F1")}%";
+            if (progress >= 1f)
+            {
+                yield return new WaitForSeconds(.2f);
+                task.allowSceneActivation=true;
+            }
+            yield return null;
+
+        }
+
+        isLoading = false;
+        Hide(fadeOut);
+       
+
+    }
+
+
+    private void OnEnable()
+    {
+        if(GameEventManager.Ins != null)
+        {
+            GameEventManager.Ins.gameInput.Disable_InputAction();
+        }
+    }
+    private void OnDisable()
+    {
+        if (GameEventManager.Ins != null)
+        {
+            GameEventManager.Ins.gameInput.Enable_InputAction();
+        }
+    }
+
+    void Show()
+    {
+        gameObject.SetActive(true);
+        canvasGroup.alpha = 1;
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
+    }
+
+    void Hide(bool fading)
+    {
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
+        if(fading)
+            StartCoroutine(FadeOut());
+    }
+
+    void HideInstant()
+    {
+        canvasGroup.alpha = 0;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
+    }
+
+    IEnumerator FadeOut()
+    {
+        isFading = true;
+        float t = 0;
+        while (t < speedFade)
+        {
+            t += Time.deltaTime;
+            canvasGroup.alpha = 1 - t / speedFade;
             yield return null;
         }
-    }  
+       isFading = false;
+        gameObject.SetActive(false);
+    }
 }
