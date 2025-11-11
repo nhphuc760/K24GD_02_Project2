@@ -364,10 +364,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueLines:
-  - "M\u1ED9t bu\u1ED5i t\u1ED1i th\u1EADt \xEAm \u0111\u1EC1m"
-  - "t\xF4i c\u1EA3m th\u1EA5y th\u1EADt m\u1EC7t m\u1ECFi"
-  - "Ch\u1EB3ng l\u1EBD cu\u1ED9c s\u1ED1ng nh\xE0m ch\xE1n c\u1EE9 th\u1EBF n\xE0y
-    ti\u1EBFp di\u1EC5n m\xE3i"
+  - "Th\xE0nh ph\u1ED1 l\u1EA1i m\u01B0a"
+  - "Ng\xE0y n\xE0o c\u0169ng v\u1EADy"
+  - "Chen ch\xFAc tr\xEAn chuy\u1EBFn xe bu\xFDt, r\u1ED3i l\u1EA1i v\u1EC1 c\u0103n
+    ph\xF2ng tr\u1ED1ng r\u1ED7ng"
+  - "M\u1ECDi th\u1EE9 l\u1EB7p l\u1EA1i..."
+  - "Kh\xF4ng c\xF2n g\xEC khi\u1EBFn m\xECnh th\u1EA5y c\xF2n h\xE1o h\u1EE9c n\u1EEFa"
+  - "Trang tr\u1EA1i c\u1EE7a \xF4ng b\xE0..."
+  - "Kh\xF4ng bi\u1EBFt b\xE2y gi\u1EDD th\u1EBF n\xE0o r\u1ED3i nh\u1EC9"
+  - "C\xF3 l\u1EBD m\xECnh n\xEAn \u0111i \u0111\xE2u \u0111\xF3 m\u1ED9t th\u1EDDi
+    gian"
   choicePanel: {fileID: 1727779598}
   choiceYesButton: {fileID: 1883331014}
   choiceNoButton: {fileID: 1535584508}
@@ -741,8 +747,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 552, y: 55}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 309, y: -49}
+  m_SizeDelta: {x: 262.8325, y: 54.1014}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1535584506
 MonoBehaviour:
@@ -1214,8 +1220,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 552, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 309, y: 73.34256}
+  m_SizeDelta: {x: 262.84, y: 57.3149}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1883331012
 MonoBehaviour:

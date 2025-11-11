@@ -54,8 +54,8 @@ public class OpeningCutsceneController : MonoBehaviour
         choicePanel.SetActive(true);
 
         // Gán text cho nút (ví dụ)
-        choiceYesText.text = "Về quê thôi";
-        choiceNoText.text = "Có lẽ chưa phải lúc...";
+        choiceYesText.text = "Có lẽ... đã đến lúc tìm lại chính mình";
+        choiceNoText.text = "Có lẽ... chưa phải lúc";
 
         // Gán sự kiện cho nút (xóa listener cũ trước để tránh lỗi)
         choiceYesButton.onClick.RemoveAllListeners();
