@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Seed : MonoBehaviour, IInteractable
 {
-    private int growthProgress = 0;
+    private int curGrowthProgress = 0; //index currentSeedData.growhtSprites
     DateTime timeHarvest; //lưu thời điểm thu hoạch được cây trồng
+    DateTime curTime;
     private SeedDataSO currentSeedData; // Reference to the CropData ScriptableObject
     private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
     private bool isMature = false;//kiểm tra cây đã trưởng thành chưa
@@ -22,19 +23,22 @@ public class Seed : MonoBehaviour, IInteractable
     {
         currentSeedData = cropData;
 
-        // Lấy thời gian chính xác từ TimeManager
+        // Lấy thời gian chính xác từ Sever
         var task = await Save_Load_Firebase.GetSeverDateTime();
+    
         if (task.HasValue)
         {
-         
-            timeHarvest = task.Value;
+
+             curTime = task.Value;
         }
         else
         {
-            timeHarvest = DateTime.UtcNow;
+            curTime = DateTime.UtcNow;
         }
-        growthProgress = 0;
+        timeHarvest = curTime.AddSeconds(currentSeedData.timeSpandHarvest);
+        curGrowthProgress = 0;
         isMature = false;
+        StartCoroutine(Growth());
         // Tắt mọi bảng hiệu cũ (nếu có) khi trồng
         if (currentIndicator != null)
         {
@@ -42,57 +46,27 @@ public class Seed : MonoBehaviour, IInteractable
         }
         UpdateSprite();
     }
-
-    //Hàm được gọi bởi TimeManager mỗi khi một ngày trôi qua trong trò chơi
-    public void Grow()
-    {
-        //if (isMature) return;
-        ////Tính toán xem đã bao nhiêu giây trôi qua từ lúc trồng
-        //double timeSincePlanted = TimeManager.instance.totalTimeElapsed - curTime;
-        ////Tính số giây đó tương đương bao nhiêu "ngày game"
-        //int newGrowthProgress = (int)(timeSincePlanted / TimeManager.instance.secondsperDay);
-        ////cập nhật sprite nếu tiến độ mới lớn hơn tiến độ cũ
-        //if (newGrowthProgress > growthProgress)
-        //{
-        //    growthProgress = newGrowthProgress;
-
-        //    // Kiểm tra xem đã chín chưa
-        //    if (growthProgress >= currentSeedData.DaysToGrow)
-        //    {
-        //        growthProgress = currentSeedData.DaysToGrow;
-        //        isMature = true;
-        //        ShowHarvestIndicator(true);
-        //    }
-
-        //    // Cập nhật hình ảnh
-        //    UpdateSprite();
-        //}
-    }
     // Cập nhật lại UpdateSprite để dùng biến "growthProgress"
     private void UpdateSprite()
     {
-        //int growthStageCount = currentSeedData.growhtSprites.Count;
+        int growthStageCount = currentSeedData.growhtSprites.Count;
 
-        //if (growthStageCount > 0)
-        //{
-        //    // Tính toán giai đoạn dựa trên tiến độ
-        //    int currentStage = (int)((float)growthProgress / currentSeedData.DaysToGrow * (growthStageCount - 1));
-        //    currentStage = Mathf.Clamp(currentStage, 0, growthStageCount - 1);
-        //    spriteRenderer.sprite = currentSeedData.growhtSprites[currentStage];
-        //}
-    }
-
-    private void OnEnable()
-    {
-        TimeManager.OnNewDay += Grow;
-    }
-    private void OnDisable()
-    {
-        TimeManager.OnNewDay -= Grow;
+        if (curGrowthProgress - 1 <= growthStageCount)
+        {     
+            spriteRenderer.sprite = currentSeedData.growhtSprites[curGrowthProgress];
+        }
+        else
+        {
+            spriteRenderer.sprite = currentSeedData.growhtSprites[growthStageCount - 1];
+        }
+        if (isMature)
+        {
+            spriteRenderer.sprite = currentSeedData.growhtSprites[growthStageCount - 1];
+        }
     }
     public void Interact()
     {
-        if(isMature)
+        if (isMature)
         {
             Harvest();
         }
@@ -113,7 +87,6 @@ public class Seed : MonoBehaviour, IInteractable
         GameEventManager.Ins.inventoryEvent.AddItem(currentSeedData.cropData, currentSeedData.yield);
         Destroy(gameObject); // Remove the crop from the game world after harvesting
     }
-    //hàm bật tắt 'bảng hiệu'
     private void ShowHarvestIndicator(bool show)
     {
         // Nếu chưa có bảng hiệu, tạo nó ra
@@ -129,7 +102,7 @@ public class Seed : MonoBehaviour, IInteractable
         {
             // Tìm component Image trong các con của bảng hiệu và gán icon vào
             // Lưu ý: ItemData là lớp cha của CropData, chứa biến 'icon'
-            currentIndicator.GetComponentInChildren<UnityEngine.UI.Image>().sprite = currentSeedData.harvestIndicator; 
+            currentIndicator.GetComponentInChildren<UnityEngine.UI.Image>().sprite = currentSeedData.harvestIndicator;
 
             // Bật hoặc tắt bảng hiệu
             currentIndicator.SetActive(show);
@@ -149,30 +122,65 @@ public class Seed : MonoBehaviour, IInteractable
     public void LoadCropState(SeedDataSO dataAsset, DateTime timeHarvest, DateTime curTime)
     {
         this.currentSeedData = dataAsset;
+        this.timeHarvest = timeHarvest;
+        this.curTime = curTime;
         TimeSpan t = timeHarvest - curTime;
-            if (t < TimeSpan.Zero)
-            {
-               
-                isMature = true;
-                ShowHarvestIndicator(true);
-            }
-            else
-            {
-                isMature = false;
-                ShowHarvestIndicator(false);
-           // StartCoroutine(Growth());
-            }
-            UpdateSprite();
-      
+        if (t < TimeSpan.Zero)
+        {
+
+            isMature = true;
+            ShowHarvestIndicator(true);
+        }
+        else
+        {
+            curGrowthProgress = CalCulateProgress(curTime);
+            isMature = false;
+            ShowHarvestIndicator(false);
+            StartCoroutine(Growth());
+        }
+        UpdateSprite();
+
     }
 
-    IEnumerator Growth(TimeSpan timeSpan)
+    IEnumerator Growth()
     {
-        yield return new WaitForSeconds((float)timeSpan.TotalSeconds);
+        while (curTime < timeHarvest)
+        {
+            curTime = curTime.AddSeconds(1);
+            TimeSpan coolDown = timeHarvest - curTime;
+            int progress = CalCulateProgress(curTime);
+            if (progress > curGrowthProgress)
+            {
+                
+                curGrowthProgress = progress;
+                if(curGrowthProgress >= currentSeedData.growhtSprites.Count - 1)
+                {
+                    isMature = true;
+                    UpdateSprite();
+                    yield break; //Thoát nếu cây trưởng thành
+                }
+                UpdateSprite();
+            }
+            yield return new WaitForSeconds(1);
+        }
+        isMature = true;
+        ShowHarvestIndicator(true);
+        UpdateSprite();
+
     }
 
-    public void LoadDataForSeed(SeedSaveData data)
+    int CalCulateProgress(DateTime curTime)
     {
-        timeHarvest = data.timeHarvest;
+        try
+        {
+            TimeSpan t = timeHarvest - curTime;
+            float timeSpan = currentSeedData.GetTimeSpanPerProgress();
+            int nev_progress = Mathf.CeilToInt((float)t.TotalSeconds / timeSpan);
+            return currentSeedData.growhtSprites.Count - 1 - nev_progress;
+        }
+        catch
+        {
+            return 0;
+        }
     }
 }

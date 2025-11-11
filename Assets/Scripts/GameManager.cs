@@ -149,15 +149,22 @@ public class GameManager : MonoBehaviour
     {
         string currentScene = SceneManager.GetActiveScene().name;
         //chỉ lưu khi là game scene có thể trồng cây
-        if(currentScene == "Farm")
+        Debug.Log(currentScene);
+        if(currentScene.Equals("Farm"))
         {
             List<SeedSaveData> seedSaveDatas = new List<SeedSaveData>();
             Seed[] cropsInScene = FindObjectsByType<Seed>(FindObjectsSortMode.None);
+            Debug.Log(cropsInScene.Length);
+            if (cropsInScene == null || cropsInScene.Length == 0)
+            {
+                await Save_Load_Firebase.RemoveAsync("SeedData");
+                return;
+            }
             foreach (Seed crop in cropsInScene)
             {
                 seedSaveDatas.Add(crop.GetSaveData());
             }
-
+         
             await Save_Load_Firebase.SaveData("SeedData", JsonConvert.SerializeObject(seedSaveDatas));
         }
     }
@@ -198,11 +205,14 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
      
     }
-    private async void OnDestroy()
+    private async void OnDestroy()  
     {
+        await SaveCurrentSceneState();
         await Save_Load_Firebase.SaveData("Coins", _coins);
+       
     }
 
     private void OnValidate()

@@ -307,8 +307,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CategoryHash: 4.804503e-31
-  m_labelHash: 5.698824e-24
+  m_CategoryHash: 6.6282384e-23
+  m_labelHash: 1.3971405e-28
   m_SpriteKey: 0
   m_SpriteHash: 688487968
 --- !u!114 &6265629970169200554
@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 3025117784283917272}
   m_Layer: 0
   m_Name: CheckGround
-  m_TagString: Untagged
+  m_TagString: GroundCheck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

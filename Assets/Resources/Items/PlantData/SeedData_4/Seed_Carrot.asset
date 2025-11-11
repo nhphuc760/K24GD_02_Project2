@@ -19,7 +19,7 @@ MonoBehaviour:
   _maxStack: 99
   isStackable: 1
   itemType: 0
-  DaysToGrow: 2
+  timeSpandHarvest: 60
   cropData: {fileID: 11400000, guid: 23567b50437f9a34d996177f9dec4ae2, type: 2}
   growhtSprites:
   - {fileID: 2109489747490457824, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}

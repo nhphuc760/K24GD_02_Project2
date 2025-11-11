@@ -20,14 +20,14 @@ public class Transparentcy : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("GroundCheck"))
         {
             body.color = new Color(body.color.r, body.color.g, body.color.b, alpha);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("GroundCheck"))
         {
             body.color = Color.white;
         }

@@ -166,15 +166,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oreList:
   - orePrefab: {fileID: 3639777610272869884, guid: 3d0ff9e03ba94354086de101c0c5d907, type: 3}
-    oreCount: 5
+    oreCount: 10
   - orePrefab: {fileID: 3639777610272869884, guid: 4de0eed16b7a15b42843abc82752d789, type: 3}
-    oreCount: 5
+    oreCount: 10
   - orePrefab: {fileID: 3639777610272869884, guid: ccad590e24a254c42877a096fc1a23aa, type: 3}
-    oreCount: 5
+    oreCount: 10
   - orePrefab: {fileID: 3639777610272869884, guid: 0c8f37559cef0d94aa852f5f915bdf62, type: 3}
-    oreCount: 8
+    oreCount: 10
   - orePrefab: {fileID: 3639777610272869884, guid: 0edfec9a9dd26a843aa88a2abb4e7690, type: 3}
-    oreCount: 5
+    oreCount: 10
   respawnDelay: 10
   spawnArea: {fileID: 67211258}
   obstacleLayer:
@@ -65767,7 +65767,7 @@ CompositeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
