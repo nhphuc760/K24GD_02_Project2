@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -22,6 +23,13 @@ public class ToolKit : MonoBehaviour
         GameEventManager.Ins.toolKitEvent.onCallInput += OnInputCalled;
         GameEventManager.Ins.toolKitEvent.onUpdateUI += UpdateUI;
         GameEventManager.Ins.toolKitEvent.onGetDataChooseSlot += GetCurDataChoosing;
+        GameEventManager.Ins.toolKitEvent.onGetCurrentIndexChoose += GetCurIndexChoosing;
+       
+    }
+
+    private int GetCurIndexChoosing()
+    {
+        return curIndex;
     }
 
     private InventorySlot GetCurDataChoosing()
@@ -41,6 +49,7 @@ public class ToolKit : MonoBehaviour
         GameEventManager.Ins.toolKitEvent.onCallInput -= OnInputCalled;
         GameEventManager.Ins.toolKitEvent.onUpdateUI -= UpdateUI;
         GameEventManager.Ins.toolKitEvent.onGetDataChooseSlot -= GetCurDataChoosing;
+        GameEventManager.Ins.toolKitEvent.onGetCurrentIndexChoose -= GetCurIndexChoosing;
     }
 
     private void InitInventorySuccess(Inventory inventory)
@@ -55,7 +64,7 @@ public class ToolKit : MonoBehaviour
             cachedToolkitUI.Add(slot);
             slot.UpdateUI();
         }
-
+        OnInputCalled(1); //Mặc định vào game sẽ chọn ô toolkit đầu tiên
     }
 
     void UpdateUI()

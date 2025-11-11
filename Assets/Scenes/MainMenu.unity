@@ -985,7 +985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadGameButton: {fileID: 396433470}
   newGameScene: CustomizeCharacter
-  mainGameScene: Farm
+  loadGameScene: PersistentSystem
 --- !u!224 &611279199
 RectTransform:
   m_ObjectHideFlags: 0

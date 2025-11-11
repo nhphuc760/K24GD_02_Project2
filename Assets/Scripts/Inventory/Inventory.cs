@@ -61,6 +61,7 @@ public class Inventory
 
     public bool TryDropItem(InventorySlot start, InventorySlot end)
     {
+       try{ 
         if (start.ItemData == end.ItemData && start.ItemData.isStackable)
         {
             int totalQuantity = start.quantity + end.quantity;
@@ -73,11 +74,14 @@ public class Inventory
         {
             return true;
         }
-        if (start.ItemData != end.ItemData)
+            if (start.ItemData != end.ItemData)
+            {
+                return false;
+            } 
+        }catch (Exception e)
         {
-          return false;
-        } 
-
+            Debug.Log(e.Message);
+        }
         return false;
     }
 
@@ -228,7 +232,7 @@ public class Inventory
     /// <summary>
     /// </summary>
     /// param name="idInventory">ID của kho</param>
-    public async void SaveData(string keyInventory)
+    public async Task SaveData(string keyInventory)
     {
         List<InventorySlotData> itemDataSlots = new List<InventorySlotData>();
         foreach (var child in itemSlots)

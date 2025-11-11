@@ -4,6 +4,20 @@ public class Transparentcy : MonoBehaviour
 {
     [SerializeField] SpriteRenderer body;
     [SerializeField] float alpha = .5f;
+
+    private void Awake()
+    {
+        var body = transform.Find("Body");
+        if(body != null)
+        {
+            body.gameObject.SetActive(true);
+        }
+        var root = transform.Find("Root");
+        if(root != null)
+        {
+            root.gameObject.SetActive(false);
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))

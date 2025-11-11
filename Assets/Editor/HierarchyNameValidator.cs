@@ -14,7 +14,7 @@ public static class HierarchyNameValidator
     private static void OnHierarchyChanged()
     {
         // Find all root objects in all open scenes
-        var allObjects = Object.FindObjectsOfType<GameObject>();
+        var allObjects = Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
         bool fixedAny = false;
         foreach (var go in allObjects)
         {

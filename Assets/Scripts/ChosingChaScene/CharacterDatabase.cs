@@ -5,9 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CharacterDatabase", menuName = "Scriptable Objects/CharacterDatabase")]
 public class CharacterDatabase : ScriptableObject
 {
-    public List<CharacterData> characters;
+    public List<CharacterDataSO> characters;
     private void OnValidate()
     {
-        characters = Resources.LoadAll<CharacterData>("CharacterData").ToList();
+        characters = Resources.LoadAll<CharacterDataSO>("CharacterData").ToList();
     }
 }

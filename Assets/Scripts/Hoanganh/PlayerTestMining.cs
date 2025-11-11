@@ -1,5 +1,6 @@
 ﻿using System;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,7 @@ public class PlayerTestMining : MonoBehaviour
     [SerializeField] Transform groundCheck;
     [SerializeField]
     PlayerMovement playerMovement;
+
 
 
     private void Awake()
@@ -57,7 +59,9 @@ public class PlayerTestMining : MonoBehaviour
     void TryMineOre()
     {
 
-        Collider2D hit = Physics2D.OverlapCircle(transform.position, interactRange,   oreLayer);
+        if (playerMovement.IsMoving) return;
+
+        Collider2D hit = Physics2D.OverlapCircle(groundCheck.position, interactRange, oreLayer);
 
         if (hit != null)
         {
@@ -67,30 +71,23 @@ public class PlayerTestMining : MonoBehaviour
                 var ore = hit.GetComponent<OreInfor>(); // class quặng của bạn
                 if (ore != null && checkDirect)
                 {
-                        ore.MineOre();
+                GameEventManager.Ins.animationEvent.PickAxe(ore);
                     return;
                 }
                 var tree = hit.GetComponent<TreeInfor>();
                 if(tree != null && checkDirect)
                 {
-                   
-                    tree.OnChop();
+                   GameEventManager.Ins.animationEvent.Axe(tree);
                 }    
             
         }
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(groundCheck.position, interactRange);
     }
 
 
     bool CheckDirection(Transform obj)
     {
         if (playerMovement == null) return false;
-        Vector2 direct = (obj.position - transform.position).normalized;
+        Vector2 direct = (obj.position - groundCheck.position).normalized;
         float t  = Vector2.Dot(direct, playerMovement.GetDirection());
         if (t > 0)
         {
@@ -101,5 +98,12 @@ public class PlayerTestMining : MonoBehaviour
             return false;
         }
         return false;
+    }
+
+
+    private void OnDrawGizmosSelected()
+    {
+        Handles.color = Color.yellow;
+        Handles.DrawWireDisc(groundCheck.position, Vector3.forward, interactRange);
     }
 }

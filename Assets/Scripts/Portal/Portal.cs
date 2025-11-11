@@ -18,6 +18,17 @@ public class Portal : MonoBehaviour
             {
                 GameManager.Ins.StartSceneTransition(sceneToLoad, targetPosition);
             }
+            if (Physics2D.GetIgnoreLayerCollision(0, 2))
+            {
+                Physics2D.IgnoreLayerCollision(0, 2, false);
+                SpriteRenderer playerVisual = other.gameObject.GetComponentInChildren<SpriteRenderer>();
+                if (playerVisual != null)
+                {
+                    playerVisual.sortingLayerName = "Player";
+                    playerVisual.sortingOrder = 0;
+                }
+                
+            }
         }
     }
 }

@@ -1,9 +1,6 @@
-using System;
-using System.IO;
+﻿using System;
 using System.Threading.Tasks;
 using Firebase.Database;
-using Newtonsoft.Json;
-using Unity.VisualScripting;
 using UnityEngine;
 public static class Save_Load_Firebase 
 {
@@ -26,16 +23,22 @@ public static class Save_Load_Firebase
     {
        
         await reference.Child(GetUserID()).Child(path).SetValueAsync(value);
-       
+        Debug.Log("Lưu dữ liệu: " + path);
     }
 
     public static async Task<DataSnapshot> LoadData(string path)
     {
         
         DataSnapshot snapshot = await reference.Child(GetUserID()).Child(path).GetValueAsync();
+        Debug.Log("Load dữ liệu từ: " + path);
         return snapshot;
 
     }
+
+    /// <summary>
+    /// Lấy thời gian quốc tế (UTC + 0)
+    /// </summary>
+    /// <returns></returns>
     public static async Task<DateTime?> GetSeverDateTime()
     {
 
@@ -57,40 +60,14 @@ public static class Save_Load_Firebase
         return null;
     }
 
-    public static async Task<GameData> LoadGame()
+    public static async Task RemoveAllDataBase()
     {
-        try
-        {
-           var task = await LoadData("GameData");
-            if (task.Exists)
-            {
-                GameData data = JsonConvert.DeserializeObject<GameData>(task.Value.ToString());
-                return data;
-            }
-            else
-            {
-                return new GameData();
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.Log(e.Message);
-            return new GameData();
-        }
+        await reference.Child(GetUserID()).RemoveValueAsync();
+        Debug.Log("Xóa dữ liệu thành công");
     }
 
-    public static async Task SaveGame(GameData data)
+    public static async Task RemoveAsync(string path)
     {
-      
-        string json = JsonConvert.SerializeObject(data);
-        try
-        {
-            await SaveData("GameData", json);
-        }
-        catch (System.Exception e)
-        {
-            Debug.Log(e.Message + "\n" + "From SaveGame() - Save_Load_Firebase");
-        }
+        await reference.Child(GetUserID()).Child(path).RemoveValueAsync();
     }
-
 }

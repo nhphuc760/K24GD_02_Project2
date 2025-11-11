@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -112,16 +113,20 @@ public class InventoryManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
-            AddItem(Resources.Load<SeedData>("Items/PlantData/SeedData_4/Seed_Carrot"), 10);
+            AddItem(Resources.Load<SeedDataSO>("Items/PlantData/SeedData_4/Seed_Carrot"), 10);
         }
     }
-    private void OnDisable()
+    private async void OnDisable()
     {
         if(isLoaded)
-         inventory.SaveData("InventoryOfPlayer");
-        itemInforUI.gameObject?.SetActive(false);
+         await inventory.SaveData("InventoryOfPlayer");
+        if(itemInforUI != null)
+        {
+            itemInforUI.gameObject.SetActive(false);
+        }
+       
     }
-    private void OnDestroy()
+    private async void OnDestroy()
     {
         //GameInput.Ins.openBagPressed -= Ins_openBagPressed;
         GameEventManager.Ins.inventoryEvent.opendBagPressed -= Ins_openBagPressed;
@@ -134,6 +139,7 @@ public class InventoryManager : MonoBehaviour
         GameEventManager.Ins.inventoryEvent.onRemoveItemByData -= RemoveItemByData;
         GameEventManager.Ins.inventoryEvent.onAddItem -= AddItem;
         GameEventManager.Ins.inventoryEvent.onDropItem -= OnDropItem;
+        await inventory.SaveData("InventoryOfPlayer");
     }
 
     private void OnValidate()
@@ -185,8 +191,7 @@ public class InventoryManager : MonoBehaviour
         if (inventory.AddItem(itemDataSO, quantity))
         {
             GameEventManager.Ins.TriggerDialog($"<color=green>{itemDataSO._itemName} đã được thêm vào kho đồ của bạn</color>");
-            if (gameObject.activeSelf)
-                UpdateUI();
+            UpdateUI();
             return true;
         }
         else
@@ -235,6 +240,7 @@ public class InventoryManager : MonoBehaviour
     void RemoveItemByData(ItemDataSO item, int quantity)
     {
         inventory.RemoveItem(item, quantity);
+        UpdateUI();
     }
 
     void OnRemoveItemCompleted(bool isActiveFalse) {

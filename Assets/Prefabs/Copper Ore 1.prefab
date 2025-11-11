@@ -13,7 +13,10 @@ GameObject:
   - component: {fileID: 2783163602581794009}
   - component: {fileID: 1965154311967002962}
   - component: {fileID: 2121056159978839090}
-  m_Layer: 13
+  - component: {fileID: 8630127230799413084}
+  - component: {fileID: 5830401542170620948}
+  - component: {fileID: 7414850066281707742}
+  m_Layer: 2
   m_Name: Copper Ore 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,8 +79,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1653813943
-  m_SortingLayer: 0
+  m_SortingLayerID: 1293688563
+  m_SortingLayer: -5
   m_SortingOrder: 0
   m_Sprite: {fileID: -7025778583982526716, guid: 1465e899cd8252b458eb6fccf081fe25, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -105,12 +108,11 @@ MonoBehaviour:
   spawner: {fileID: 0}
   orePrefab: {fileID: 3639777610272869884}
   respawnDelay: 10
+  animator: {fileID: 7414850066281707742}
   maxHitPoints: 3
   dropPrefab: {fileID: 4968870224503612978, guid: 5709c8610ce85fc49a6424d1218e2525, type: 3}
   dropCount: 2
   dropForce: 3
-  shakeDuration: 0.1
-  shakeAmount: 0.1
   knockbackForce: 2
 --- !u!50 &1965154311967002962
 Rigidbody2D:
@@ -185,3 +187,55 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.6248188, y: 0.56797266}
   m_EdgeRadius: 0
+--- !u!114 &8630127230799413084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3639777610272869884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: 0
+  m_labelHash: 0
+  m_SpriteKey: 0
+  m_SpriteHash: 0
+--- !u!114 &5830401542170620948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3639777610272869884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 2c1a81ba86abc78458dbf0c7b16e1ffb, type: 3}
+--- !u!95 &7414850066281707742
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3639777610272869884}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3256d5069db079f4eb9a5baf53dfc3b5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

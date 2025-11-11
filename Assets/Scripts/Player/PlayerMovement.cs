@@ -18,9 +18,10 @@ public class PlayerMovement : MonoBehaviour
     //        //Upgrade later: Change animation state if have swimming or flying
     //    }
     //}
-    public bool IsMoving { get => isMoving; set => isMoving = value; }
+    public bool IsMoving => isMoving;
     public float HorizontalMovement { get => horizontalMovement; }
     public float VerticalMovement { get => verticalMovement; }
+
     private Rigidbody2D rb;
 
     void Start()

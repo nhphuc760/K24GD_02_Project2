@@ -52,7 +52,7 @@ public class PlayerFarming : MonoBehaviour
             GameEventManager.Ins.TriggerDialog("<color=red>Bạn chưa chọn hạt giống</color>");
             return;
         }
-        var seedData = curSelected.ItemData as SeedData;
+        var seedData = curSelected.ItemData as SeedDataSO;
         
         Collider2D hit = Physics2D.OverlapCircle(transform.position, interactionRadius, interactableLayerMask);
         if (hit != null && hit.GetComponent<IInteractable>() != null)
@@ -73,7 +73,7 @@ public class PlayerFarming : MonoBehaviour
 
 
     //Trồng, thu hoạch cây.
-    void Plant(SeedData cropToPlant)
+    void Plant(SeedDataSO cropToPlant)
     {
         if(plowableLayer == null)
         {
@@ -88,20 +88,17 @@ public class PlayerFarming : MonoBehaviour
             if (existingCrop == null)
             {
                 // Thì mới tiến hành trồng cây
+                //trừ hạt giống trong inventory
+                int curIndex = GameEventManager.Ins.toolKitEvent.GetCurrentIndex();
+                if (curIndex < 0) return;
+                GameEventManager.Ins.inventoryEvent.RemoveItem(curIndex, 1);
                 GameObject cropInstance = Instantiate(cropToPlant.cropData.prefab, cellCenterPosition, Quaternion.identity);
                 cropInstance.GetComponent<Seed>().Plant(cropToPlant);
-                Debug.Log($"Đã trồng {cropToPlant._itemName} tại ô {cellPosition}");
             }
             else
             {
                 GameEventManager.Ins.TriggerDialog("Ô này đã được trồng rồi");
             }
         }
-    }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        // Sửa ở đây: dùng biến interactionRadius để hình vẽ luôn khớp
-        Gizmos.DrawWireSphere(transform.position, interactionRadius);
     }
 }
