@@ -1,8 +1,9 @@
-using System.Collections;
+﻿using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class LoadingScene : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class LoadingScene : MonoBehaviour
     public bool isLoading;
     public bool isFading;
     public bool IsBusy => isLoading || isFading;
+
+
     private void Awake()
     {
       if(Ins != null &&  Ins != this)
@@ -120,6 +123,8 @@ public class LoadingScene : MonoBehaviour
         canvasGroup.alpha = 1;
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
+
+
     }
 
     void Hide(bool fading)
@@ -128,6 +133,9 @@ public class LoadingScene : MonoBehaviour
         canvasGroup.blocksRaycasts = false;
         if(fading)
             StartCoroutine(FadeOut());
+
+
+
     }
 
     void HideInstant()
@@ -135,6 +143,9 @@ public class LoadingScene : MonoBehaviour
         canvasGroup.alpha = 0;
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
+
+
+
     }
 
     IEnumerator FadeOut()

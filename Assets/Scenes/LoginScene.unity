@@ -487,6 +487,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoadingUI
       objectReference: {fileID: 0}
+    - target: {fileID: 1921840757059515189, guid: b9d27fe3d6d925a45b68cf1229e8b119, type: 3}
+      propertyPath: m_TargetCamera
+      value: 
+      objectReference: {fileID: 1277315017}
+    - target: {fileID: 4428930658311375718, guid: b9d27fe3d6d925a45b68cf1229e8b119, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0.00048828
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428930658311375718, guid: b9d27fe3d6d925a45b68cf1229e8b119, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 851.8911
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428930658311375718, guid: b9d27fe3d6d925a45b68cf1229e8b119, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428930658311375718, guid: b9d27fe3d6d925a45b68cf1229e8b119, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00024414
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428930658311375718, guid: b9d27fe3d6d925a45b68cf1229e8b119, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -8.057922
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057733454898809058, guid: b9d27fe3d6d925a45b68cf1229e8b119, type: 3}
+      propertyPath: m_Name
+      value: TextMotion
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057733454898809058, guid: b9d27fe3d6d925a45b68cf1229e8b119, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504963133045603257, guid: b9d27fe3d6d925a45b68cf1229e8b119, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722461264915910061, guid: b9d27fe3d6d925a45b68cf1229e8b119, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8110926949440142428, guid: b9d27fe3d6d925a45b68cf1229e8b119, type: 3}
       propertyPath: m_Pivot.x
       value: 0
