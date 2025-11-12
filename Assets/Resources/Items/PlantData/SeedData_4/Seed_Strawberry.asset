@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 402
   _itemName: Seed_StrawBerry
-  _icon: {fileID: 0}
+  _icon: {fileID: 8369948372191450990, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
   _description: "H\u1EA1t gi\u1ED1ng d\xE2u t\xE2y"
   _maxStack: 99
   isStackable: 1
   itemType: 0
-  DaysToGrow: 1
+  timeSpandHarvest: 120
   cropData: {fileID: 11400000, guid: 1f94f111a1ac56c48a45d4d530c74c24, type: 2}
   growhtSprites:
   - {fileID: 8369948372191450990, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
