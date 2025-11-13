@@ -1,20 +1,30 @@
 ﻿using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class Seed : MonoBehaviour, IInteractable
+public class Seed : MonoBehaviour, IInteractable, IToolTarget
 {
+    [Header("Harvest Indicator")]
+    public GameObject harvestIndicatorPrefab; // Kéo HarvestIndicator_Prefab vào đây
+    public Transform indicatorAnchor;         // Kéo "giá treo" IndicatorAnchor vào đây
+    public ToolDataSO.ToolType requireTool;
+    [SerializeField] GameObject canvas;
+    [SerializeField] TextMeshProUGUI timeGrowthTXT;
+    [SerializeField] Image fillGrowth;
     private int curGrowthProgress = 0; //index currentSeedData.growhtSprites
     DateTime timeHarvest; //lưu thời điểm thu hoạch được cây trồng
     DateTime curTime;
     private SeedDataSO currentSeedData; // Reference to the CropData ScriptableObject
     private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component
     private bool isMature = false;//kiểm tra cây đã trưởng thành chưa
-    [Header("Harvest Indicator")]
-    public GameObject harvestIndicatorPrefab; // Kéo HarvestIndicator_Prefab vào đây
-    public Transform indicatorAnchor;         // Kéo "giá treo" IndicatorAnchor vào đây
+   
     private GameObject currentIndicator;      // Biến để lưu trữ bảng hiệu đã được tạo ra
+ 
+    public ToolDataSO.ToolType RequireTool => requireTool;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -38,6 +48,7 @@ public class Seed : MonoBehaviour, IInteractable
         timeHarvest = curTime.AddSeconds(currentSeedData.timeSpandHarvest);
         curGrowthProgress = 0;
         isMature = false;
+        requireTool = ToolDataSO.ToolType.Shovel;
         StartCoroutine(Growth());
         // Tắt mọi bảng hiệu cũ (nếu có) khi trồng
         if (currentIndicator != null)
@@ -129,12 +140,14 @@ public class Seed : MonoBehaviour, IInteractable
         {
 
             isMature = true;
+            requireTool = ToolDataSO.ToolType.Sickle;
             ShowHarvestIndicator(true);
         }
         else
         {
             curGrowthProgress = CalCulateProgress(curTime);
             isMature = false;
+            requireTool = ToolDataSO.ToolType.Shovel;
             ShowHarvestIndicator(false);
             StartCoroutine(Growth());
         }
@@ -148,6 +161,9 @@ public class Seed : MonoBehaviour, IInteractable
         {
             curTime = curTime.AddSeconds(1);
             TimeSpan coolDown = timeHarvest - curTime;
+            fillGrowth.fillAmount = 1 - (float)(coolDown.TotalSeconds / currentSeedData.timeSpandHarvest);
+            fillGrowth.color = Color.Lerp(Color.red, Color.green, fillGrowth.fillAmount);
+            timeGrowthTXT.text = coolDown.ToString(@"hh\:mm\:ss");
             int progress = CalCulateProgress(curTime);
             if (progress > curGrowthProgress)
             {
@@ -156,7 +172,9 @@ public class Seed : MonoBehaviour, IInteractable
                 if(curGrowthProgress >= currentSeedData.growhtSprites.Count - 1)
                 {
                     isMature = true;
+                    requireTool = ToolDataSO.ToolType.Sickle;
                     ShowHarvestIndicator(true);
+                    HideCoolDown();
                     UpdateSprite();
                     yield break; //Thoát nếu cây trưởng thành
                 }
@@ -164,7 +182,9 @@ public class Seed : MonoBehaviour, IInteractable
             }
             yield return new WaitForSeconds(1);
         }
+        requireTool = ToolDataSO.ToolType.Sickle;
         isMature = true;
+        HideCoolDown();
         ShowHarvestIndicator(true);
         UpdateSprite();
 
@@ -183,5 +203,29 @@ public class Seed : MonoBehaviour, IInteractable
         {
             return 0;
         }
+    }
+
+    public void InteractWithTool(ToolDataSO tool)
+    {
+        switch (requireTool)
+        {
+            case ToolDataSO.ToolType.Shovel:
+                Destroy(gameObject);
+                break;
+            case ToolDataSO.ToolType.Sickle:
+                Interact();
+                break;
+            default:
+                break;
+        }
+    }
+    public void ShowCoolDown()
+    {
+        if (isMature) return;
+        canvas.SetActive(true);
+    }
+    public void HideCoolDown()
+    {
+        canvas.SetActive(false);
     }
 }

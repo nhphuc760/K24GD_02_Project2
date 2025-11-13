@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96dfb682b9a6df84aba96ac88cde3b51, type: 3}
+  m_Name: PickAxe
+  m_EditorClassIdentifier: 
+  _id: 602
+  _itemName: PickAxe
+  _icon: {fileID: -492788189712266756, guid: 038db4862654f5946b86fcf00b466b33, type: 3}
+  _description: nothing
+  _maxStack: 1
+  isStackable: 0
+  itemType: 2
+  maxDurability: 100
+  durabilityLossPerUse: 1
+  toolType: 1

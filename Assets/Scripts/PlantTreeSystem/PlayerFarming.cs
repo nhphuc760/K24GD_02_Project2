@@ -1,23 +1,28 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class PlayerFarming : MonoBehaviour
 {
+    [SerializeField] Transform groundCheck; // Vị trí kiểm tra đất
     Tilemap plowableLayer; // Tilemap for plowable ground
     public TileBase farmPlotTile;
     public LayerMask cropsLayerMask;//quét tìm cropsLayerMask
     public LayerMask interactableLayerMask;//quét tìm interactableLayerMask
-    public float interactionRadius = 0.8f; // Bán kính tương tác với các đối tượng xung quanh
+  //  public float interactionRadius = 0.8f; // Bán kính tương tác với các đối tượng xung quanh
 
     private void Start()
     {
       
         SceneManager.sceneLoaded += OnSceneLoad; //Tắt script nếu không cần thiết
+        if (groundCheck == null)
+        {
+            groundCheck = transform.GetChild(1);
+        }
+        
     }
-
-
 
     private void OnSceneLoad(Scene arg0, LoadSceneMode arg1)
     {
@@ -38,11 +43,11 @@ public class PlayerFarming : MonoBehaviour
     {
         GameEventManager.Ins.gameInput.interacPressed += HandleInput;
     }
-  
 
     private void OnDisable()
     {
-        GameEventManager.Ins.gameInput.interacPressed -= HandleInput;             
+        GameEventManager.Ins.gameInput.interacPressed -= HandleInput;
+       
     }
 
     private void OnDestroy()
@@ -51,21 +56,27 @@ public class PlayerFarming : MonoBehaviour
     }
     void HandleInput()
     {
+
+
         InventorySlot curSelected = GameEventManager.Ins.toolKitEvent.GetCurDataChoose();
-        if(curSelected == null)
+        if (curSelected == null) return;
+        var toolDataSO = curSelected.ItemData as ToolDataSO;
+        Collider2D hit = Physics2D.OverlapPoint(groundCheck.position, interactableLayerMask);
+
+        if(hit != null)
         {
-            GameEventManager.Ins.TriggerDialog("<color=red>Bạn chưa chọn hạt giống</color>");
-            return;
+            if(toolDataSO != null && hit.TryGetComponent<IToolTarget>(out IToolTarget toolTarget))
+            {
+                if(toolDataSO.toolType.Equals(toolTarget.RequireTool))
+                    GameEventManager.Ins.animationEvent.ToolUse(hit.GetComponent<IToolTarget>(), toolDataSO);
+                else
+                    GameEventManager.Ins.TriggerDialog("<color=red>Công cụ không phù hợp</color>");
+                return;
+            }
+          
         }
+
         var seedData = curSelected.ItemData as SeedDataSO;
-        
-        Collider2D hit = Physics2D.OverlapCircle(transform.position, interactionRadius, interactableLayerMask);
-        if (hit != null && hit.GetComponent<IInteractable>() != null)
-        {
-            Debug.Log("Harvest");
-            hit.GetComponent<IInteractable>().Interact();
-            return;
-        }
 
         if (seedData == null)
         {
@@ -73,14 +84,15 @@ public class PlayerFarming : MonoBehaviour
             return;
         }
         Plant(seedData);
-        
+
+
     }
 
 
-    //Trồng, thu hoạch cây.
+    //Trồng cây.
     void Plant(SeedDataSO cropToPlant)
     {
-        Vector3Int cellPosition = plowableLayer.WorldToCell(transform.position);
+        Vector3Int cellPosition = plowableLayer.WorldToCell(groundCheck.position);
         Vector3 cellCenterPosition = plowableLayer.GetCellCenterWorld(cellPosition);
         TileBase currentTile = plowableLayer.GetTile(cellPosition);
         if (currentTile != null)
@@ -98,7 +110,7 @@ public class PlayerFarming : MonoBehaviour
             }
             else
             {
-                GameEventManager.Ins.TriggerDialog("Ô này đã được trồng rồi");
+                GameEventManager.Ins.TriggerDialog("<color=red>Ô này đã được trồng rồi</color>");
             }
         }
     }

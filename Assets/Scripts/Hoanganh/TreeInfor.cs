@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TreeInfor : MonoBehaviour
+public class TreeInfor : MonoBehaviour, IToolTarget
 {
     [Header("Tree Setting")]
     [HideInInspector] public TreeSpawner spawner;
@@ -12,6 +12,7 @@ public class TreeInfor : MonoBehaviour
     [SerializeField] Animator rootAnim;
     [Header("Hit Setting")]
     [SerializeField] public int maxHitPoints = 3;             // Số lần chặt để đốn hạ cây
+    public ToolDataSO.ToolType requiredTool = ToolDataSO.ToolType.Axe;
     int currentHitPoints;             // Số lần đã chặt
     bool isChopped = false;         // Đánh dấu cây đã đổ
 
@@ -20,6 +21,8 @@ public class TreeInfor : MonoBehaviour
     public int dropCount = 2;
     public float dropForce = 2f;
     int rootHit;
+
+    public ToolDataSO.ToolType RequireTool => requiredTool;
 
     private void Awake()
     {
@@ -40,33 +43,6 @@ public class TreeInfor : MonoBehaviour
         rootHit = maxHitPoints - bodyHit;
     }
     //Gọi người chơi khi chặt cây
-    public void OnChop()
-    {
-        if (isChopped) return;
-
-        currentHitPoints--;
-
-        ////Gọi hiệu ứng rung khi chặt cây
-        //StartCoroutine(ShakeTree());
-        if(currentHitPoints > 0)
-        {
-            if (currentHitPoints > rootHit)
-            {
-                bodyAnim.SetTrigger("Interact");
-                return;
-            }
-            else
-            {
-                HideBody();
-                ShowRoot();
-                rootAnim.SetTrigger("Interact");
-                return;
-            }
-        }
-      
-        //Khi chặt cây
-        ChopDown();
-    }
    
     private void ChopDown()
     {
@@ -108,5 +84,33 @@ public class TreeInfor : MonoBehaviour
     void HideBody()
     {
         bodyAnim.gameObject.SetActive(false);
+    }
+
+    public void InteractWithTool(ToolDataSO tool)
+    {
+        if (isChopped) return;
+
+        currentHitPoints--;
+
+        ////Gọi hiệu ứng rung khi chặt cây
+        //StartCoroutine(ShakeTree());
+        if (currentHitPoints > 0)
+        {
+            if (currentHitPoints > rootHit)
+            {
+                bodyAnim.SetTrigger("Interact");
+                return;
+            }
+            else
+            {
+                HideBody();
+                ShowRoot();
+                rootAnim.SetTrigger("Interact");
+                return;
+            }
+        }
+
+        //Khi chặt cây
+        ChopDown();
     }
 }
