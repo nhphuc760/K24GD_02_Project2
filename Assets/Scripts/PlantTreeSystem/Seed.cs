@@ -156,6 +156,7 @@ public class Seed : MonoBehaviour, IInteractable
                 if(curGrowthProgress >= currentSeedData.growhtSprites.Count - 1)
                 {
                     isMature = true;
+                    ShowHarvestIndicator(true);
                     UpdateSprite();
                     yield break; //Thoát nếu cây trưởng thành
                 }
