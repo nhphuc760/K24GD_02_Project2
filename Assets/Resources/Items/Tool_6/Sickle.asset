@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f93ad0e74c2f9c4b9c4882b7662bcd4, type: 3}
+  m_Name: Sickle
+  m_EditorClassIdentifier: 
+  _id: 604
+  _itemName: Sickle
+  _icon: {fileID: -8175024772737227555, guid: 527c77a6981ada3428785885c2e1db08, type: 3}
+  _description: nothing
+  _maxStack: 1
+  isStackable: 0
+  itemType: 2
+  maxDurability: 100
+  durabilityLossPerUse: 1
+  toolType: 6

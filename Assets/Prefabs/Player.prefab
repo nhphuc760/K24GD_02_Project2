@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4959fd2781158f449b3a436431b5fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plowableLayer: {fileID: 0}
+  groundCheck: {fileID: 3572962789849340261}
   farmPlotTile: {fileID: 11400000, guid: 987f01ef8c6ab8041aab3708c9cae31a, type: 2}
   cropsLayerMask:
     serializedVersion: 2
@@ -249,7 +249,6 @@ MonoBehaviour:
   interactableLayerMask:
     serializedVersion: 2
     m_Bits: 512
-  interactionRadius: 0.3
 --- !u!114 &5209177794490072880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,7 +360,7 @@ SpriteRenderer:
   m_SortingLayerID: 1293688563
   m_SortingLayer: -5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4723107735738678597, guid: bb0fdd6f9dd450944a9b15eb34290469, type: 3}
+  m_Sprite: {fileID: -247849675783212506, guid: 1245ab76e96b14c4781a9895d5ed2fcf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -420,10 +419,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CategoryHash: 6.6282384e-23
-  m_labelHash: 1.3971405e-28
+  m_CategoryHash: 9.026239e-31
+  m_labelHash: 6.4880517e-31
   m_SpriteKey: 0
-  m_SpriteHash: 688487968
+  m_SpriteHash: 510034088
 --- !u!114 &6265629970169200554
 MonoBehaviour:
   m_ObjectHideFlags: 0

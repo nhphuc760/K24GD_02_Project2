@@ -10,16 +10,15 @@ public class PlayerTestMining : MonoBehaviour
     [SerializeField] float interactRange = 1.5f; // khoảng cách có thể đập quặng
     [SerializeField] LayerMask oreLayer; //Layer quặng
     [SerializeField] Transform groundCheck;
-    [SerializeField]
-    PlayerMovement playerMovement;
-
+    [SerializeField] PlayerMovement playerMovement;
+    ToolDataSO currentTool;
 
 
     private void Awake()
     {
-        if(playerMovement == null)
+        if (playerMovement == null)
         {
-           playerMovement = GetComponent<PlayerMovement>();
+            playerMovement = GetComponent<PlayerMovement>();
         }
     }
 
@@ -30,12 +29,12 @@ public class PlayerTestMining : MonoBehaviour
 
     private void OnSceneLoad(Scene arg0, LoadSceneMode arg1)
     {
-       if(arg0.name.Equals("MiningScene") || arg0.name.Equals("ForestScene"))
+        if (arg0.name.Equals("MiningScene") || arg0.name.Equals("ForestScene"))
         {
             this.enabled = true;
         }
         else
-        { 
+        {
             this.enabled = false;
         }
     }
@@ -44,42 +43,47 @@ public class PlayerTestMining : MonoBehaviour
     private void OnEnable()
     {
         GameEventManager.Ins.gameInput.interacPressed += TryMineOre;
+        GameEventManager.Ins.toolKitEvent.onCurSelectedChange += CurToolSelectedChanged;
+    }
+
+    private void CurToolSelectedChanged(ItemDataSO obj)
+    {
+        currentTool = obj as ToolDataSO;
     }
 
     private void OnDisable()
     {
         GameEventManager.Ins.gameInput.interacPressed -= TryMineOre;
+        GameEventManager.Ins.toolKitEvent.onCurSelectedChange -= CurToolSelectedChanged;
     }
 
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoad;
     }
-   
+
     void TryMineOre()
     {
 
         if (playerMovement.IsMoving) return;
-
+        if (currentTool == null)
+        {
+            GameEventManager.Ins.TriggerDialog("<color=red>Bạn chưa chọn công cụ</color>");
+            return;
+        }
         Collider2D hit = Physics2D.OverlapCircle(groundCheck.position, interactRange, oreLayer);
-
         if (hit != null)
         {
-           
-                // Gọi script quặng để xử lý đào
-                bool checkDirect = CheckDirection(hit.transform);
-                var ore = hit.GetComponent<OreInfor>(); // class quặng của bạn
-                if (ore != null && checkDirect)
-                {
-                GameEventManager.Ins.animationEvent.PickAxe(ore);
-                    return;
-                }
-                var tree = hit.GetComponent<TreeInfor>();
-                if(tree != null && checkDirect)
-                {
-                   GameEventManager.Ins.animationEvent.Axe(tree);
-                }    
-            
+
+            // Gọi script quặng để xử lý đào
+            if (hit.TryGetComponent<IToolTarget>(out IToolTarget toolTarget) && CheckDirection(hit.transform))
+            {
+                if(currentTool.toolType.Equals(toolTarget.RequireTool))
+                    GameEventManager.Ins.animationEvent.ToolUse(toolTarget, currentTool);
+                else
+                    GameEventManager.Ins.TriggerDialog("<color=red>Công cụ không phù hợp để khai thác</color>");
+            }
+
         }
     }
 
@@ -88,12 +92,12 @@ public class PlayerTestMining : MonoBehaviour
     {
         if (playerMovement == null) return false;
         Vector2 direct = (obj.position - groundCheck.position).normalized;
-        float t  = Vector2.Dot(direct, playerMovement.GetDirection());
+        float t = Vector2.Dot(direct, playerMovement.GetDirection());
         if (t > 0)
         {
             return true;
         }
-        else if(t < 0) 
+        else if (t < 0)
         {
             return false;
         }

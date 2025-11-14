@@ -11,11 +11,6 @@ public class ItemDataSO : ScriptableObject
     public bool isStackable;
     public ItemType itemType;
 
-    public virtual void Use()
-    {
-       
-    }
-
     private void OnValidate()
     {
         _itemName = this.name;
@@ -26,5 +21,6 @@ public enum ItemType
 {
     Consumable,
     Equipment,
+    Tool,
    
 }

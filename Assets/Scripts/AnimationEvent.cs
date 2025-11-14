@@ -3,19 +3,9 @@ using UnityEngine;
 
 public class AnimationEvent 
 {
-    public event Action<OreInfor> onPickAxe; // Đào quặng
-    public void PickAxe(OreInfor oreInfor)
+   public event Action<IToolTarget, ToolDataSO> onToolUse;
+    public void ToolUse(IToolTarget toolTarget, ToolDataSO toolDataSO)
     {
-        onPickAxe?.Invoke(oreInfor);
-    }
-    public event Action<TreeInfor> onAxe;//Chặt cây
-    public void Axe(TreeInfor treeInfor)
-    {
-        onAxe?.Invoke(treeInfor);
-    }
-    public event Action treeDamage;
-    public void TreeDamage()
-    {
-        treeDamage?.Invoke();
+        onToolUse?.Invoke(toolTarget, toolDataSO);
     }
 }

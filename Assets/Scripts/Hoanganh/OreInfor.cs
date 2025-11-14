@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class OreInfor : MonoBehaviour
+public class OreInfor : MonoBehaviour, IToolTarget
 {
     [Header("Ore Settings")]
     [HideInInspector]
@@ -11,9 +11,9 @@ public class OreInfor : MonoBehaviour
     [SerializeField] Animator animator;
     [Header("Hit Settings")]
     [SerializeField] int maxHitPoints = 3; // số lần đập để bể
+    public ToolDataSO.ToolType requireTool = ToolDataSO.ToolType.PickAxe;
     int currentHitPoints;
     bool isDestroyed = false;
-
     [Header("Drop Setting")]
     public GameObject dropPrefab;        //prefab vật phẩm rớt ra
     public int dropCount = 2;            //số lượng vật phẩm rớt ra
@@ -24,6 +24,9 @@ public class OreInfor : MonoBehaviour
     private Rigidbody2D rb;
 
     int takeDamage = Animator.StringToHash("TakeDamage");
+
+    public ToolDataSO.ToolType RequireTool => requireTool;
+
     private void Awake()
     {
        if(animator == null)
@@ -36,23 +39,7 @@ public class OreInfor : MonoBehaviour
         currentHitPoints = maxHitPoints;
         rb = GetComponent<Rigidbody2D>();
     }
-    public void MineOre()
-    {
-        if (isDestroyed) return;
-
-        currentHitPoints--;
-  
-
-        // Nếu vẫn còn HP thì chỉ rung nhẹ hoặc hiệu ứng nứt
-        if (currentHitPoints > 0)
-        {
-            //triger damage
-            animator.SetTrigger(takeDamage);
-            return;
-        }
-        // Hết HP thì phá quặng
-        BreakOre();
-    }
+   
     void BreakOre()
     {
         if (isDestroyed) return;
@@ -103,5 +90,23 @@ public class OreInfor : MonoBehaviour
                 rb.AddTorque(Random.Range(-5f, 5f)); //xoay nhẹ
             }    
         }
+    }
+
+    public void InteractWithTool(ToolDataSO tool)
+    {
+        if (isDestroyed) return;
+
+        currentHitPoints--;
+
+
+        // Nếu vẫn còn HP thì chỉ rung nhẹ hoặc hiệu ứng nứt
+        if (currentHitPoints > 0)
+        {
+            //triger damage
+            animator.SetTrigger(takeDamage);
+            return;
+        }
+        // Hết HP thì phá quặng
+        BreakOre();
     }
 }

@@ -18,31 +18,17 @@ public class PlayerVisual : MonoBehaviour
 
     private void Start()
     {
-        GameEventManager.Ins.animationEvent.onPickAxe += AnimationEvent_onPickAxe;
-        GameEventManager.Ins.animationEvent.onAxe += AnimationEvent_onAxe;
+        GameEventManager.Ins.animationEvent.onToolUse += UseTool;
     }
 
-    private void AnimationEvent_onAxe(TreeInfor obj)
+    private void UseTool(IToolTarget target, ToolDataSO sO)
     {
         if (!isInteract)
         {
-
             isInteract = true;
-            animator.Play("Axe_BlendTree");
-            StartCoroutine(AxeTree(obj));
-           
+            animator.Play(target.RequireTool.ToString());
+            StartCoroutine(WaitUseTool(target, sO));
         }
-    }
-
-    private void AnimationEvent_onPickAxe(OreInfor obj)
-    {
-        if(!isInteract)
-        {
-            isInteract = true;
-            animator.Play("PickAxe_BlendTree");
-            StartCoroutine(MineOre(obj));
-        }
-      
     }
 
     private void LoadDataPlayerCompleted(PlayerData data, CharacterDataSO sO)
@@ -79,25 +65,15 @@ public class PlayerVisual : MonoBehaviour
     private void OnDestroy()
     {
         GameManager.Ins.onLoadDataCompleted -= LoadDataPlayerCompleted;
-        GameEventManager.Ins.animationEvent.onPickAxe -= AnimationEvent_onPickAxe;
-        GameEventManager.Ins.animationEvent.onAxe -= AnimationEvent_onAxe;
+        GameEventManager.Ins.animationEvent.onToolUse -= UseTool;
     }
 
-    IEnumerator MineOre(OreInfor ore)
+    IEnumerator WaitUseTool(IToolTarget target, ToolDataSO tool)
     {
         yield return null;
         float duration = animator.GetCurrentAnimatorStateInfo(0).length;
         yield return new WaitForSeconds(duration);
-        ore.MineOre();
-        isInteract = false;
-    }
-
-    IEnumerator AxeTree(TreeInfor treeInfor)
-    {
-        yield return null;
-        float duration = animator.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSeconds(duration);
-        treeInfor.OnChop();
+        target.InteractWithTool(tool);
         isInteract = false;
     }
 }

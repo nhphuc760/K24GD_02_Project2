@@ -104,16 +104,24 @@ public class InventoryManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             AddItem(Resources.Load<ItemDataSO>("Items/ConsumpItem_1/TestItem"), 1);// Giả lập thêm Item
-         
+
         }
-        if(Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.T))
         {
-           AddItem(Resources.Load<ItemDataSO>("Items/ConsumpItem_1/TestItem2"), 2); //Giả lập thêm item
-     
+            AddItem(Resources.Load<ItemDataSO>("Items/ConsumpItem_1/TestItem2"), 2); //Giả lập thêm item
+
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
             AddItem(Resources.Load<SeedDataSO>("Items/PlantData/SeedData_4/Seed_Carrot"), 10);
+        }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            AddItem(Resources.Load<ItemDataSO>("Items/Tool_6/Sickle"), 1);
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            AddItem(Resources.Load<ItemDataSO>("Items/Tool_6/Shovel"), 1);
         }
     }
     private async void OnDisable()

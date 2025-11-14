@@ -2,22 +2,23 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class HighLightFarm : MonoBehaviour
+public class FarmLandManager : MonoBehaviour
 {
     [SerializeField] Tilemap farmLand;
     [SerializeField] Tilemap highlightMap;
     [SerializeField] TileBase greenHightLight;
     [SerializeField] TileBase redHightLight;
+    [SerializeField] TileBase normalHighLight;
     public LayerMask cropLayerMask;
     ItemDataSO curToolKit;
-    Transform player;
+    Transform groundCheck;
     bool isInFarmLand = false;
     Vector3Int curPos;
     Vector3Int lastHighLightPos;
-
     private void Awake()
     {
-        player = FindAnyObjectByType<Player>().transform;
+        Transform player = FindAnyObjectByType<Player>().transform;
+        groundCheck = player.GetChild(1);
     }
     private void OnEnable()
     {
@@ -28,19 +29,33 @@ public class HighLightFarm : MonoBehaviour
     {
         if (curPos == lastHighLightPos) return;
         highlightMap.SetTile(lastHighLightPos, null);
-        if (curToolKit != null && curToolKit is SeedDataSO && isInFarmLand)
-        {
-            var cellCenterWorld = farmLand.GetCellCenterWorld(curPos);
-            var hit = Physics2D.OverlapPoint(cellCenterWorld, cropLayerMask);
-            if(hit != null)
-            {
-                highlightMap.SetTile(curPos, redHightLight);
-            }
-            else
-                highlightMap.SetTile(curPos, greenHightLight);
+        if(!isInFarmLand)return;
 
+
+        var cellCenterWorld = farmLand.GetCellCenterWorld(curPos);
+        var hit = Physics2D.OverlapPoint(cellCenterWorld, cropLayerMask);
+        if(hit != null && hit.TryGetComponent<Seed>(out Seed seed))
+        {
+            seed.ShowCoolDown();
         }
-        lastHighLightPos = curPos;
+        var cellCenterLasPos = farmLand.GetCellCenterWorld(lastHighLightPos);
+        var hitLast = Physics2D.OverlapPoint(cellCenterLasPos, cropLayerMask);
+        if (hitLast != null && hitLast.TryGetComponent<Seed>(out Seed lastSeed))
+        {
+            lastSeed.HideCoolDown();
+        }
+
+        if (curToolKit != null && curToolKit is SeedDataSO)
+        {  
+            var tilebase = hit != null ? redHightLight : greenHightLight;
+            highlightMap.SetTile(curPos, tilebase);
+
+        }else
+        {
+            highlightMap.SetTile(curPos, normalHighLight);
+        }
+
+            lastHighLightPos = curPos;
 
     }
 
@@ -54,7 +69,7 @@ public class HighLightFarm : MonoBehaviour
     {
         while (true)
         {
-            Vector3Int cellPosition = farmLand.WorldToCell(player.position);
+            Vector3Int cellPosition = farmLand.WorldToCell(groundCheck.position);
             TileBase currentTile = farmLand.GetTile(cellPosition);
             curPos = cellPosition;
             isInFarmLand = currentTile != null;
@@ -65,5 +80,4 @@ public class HighLightFarm : MonoBehaviour
     {
         curToolKit = sO;
     }
-
 }
