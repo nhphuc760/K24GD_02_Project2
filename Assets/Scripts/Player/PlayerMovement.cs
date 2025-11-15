@@ -56,6 +56,7 @@ public class PlayerMovement:MonoBehaviour
         isMoving = direct != Vector2.zero;
         if (isMoving)
         {
+            SoundEffectManager.Play("StepOnDirt");
             horizontalMovement = direct.x;
             verticalMovement = direct.y;
             UpdateFacingDirection(horizontalMovement, verticalMovement);
