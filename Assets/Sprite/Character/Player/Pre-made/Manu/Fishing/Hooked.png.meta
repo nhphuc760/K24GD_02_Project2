@@ -106,7 +106,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -120,7 +120,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -144,7 +144,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -198,10 +198,10 @@ TextureImporter:
       name: Hooked_0
       rect:
         serializedVersion: 2
-        x: 26
-        y: 129
-        width: 13
-        height: 43
+        x: 0
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -220,10 +220,10 @@ TextureImporter:
       name: Hooked_1
       rect:
         serializedVersion: 2
-        x: 90
-        y: 129
-        width: 13
-        height: 43
+        x: 64
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,10 +242,10 @@ TextureImporter:
       name: Hooked_2
       rect:
         serializedVersion: 2
-        x: 153
-        y: 129
-        width: 16
-        height: 44
+        x: 128
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -264,10 +264,10 @@ TextureImporter:
       name: Hooked_3
       rect:
         serializedVersion: 2
-        x: 214
-        y: 129
-        width: 23
-        height: 44
+        x: 192
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -286,10 +286,10 @@ TextureImporter:
       name: Hooked_4
       rect:
         serializedVersion: 2
-        x: 282
-        y: 129
-        width: 13
-        height: 43
+        x: 256
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -308,10 +308,10 @@ TextureImporter:
       name: Hooked_5
       rect:
         serializedVersion: 2
-        x: 346
-        y: 129
-        width: 13
-        height: 43
+        x: 320
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -330,10 +330,10 @@ TextureImporter:
       name: Hooked_6
       rect:
         serializedVersion: 2
-        x: 409
-        y: 129
-        width: 16
-        height: 44
+        x: 384
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -352,10 +352,10 @@ TextureImporter:
       name: Hooked_7
       rect:
         serializedVersion: 2
-        x: 470
-        y: 129
-        width: 23
-        height: 44
+        x: 448
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -374,10 +374,10 @@ TextureImporter:
       name: Hooked_8
       rect:
         serializedVersion: 2
-        x: 26
-        y: 85
-        width: 13
-        height: 32
+        x: 0
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -396,10 +396,10 @@ TextureImporter:
       name: Hooked_9
       rect:
         serializedVersion: 2
-        x: 90
-        y: 85
-        width: 13
-        height: 33
+        x: 64
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -418,10 +418,10 @@ TextureImporter:
       name: Hooked_10
       rect:
         serializedVersion: 2
-        x: 153
-        y: 85
-        width: 16
-        height: 34
+        x: 128
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -440,10 +440,10 @@ TextureImporter:
       name: Hooked_11
       rect:
         serializedVersion: 2
-        x: 214
-        y: 85
-        width: 23
-        height: 32
+        x: 192
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -462,10 +462,10 @@ TextureImporter:
       name: Hooked_12
       rect:
         serializedVersion: 2
-        x: 282
-        y: 85
-        width: 13
-        height: 32
+        x: 256
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -484,10 +484,10 @@ TextureImporter:
       name: Hooked_13
       rect:
         serializedVersion: 2
-        x: 346
-        y: 85
-        width: 13
-        height: 33
+        x: 320
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -506,10 +506,10 @@ TextureImporter:
       name: Hooked_14
       rect:
         serializedVersion: 2
-        x: 409
-        y: 85
-        width: 16
-        height: 34
+        x: 384
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -528,10 +528,10 @@ TextureImporter:
       name: Hooked_15
       rect:
         serializedVersion: 2
-        x: 470
-        y: 85
-        width: 23
-        height: 32
+        x: 448
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -550,10 +550,10 @@ TextureImporter:
       name: Hooked_16
       rect:
         serializedVersion: 2
-        x: 25
-        y: 15
-        width: 29
-        height: 28
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -572,10 +572,10 @@ TextureImporter:
       name: Hooked_17
       rect:
         serializedVersion: 2
-        x: 89
-        y: 15
-        width: 31
-        height: 28
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -594,10 +594,10 @@ TextureImporter:
       name: Hooked_18
       rect:
         serializedVersion: 2
-        x: 153
-        y: 15
-        width: 34
-        height: 29
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -616,10 +616,10 @@ TextureImporter:
       name: Hooked_19
       rect:
         serializedVersion: 2
-        x: 217
-        y: 15
-        width: 38
-        height: 29
+        x: 192
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -638,10 +638,10 @@ TextureImporter:
       name: Hooked_20
       rect:
         serializedVersion: 2
-        x: 281
-        y: 15
-        width: 29
-        height: 28
+        x: 256
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -660,10 +660,10 @@ TextureImporter:
       name: Hooked_21
       rect:
         serializedVersion: 2
-        x: 345
-        y: 15
-        width: 31
-        height: 28
+        x: 320
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -682,10 +682,10 @@ TextureImporter:
       name: Hooked_22
       rect:
         serializedVersion: 2
-        x: 409
-        y: 15
-        width: 34
-        height: 29
+        x: 384
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -704,10 +704,10 @@ TextureImporter:
       name: Hooked_23
       rect:
         serializedVersion: 2
-        x: 473
-        y: 15
-        width: 38
-        height: 29
+        x: 448
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -726,7 +726,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 53e9a5ef69bec4a4fb84dac5c90b7531
     internalID: 0
     vertices: []
     indices: 

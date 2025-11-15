@@ -478,7 +478,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Idle_Blend Tree
+  m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -512,30 +512,30 @@ AnimatorStateMachine:
     m_Position: {x: 470, y: 40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8556525451025595946}
-    m_Position: {x: 220, y: 180, z: 0}
+    m_Position: {x: 160, y: 150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5433752505268246489}
     m_Position: {x: 740, y: -160, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3524186048847307099}
-    m_Position: {x: 790, y: -50, z: 0}
+    m_Position: {x: 790, y: 10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1552148331949837205}
     m_Position: {x: 380, y: 230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3505437687909847595}
-    m_Position: {x: 770, y: 40, z: 0}
+    m_Position: {x: 770, y: 100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -83537145202747554}
-    m_Position: {x: 750, y: 150, z: 0}
+    m_Position: {x: 710, y: 230, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 50, y: 20, z: 0}
-  m_EntryPosition: {x: 50, y: 120, z: 0}
-  m_ExitPosition: {x: 980, y: 20, z: 0}
+  m_AnyStatePosition: {x: 170, y: -140, z: 0}
+  m_EntryPosition: {x: 90, y: -60, z: 0}
+  m_ExitPosition: {x: 1050, y: 130, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 4848917419781085748}
 --- !u!1101 &5014803064911834054
@@ -738,7 +738,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Walk_Blend Tree
+  m_Name: Walk
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:

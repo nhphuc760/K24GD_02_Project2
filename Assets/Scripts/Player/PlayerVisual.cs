@@ -5,8 +5,11 @@ using UnityEngine.U2D.Animation;
 
 public class PlayerVisual : MonoBehaviour
 {
-    [SerializeField] Animator animator;
+
+    [SerializeField] Player player;
+    [SerializeField] public Animator animator;
     [SerializeField] PlayerMovement playerMovement;
+
     static int ISMOVING = Animator.StringToHash("isMoving");
     static int HORIZONTAL_MOVEMENT = Animator.StringToHash("horizontalMovement");
     static int VERTICAL_MOVEMENT = Animator.StringToHash("verticalMovement");
@@ -14,6 +17,10 @@ public class PlayerVisual : MonoBehaviour
     private void Awake()
     {
         GameManager.Ins.onLoadDataCompleted += LoadDataPlayerCompleted;
+        if(player == null)
+        {
+            player = transform.parent.GetComponent<Player>();
+        }
     }
 
     private void Start()
@@ -41,6 +48,9 @@ public class PlayerVisual : MonoBehaviour
         GetComponent<SpriteLibrary>().spriteLibraryAsset = sO.SpriteLibraryAsset;
     }
 
+    public bool winnerAnimIsActive;
+    public AnimationCurve animationCurve;
+
     private void Update()
     {
         animator.SetBool(ISMOVING, playerMovement.IsMoving);
@@ -50,9 +60,11 @@ public class PlayerVisual : MonoBehaviour
         {
             FlipVisual();
         }
+        
     }
 
-    void FlipVisual() {
+    void FlipVisual() 
+    {
         if (playerMovement.HorizontalMovement < 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
@@ -74,6 +86,15 @@ public class PlayerVisual : MonoBehaviour
         float duration = animator.GetCurrentAnimatorStateInfo(0).length;
         yield return new WaitForSeconds(duration);
         target.InteractWithTool(sO, tool);
-        isInteract = false;
+        isInteract = false; 
+    }
+    public void OnCastFishingEndAnimationEvent()
+    {
+       player.OnCastFishingEnd();
+    }
+    public void OnCaptureFishStartAnimationEvent()
+    {
+        player.CheckIfWinFishGame();
     }
 }
+

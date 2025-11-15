@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 021c65cd87ede3b4a9cf43b3545ab0c8
+=======
+guid: b1559eb10e921aa4eb2e04da39da2270
+>>>>>>> origin/thanhdev
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -76,7 +80,11 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
+<<<<<<< HEAD
     filterMode: 0
+=======
+    filterMode: 1
+>>>>>>> origin/thanhdev
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -90,7 +98,11 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   spritePixelsToUnits: 16
+=======
+  spritePixelsToUnits: 100
+>>>>>>> origin/thanhdev
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -114,7 +126,11 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
+<<<<<<< HEAD
     textureCompression: 0
+=======
+    textureCompression: 1
+>>>>>>> origin/thanhdev
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -153,7 +169,11 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
+<<<<<<< HEAD
     textureCompression: 0
+=======
+    textureCompression: 1
+>>>>>>> origin/thanhdev
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -168,6 +188,7 @@ TextureImporter:
       name: Slots_0
       rect:
         serializedVersion: 2
+<<<<<<< HEAD
         x: 6
         y: 251
         width: 36
@@ -175,6 +196,15 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 6, y: 5, z: 6, w: 7}
+=======
+        x: 5
+        y: 250
+        width: 38
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+>>>>>>> origin/thanhdev
       customData: 
       outline: []
       physicsShape: []
@@ -187,6 +217,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
+<<<<<<< HEAD
       name: Slots_3
       rect:
         serializedVersion: 2
@@ -196,6 +227,61 @@ TextureImporter:
         height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+=======
+      name: Slots_1
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 277
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 274ff390bef452730800000000000000
+      internalID: 3973670117115425906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slots_2
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 277
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af9c292f466f9ad90800000000000000
+      internalID: -7085861625263896070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slots_3
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 263
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+>>>>>>> origin/thanhdev
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -212,12 +298,21 @@ TextureImporter:
       name: Slots_4
       rect:
         serializedVersion: 2
+<<<<<<< HEAD
         x: 182
         y: 264
         width: 18
         height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+=======
+        x: 181
+        y: 263
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+>>>>>>> origin/thanhdev
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -234,6 +329,7 @@ TextureImporter:
       name: Slots_5
       rect:
         serializedVersion: 2
+<<<<<<< HEAD
         x: 119
         y: 264
         width: 18
@@ -241,6 +337,15 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 4, y: 4, z: 4, w: 4}
+=======
+        x: 118
+        y: 263
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+>>>>>>> origin/thanhdev
       customData: 
       outline: []
       physicsShape: []
@@ -253,6 +358,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
+<<<<<<< HEAD
       name: Slots_7
       rect:
         serializedVersion: 2
@@ -263,6 +369,40 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 6, y: 5, z: 6, w: 7}
+=======
+      name: Slots_6
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 263
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f028d80b2ecb96710800000000000000
+      internalID: 1687087217237656079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slots_7
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 202
+        width: 39
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+>>>>>>> origin/thanhdev
       customData: 
       outline: []
       physicsShape: []
@@ -278,12 +418,21 @@ TextureImporter:
       name: Slots_8
       rect:
         serializedVersion: 2
+<<<<<<< HEAD
         x: 151
         y: 232
         width: 18
         height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+=======
+        x: 150
+        y: 231
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+>>>>>>> origin/thanhdev
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -300,12 +449,21 @@ TextureImporter:
       name: Slots_9
       rect:
         serializedVersion: 2
+<<<<<<< HEAD
         x: 182
         y: 232
         width: 18
         height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+=======
+        x: 181
+        y: 231
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+>>>>>>> origin/thanhdev
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -322,6 +480,7 @@ TextureImporter:
       name: Slots_10
       rect:
         serializedVersion: 2
+<<<<<<< HEAD
         x: 6
         y: 155
         width: 164
@@ -329,6 +488,15 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 6, y: 5, z: 6, w: 7}
+=======
+        x: 5
+        y: 154
+        width: 166
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+>>>>>>> origin/thanhdev
       customData: 
       outline: []
       physicsShape: []
@@ -344,6 +512,7 @@ TextureImporter:
       name: Slots_11
       rect:
         serializedVersion: 2
+<<<<<<< HEAD
         x: 6
         y: 107
         width: 165
@@ -351,6 +520,15 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 6, y: 5, z: 6, w: 7}
+=======
+        x: 5
+        y: 106
+        width: 167
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+>>>>>>> origin/thanhdev
       customData: 
       outline: []
       physicsShape: []
@@ -366,12 +544,21 @@ TextureImporter:
       name: Slots_12
       rect:
         serializedVersion: 2
+<<<<<<< HEAD
         x: 6
         y: 59
         width: 164
         height: 28
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+=======
+        x: 5
+        y: 58
+        width: 166
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+>>>>>>> origin/thanhdev
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -388,12 +575,21 @@ TextureImporter:
       name: Slots_13
       rect:
         serializedVersion: 2
+<<<<<<< HEAD
         x: 6
         y: 11
         width: 165
         height: 28
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+=======
+        x: 5
+        y: 10
+        width: 167
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+>>>>>>> origin/thanhdev
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -410,7 +606,11 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
+<<<<<<< HEAD
     spriteID: 7cb2ac8a4df28614b87a623045956f55
+=======
+    spriteID: 
+>>>>>>> origin/thanhdev
     internalID: 0
     vertices: []
     indices: 
@@ -419,6 +619,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
+<<<<<<< HEAD
     nameFileIdTable:
       Slots_0: -4120399330518263098
       Slots_1: 3973670117115425906
@@ -434,6 +635,9 @@ TextureImporter:
       Slots_7: -1692687518410529283
       Slots_8: -5119264307058764885
       Slots_9: -2789878931737843876
+=======
+    nameFileIdTable: {}
+>>>>>>> origin/thanhdev
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
