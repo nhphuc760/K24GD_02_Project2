@@ -10,7 +10,7 @@ public class FarmLandManager : MonoBehaviour
     [SerializeField] TileBase redHightLight;
     [SerializeField] TileBase normalHighLight;
     public LayerMask cropLayerMask;
-    ItemDataSO curToolKit;
+    InventorySlot curToolKit;
     Transform groundCheck;
     bool isInFarmLand = false;
     Vector3Int curPos;
@@ -45,7 +45,7 @@ public class FarmLandManager : MonoBehaviour
             lastSeed.HideCoolDown();
         }
 
-        if (curToolKit != null && curToolKit is SeedDataSO)
+        if (curToolKit != null && curToolKit.ItemData is SeedDataSO)
         {  
             var tilebase = hit != null ? redHightLight : greenHightLight;
             highlightMap.SetTile(curPos, tilebase);
@@ -76,7 +76,7 @@ public class FarmLandManager : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
     }
-    private void CurSelectedChange(ItemDataSO sO)
+    private void CurSelectedChange(InventorySlot sO)
     {
         curToolKit = sO;
     }

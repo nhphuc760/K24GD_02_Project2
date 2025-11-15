@@ -37,9 +37,9 @@ public class ToolKitEvent
         return onGetCurrentIndexChoose?.Invoke() ?? -1;
     }
 
-    public event Action<ItemDataSO> onCurSelectedChange;
+    public event Action<InventorySlot> onCurSelectedChange;
 
-    public void curSelectedChange(ItemDataSO itemDataSO)
+    public void curSelectedChange(InventorySlot itemDataSO)
     {
         onCurSelectedChange?.Invoke(itemDataSO);
     }

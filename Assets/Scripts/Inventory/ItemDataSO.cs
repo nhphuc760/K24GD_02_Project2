@@ -10,6 +10,7 @@ public class ItemDataSO : ScriptableObject
     public int _maxStack;
     public bool isStackable;
     public ItemType itemType;
+    public RunTimeItemType runTimeItemType;
 
     private void OnValidate()
     {
@@ -22,5 +23,9 @@ public enum ItemType
     Consumable,
     Equipment,
     Tool,
-   
+}
+public enum RunTimeItemType
+{
+    None,
+    ToolRunTimeData
 }

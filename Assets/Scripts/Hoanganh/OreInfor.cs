@@ -92,12 +92,12 @@ public class OreInfor : MonoBehaviour, IToolTarget
         }
     }
 
-    public void InteractWithTool(ToolDataSO tool)
+    public void InteractWithTool(ToolDataSO toolDataSO, ToolRunTimeData tool)
     {
         if (isDestroyed) return;
 
         currentHitPoints--;
-
+        tool.currentDurability -= toolDataSO.durabilityLossPerUse;
 
         // Nếu vẫn còn HP thì chỉ rung nhẹ hoặc hiệu ứng nứt
         if (currentHitPoints > 0)

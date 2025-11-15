@@ -21,13 +21,13 @@ public class PlayerVisual : MonoBehaviour
         GameEventManager.Ins.animationEvent.onToolUse += UseTool;
     }
 
-    private void UseTool(IToolTarget target, ToolDataSO sO)
+    private void UseTool(IToolTarget target, ToolDataSO sO, ToolRunTimeData dataRunTime)
     {
         if (!isInteract)
         {
             isInteract = true;
             animator.Play(target.RequireTool.ToString());
-            StartCoroutine(WaitUseTool(target, sO));
+            StartCoroutine(WaitUseTool(target, sO, dataRunTime));
         }
     }
 
@@ -68,12 +68,12 @@ public class PlayerVisual : MonoBehaviour
         GameEventManager.Ins.animationEvent.onToolUse -= UseTool;
     }
 
-    IEnumerator WaitUseTool(IToolTarget target, ToolDataSO tool)
+    IEnumerator WaitUseTool(IToolTarget target, ToolDataSO sO, ToolRunTimeData tool)
     {
         yield return null;
         float duration = animator.GetCurrentAnimatorStateInfo(0).length;
         yield return new WaitForSeconds(duration);
-        target.InteractWithTool(tool);
+        target.InteractWithTool(sO, tool);
         isInteract = false;
     }
 }

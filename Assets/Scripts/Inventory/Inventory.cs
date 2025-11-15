@@ -20,7 +20,7 @@ public class Inventory
         }
         this.itemDataBase = itemDataBasae;
     }
-
+    
     /// <summary>
     /// Gộp, Hoán đổi, Đổi chỗ vật phẩm
     /// </summary>
@@ -46,7 +46,7 @@ public class Inventory
         }
         if (end.IsEmpty)
         {
-            end.Assign(start.ItemData, start.quantity);
+            end.Assign(start.ItemData, start.quantity, start.dataRuntime);
             start.Clear();
             return;
         }
@@ -54,8 +54,9 @@ public class Inventory
         {
             var tmpItem = end.ItemData;
             var tmpQuantity = end.quantity;
-            end.Assign(start.ItemData, start.quantity);
-            start.Assign(tmpItem, tmpQuantity);
+            var tmpDataRuntime = end.dataRuntime;
+            end.Assign(start.ItemData, start.quantity, start.dataRuntime);
+            start.Assign(tmpItem, tmpQuantity, tmpDataRuntime);
         }
     }
 
@@ -97,6 +98,7 @@ public class Inventory
     /// param name="item">ScriptableObject của Item</param>
     public bool AddItem(ItemDataSO item, int quantity = 1)
     {
+        // Try stacking first
         foreach (var slot in itemSlots)
         {
             if (slot.ItemData == item && slot.ItemData.isStackable)
@@ -111,7 +113,29 @@ public class Inventory
         {
             if (slot.IsEmpty)
             {
-                slot.Assign(item, quantity);
+                DataRunTimeItem data = null;
+                if(item.runTimeItemType != RunTimeItemType.None)
+                {
+                    Type dataType = RuntimeDataRegistry.GetType(item.runTimeItemType.ToString());
+                    if (dataType != null)
+                    {
+                        try
+                        {
+                            DataRunTimeItem instance = (DataRunTimeItem)Activator.CreateInstance(dataType);
+                            instance.Init(item);
+                            data = instance; // <-- assign instance to data so it is stored to slot
+                        }
+                        catch (Exception e)
+                        {
+                            Debug.LogWarning($"Inventory.AddItem: failed to create runtime data for item {item._itemName}: {e}");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"Inventory.AddItem: runtime type for '{item.runTimeItemType}' not registered.");
+                    }
+                }
+                slot.Assign(item, quantity, data);
                 return true;
             }
         }
@@ -234,22 +258,28 @@ public class Inventory
     /// param name="idInventory">ID của kho</param>
     public async Task SaveData(string keyInventory)
     {
-        List<InventorySlotData> itemDataSlots = new List<InventorySlotData>();
-        foreach (var child in itemSlots)
+        try
         {
-            if (!child.IsEmpty)
+            List<InventorySlotData> itemDataSlots = new List<InventorySlotData>();
+            foreach (var child in itemSlots)
             {
-                InventorySlotData data = new InventorySlotData
+                if (!child.IsEmpty)
                 {
-                    _idDataSO = child.ItemData._id,
-                    quantity = child.quantity,
-                    slotIndex = itemSlots.IndexOf(child)
-                };
-                itemDataSlots.Add(data);
+                    InventorySlotData data = new InventorySlotData();
+                    data._idDataSO = child.ItemData._id;
+                    data.quantity = child.quantity;
+                    data.slotIndex = itemSlots.IndexOf(child);
+                    data.dataRuntime = (child.dataRuntime == null || child.ItemData.runTimeItemType.Equals(RunTimeItemType.None)) ? null : child.dataRuntime.SerializeData();
+                    itemDataSlots.Add(data);
+                }
             }
+            await Save_Load_Firebase.SaveData($"Inventory/{keyInventory}/SlotAmount", itemSlots.Count);
+            await Save_Load_Firebase.SaveData($"Inventory/{keyInventory}/Database", JsonConvert.SerializeObject(itemDataSlots));
         }
-        await Save_Load_Firebase.SaveData($"Inventory/{keyInventory}/SlotAmount", itemSlots.Count);
-        await Save_Load_Firebase.SaveData($"Inventory/{keyInventory}/Database", JsonConvert.SerializeObject(itemDataSlots));
+        catch (Exception e)
+        {
+            Debug.LogWarning($"Inventory.SaveData error: {e}");
+        }
     }
 
     public async Task LoadData(string keyInventory)
@@ -263,7 +293,7 @@ public class Inventory
         }
         catch (Exception e)
         {
-            Debug.LogError($"Inventory.LoadData: Firebase LoadData exception: {e}");
+            Debug.LogWarning($"Inventory.LoadData: firebase call failed: {e}");
             return;
         }
 
@@ -278,7 +308,16 @@ public class Inventory
         string json = task.Value?.ToString();
         if (string.IsNullOrEmpty(json)) return;
 
-        var remoteData = JsonConvert.DeserializeObject<List<InventorySlotData>>(json);
+        List<InventorySlotData> remoteData;
+        try
+        {
+            remoteData = JsonConvert.DeserializeObject<List<InventorySlotData>>(json);
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning($"Inventory.LoadData: failed to parse JSON: {e}");
+            return;
+        }
         if (remoteData == null) return;
 
         for (int i = 0; i < remoteData.Count; i++)
@@ -300,11 +339,51 @@ public class Inventory
             ItemDataSO dataSo = null;
             if (itemDataBase != null)
                 dataSo = itemDataBase.GetDataByID(child._idDataSO);
-            else
-                Debug.LogWarning("Inventory.LoadData: itemDataBase is null — cannot resolve ItemDataSO references.");
 
-            itemSlots[child.slotIndex].ItemData = dataSo;
-            itemSlots[child.slotIndex].quantity = child.quantity;
+            if (dataSo == null)
+            {
+                Debug.LogWarning($"Inventory.LoadData: ItemDataSO with id {child._idDataSO} not found in database. Skipping slot {child.slotIndex}.");
+                continue;
+            }
+
+            DataRunTimeItem runtimeInstance = null;
+            // Only try to deserialize runtime string when present and when the item declares a runtime type
+            if (!string.IsNullOrEmpty(child.dataRuntime) && dataSo.runTimeItemType != RunTimeItemType.None)
+            {
+                Type runtimeType = RuntimeDataRegistry.GetType(dataSo.runTimeItemType.ToString());
+                if (runtimeType != null)
+                {
+                    try
+                    {
+                        runtimeInstance = (DataRunTimeItem)JsonConvert.DeserializeObject(child.dataRuntime, runtimeType);
+                        // If deserialization returned null, attempt to new-up and Init as fallback
+                        if (runtimeInstance == null)
+                        {
+                            runtimeInstance = (DataRunTimeItem)Activator.CreateInstance(runtimeType);
+                            runtimeInstance.Init(dataSo);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.LogWarning($"Inventory.LoadData: failed to deserialize runtime data for slot {child.slotIndex}, id {child._idDataSO}: {e}");
+                        runtimeInstance = null;
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning($"Inventory.LoadData: runtime type '{dataSo.runTimeItemType}' is not registered. Skipping runtime data for slot {child.slotIndex}.");
+                }
+            }
+
+            // Assign slot data (use Assign to keep consistent behavior)
+            try
+            {
+                itemSlots[child.slotIndex].Assign(dataSo, child.quantity, runtimeInstance);
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning($"Inventory.LoadData: failed to assign slot {child.slotIndex}: {e}");
+            }
         }
     }
 

@@ -84,6 +84,6 @@ public class ToolKit : MonoBehaviour
         cachedToolkitUI[newIndex].EnableSelected();
         curIndex = newIndex;
         curChoosing = inventory.itemSlots[curIndex];
-        GameEventManager.Ins.toolKitEvent.curSelectedChange(curChoosing.ItemData);
+        GameEventManager.Ins.toolKitEvent.curSelectedChange(curChoosing);
     }
 }

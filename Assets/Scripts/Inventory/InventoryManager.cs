@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -63,6 +64,7 @@ public class InventoryManager : MonoBehaviour
             var slotUI = Instantiate(slotUIPrefab, itemSlotContainer);
             slotUI.Init(this, i);
             cachedSlotUIs.Add(slotUI);
+            
         }
         UpdateUI();
         GameEventManager.Ins.questEvents.onClaimReward += QuestEvents_onClaimReward;
@@ -177,9 +179,8 @@ public class InventoryManager : MonoBehaviour
     public void OnPointerClickSlotUI(int indexSlotUI)
     {
         if(!inventory.itemSlots[indexSlotUI].IsEmpty)
-        {
-            ItemDataSO itemData = inventory.itemSlots[indexSlotUI].ItemData;     
-            itemInforUI.UpdateUI(itemData);
+        {   
+            itemInforUI.UpdateUI(inventory.itemSlots[indexSlotUI]);
             itemInforUI.gameObject.SetActive(true);
             itemInforUI.SlotIndex = indexSlotUI;
         }    
