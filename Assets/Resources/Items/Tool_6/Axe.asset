@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Axe
   m_EditorClassIdentifier: 
   _id: 601
-  _itemName: ChopTree
+  _itemName: Axe
   _icon: {fileID: 8290443533355553962, guid: 038db4862654f5946b86fcf00b466b33, type: 3}
   _description: nothing
   _maxStack: 1
   isStackable: 0
   itemType: 2
+  runTimeItemType: 1
   maxDurability: 100
   durabilityLossPerUse: 1
   toolType: 0
