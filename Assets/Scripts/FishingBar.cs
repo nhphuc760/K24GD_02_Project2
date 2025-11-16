@@ -6,7 +6,7 @@ public class FishingBar : MonoBehaviour
     public Rigidbody rb;
     public float targetTime = 4.0f;
     public float savedTargetTime;
-    Player player;//Đặt tạm tránh conflict
+    [SerializeField] Player player;
     public GameObject p1;
     public GameObject p2;
     public GameObject p3;
@@ -17,15 +17,7 @@ public class FishingBar : MonoBehaviour
     public GameObject p8;
 
     public bool onFish;
-    public PlayerVisual playerVisual;
-    public GameObject bobber;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    [SerializeField] PlayerVisual playerVisual;
     void Update()
     {
         if (onFish)

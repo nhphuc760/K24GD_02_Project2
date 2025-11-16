@@ -11,22 +11,31 @@ public class Player : MonoBehaviour
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] PlayerVisual playerVisual;
     public bool isInFishingState;
-    public bool isFishing;
     public Transform fishingPoint;
     public Transform fishingPointBack;
     public Transform fishingPointFront;
     public Transform fishingPointLeft;
     public Transform fishingPointRight;
-    public GameObject bobber;
-    private Vector3 temp;
+    public Transform bobber;
     public float targetTime = 0.0f;
     public float extraBobberDistance;
     public GameObject fishGame;
     public GameObject fish;
-    public float timeTillCatch = 0.0f;
     private Tilemap[] _groundTilemaps;
-   
 
+    bool isFishing;
+    public bool IsFishing { get => isFishing; set{
+            if(isFishing == value) return;
+            if (isFishing)
+            {
+                GameEventManager.Ins.gameInput.Disable_InputAction();
+            }
+            else
+            {
+                GameEventManager.Ins.gameInput.Enable_InputAction();
+            }
+        } 
+    }
     private bool fishGameResult = false;
     public bool FishGameResult { get => fishGameResult; set => fishGameResult = value; }
 
@@ -36,44 +45,46 @@ public class Player : MonoBehaviour
     private bool isBobberInWater = false;
     public bool IsBobberInWater { get => isBobberInWater; set => isBobberInWater = value; }
 
-    public bool IsInFishingZone { get => FishingZone.Ins.playerIsInFishingZone; }
+     bool isInFishingZone;
 
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
-        if(playerMovement == null)
-        {
-            playerMovement = GetComponent<PlayerMovement>();
-        }
-        if(playerVisual == null)
-        {
-            playerVisual = GetComponentInChildren<PlayerVisual>();
-        }
-        Tilemap[] allTilemaps = FindObjectsByType<Tilemap>(FindObjectsSortMode.None);
-        _groundTilemaps = Array.FindAll(allTilemaps, tm => tm.gameObject.layer == LayerMask.NameToLayer("Ground"));
+        playerMovement ??= GetComponent<PlayerMovement>();
+        playerVisual ??= GetComponentInChildren<PlayerVisual>();             
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        isFishing = false;
         fishGame.SetActive(false);
         targetTime = 0.0f;
         extraBobberDistance = 0.0f;
-            SceneManager.sceneLoaded += OnSceneLoad;
-        }
-
+        SceneManager.sceneLoaded += OnSceneLoad;
+        GameEventManager.Ins.onFishingZoneEnter += () => isInFishingZone = true;
+        GameEventManager.Ins.onFishingZoneExit += () => isInFishingZone = false;
+    }
     private void OnSceneLoad(Scene arg0, LoadSceneMode arg1)
     {
-        if (arg0.path.StartsWith("Assets/Scenes/ScenePlay"))
-        {
+        if (!arg0.path.StartsWith("Assets/Scenes/ScenePlay")) return;    
             FindAnyObjectByType<CinemachineCamera>().Follow = this.transform;
-        }
+            if (arg0.name == "BeachScene")
+            {
+                Tilemap[] allTilemaps = FindObjectsByType<Tilemap>(FindObjectsSortMode.None);
+                _groundTilemaps = Array.FindAll(allTilemaps, tm => tm.gameObject.layer == LayerMask.NameToLayer("Ground"));
+            }
     }
 
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoad;
-        isBobberInWater = CheckBobberInWater(new Vector2(playerMovement.HorizontalMovement, playerMovement.VerticalMovement));
+        GameEventManager.Ins.onFishingZoneEnter -= () => isInFishingZone = true;
+        GameEventManager.Ins.onFishingZoneExit -= () => isInFishingZone = false;
+
+    }
+    private void Update()
+    {
+        if (!isInFishingZone) return;
+        isBobberInWater = CheckBobberInWater(playerMovement.GetDirection());
         HandleInput();
         if (isInFishingState && !isFishing)
         {
@@ -82,12 +93,12 @@ public class Player : MonoBehaviour
     }
     private void HandleInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && playerVisual.winnerAnimIsActive == false && IsInFishingZone && !fishGame.activeSelf && !FishBited && isBobberInWater)
+        if (Input.GetKeyDown(KeyCode.Space) && playerVisual.winnerAnimIsActive == false && !fishGame.activeSelf && !fishBited && isBobberInWater)
         {
             RemovePreviousBobber();
             StartPoleBack();
         }
-        if (Input.GetKeyUp(KeyCode.Space) && playerVisual.winnerAnimIsActive == false && isInFishingState && !fishGame.activeSelf && !FishBited)
+        if (Input.GetKeyUp(KeyCode.Space) && playerVisual.winnerAnimIsActive == false && isInFishingState && !fishGame.activeSelf && !fishBited)
         {
             CastingFishing();
         }
@@ -100,9 +111,8 @@ public class Player : MonoBehaviour
 
     private void StartPoleBack()
     {
-        isFishing = false;
+        IsFishing = false;
         targetTime = 0.0f;
-        timeTillCatch = 0.0f;
         isInFishingState = true;
         playerVisual.animator.Play(AnimationHashes.POLE_BACK);
     }
@@ -122,8 +132,8 @@ public class Player : MonoBehaviour
     {
         fishGame.SetActive(false);
         playerVisual.animator.Play(AnimationHashes.CAPTURE_NOFISH);
-        isFishing = false;
-        timeTillCatch = 0.0f;
+       
+        IsFishing = false;
         isInFishingState = false;
         FishBited = false;
     }
@@ -134,38 +144,34 @@ public class Player : MonoBehaviour
         FishGameResult = true;
         playerVisual.animator.Play(AnimationHashes.CAPTURE_NOFISH);
         isInFishingState = false;
-        fishGame.SetActive(false);
-        isFishing = false;
+        fishGame.SetActive(false);   
+        IsFishing = false;
         FishBited = false;
-        timeTillCatch = 0.0f;
     }
     public void fishGameLossed()
     {
         FishGameResult = false;
         playerVisual.animator.Play(AnimationHashes.CAPTURE_NOFISH);
         isInFishingState = false;
-        fishGame.SetActive(false);
-        isFishing = false;
+        fishGame.SetActive(false);         
+        IsFishing = false;
         FishBited = false;
-        timeTillCatch = 0.0f;
     }
     public void OnCastFishingEnd()
     {
         UpdateFishingPointPosition();
-        temp = extraBobberDistance * new Vector3(playerMovement.HorizontalMovement, playerMovement.VerticalMovement, 0);
-        fishingPoint.transform.position += temp;
-        isFishing = true;
-        Instantiate(bobber, fishingPoint.position, fishingPoint.rotation, transform);
+        Vector3 temp = extraBobberDistance * (Vector3)playerMovement.GetDirection();
+        fishingPoint.transform.position += temp;        
+        IsFishing = true;
+        bobber.gameObject.SetActive(true);
+        bobber.position = fishingPoint.position;
         fishingPoint.transform.position -= temp;
         targetTime = 0.0f;
         extraBobberDistance = 0.0f;
     }
     private void RemovePreviousBobber()
     {
-        foreach (Bobber bobber in GetComponentsInChildren<Bobber>())
-        {
-            Destroy(bobber.gameObject);
-        }
+        bobber.gameObject.SetActive(false);
     }
     private bool CheckBobberInWater(Vector2 direction)
     {

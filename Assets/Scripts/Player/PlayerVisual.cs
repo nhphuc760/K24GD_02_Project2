@@ -10,17 +10,13 @@ public class PlayerVisual : MonoBehaviour
     [SerializeField] public Animator animator;
     [SerializeField] PlayerMovement playerMovement;
 
-    static int ISMOVING = Animator.StringToHash("isMoving");
-    static int HORIZONTAL_MOVEMENT = Animator.StringToHash("horizontalMovement");
-    static int VERTICAL_MOVEMENT = Animator.StringToHash("verticalMovement");
+  
     bool isInteract = false;
     private void Awake()
     {
-        GameManager.Ins.onLoadDataCompleted += LoadDataPlayerCompleted;
-        if(player == null)
-        {
-            player = transform.parent.GetComponent<Player>();
-        }
+        GameManager.Ins.onLoadDataCompleted += LoadDataPlayerCompleted; 
+        player ??= transform.parent.GetComponent<Player>();
+        
     }
 
     private void Start()
@@ -53,9 +49,9 @@ public class PlayerVisual : MonoBehaviour
 
     private void Update()
     {
-        animator.SetBool(ISMOVING, playerMovement.IsMoving);
-        animator.SetFloat(HORIZONTAL_MOVEMENT, playerMovement.HorizontalMovement);
-        animator.SetFloat(VERTICAL_MOVEMENT, playerMovement.VerticalMovement);
+        animator.SetBool(AnimationHashes.ISMOVING, playerMovement.IsMoving);
+        animator.SetFloat(AnimationHashes.HORIZONTAL_MOVEMENT, playerMovement.HorizontalMovement);
+        animator.SetFloat(AnimationHashes.VERTICAL_MOVEMENT, playerMovement.VerticalMovement);
         if (playerMovement.IsMoving)
         {
             FlipVisual();
@@ -87,14 +83,6 @@ public class PlayerVisual : MonoBehaviour
         yield return new WaitForSeconds(duration);
         target.InteractWithTool(sO, tool);
         isInteract = false; 
-    }
-    public void OnCastFishingEndAnimationEvent()
-    {
-       player.OnCastFishingEnd();
-    }
-    public void OnCaptureFishStartAnimationEvent()
-    {
-        player.CheckIfWinFishGame();
     }
 }
 

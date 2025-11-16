@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1164331866957732423}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.72, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -167,10 +167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f2f2ac982cd76b469955182a81a4507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovement: {fileID: 0}
-  playerVisual: {fileID: 0}
+  playerMovement: {fileID: 182530904078596470}
+  playerVisual: {fileID: 832668232084899115}
   isInFishingState: 0
-  isFishing: 0
   fishingPoint: {fileID: 0}
   fishingPointBack: {fileID: 0}
   fishingPointFront: {fileID: 0}
@@ -181,7 +180,6 @@ MonoBehaviour:
   extraBobberDistance: 0
   fishGame: {fileID: 0}
   fish: {fileID: 0}
-  timeTillCatch: 0
 --- !u!1 &1396858724386881928
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,8 +327,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CategoryHash: 9.026239e-31
-  m_labelHash: 6.4880517e-31
+  m_CategoryHash: 6.6282384e-23
+  m_labelHash: 1.3971405e-28
   m_SpriteKey: 0
   m_SpriteHash: 688487968
 --- !u!114 &6265629970169200554
@@ -373,7 +371,7 @@ Transform:
   m_GameObject: {fileID: 2610162572001070063}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.504, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -413,6 +411,6 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.03, y: -0.03}
   m_Size: {x: 0.46728212, y: 0.13071992}
   m_Direction: 1

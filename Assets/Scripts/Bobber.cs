@@ -3,26 +3,19 @@ using UnityEngine.Events;
 
 public class Bobber : MonoBehaviour
 {
-    public static event UnityAction OnFishBiteAlert;
-    public bool GameIsOver;
     public Animator bobberAnim;
-    public float bobberTime;
-    public float randomFishBiteTime = 0;
+    float bobberTime;
+    [SerializeField] Vector2 RangeRandomFishBiteTime;
+    float randomFishBiteTime;
     public float AlertFishBitedTime = 2f;
-    Player player;
+    [SerializeField] Player player;
     [SerializeField] PlayerVisual playerVisual;
-    private void Awake()
-    {
-        OnFishBiteAlert += OnFishBiteHandler;
-    }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void OnEnable()
     {
-        randomFishBiteTime = UnityEngine.Random.Range(5f, 6f);
+        randomFishBiteTime = UnityEngine.Random.Range(RangeRandomFishBiteTime.x, RangeRandomFishBiteTime.y);
         bobberTime = 0;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -31,22 +24,9 @@ public class Bobber : MonoBehaviour
             bobberTime += Time.deltaTime;
             if (bobberTime >= randomFishBiteTime)
             {
-                OnFishBiteAlert?.Invoke();
+                OnFishBiteHandler();
             }
         }
-        
-        if (Input.GetKeyDown(KeyCode.P) && player.isInFishingState)
-        {
-            Destroy(this.gameObject);
-        }
-        if (GameIsOver == true)
-        {
-            Destroy(this.gameObject);
-        }
-    }
-    private void OnDestroy()
-    {
-        OnFishBiteAlert -= OnFishBiteHandler;
     }
     private void OnFishBiteHandler()
     {
@@ -54,9 +34,5 @@ public class Bobber : MonoBehaviour
         bobberAnim.Play(AnimationHashes.BOBBER_FISH);
        playerVisual.animator.Play(AnimationHashes.FISH_HOOK_BLEND_TREE);
         StartCoroutine(player.StartMiniGameAfterAlertTime(AlertFishBitedTime));
-    }
-    public void gameOver()
-    {
-        GameIsOver = true;
     }
 }

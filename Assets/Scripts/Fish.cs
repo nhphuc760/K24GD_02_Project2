@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Fish : MonoBehaviour
 {
-    public AnimationCurve arcCurve;
-    PlayerMovement playerMovement; //đặt tạm tránh conflict
-    Player player; //đặt tạm tránh conflict
-    PlayerVisual playerVisual; //đặt tạm tránh conflict
+    [SerializeField] PlayerMovement playerMovement; //đặt tạm tránh conflict
+    [SerializeField] Player player; //đặt tạm tránh conflict
+    [SerializeField] PlayerVisual playerVisual; //đặt tạm tránh conflict
     private void OnEnable()
     {
         StartCoroutine(FlyFishToPlayer());

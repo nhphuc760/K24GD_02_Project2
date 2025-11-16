@@ -8,14 +8,12 @@ public class InteractionDetector : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        interactionIcon.SetActive(false);
+        interactionIcon?.SetActive(false);
     }
-    public void OnInteract(InputAction.CallbackContext context)
+    public void OnInteract()
     {
-        if (context.performed)
-        {
+        Debug.Log("CanInteract: " + interactableInrange != null);
             interactableInrange?.Interact();
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -23,15 +21,20 @@ public class InteractionDetector : MonoBehaviour
         if (collision.TryGetComponent(out IInteractable interactable) && interactable.CanInteract())
         {
             interactableInrange = interactable;
-            interactionIcon.SetActive(true);
+            interactionIcon?.SetActive(true);
+            GameEventManager.Ins.gameInput.interacPressed += OnInteract;
         }
     }
+
+  
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out IInteractable interactable) && interactable == interactableInrange)
         {
             interactableInrange = null;
-            interactionIcon.SetActive(false);
+            interactionIcon?.SetActive(false);
+            GameEventManager.Ins.gameInput.interacPressed -= OnInteract;
         }
     }
 }

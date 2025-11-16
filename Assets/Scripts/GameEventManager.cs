@@ -1,14 +1,17 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameEventManager : MonoBehaviour
 {
     public static GameEventManager Ins;
-    public event Action OnCollectCoins;//cho v�o questEvent
+    public event Action OnCollectCoins;//cho vào questEvent
     public event Action OnFishingCaught;//
     public event Action<string> triggerDialog;
     public event Action<int> onCoinChange;
+    //FishingEvent: Lười tạo script mới nên để luôn ở đây
+    public event Action onFishingZoneEnter;
+    public event Action onFishingZoneExit;
 
     public QuestEvents questEvents;
     public CookingEvent cookingEvent;
@@ -82,6 +85,15 @@ public class GameEventManager : MonoBehaviour
     {
         triggerDialog?.Invoke(log);
     }
- 
+    
+
+    public void FishingZoneEnter()
+    {
+        onFishingZoneEnter?.Invoke();
+    }
+    public void FishingZoneExit()
+    {
+        onFishingZoneExit?.Invoke();
+    }
 
 }
