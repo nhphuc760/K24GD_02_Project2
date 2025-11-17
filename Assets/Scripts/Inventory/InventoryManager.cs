@@ -85,7 +85,12 @@ public class InventoryManager : MonoBehaviour
         GameEventManager.Ins.inventoryEvent.onRemoveItemByData += RemoveItemByData;
         GameEventManager.Ins.inventoryEvent.onAddItem += AddItem;
         GameEventManager.Ins.inventoryEvent.onDropItem += OnDropItem;
+        GameEventManager.Ins.inventoryEvent.onGetInventory += GetDataInventory;
+    }
 
+    private void GetDataInventory(InventoryManager inventory)
+    {
+        inventory = this;
     }
 
     private void Ins_openBagPressed()
@@ -149,6 +154,7 @@ public class InventoryManager : MonoBehaviour
         GameEventManager.Ins.inventoryEvent.onRemoveItemByData -= RemoveItemByData;
         GameEventManager.Ins.inventoryEvent.onAddItem -= AddItem;
         GameEventManager.Ins.inventoryEvent.onDropItem -= OnDropItem;
+        GameEventManager.Ins.inventoryEvent.onGetInventory -= GetDataInventory;
         await inventory.SaveData("InventoryOfPlayer");
     }
 
@@ -165,11 +171,14 @@ public class InventoryManager : MonoBehaviour
         {
             return;
         }
-        if (start.GetIndex() == end.GetIndex())
+        if (start.GetInventorySlot() == end.GetInventorySlot())
         {
             return;
         }
-        inventory.MergeItem(inventory.itemSlots[start.GetIndex()], inventory.itemSlots[end.GetIndex()]);
+        inventory.MergeItem(start.GetInventorySlot(), end.GetInventorySlot());
+        var temp = start.GetInventorySlot();
+        start.SetInventorySlot(end.GetInventorySlot());
+        end.SetInventorySlot(temp);
         UpdateUI();
       
     }
@@ -178,7 +187,11 @@ public class InventoryManager : MonoBehaviour
 
     public void OnPointerClickSlotUI(int indexSlotUI)
     {
-        if(!inventory.itemSlots[indexSlotUI].IsEmpty)
+        if(this.gameObject.activeSelf == false)
+        {
+            return;
+        }
+        if (!inventory.itemSlots[indexSlotUI].IsEmpty)
         {   
             itemInforUI.UpdateUI(inventory.itemSlots[indexSlotUI]);
             itemInforUI.gameObject.SetActive(true);

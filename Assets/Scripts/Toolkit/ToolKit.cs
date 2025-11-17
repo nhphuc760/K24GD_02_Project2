@@ -20,11 +20,15 @@ public class ToolKit : MonoBehaviour
     private void Start()
     {
         GameEventManager.Ins.toolKitEvent.onInitSuccess += InitInventorySuccess;
+    }
+
+    private void OnEnable()
+    {
+     
         GameEventManager.Ins.toolKitEvent.onCallInput += OnInputCalled;
         GameEventManager.Ins.toolKitEvent.onUpdateUI += UpdateUI;
         GameEventManager.Ins.toolKitEvent.onGetDataChooseSlot += GetCurDataChoosing;
         GameEventManager.Ins.toolKitEvent.onGetCurrentIndexChoose += GetCurIndexChoosing;
-       
     }
 
     private int GetCurIndexChoosing()
@@ -43,9 +47,9 @@ public class ToolKit : MonoBehaviour
       OnPointerClickSlotUI(input - 1);
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
-        GameEventManager.Ins.toolKitEvent.onInitSuccess -= InitInventorySuccess;
+      
         GameEventManager.Ins.toolKitEvent.onCallInput -= OnInputCalled;
         GameEventManager.Ins.toolKitEvent.onUpdateUI -= UpdateUI;
         GameEventManager.Ins.toolKitEvent.onGetDataChooseSlot -= GetCurDataChoosing;
@@ -65,6 +69,7 @@ public class ToolKit : MonoBehaviour
             slot.UpdateUI();
         }
         OnInputCalled(1); //Mặc định vào game sẽ chọn ô toolkit đầu tiên
+        GameEventManager.Ins.toolKitEvent.onInitSuccess -= InitInventorySuccess;
     }
 
     void UpdateUI()

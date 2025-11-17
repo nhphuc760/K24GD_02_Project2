@@ -6,8 +6,6 @@ using UnityEngine;
 public class ShopDataBaseSO : ScriptableObject
 {
     public List<ItemShopDataSO> shopDatabase;
-
-
     public ItemShopDataSO GetItemShopByID(int id)
     {
         return shopDatabase.Find(x => x._id.Equals(id));

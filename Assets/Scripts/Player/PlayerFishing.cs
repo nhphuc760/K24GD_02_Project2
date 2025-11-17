@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.Tilemaps;
 
-public class Player : MonoBehaviour
+public class PlayerFishing : MonoBehaviour
 {
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] PlayerVisual playerVisual;
@@ -22,11 +22,13 @@ public class Player : MonoBehaviour
     public GameObject fishGame;
     public GameObject fish;
     private Tilemap[] _groundTilemaps;
-
     bool isFishing;
+    InventorySlot curToolKit;
+    ToolDataSO curToolDataSO;
     public bool IsFishing { get => isFishing; set{
             if(isFishing == value) return;
-            if (isFishing)
+            isFishing = value;
+            if (value)
             {
                 GameEventManager.Ins.gameInput.Disable_InputAction();
             }
@@ -36,6 +38,8 @@ public class Player : MonoBehaviour
             }
         } 
     }
+
+
     private bool fishGameResult = false;
     public bool FishGameResult { get => fishGameResult; set => fishGameResult = value; }
 
@@ -51,39 +55,68 @@ public class Player : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
         playerMovement ??= GetComponent<PlayerMovement>();
-        playerVisual ??= GetComponentInChildren<PlayerVisual>();             
+        playerVisual ??= GetComponentInChildren<PlayerVisual>();
+        GameEventManager.Ins.toolKitEvent.onCurSelectedChange += CurSelectToolKitChange;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    void CurSelectToolKitChange(InventorySlot inventorySlot)
+    {
+        curToolKit = inventorySlot;
+        curToolDataSO =  curToolKit.ItemData as ToolDataSO;
+    }
     void Start()
     {
         fishGame.SetActive(false);
         targetTime = 0.0f;
         extraBobberDistance = 0.0f;
         SceneManager.sceneLoaded += OnSceneLoad;
-        GameEventManager.Ins.onFishingZoneEnter += () => isInFishingZone = true;
-        GameEventManager.Ins.onFishingZoneExit += () => isInFishingZone = false;
+        GameEventManager.Ins.onFishingZoneEnter += FishingZoneEnter;
+        GameEventManager.Ins.onFishingZoneExit += FishingZoneExit;
     }
+
+
+    void FishingZoneEnter()
+    {
+        Debug.Log("Enter Fishing Zone");
+        isInFishingZone = true;
+    }
+    void FishingZoneExit()
+    {
+        Debug.Log("Exit Fishing Zone");
+        isInFishingZone = false;
+    }
+
     private void OnSceneLoad(Scene arg0, LoadSceneMode arg1)
     {
-        if (!arg0.path.StartsWith("Assets/Scenes/ScenePlay")) return;    
-            FindAnyObjectByType<CinemachineCamera>().Follow = this.transform;
-            if (arg0.name == "BeachScene")
-            {
-                Tilemap[] allTilemaps = FindObjectsByType<Tilemap>(FindObjectsSortMode.None);
-                _groundTilemaps = Array.FindAll(allTilemaps, tm => tm.gameObject.layer == LayerMask.NameToLayer("Ground"));
-            }
+        if (arg0.name == "BeachScene")              
+        {
+            this.enabled = true;
+            Tilemap[] allTilemaps = FindObjectsByType<Tilemap>(FindObjectsSortMode.None);
+            _groundTilemaps = Array.FindAll(allTilemaps, tm => tm.gameObject.layer == LayerMask.NameToLayer("Ground"));
+        }
+        else
+        {
+            this.enabled = false;
+        }
     }
 
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoad;
-        GameEventManager.Ins.onFishingZoneEnter -= () => isInFishingZone = true;
-        GameEventManager.Ins.onFishingZoneExit -= () => isInFishingZone = false;
+        GameEventManager.Ins.onFishingZoneEnter -= FishingZoneEnter;
+        GameEventManager.Ins.onFishingZoneExit -= FishingZoneExit;
+        GameEventManager.Ins.toolKitEvent.onCurSelectedChange -= CurSelectToolKitChange;
 
     }
     private void Update()
     {
         if (!isInFishingZone) return;
+        
+        if (curToolDataSO == null || curToolDataSO.toolType != ToolDataSO.ToolType.FishingRod)
+        {
+            return;
+        }
         isBobberInWater = CheckBobberInWater(playerMovement.GetDirection());
         HandleInput();
         if (isInFishingState && !isFishing)

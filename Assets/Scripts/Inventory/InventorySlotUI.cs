@@ -89,7 +89,7 @@ public class InventorySlotUI : MonoBehaviour, IDragDrop, IPointerClickHandler, I
         {
             return;
         }
-        if (inventoryManager.inventory.TryDropItem(inventoryManager.inventory.itemSlots[start.GetIndex()], inventoryManager.inventory.itemSlots[slotIndex]))
+        if (inventoryManager.inventory.TryDropItem(start.GetInventorySlot(), inventoryManager.inventory.itemSlots[slotIndex]))
         {
             backGround.color = Color.green;
         }
@@ -104,13 +104,13 @@ public class InventorySlotUI : MonoBehaviour, IDragDrop, IPointerClickHandler, I
       backGround.color = Color.white;
     }
 
-    public ItemDataSO GetItemDataSO()
+    public InventorySlot GetInventorySlot()
     {
-        return inventoryManager.inventory.itemSlots[slotIndex].ItemData;
+        return inventoryManager.inventory.itemSlots[slotIndex];
     }
 
-    public int GetIndex()
+    public void SetInventorySlot(InventorySlot slot)
     {
-       return slotIndex;
+        // Not needed in this context
     }
 }

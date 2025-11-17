@@ -6,7 +6,7 @@ public class FishingBar : MonoBehaviour
     public Rigidbody rb;
     public float targetTime = 4.0f;
     public float savedTargetTime;
-    [SerializeField] Player player;
+    [SerializeField] PlayerFishing player;
     public GameObject p1;
     public GameObject p2;
     public GameObject p3;

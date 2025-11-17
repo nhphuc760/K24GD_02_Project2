@@ -6,7 +6,7 @@ using UnityEngine.U2D.Animation;
 public class PlayerVisual : MonoBehaviour
 {
 
-    [SerializeField] Player player;
+    [SerializeField] PlayerFishing player;
     [SerializeField] public Animator animator;
     [SerializeField] PlayerMovement playerMovement;
 
@@ -15,7 +15,7 @@ public class PlayerVisual : MonoBehaviour
     private void Awake()
     {
         GameManager.Ins.onLoadDataCompleted += LoadDataPlayerCompleted; 
-        player ??= transform.parent.GetComponent<Player>();
+        player ??= transform.parent.GetComponent<PlayerFishing>();
         
     }
 
@@ -83,6 +83,15 @@ public class PlayerVisual : MonoBehaviour
         yield return new WaitForSeconds(duration);
         target.InteractWithTool(sO, tool);
         isInteract = false; 
+    }
+
+    public void OnCastFishingEndAnimationEvent()
+    {
+        player.OnCastFishingEnd();
+    }
+    public void OnCaptureFishStartAnimationEvent()
+    {
+        player.CheckIfWinFishGame();
     }
 }
 

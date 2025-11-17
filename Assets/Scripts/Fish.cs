@@ -5,7 +5,7 @@ using UnityEngine;
 public class Fish : MonoBehaviour
 {
     [SerializeField] PlayerMovement playerMovement; //đặt tạm tránh conflict
-    [SerializeField] Player player; //đặt tạm tránh conflict
+    [SerializeField] PlayerFishing player; //đặt tạm tránh conflict
     [SerializeField] PlayerVisual playerVisual; //đặt tạm tránh conflict
     private void OnEnable()
     {

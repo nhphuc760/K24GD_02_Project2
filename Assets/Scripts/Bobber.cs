@@ -8,7 +8,7 @@ public class Bobber : MonoBehaviour
     [SerializeField] Vector2 RangeRandomFishBiteTime;
     float randomFishBiteTime;
     public float AlertFishBitedTime = 2f;
-    [SerializeField] Player player;
+    [SerializeField] PlayerFishing player;
     [SerializeField] PlayerVisual playerVisual;
 
     private void OnEnable()

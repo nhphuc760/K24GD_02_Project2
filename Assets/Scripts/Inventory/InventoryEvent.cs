@@ -42,4 +42,10 @@ public class InventoryEvent
     {
         onDropItem?.Invoke(eventData);
     }
+
+    public event Action<InventoryManager> onGetInventory;
+    public void GetDataInventory(InventoryManager invenManager)
+    {
+        onGetInventory?.Invoke(invenManager);
+    }
 }
