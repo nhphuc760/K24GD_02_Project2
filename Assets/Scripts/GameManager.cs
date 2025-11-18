@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] SeedDatabase seedDataBase; // Cơ sở dữ liệu cây trồng chung cho toàn game
     public event Action<PlayerData, CharacterDataSO> onLoadDataCompleted;
 
+
+    //phần mới animal
+    public AnimalDataSO AnimalData;
+    private Transform animalSpanwPoint;
     
     int _coins = -1;
     public int Coin 
@@ -109,6 +113,13 @@ public class GameManager : MonoBehaviour
             LoadCropsForScene(scene.name, seedDatas);
         }
         MovePlayerToPosition();
+
+
+        // Kiểm tra nếu đây là scene game (không phải menu) (test animal)
+        if (scene.name != "PersistentSystems" && scene.name != "CustomizeCharacter" /*...*/)
+        {
+            FindSpawnPoint(scene.name);
+        }
     }
     //Hàm được Portal gọi để bắt đầu chuyển scene
     public async void StartSceneTransition(string sceneName, Vector3 newPos)
@@ -220,6 +231,63 @@ public class GameManager : MonoBehaviour
         if(characterDatabase == null)
         {
             characterDatabase = Resources.Load<CharacterDatabase>("CharacterData");
+        }
+    }
+
+
+    //animal test
+    private void Update()
+    {
+        // Khi nhấn phím F9 (ví dụ)
+        if (Input.GetKeyDown(KeyCode.F9))
+        {
+            if (AnimalData != null && animalSpanwPoint != null)
+            {
+                BuyAnimal(AnimalData);
+            }
+        }
+    }
+    public void BuyAnimal(AnimalDataSO animal)
+    {
+        // Kiểm tra xem đã tìm thấy spawn point chưa
+        if (animalSpanwPoint == null)
+        {
+            Debug.LogError($"Không thể mua {animal.animalName}: AnimalSpawnPoint chưa được tìm thấy trong scene này!");
+            return; // Dừng lại nếu không có spawn point
+        }
+
+        Debug.Log($"Đang mua {animal.animalName}...");
+        Vector3 spawnPos = animalSpanwPoint.position;
+        spawnPos.z = 0f; // Đảm bảo Z=0
+        GameObject animalObj = Instantiate(animal.animalPrefab, spawnPos, Quaternion.identity);
+        animalObj.GetComponent<FarmAnimal>().Plant(animal);
+    }
+    /// Tự động tìm Spawn Point trong scene mới dựa vào TÊN.
+    /// </summary>
+    private void FindSpawnPoint(string sceneName)
+    {
+        // Chỉ tìm nếu chúng ta ở đúng scene
+        if (sceneName == "Farm") // Thay "Farm" bằng tên scene farm của bạn
+        {
+            // Tìm GameObject bằng TÊN
+            // Đảm bảo tên này KHỚP 100% với tên GameObject trong Hierarchy
+            GameObject spawnObj = GameObject.Find("AnimalSpawnPoint");
+
+            if (spawnObj != null)
+            {
+                animalSpanwPoint = spawnObj.transform;
+                Debug.Log("GameManager đã tự động tìm thấy AnimalSpawnPoint!");
+            }
+            else
+            {
+                Debug.LogWarning("Không tìm thấy 'AnimalSpawnPoint' trong scene Farm! Hãy kiểm tra lại tên.");
+                animalSpanwPoint = null;
+            }
+        }
+        else
+        {
+            // Nếu là scene khác (Town, Mine...), chúng ta không cần spawn point
+            animalSpanwPoint = null;
         }
     }
 }
