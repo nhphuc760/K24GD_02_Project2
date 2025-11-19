@@ -22,7 +22,6 @@ public class UIManager : MonoBehaviour
     public AnimationCurve lightIntensityCurve; // Dùng để chỉnh độ sáng (Post Exposure)
     public float lightTransitionSpeed = 1f; // tốc độ chuyển ánh sáng mượt
 
-
     //Biến lưu trữ tham chiếu đến ColorAdjustments Override
     private Light2D globalLight;
   
@@ -250,5 +249,14 @@ public class UIManager : MonoBehaviour
     {
         // Gọi hàm tính toán và áp dụng ngay lập tức
         UpdateNightLightState(hour, minute);
+    }
+
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+    }
+    public void Show()
+    {
+        gameObject.SetActive(true);
     }
 }

@@ -15,8 +15,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] SeedDatabase seedDataBase; // Cơ sở dữ liệu cây trồng chung cho toàn game
     public event Action<PlayerData, CharacterDataSO> onLoadDataCompleted;
 
-    
-    int _coins = -1;
+
+
+    [SerializeField] int _coins;
     public int Coin 
     {
         get => _coins;
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour
             if (_coins != value)
             {
                 _coins = value;
-                GameEventManager.Ins.CoinChange(Coin);
+                GameEventManager.Ins.CoinChange(_coins);
             }
         }
     }
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
         {
             Coin = 500;// số tiền mặc định cho beginer
         }
+        GameEventManager.Ins.CoinChange(_coins);
     }
     //Để Script giúp cho GManager "lắng nghe" sự kiện khi scene thay đổi không bị mất đi
     // Đăng ký "lắng nghe" sự kiện khi scene thay đổi
@@ -102,11 +104,13 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
+        if(scene.name == "Farm"){
         var task = await Save_Load_Firebase.LoadData("SeedData");
-        if (task.Exists)
-        {
-            List<SeedSaveData> seedDatas = JsonConvert.DeserializeObject<List<SeedSaveData>>(task.Value.ToString());
-            LoadCropsForScene(scene.name, seedDatas);
+            if (task.Exists)
+            {
+                List<SeedSaveData> seedDatas = JsonConvert.DeserializeObject<List<SeedSaveData>>(task.Value.ToString());
+                LoadCropsForScene(scene.name, seedDatas);
+            }
         }
         MovePlayerToPosition();
     }

@@ -36,7 +36,7 @@ public class ToolKitSlotUI : MonoBehaviour, IDragDrop, IPointerClickHandler
         dragIcon.color = Color.white;
         dragIcon.raycastTarget = false;
         dragIcon.transform.SetParent(toolKitManager.transform);
-        dragIcon.rectTransform.sizeDelta = new Vector2(64, 64);
+        dragIcon.rectTransform.sizeDelta = new Vector2(128 , 128);
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -94,9 +94,14 @@ public class ToolKitSlotUI : MonoBehaviour, IDragDrop, IPointerClickHandler
       return toolKitManager.inventory.itemSlots[slotIndex];
     }
 
+    public int GetIndexSlot()
+    {
+       return slotIndex;
+    }
+
     public void SetInventorySlot(InventorySlot slot)
     {
-        //Not needed in this implementation
+       //not needed
     }
 }
    

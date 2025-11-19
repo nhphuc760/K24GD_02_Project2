@@ -11,10 +11,15 @@ public class ToolKit : MonoBehaviour
     [SerializeField] Transform container;
     InventorySlot curChoosing = null;
     int curIndex = -1;
+    [SerializeField] Animator animator;
+
+    int OPEN = Animator.StringToHash("ToolKitOpen");
+    int CLOSED = Animator.StringToHash("ToolKitClosed");
+    bool isOpen = true;
     private void Awake()
     {
         inventory = new Inventory(9, null); //Lấy tham chiếu tới 10 ô đầu tiên trong inventory
-        
+        animator ??= GetComponent<Animator>();
     }
 
     private void Start()
@@ -29,6 +34,7 @@ public class ToolKit : MonoBehaviour
         GameEventManager.Ins.toolKitEvent.onUpdateUI += UpdateUI;
         GameEventManager.Ins.toolKitEvent.onGetDataChooseSlot += GetCurDataChoosing;
         GameEventManager.Ins.toolKitEvent.onGetCurrentIndexChoose += GetCurIndexChoosing;
+        GameEventManager.Ins.toolKitEvent.onTrigger += Trigger;
     }
 
     private int GetCurIndexChoosing()
@@ -54,6 +60,7 @@ public class ToolKit : MonoBehaviour
         GameEventManager.Ins.toolKitEvent.onUpdateUI -= UpdateUI;
         GameEventManager.Ins.toolKitEvent.onGetDataChooseSlot -= GetCurDataChoosing;
         GameEventManager.Ins.toolKitEvent.onGetCurrentIndexChoose -= GetCurIndexChoosing;
+        GameEventManager.Ins.toolKitEvent.onTrigger -= Trigger;
     }
 
     private void InitInventorySuccess(Inventory inventory)
@@ -90,5 +97,19 @@ public class ToolKit : MonoBehaviour
         curIndex = newIndex;
         curChoosing = inventory.itemSlots[curIndex];
         GameEventManager.Ins.toolKitEvent.curSelectedChange(curChoosing);
+    }
+    
+
+   void Trigger()
+    {
+        isOpen = !isOpen;
+        if (isOpen)
+        {
+            animator.Play(OPEN);
+        }
+        else
+        {
+            animator.Play(CLOSED);
+        }
     }
 }

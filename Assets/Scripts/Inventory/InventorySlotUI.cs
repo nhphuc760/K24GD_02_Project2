@@ -11,6 +11,7 @@ public class InventorySlotUI : MonoBehaviour, IDragDrop, IPointerClickHandler, I
     Image dragIcon;
     InventoryManager inventoryManager;
     public int slotIndex;
+    Transform parentIcon;
     public void Init(InventoryManager manager, int index)
     {
         inventoryManager = manager;
@@ -55,8 +56,9 @@ public class InventorySlotUI : MonoBehaviour, IDragDrop, IPointerClickHandler, I
         dragIcon.sprite = slot.ItemData._icon;
         dragIcon.color = Color.white;
         dragIcon.raycastTarget = false;
-        dragIcon.transform.SetParent(inventoryManager.transform.parent);
-        dragIcon.rectTransform.sizeDelta = new Vector2(64, 64);
+        var parent = parentIcon != null ? parentIcon : inventoryManager.transform.parent;
+        dragIcon.transform.SetParent(parent);
+        dragIcon.rectTransform.sizeDelta = new Vector2(128 , 128);
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -89,7 +91,11 @@ public class InventorySlotUI : MonoBehaviour, IDragDrop, IPointerClickHandler, I
         {
             return;
         }
-        if (inventoryManager.inventory.TryDropItem(start.GetInventorySlot(), inventoryManager.inventory.itemSlots[slotIndex]))
+        if( start.GetIndexSlot() < 0)
+        {
+            return;
+        }
+        if (inventoryManager.inventory.TryDropItem(inventoryManager.inventory.itemSlots[start.GetIndexSlot()], inventoryManager.inventory.itemSlots[slotIndex]))
         {
             backGround.color = Color.green;
         }
@@ -109,8 +115,18 @@ public class InventorySlotUI : MonoBehaviour, IDragDrop, IPointerClickHandler, I
         return inventoryManager.inventory.itemSlots[slotIndex];
     }
 
+    public int GetIndexSlot()
+    {
+       return slotIndex;    
+    }
+
+    public void SetIconParent(Transform parent)
+    {
+        this.parentIcon = parent;
+    }
+
     public void SetInventorySlot(InventorySlot slot)
     {
-        // Not needed in this context
+       //not needed;
     }
 }

@@ -10,6 +10,8 @@ public abstract class ToolDataSO : ItemShopDataSO
     public ToolType toolType;
     [Tooltip("Chi phí sửa chữa mỗi điểm độ bền")]
     public int repairCostPerPoint;// Chi phí sửa chữa mỗi điểm độ bền
+    [Tooltip("Thời gian sửa chữa mỗi điểm độ bền")]
+    public float timePerpointRepair;
     public enum ToolType
     {
         Axe,

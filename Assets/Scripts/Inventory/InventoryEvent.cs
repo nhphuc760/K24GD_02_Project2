@@ -24,10 +24,10 @@ public class InventoryEvent
     {
         onRemoveItemByData?.Invoke(item, quantity);
     }
-    public event Func<ItemDataSO, int, bool> onAddItem;
-    public bool AddItem(ItemDataSO item, int quantity)
+    public event Func<ItemDataSO, int, DataRunTimeItem, bool> onAddItem;
+    public bool AddItem(ItemDataSO item, int quantity, DataRunTimeItem dataRunTimeItem = null)
     {
-       return onAddItem?.Invoke(item, quantity) ?? false ;
+       return onAddItem?.Invoke(item, quantity, dataRunTimeItem) ?? false ;
     }
     
 
@@ -43,9 +43,19 @@ public class InventoryEvent
         onDropItem?.Invoke(eventData);
     }
 
-    public event Action<InventoryManager> onGetInventory;
-    public void GetDataInventory(InventoryManager invenManager)
+    public event Func<InventoryManager> onGetInventory;
+    public InventoryManager GetDataInventory()
     {
-        onGetInventory?.Invoke(invenManager);
+        return onGetInventory?.Invoke();
+    }
+    public event Func<int, ItemDataSO> onGetItemSOByID;
+    public ItemDataSO GetItemSOByID(int id)
+    {
+        return onGetItemSOByID?.Invoke(id);
+    }
+    public event Func<InventorySlot, int> onGetIndexOfSlot;
+    public int GetIndexOfSlot(InventorySlot slot)
+    {
+        return onGetIndexOfSlot?.Invoke(slot) ?? -1 ;
     }
 }

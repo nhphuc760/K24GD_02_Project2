@@ -2,10 +2,8 @@
 using Firebase.Database;
 using UnityEngine;
 using Newtonsoft.Json;
-using Firebase.Extensions;
 using System.Threading.Tasks;
 using System;
-using System.Linq;
 
 public class Inventory 
 {
@@ -97,7 +95,7 @@ public class Inventory
     /// Thêm vật phẩm vào kho
     /// </summary>
     /// param name="item">ScriptableObject của Item</param>
-    public bool AddItem(ItemDataSO item, int quantity = 1)
+    public bool AddItem(ItemDataSO item, int quantity = 1, DataRunTimeItem dataRunTimeItem = null)
     {
         // Try stacking first
         foreach (var slot in itemSlots)
@@ -114,29 +112,30 @@ public class Inventory
         {
             if (slot.IsEmpty)
             {
-                DataRunTimeItem data = null;
-                if(item.runTimeItemType != RunTimeItemType.None)
-                {
-                    Type dataType = RuntimeDataRegistry.GetType(item.runTimeItemType.ToString());
-                    if (dataType != null)
+                DataRunTimeItem data = dataRunTimeItem;
+                    if (item.runTimeItemType != RunTimeItemType.None && data == null)
                     {
-                        try
+                        Type dataType = RuntimeDataRegistry.GetType(item.runTimeItemType.ToString());
+                        if (dataType != null)
                         {
-                            DataRunTimeItem instance = (DataRunTimeItem)Activator.CreateInstance(dataType);
-                            instance.Init(item);
-                            data = instance; // <-- assign instance to data so it is stored to slot
+                            try
+                            {
+                                DataRunTimeItem instance = (DataRunTimeItem)Activator.CreateInstance(dataType);
+                                instance.Init(item);
+                                data = instance; // <-- assign instance to data so it is stored to slot
+                            }
+                            catch (Exception e)
+                            {
+                                Debug.LogWarning($"Inventory.AddItem: failed to create runtime data for item {item._itemName}: {e}");
+                            }
                         }
-                        catch (Exception e)
+                        else
                         {
-                            Debug.LogWarning($"Inventory.AddItem: failed to create runtime data for item {item._itemName}: {e}");
+                            Debug.LogWarning($"Inventory.AddItem: runtime type for '{item.runTimeItemType}' not registered.");
                         }
                     }
-                    else
-                    {
-                        Debug.LogWarning($"Inventory.AddItem: runtime type for '{item.runTimeItemType}' not registered.");
-                    }
-                }
-                slot.Assign(item, quantity, data);
+                
+                    slot.Assign(item, quantity, data);
                 return true;
             }
         }
@@ -151,7 +150,7 @@ public class Inventory
     public void RemoveItem(int slotIndex, int quantity)
     {
         itemSlots[slotIndex].Remove(quantity);
-        GameEventManager.Ins.inventoryEvent.RemoveItemCompleted(CheckEmpty());
+        GameEventManager.Ins.inventoryEvent.RemoveItemCompleted(itemSlots[slotIndex].IsEmpty);
     }
 
 
@@ -209,8 +208,6 @@ public class Inventory
             // Không nên xảy ra vì đã kiểm HasItem phía trên, nhưng log để dễ debug
             Debug.LogWarning($"Inventory.RemoveItem: leftover to remove = {remaining} for '{itemDataSO.name}'.");
         }
-
-        GameEventManager.Ins.inventoryEvent.RemoveItemCompleted(CheckEmpty());
     }
 
     /// <summary>

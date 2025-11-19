@@ -1756,7 +1756,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!1 &1677346421008839780
 GameObject:
@@ -3207,6 +3207,7 @@ GameObject:
   - component: {fileID: 2723778731798167065}
   - component: {fileID: 8288803880726528360}
   - component: {fileID: 4024916029729655313}
+  - component: {fileID: 8288803880726528361}
   m_Layer: 3
   m_Name: ToolKit
   m_TagString: Untagged
@@ -3513,6 +3514,7 @@ MonoBehaviour:
   itemSlotContainer: {fileID: 5153981451566714425}
   itemDataBase: {fileID: 11400000, guid: c510dd10a5b2a734a91e36e0dd18f3d6, type: 2}
   itemInforUI: {fileID: 2634936324609986364}
+  cachedSlotUIs: []
 --- !u!1 &3752201114803061522
 GameObject:
   m_ObjectHideFlags: 0
@@ -3754,6 +3756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toolkitSlotUI: {fileID: -7597535050549551289, guid: 56da105ace806a448b83d933e8f492e7, type: 3}
   container: {fileID: 7433662778198830935}
+  animator: {fileID: 8288803880726528361}
 --- !u!1 &4048064255809452705
 GameObject:
   m_ObjectHideFlags: 0
@@ -7501,8 +7504,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8445,6 +8448,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3330745764814042752}
   m_CullTransparentMesh: 1
+--- !u!95 &8288803880726528361
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330745764814042752}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5c79d418c91bf88408e76ad15e295696, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &8304359367511788971
 MonoBehaviour:
   m_ObjectHideFlags: 0
