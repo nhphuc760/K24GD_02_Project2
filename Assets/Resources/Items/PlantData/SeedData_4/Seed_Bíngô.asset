@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e90ab3f715a7ab40947acd3c0c41720, type: 3}
+  m_Name: "Seed_B\xEDng\xF4"
+  m_EditorClassIdentifier: 
+  _id: 404
+  _itemName: "Seed_B\xEDng\xF4"
+  _icon: {fileID: 7339756071683433264, guid: 86a1f20c893a0a343aca5543698e3e64, type: 3}
+  _description: "h\u1EA1t gi\u1ED1ng b\xED ng\xF4"
+  _maxStack: 999
+  isStackable: 1
+  itemType: 0
+  timeSpandHarvest: 180
+  cropData: {fileID: 11400000, guid: 5d042c74014a3eb4891163183ccd126b, type: 2}
+  growhtSprites:
+  - {fileID: -622596351242404530, guid: 86a1f20c893a0a343aca5543698e3e64, type: 3}
+  - {fileID: 5116258781507889207, guid: 86a1f20c893a0a343aca5543698e3e64, type: 3}
+  - {fileID: -947235995091800484, guid: 86a1f20c893a0a343aca5543698e3e64, type: 3}
+  - {fileID: -8825925044421547618, guid: 86a1f20c893a0a343aca5543698e3e64, type: 3}
+  harvestIndicator: {fileID: -7934453207867052340, guid: 5fa6f306aca02f84497c285587e49872, type: 3}
+  purchasePrice: 5
+  sellPrice: 6
+  yield: 5

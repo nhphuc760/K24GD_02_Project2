@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     public Gradient lightColorGradient; // Dùng để chỉnh màu (Color Filter)
     public AnimationCurve lightIntensityCurve; // Dùng để chỉnh độ sáng (Post Exposure)
     public float lightTransitionSpeed = 1f; // tốc độ chuyển ánh sáng mượt
+    int activeScene;
 
     //Biến lưu trữ tham chiếu đến ColorAdjustments Override
     private Light2D globalLight;
@@ -95,6 +96,7 @@ public class UIManager : MonoBehaviour
         else
         {
             // hiện  giao diện game lên
+            activeScene = scene.buildIndex;
             Debug.Log(scene.path + "start with");
             if (inGameCanvas != null) inGameCanvas.SetActive(true);
             //Tìm Global Light trong scene mới
@@ -107,8 +109,11 @@ public class UIManager : MonoBehaviour
                 int currentMinute = TimeManager.instance.GetCurrentMinute();
 
                 // Cập nhật ánh sáng lần đầu
-                SetInitialLighting(currentHour, currentMinute);
-                SetInitialNightLightState(currentHour, currentMinute);
+                if (activeScene != 7)
+                {
+                    SetInitialLighting(currentHour, currentMinute);
+                    SetInitialNightLightState(currentHour, currentMinute);
+                }
             }
         }
     }
@@ -177,8 +182,9 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         // Chỉ Lerp nếu Global Light tồn tại
-        if (globalLight != null)
+        if (globalLight != null && activeScene != 7)
         {
+            
             // Lerp ánh sáng môi trường
             globalLight.color = Color.Lerp(globalLight.color, targetGlobalColor, Time.deltaTime * lightTransitionSpeed);
             globalLight.intensity = Mathf.Lerp(globalLight.intensity, targetGlobalIntensity, Time.deltaTime * lightTransitionSpeed);
@@ -235,13 +241,18 @@ public class UIManager : MonoBehaviour
         }
 
         // Áp dụng cường độ cho tất cả đèn đêm
-        foreach (Light2D light in nightLightsInScene)
+        if (activeScene == 7)
+            return;
+        else
         {
-            if (light != null)
+            foreach (Light2D light in nightLightsInScene)
             {
-                light.intensity = targetIntensity;
-                // Bật/tắt component để tiết kiệm hiệu năng (tùy chọn)
-                light.enabled = (targetIntensity > 0.01f);
+                if (light != null)
+                {
+                    light.intensity = targetIntensity;
+                    // Bật/tắt component để tiết kiệm hiệu năng (tùy chọn)
+                    light.enabled = (targetIntensity > 0.01f);
+                }
             }
         }
     }

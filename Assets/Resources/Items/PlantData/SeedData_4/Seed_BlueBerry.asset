@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e90ab3f715a7ab40947acd3c0c41720, type: 3}
+  m_Name: Seed_BlueBerry
+  m_EditorClassIdentifier: 
+  _id: 403
+  _itemName: BlueBerry
+  _icon: {fileID: -1800126058511640119, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
+  _description: "H\u1EA1t gi\u1ED1ng BlueBerry"
+  _maxStack: 999
+  isStackable: 1
+  itemType: 0
+  timeSpandHarvest: 240
+  cropData: {fileID: 11400000, guid: fd9462bafb20b854caaec77964697c05, type: 2}
+  growhtSprites:
+  - {fileID: -1957658871821922118, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
+  - {fileID: 1942767228105140428, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
+  - {fileID: 8197133288706426242, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
+  - {fileID: 8523965287709476415, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
+  - {fileID: 8523965287709476415, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
+  harvestIndicator: {fileID: -7530645367922780511, guid: 5fa6f306aca02f84497c285587e49872, type: 3}
+  purchasePrice: 10
+  sellPrice: 12
+  yield: 5
