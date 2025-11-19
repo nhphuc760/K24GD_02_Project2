@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 2773363101591850450}
   - component: {fileID: 2783163602581794009}
   - component: {fileID: 8757851482214706950}
-  - component: {fileID: 5298837227571690274}
   - component: {fileID: 6662677360066151450}
   - component: {fileID: 3588453187000539816}
   - component: {fileID: 3751805821069022809}
+  - component: {fileID: 1989748602290749311}
   m_Layer: 9
   m_Name: Copper Ore
   m_TagString: Untagged
@@ -110,6 +110,7 @@ MonoBehaviour:
   respawnDelay: 10
   animator: {fileID: 3751805821069022809}
   maxHitPoints: 3
+  requireTool: 1
   dropPrefab: {fileID: 4968870224503612978, guid: 1172c48d9ff7bd946967cf79444ab3ca, type: 3}
   dropCount: 2
   dropForce: 3
@@ -141,42 +142,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &5298837227571690274
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3639777610272869884}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: -0.0041931868, y: -0.11741519}
-  m_Radius: 0.386778
 --- !u!114 &6662677360066151450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,3 +194,40 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &1989748602290749311
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3639777610272869884}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.018115044, y: -0.15009618}
+  m_Size: {x: 0.73603725, y: 0.8861337}
+  m_Direction: 0

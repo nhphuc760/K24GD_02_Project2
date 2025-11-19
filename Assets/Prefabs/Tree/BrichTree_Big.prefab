@@ -90,19 +90,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6975034300466925035, guid: 32a8440559b3c4e46adb098bce8fff8b, type: 3}
       propertyPath: m_Size.x
-      value: 0.6293148
+      value: 0.6293149
       objectReference: {fileID: 0}
     - target: {fileID: 6975034300466925035, guid: 32a8440559b3c4e46adb098bce8fff8b, type: 3}
       propertyPath: m_Size.y
-      value: 0.2605048
+      value: 0.36787257
       objectReference: {fileID: 0}
     - target: {fileID: 6975034300466925035, guid: 32a8440559b3c4e46adb098bce8fff8b, type: 3}
       propertyPath: m_Offset.x
-      value: -0.011510572
+      value: -0.011510579
       objectReference: {fileID: 0}
     - target: {fileID: 6975034300466925035, guid: 32a8440559b3c4e46adb098bce8fff8b, type: 3}
       propertyPath: m_Offset.y
-      value: -0.16612093
+      value: -0.21980438
       objectReference: {fileID: 0}
     - target: {fileID: 7236576008810215604, guid: 32a8440559b3c4e46adb098bce8fff8b, type: 3}
       propertyPath: m_Layer
@@ -182,6 +182,7 @@ MonoBehaviour:
   bodyAnim: {fileID: 812383849585232974}
   rootAnim: {fileID: 1481254726167220731}
   maxHitPoints: 8
+  requiredTool: 0
   woodPrefab: {fileID: 3186487738297421167, guid: 75d6e39dc172c9b408eb648c05c1a32a, type: 3}
   dropCount: 2
   dropForce: 2

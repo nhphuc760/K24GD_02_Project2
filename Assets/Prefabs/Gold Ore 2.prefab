@@ -110,6 +110,7 @@ MonoBehaviour:
   respawnDelay: 10
   animator: {fileID: 4553124777809896328}
   maxHitPoints: 3
+  requireTool: 1
   dropPrefab: {fileID: 0}
   dropCount: 2
   dropForce: 3
@@ -175,7 +176,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0019145012, y: -0.07275438}
+  m_Offset: {x: 0.0019145012, y: -0.1447084}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -185,7 +186,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.6668606, y: 0.5175228}
+  m_Size: {x: 0.6668606, y: 0.66143084}
   m_EdgeRadius: 0
 --- !u!114 &255887927597483318
 MonoBehaviour:
