@@ -31,10 +31,16 @@ public class FarmAnimal : MonoBehaviour, IInteractable
 
     private GameObject currentIndicator;
 
+    //thêm âm thanh cục tác
+    public AudioClip[] idleSounds; // Kéo các file tiếng gà cục tác vào đây
+    private AudioSource audioSource;
+    public float chanceVolume = 0.3f;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         if (canvas != null) canvas.SetActive(false);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -43,6 +49,7 @@ public class FarmAnimal : MonoBehaviour, IInteractable
         moveTimer -= Time.deltaTime;
         if (moveTimer <= 0f)
         {
+            Debug.Log("Hết giờ! Đang gọi ChangeDirection...");
             ChangeDirection();
         }
     }
@@ -58,8 +65,15 @@ public class FarmAnimal : MonoBehaviour, IInteractable
 
     void ChangeDirection()
     {
+        Debug.Log("ChangeDirection đã được gọi!");
         moveDirection = UnityEngine.Random.insideUnitCircle.normalized;
         moveTimer = TimetoChangeDirection + UnityEngine.Random.Range(-1f,1f);
+
+        if (UnityEngine.Random.value < chanceVolume)
+        {
+            Debug.Log("GÀ ĐANG GÁY! (Gọi PlayIdleSound)");
+            PlayIdleSound();
+        }
     }
 
 
@@ -198,4 +212,21 @@ public class FarmAnimal : MonoBehaviour, IInteractable
     //    data.timeProductReady = this.timeProductReady;
     //    return data;
     //}
+
+    void PlayIdleSound()
+    {
+        if (audioSource != null && idleSounds.Length > 0)
+        {
+            // Chọn ngẫu nhiên 1 âm thanh
+            int randomIndex = UnityEngine.Random.Range(0, idleSounds.Length);
+
+            // Thay đổi cao độ (Pitch) một chút cho tự nhiên (0.9 - 1.1)
+            audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+
+            // Phát âm thanh 3D tại chỗ
+            audioSource.PlayOneShot(idleSounds[randomIndex]);
+
+            Debug.Log("Gà đã gáy");
+        }
+    }
 }

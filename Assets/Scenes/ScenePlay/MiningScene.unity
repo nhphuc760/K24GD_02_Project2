@@ -119,6 +119,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &26725460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 26725461}
+  - component: {fileID: 26725462}
+  m_Layer: 0
+  m_Name: SceneMusic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &26725461
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26725460}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 333089812}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &26725462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26725460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4447131dbcfe64d96a7ac127c823e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundMusic: {fileID: 8300000, guid: 205fe13df1bfc534994e2d179dac283e, type: 3}
 --- !u!1 &67211254
 GameObject:
   m_ObjectHideFlags: 0
@@ -3201,6 +3246,39 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.2257813, y: 0.62529784}
   m_EdgeRadius: 0
+--- !u!1 &333089811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 333089812}
+  m_Layer: 0
+  m_Name: Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &333089812
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333089811}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.635487, y: -3.6012783, z: 2605.3557}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 26725461}
+  - {fileID: 708315195}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &369748905
 GameObject:
   m_ObjectHideFlags: 0
@@ -36557,6 +36635,64 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &708315194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 708315195}
+  - component: {fileID: 708315196}
+  m_Layer: 0
+  m_Name: Effect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &708315195
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708315194}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 333089812}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &708315196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708315194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fe3581ec7c831b41bc8a72f9d7119f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  dayClips:
+  - {fileID: 8300000, guid: c1fbd10bf2eb31741b2654502cda756f, type: 3}
+  - {fileID: 8300000, guid: 66c7406a599996241913671389215986, type: 3}
+  - {fileID: 8300000, guid: 66c7406a599996241913671389215986, type: 3}
+  - {fileID: 8300000, guid: df37ca4a2c6b5a249867e8158f000142, type: 3}
+  nightClips:
+  - {fileID: 8300000, guid: c1fbd10bf2eb31741b2654502cda756f, type: 3}
+  - {fileID: 8300000, guid: 66c7406a599996241913671389215986, type: 3}
+  - {fileID: 8300000, guid: 66c7406a599996241913671389215986, type: 3}
+  - {fileID: 8300000, guid: df37ca4a2c6b5a249867e8158f000142, type: 3}
+  volume: 0.033
+  minWaitTime: 5
+  maxWaitTime: 8
 --- !u!1 &858910175
 GameObject:
   m_ObjectHideFlags: 0
@@ -44919,7 +45055,7 @@ Tilemap:
       - {fileID: -1004786071302471625, guid: 3a1b8248d727bf94ca6f11dd37476eff, type: 3}
       - {fileID: 6557748836619743109, guid: 3a1b8248d727bf94ca6f11dd37476eff, type: 3}
       - {fileID: 6467616014658741305, guid: 3a1b8248d727bf94ca6f11dd37476eff, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -12, y: -18, z: 0}
@@ -66496,3 +66632,4 @@ SceneRoots:
   - {fileID: 567571424}
   - {fileID: 246741221}
   - {fileID: 1272435173}
+  - {fileID: 333089812}

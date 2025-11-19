@@ -8,27 +8,29 @@ public class SceneAmbient : MonoBehaviour
     [Header("Settings")]
     public AmbientType type = AmbientType.RandomInterval;
 
-    [Tooltip("Danh sách các file âm thanh (ví dụ: 3-4 tiếng chim khác nhau)")]
-    public AudioClip[] clips;
+    [Header("Day Sounds (6:00 - 18:00)")]
+    public AudioClip[] dayClips; // Tiếng chim hót, gió nhẹ...
+
+    [Header("Night Sounds (18:00 - 6:00)")]
+    public AudioClip[] nightClips; // Tiếng dế, tiếng cú, gió lạnh...
 
     [Range(0f, 1f)] public float volume = 0.5f;
 
-    [Header("For Random Interval (Birds)")]
-    public float minWaitTime = 5f; // Chờ ít nhất 5 giây
-    public float maxWaitTime = 15f; // Chờ nhiều nhất 15 giây
+    [Header("For Random Interval")]
+    public float minWaitTime = 5f;
+    public float maxWaitTime = 15f;
 
     private AudioSource audioSource;
 
     void Start()
     {
-        // Tạo AudioSource ngay trên vật thể này
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.volume = volume;
-        audioSource.spatialBlend = 0; // 0 = 2D Sound (nghe đều 2 tai)
+        audioSource.spatialBlend = 0; // 2D Sound
 
         if (type == AmbientType.ContinuousLoop)
         {
-            PlayLoop();
+            PlayLoop(dayClips);
         }
         else
         {
@@ -36,32 +38,47 @@ public class SceneAmbient : MonoBehaviour
         }
     }
 
-    // Dành cho Biển (Sóng vỗ rì rào liên tục)
-    void PlayLoop()
-    {
-        if (clips.Length > 0)
-        {
-            audioSource.clip = clips[0]; // Lấy clip đầu tiên
-            audioSource.loop = true;     // Bật chế độ lặp
-            audioSource.Play();
-        }
-    }
-
-    // Dành cho Nông Trại (Chim hót thi thoảng)
     IEnumerator PlayRandomly()
     {
-        while (true) // Lặp vô tận
+        while (true)
         {
-            // 1. Chờ một khoảng thời gian ngẫu nhiên
+            // 1. Chờ
             float waitTime = Random.Range(minWaitTime, maxWaitTime);
             yield return new WaitForSeconds(waitTime);
 
-            // 2. Chọn ngẫu nhiên một tiếng chim trong danh sách
-            if (clips.Length > 0)
+            // 2. Kiểm tra giờ hiện tại để chọn danh sách âm thanh
+            AudioClip[] currentPool = dayClips; // Mặc định là ngày
+
+            if (TimeManager.instance != null)
             {
-                int randomIndex = Random.Range(0, clips.Length);
-                audioSource.PlayOneShot(clips[randomIndex]);
+                int hour = TimeManager.instance.GetCurrentHour();
+                // Nếu là đêm (từ 18h tối đến 6h sáng)
+                if (hour >= 18 || hour < 6)
+                {
+                    currentPool = nightClips;
+                }
             }
+
+            // 3. Chọn và phát ngẫu nhiên từ danh sách phù hợp
+            if (currentPool != null && currentPool.Length > 0)
+            {
+                int randomIndex = Random.Range(0, currentPool.Length);
+                // Chỉ phát nếu có clip (để tránh lỗi nếu một trong 2 list bị trống)
+                if (currentPool[randomIndex] != null)
+                {
+                    audioSource.PlayOneShot(currentPool[randomIndex]);
+                }
+            }
+        }
+    }
+
+    void PlayLoop(AudioClip[] clips)
+    {
+        if (clips.Length > 0)
+        {
+            audioSource.clip = clips[0];
+            audioSource.loop = true;
+            audioSource.Play();
         }
     }
 }
