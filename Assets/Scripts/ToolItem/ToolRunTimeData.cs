@@ -5,8 +5,6 @@ public class ToolRunTimeData : DataRunTimeItem
 {
     public int currentDurability;
 
-  
-
     public override void Init(ItemDataSO itemDataSO)
     {
       currentDurability = ((ToolDataSO)itemDataSO).maxDurability;

@@ -15,8 +15,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] SeedDatabase seedDataBase; // Cơ sở dữ liệu cây trồng chung cho toàn game
     public event Action<PlayerData, CharacterDataSO> onLoadDataCompleted;
 
+    [SerializeField] int _coins;
+
+    //phần mới animal
+    public AnimalDataSO AnimalData;
+    private Transform animalSpanwPoint;
     
-    int _coins = -1;
     public int Coin 
     {
         get => _coins;
@@ -25,7 +29,7 @@ public class GameManager : MonoBehaviour
             if (_coins != value)
             {
                 _coins = value;
-                GameEventManager.Ins.CoinChange(Coin);
+                GameEventManager.Ins.CoinChange(_coins);
             }
         }
     }
@@ -50,6 +54,7 @@ public class GameManager : MonoBehaviour
         {
             Coin = 500;// số tiền mặc định cho beginer
         }
+        GameEventManager.Ins.CoinChange(_coins);
     }
     //Để Script giúp cho GManager "lắng nghe" sự kiện khi scene thay đổi không bị mất đi
     // Đăng ký "lắng nghe" sự kiện khi scene thay đổi
@@ -102,13 +107,22 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
+        if(scene.name == "Farm"){
         var task = await Save_Load_Firebase.LoadData("SeedData");
-        if (task.Exists)
-        {
-            List<SeedSaveData> seedDatas = JsonConvert.DeserializeObject<List<SeedSaveData>>(task.Value.ToString());
-            LoadCropsForScene(scene.name, seedDatas);
+            if (task.Exists)
+            {
+                List<SeedSaveData> seedDatas = JsonConvert.DeserializeObject<List<SeedSaveData>>(task.Value.ToString());
+                LoadCropsForScene(scene.name, seedDatas);
+            }
         }
         MovePlayerToPosition();
+
+
+        // Kiểm tra nếu đây là scene game (không phải menu) (test animal)
+        if (scene.name != "PersistentSystems" && scene.name != "CustomizeCharacter" /*...*/)
+        {
+            FindSpawnPoint(scene.name);
+        }
     }
     //Hàm được Portal gọi để bắt đầu chuyển scene
     public async void StartSceneTransition(string sceneName, Vector3 newPos)
@@ -220,6 +234,63 @@ public class GameManager : MonoBehaviour
         if(characterDatabase == null)
         {
             characterDatabase = Resources.Load<CharacterDatabase>("CharacterData");
+        }
+    }
+
+
+    //animal test
+    private void Update()
+    {
+        // Khi nhấn phím F9 (ví dụ)
+        if (Input.GetKeyDown(KeyCode.F9))
+        {
+            if (AnimalData != null && animalSpanwPoint != null)
+            {
+                BuyAnimal(AnimalData);
+            }
+        }
+    }
+    public void BuyAnimal(AnimalDataSO animal)
+    {
+        // Kiểm tra xem đã tìm thấy spawn point chưa
+        if (animalSpanwPoint == null)
+        {
+            Debug.LogError($"Không thể mua {animal.animalName}: AnimalSpawnPoint chưa được tìm thấy trong scene này!");
+            return; // Dừng lại nếu không có spawn point
+        }
+
+        Debug.Log($"Đang mua {animal.animalName}...");
+        Vector3 spawnPos = animalSpanwPoint.position;
+        spawnPos.z = 0f; // Đảm bảo Z=0
+        GameObject animalObj = Instantiate(animal.animalPrefab, spawnPos, Quaternion.identity);
+        animalObj.GetComponent<FarmAnimal>().Plant(animal);
+    }
+    /// Tự động tìm Spawn Point trong scene mới dựa vào TÊN.
+    /// </summary>
+    private void FindSpawnPoint(string sceneName)
+    {
+        // Chỉ tìm nếu chúng ta ở đúng scene
+        if (sceneName == "Farm") // Thay "Farm" bằng tên scene farm của bạn
+        {
+            // Tìm GameObject bằng TÊN
+            // Đảm bảo tên này KHỚP 100% với tên GameObject trong Hierarchy
+            GameObject spawnObj = GameObject.Find("AnimalSpawnPoint");
+
+            if (spawnObj != null)
+            {
+                animalSpanwPoint = spawnObj.transform;
+                Debug.Log("GameManager đã tự động tìm thấy AnimalSpawnPoint!");
+            }
+            else
+            {
+                Debug.LogWarning("Không tìm thấy 'AnimalSpawnPoint' trong scene Farm! Hãy kiểm tra lại tên.");
+                animalSpanwPoint = null;
+            }
+        }
+        else
+        {
+            // Nếu là scene khác (Town, Mine...), chúng ta không cần spawn point
+            animalSpanwPoint = null;
         }
     }
 }

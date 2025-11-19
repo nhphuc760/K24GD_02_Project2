@@ -17,7 +17,7 @@ public class FarmLandManager : MonoBehaviour
     Vector3Int lastHighLightPos;
     private void Awake()
     {
-        Transform player = FindAnyObjectByType<Player>().transform;
+        Transform player = FindAnyObjectByType<PlayerFishing>().transform;
         groundCheck = player.GetChild(1);
     }
     private void OnEnable()

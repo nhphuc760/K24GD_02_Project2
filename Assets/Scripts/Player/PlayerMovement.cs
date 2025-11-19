@@ -1,4 +1,6 @@
+
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,9 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public bool IsMoving => isMoving;
     public float HorizontalMovement { get => horizontalMovement; }
     public float VerticalMovement { get => verticalMovement; }
-
-    private Rigidbody2D rb;
     Vector2 direct;
+    private Rigidbody2D rb;
 
     void Start()
     {
@@ -22,19 +23,18 @@ public class PlayerMovement : MonoBehaviour
     {
          direct = GameEventManager.Ins.gameInput.GetInputMovementNormalize();
         isMoving = direct != Vector2.zero;
-      
-    }
 
+    }
     private void FixedUpdate()
-    {
+    {     
         if (isMoving)
         {
             horizontalMovement = direct.x;
             verticalMovement = direct.y;
+         
         }
         rb.linearVelocity = direct * moveSpeed;
     }
-
     public Vector2 GetDirection()
     {
         return new Vector2 (horizontalMovement, verticalMovement);

@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15e98bf3344115458f7a78b9295c227, type: 3}
+  m_Name: BlacksmithDialogue
+  m_EditorClassIdentifier: 
+  npcName: Blacksmith
+  npcPortraits:
+  - {fileID: 8188359060617121934, guid: 226f68c42268c5441933e9ca84d9a3a0, type: 3}
+  - {fileID: -7200388489344414348, guid: 226f68c42268c5441933e9ca84d9a3a0, type: 3}
+  - {fileID: -1229185169664441540, guid: 226f68c42268c5441933e9ca84d9a3a0, type: 3}
+  - {fileID: 6900662605740815897, guid: 226f68c42268c5441933e9ca84d9a3a0, type: 3}
+  - {fileID: -6013459150365757729, guid: 226f68c42268c5441933e9ca84d9a3a0, type: 3}
+  - {fileID: -6013459150365757729, guid: 226f68c42268c5441933e9ca84d9a3a0, type: 3}
+  dialogueLines:
+  - "[Angry]H\u1EEBm\u2026 b\u01B0\u1EDBc nh\u1EB9 th\xF4i, s\xE0n r\xE8n n\xE0y
+    c\xF3 gi\xE1 h\u01A1n c\u1EA3 \u0111\xF4i gi\xE0y c\u1EE7a anh \u0111\u1EA5y."
+  - "[Serious]T\xF4i kh\xF4ng gi\u1ECFi n\xF3i chuy\u1EC7n, nh\u01B0ng kim lo\u1EA1i
+    th\xEC lu\xF4n hi\u1EC3u t\xF4i."
+  - "[Normal]Anh mu\u1ED1n r\xE8n g\xEC? Th\xE9p c\u01B0\u1EDDi v\u1EDBi ai c\xF3
+    tay ngh\u1EC1, nh\u01B0ng n\xF3 s\u1EBD kh\xF3c n\u1EBFu anh kh\xF4ng bi\u1EBFt
+    gi\u1EEF."
+  - "[Sad] Gi\u1EDD ai c\xF2n c\u1EA7n \u0111\u1EBFn m\u1ED9t l\u01B0\u1EE1i g\u01B0\u01A1m
+    r\xE8n tay... ch\u1EC9 c\xF2n ta v\xE0 tro ngu\u1ED9i th\xF4i."
+  - "[Normal]Tr\u1EDF l\u1EA1i khi anh c\xF3 th\u1EE9 g\xEC \u0111\xE1ng \u0111\u1EC3
+    t\xF4i r\xE8n, nh\xE9?"
+  autoProgressLines: 01000001
+  autoProgressDelay: 1.5
+  typingSpeed: 0.05
+  voiceSound: {fileID: 8300000, guid: 64dd8ddc2c784f84c904d81ecfd7dd63, type: 3}
+  voicePitch: 1

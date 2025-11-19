@@ -15,6 +15,7 @@ public class GameInput
     public GameInput(InputSystem_Actions inputActions)
     {
         this.inputAction = inputActions;
+       
     }
 
     public void Init()
@@ -23,6 +24,7 @@ public class GameInput
         inputAction.Player.OpenBag.performed += _ => { GameEventManager.Ins.inventoryEvent.OpenBagPress(); };
         inputAction.Player.Interact.performed += _ => { Interact_performed(); };
         inputAction.Player.SelectToolKit.performed += SelectToolKit_performed;
+        inputAction.Player.DisplayToolKit.performed += _ => { GameEventManager.Ins.toolKitEvent.Trigger(); };
     }
 
     private void SelectToolKit_performed(InputAction.CallbackContext context)

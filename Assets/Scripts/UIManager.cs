@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
     public Gradient lightColorGradient; // Dùng để chỉnh màu (Color Filter)
     public AnimationCurve lightIntensityCurve; // Dùng để chỉnh độ sáng (Post Exposure)
     public float lightTransitionSpeed = 1f; // tốc độ chuyển ánh sáng mượt
-
+    int activeScene;
 
     //Biến lưu trữ tham chiếu đến ColorAdjustments Override
     private Light2D globalLight;
@@ -87,8 +87,6 @@ public class UIManager : MonoBehaviour
     // Hàm này sẽ được gọi mỗi khi một scene MỚI được tải xong
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        //tắt UI khi khởi động scene LOGIN, CUStome hoặc chọn nhân vật
-        Debug.Log("Canvas: Scene" + scene.name);
         if (!scene.path.StartsWith("Assets/Scenes/ScenePlay"))
         {
             // Nếu là các scene trên, ẩn 
@@ -98,6 +96,7 @@ public class UIManager : MonoBehaviour
         else
         {
             // hiện  giao diện game lên
+            activeScene = scene.buildIndex;
             Debug.Log(scene.path + "start with");
             if (inGameCanvas != null) inGameCanvas.SetActive(true);
             //Tìm Global Light trong scene mới
@@ -110,23 +109,20 @@ public class UIManager : MonoBehaviour
                 int currentMinute = TimeManager.instance.GetCurrentMinute();
 
                 // Cập nhật ánh sáng lần đầu
-                SetInitialLighting(currentHour, currentMinute);
-                SetInitialNightLightState(currentHour, currentMinute);
+                if (activeScene != 7)
+                {
+                    SetInitialLighting(currentHour, currentMinute);
+                    SetInitialNightLightState(currentHour, currentMinute);
+                }
             }
         }
     }
     // Tìm và lưu tham chiếu đến Global Light trong scene hiện tại
     void FindGlobalLight()
     {
-        globalLight = FindFirstObjectByType<Light2D>(findObjectsInactive: FindObjectsInactive.Include);
-        bool foundGlobal = false; // Flag to check if we found one
-
+        globalLight = FindFirstObjectByType<Light2D>(findObjectsInactive: FindObjectsInactive.Include);        
         // Check if the first one found is already Global
-        if (globalLight != null && globalLight.lightType == Light2D.LightType.Global)
-        {
-            foundGlobal = true;
-        }
-        else // If not global or null, search all lights
+        if (!(globalLight != null && globalLight.lightType == Light2D.LightType.Global))
         {
             Light2D[] allLights = FindObjectsByType<Light2D>(findObjectsInactive: FindObjectsInactive.Include, FindObjectsSortMode.None);
             globalLight = null; // Reset
@@ -135,52 +131,26 @@ public class UIManager : MonoBehaviour
                 if (light.lightType == Light2D.LightType.Global)
                 {
                     globalLight = light;
-                    foundGlobal = true;
                     break; // Found it, exit foreach loop
                 }
             }
-        }
-
-        if (!foundGlobal) // Use the flag to report status
-        {
-            Debug.LogWarning("Không tìm thấy Global Light 2D trong scene này!");
-        }
-        else
-        {
-            Debug.Log("Đã tìm thấy Global Light 2D: " + globalLight.gameObject.name);
-        }
+        }       
     }
     //tìm đèn đêm và lưu vào ds
     void FindAndStoreNightLights()
     {
         nightLightsInScene.Clear();
-        Debug.Log("--- Bắt đầu tìm kiếm đèn đêm ---"); // Log mới
-
         // Tìm TẤT CẢ các object có tag này
         GameObject[] nightLightObjects = GameObject.FindGameObjectsWithTag("NightLight");
-
-        // In ra số lượng tìm thấy NGAY LẬP TỨC
-        Debug.Log($"Tìm thấy {nightLightObjects.Length} GameObject có tag 'NightLight'."); // Log mới
-
         // Duyệt qua danh sách tìm được
         foreach (GameObject lightObj in nightLightObjects)
-        {
-            // In tên của từng object tìm được
-            Debug.Log($"Kiểm tra GameObject: {lightObj.name}"); // Log mới
-
+        {                       
             var lightComp = lightObj.GetComponent<Light2D>();
             if (lightComp != null)
             {
-                nightLightsInScene.Add(lightComp);
-                Debug.Log($"--> Đã thêm Light2D từ {lightObj.name} vào danh sách."); // Log mới
-            }
-            else
-            {
-                Debug.LogWarning($"--> {lightObj.name} có tag 'NightLight' nhưng KHÔNG có component Light2D!"); // Log cảnh báo mới
-            }
-        }
-
-        Debug.Log($"--- Kết thúc tìm kiếm. Danh sách nightLightsInScene có {nightLightsInScene.Count} đèn. ---"); // Log mới
+                nightLightsInScene.Add(lightComp);              
+            }           
+        }       
     }
     // Hàm để thiết lập thông tin ban đầu
     public void SetupPlayerInfo(string playerName, Sprite playerAvatar)
@@ -190,7 +160,6 @@ public class UIManager : MonoBehaviour
         {
             playerNameText.text = playerName;
         }
-
         if (avatarImage != null)
         {
             avatarImage.sprite = playerAvatar;
@@ -207,15 +176,15 @@ public class UIManager : MonoBehaviour
         }
         // Tính toán giá trị MỤC TIÊU cho ánh sáng môi trường
         CalculateTargetLighting(hour, minute);
-
         // Cập nhật cường độ MỤC TIÊU cho đèn đêm
         UpdateNightLightState(hour, minute);
     }
     void Update()
     {
         // Chỉ Lerp nếu Global Light tồn tại
-        if (globalLight != null)
+        if (globalLight != null && activeScene != 7)
         {
+            
             // Lerp ánh sáng môi trường
             globalLight.color = Color.Lerp(globalLight.color, targetGlobalColor, Time.deltaTime * lightTransitionSpeed);
             globalLight.intensity = Mathf.Lerp(globalLight.intensity, targetGlobalIntensity, Time.deltaTime * lightTransitionSpeed);
@@ -272,13 +241,18 @@ public class UIManager : MonoBehaviour
         }
 
         // Áp dụng cường độ cho tất cả đèn đêm
-        foreach (Light2D light in nightLightsInScene)
+        if (activeScene == 7)
+            return;
+        else
         {
-            if (light != null)
+            foreach (Light2D light in nightLightsInScene)
             {
-                light.intensity = targetIntensity;
-                // Bật/tắt component để tiết kiệm hiệu năng (tùy chọn)
-                light.enabled = (targetIntensity > 0.01f);
+                if (light != null)
+                {
+                    light.intensity = targetIntensity;
+                    // Bật/tắt component để tiết kiệm hiệu năng (tùy chọn)
+                    light.enabled = (targetIntensity > 0.01f);
+                }
             }
         }
     }
@@ -286,5 +260,14 @@ public class UIManager : MonoBehaviour
     {
         // Gọi hàm tính toán và áp dụng ngay lập tức
         UpdateNightLightState(hour, minute);
+    }
+
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+    }
+    public void Show()
+    {
+        gameObject.SetActive(true);
     }
 }

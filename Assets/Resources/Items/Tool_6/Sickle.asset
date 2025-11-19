@@ -20,6 +20,9 @@ MonoBehaviour:
   isStackable: 0
   itemType: 2
   runTimeItemType: 1
+  purchase_Price: 0
   maxDurability: 100
   durabilityLossPerUse: 1
   toolType: 6
+  repairCostPerPoint: 20
+  timePerpointRepair: 15
