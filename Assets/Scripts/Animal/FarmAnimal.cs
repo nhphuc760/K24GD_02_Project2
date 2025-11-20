@@ -78,7 +78,7 @@ public class FarmAnimal : MonoBehaviour, IInteractable
 
 
     //khi mua con vật mới
-    public async void Plant(AnimalDataSO data)
+    public async void Spawn(AnimalDataSO data)
     {
         this.animalData = data;
 

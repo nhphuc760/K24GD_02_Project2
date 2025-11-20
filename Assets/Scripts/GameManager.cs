@@ -263,7 +263,7 @@ public class GameManager : MonoBehaviour
         Vector3 spawnPos = animalSpanwPoint.position;
         spawnPos.z = 0f; // Đảm bảo Z=0
         GameObject animalObj = Instantiate(animal.animalPrefab, spawnPos, Quaternion.identity);
-        animalObj.GetComponent<FarmAnimal>().Plant(animal);
+        animalObj.GetComponent<FarmAnimal>().Spawn(animal);
     }
     /// Tự động tìm Spawn Point trong scene mới dựa vào TÊN.
     /// </summary>
