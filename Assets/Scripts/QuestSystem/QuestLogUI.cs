@@ -8,6 +8,8 @@ public class QuestLogUI : MonoBehaviour
     [SerializeField] QuestManger manager;
     [SerializeField] QuestUI prefab;
     [SerializeField] Transform container;
+    [SerializeField] List<Sprite> backGroundSlotRewards;
+    [SerializeField] SlotRewardUI slotRewardUI;
     private void Start()
     {
         if (manager == null)
@@ -117,7 +119,7 @@ public class QuestLogUI : MonoBehaviour
             // update reward UI safely
             if (questUI.rewardUI != null && quest.questInforSO != null && quest.questInforSO.reward != null)
             {
-                questUI.rewardUI.UpdateUI(quest.questInforSO.reward);
+                questUI.rewardUI.UpdateUI(quest.questInforSO.reward, GetRandomSpriteBackGround(), slotRewardUI);
             }
         }
     }
@@ -129,5 +131,9 @@ public class QuestLogUI : MonoBehaviour
     void Hide()
     {
         gameObject.SetActive(false);
+    }
+    Sprite GetRandomSpriteBackGround()
+    {
+        return backGroundSlotRewards[Random.Range(0,backGroundSlotRewards.Count - 1)];
     }
 }
