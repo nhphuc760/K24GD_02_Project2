@@ -7,11 +7,12 @@ public class NPC : MonoBehaviour, IInteractable
 {
     public NPCDialogue dialogueData;
     public GameObject dialoguePanel;
-    public TMP_Text dialogueText, nameText;
     public Image portraitImage;
-
+    public TMP_Text nameText, dialogueText;
     private int dialogueIndex;
-    private bool isTyping, isDialogueActive;
+    private bool isTyping, isDialogueActive = false;
+    private string currentLine;
+    private NPCPortraitExpression currentExpression;
 
     public bool CanInteract()
     {
@@ -20,7 +21,7 @@ public class NPC : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (dialogueData == null || (PauseController.IsGamePaused && !isDialogueActive))
+        if (dialogueData == null || !isDialogueActive)
             return;
         if (isDialogueActive)
         {
@@ -37,9 +38,8 @@ public class NPC : MonoBehaviour, IInteractable
         dialogueIndex = 0;
 
         nameText.SetText(dialogueData.npcName);
-        portraitImage.sprite = dialogueData.npcPortrait;
+        portraitImage.sprite = dialogueData.GetPortrait(NPCPortraitExpression.Normal);
         dialoguePanel.SetActive(true);
-        PauseController.SetPause(true);
 
         StartCoroutine(TypeLine());
     }
@@ -48,7 +48,8 @@ public class NPC : MonoBehaviour, IInteractable
         if (isTyping)
         {
             StopAllCoroutines();
-            dialogueText.SetText(dialogueData.dialogueLines[dialogueIndex]);
+            dialogueText.SetText(currentLine);
+            portraitImage.sprite = dialogueData.GetPortrait(currentExpression);
             isTyping = false;
         }
         else if (++dialogueIndex < dialogueData.dialogueLines.Length)
@@ -57,7 +58,7 @@ public class NPC : MonoBehaviour, IInteractable
         }
         else
         {
-            EndDialouge();
+            EndDialogue();
         }
     }
     IEnumerator TypeLine()
@@ -65,7 +66,25 @@ public class NPC : MonoBehaviour, IInteractable
         isTyping = true;
         dialogueText.SetText("");
 
-        foreach (char letter in dialogueData.dialogueLines[dialogueIndex])
+        string rawLine = dialogueData.dialogueLines[dialogueIndex];
+
+        NPCPortraitExpression expression = NPCPortraitExpression.Normal;
+        int startIndex = rawLine.IndexOf('[');
+        int endIndex = rawLine.IndexOf(']');
+
+        if (startIndex != -1 && endIndex != -1)
+        {
+            string tag = rawLine.Substring(startIndex + 1, endIndex - startIndex - 1);
+            if (System.Enum.TryParse(tag, true, out NPCPortraitExpression parsedEmotion))
+                expression = parsedEmotion;
+
+            rawLine = rawLine.Remove(startIndex, endIndex - startIndex + 1);
+        }
+        currentLine = rawLine;
+        currentExpression = expression;
+        portraitImage.sprite = dialogueData.GetPortrait(expression);
+
+        foreach (char letter in rawLine)
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(dialogueData.typingSpeed);
@@ -73,18 +92,17 @@ public class NPC : MonoBehaviour, IInteractable
 
         isTyping = false;
 
-        if (dialogueData.autoProgressLines.Length > dialogueIndex && dialogueData.autoProgressLines[dialogueIndex])
+        if (dialogueData.dialogueLines.Length > dialogueIndex && dialogueData.autoProgressLines[dialogueIndex])
         {
             yield return new WaitForSeconds(dialogueData.autoProgressDelay);
             NextLine();
         }
     }
-    public void EndDialouge()
+    public void EndDialogue()
     {
         StopAllCoroutines();
         isDialogueActive = false;
         dialogueText.SetText("");
         dialoguePanel.SetActive(false);
-        PauseController.SetPause(false);
     }
 }

@@ -86,12 +86,12 @@ public class TreeInfor : MonoBehaviour, IToolTarget
         bodyAnim.gameObject.SetActive(false);
     }
 
-    public void InteractWithTool(ToolDataSO tool)
+    public void InteractWithTool(ToolDataSO toolDataSO, ToolRunTimeData tool)
     {
         if (isChopped) return;
 
         currentHitPoints--;
-
+        tool.currentDurability -= toolDataSO.durabilityLossPerUse;
         ////Gọi hiệu ứng rung khi chặt cây
         //StartCoroutine(ShakeTree());
         if (currentHitPoints > 0)

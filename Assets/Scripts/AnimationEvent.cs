@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class AnimationEvent 
 {
-   public event Action<IToolTarget, ToolDataSO> onToolUse;
-    public void ToolUse(IToolTarget toolTarget, ToolDataSO toolDataSO)
+   public event Action<IToolTarget,ToolDataSO, ToolRunTimeData> onToolUse;
+    public void ToolUse(IToolTarget toolTarget, ToolDataSO sO, ToolRunTimeData toolDataSO)
     {
-        onToolUse?.Invoke(toolTarget, toolDataSO);
+        onToolUse?.Invoke(toolTarget,sO, toolDataSO);
     }
 }

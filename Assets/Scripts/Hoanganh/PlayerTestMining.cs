@@ -12,7 +12,7 @@ public class PlayerTestMining : MonoBehaviour
     [SerializeField] Transform groundCheck;
     [SerializeField] PlayerMovement playerMovement;
     ToolDataSO currentTool;
-
+    InventorySlot curToolKit;
 
     private void Awake()
     {
@@ -46,9 +46,10 @@ public class PlayerTestMining : MonoBehaviour
         GameEventManager.Ins.toolKitEvent.onCurSelectedChange += CurToolSelectedChanged;
     }
 
-    private void CurToolSelectedChanged(ItemDataSO obj)
+    private void CurToolSelectedChanged(InventorySlot obj)
     {
-        currentTool = obj as ToolDataSO;
+        curToolKit = obj;
+        currentTool = curToolKit?.ItemData as ToolDataSO;
     }
 
     private void OnDisable()
@@ -79,7 +80,7 @@ public class PlayerTestMining : MonoBehaviour
             if (hit.TryGetComponent<IToolTarget>(out IToolTarget toolTarget) && CheckDirection(hit.transform))
             {
                 if(currentTool.toolType.Equals(toolTarget.RequireTool))
-                    GameEventManager.Ins.animationEvent.ToolUse(toolTarget, currentTool);
+                    GameEventManager.Ins.animationEvent.ToolUse(toolTarget, currentTool, curToolKit.dataRuntime as ToolRunTimeData);
                 else
                     GameEventManager.Ins.TriggerDialog("<color=red>Công cụ không phù hợp để khai thác</color>");
             }

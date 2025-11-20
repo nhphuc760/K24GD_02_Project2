@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Seed : MonoBehaviour, IInteractable, IToolTarget
+public class Seed : MonoBehaviour, IToolTarget
 {
     [Header("Harvest Indicator")]
     public GameObject harvestIndicatorPrefab; // Kéo HarvestIndicator_Prefab vào đây
@@ -14,6 +14,7 @@ public class Seed : MonoBehaviour, IInteractable, IToolTarget
     [SerializeField] GameObject canvas;
     [SerializeField] TextMeshProUGUI timeGrowthTXT;
     [SerializeField] Image fillGrowth;
+    
     private int curGrowthProgress = 0; //index currentSeedData.growhtSprites
     DateTime timeHarvest; //lưu thời điểm thu hoạch được cây trồng
     DateTime curTime;
@@ -73,17 +74,6 @@ public class Seed : MonoBehaviour, IInteractable, IToolTarget
         if (isMature)
         {
             spriteRenderer.sprite = currentSeedData.growhtSprites[growthStageCount - 1];
-        }
-    }
-    public void Interact()
-    {
-        if (isMature)
-        {
-            Harvest();
-        }
-        else
-        {
-            GameEventManager.Ins.TriggerDialog("<color=red>Cây trồng chưa thu hoạch được</color>");
         }
     }
 
@@ -205,15 +195,40 @@ public class Seed : MonoBehaviour, IInteractable, IToolTarget
         }
     }
 
-    public void InteractWithTool(ToolDataSO tool)
+    public void InteractWithTool(ToolDataSO toolDataSO, ToolRunTimeData tool)
     {
+        // Defensive: ensure runtime exists and initialized
+        if (tool == null)
+        {
+            if (toolDataSO != null)
+            {
+                tool = new ToolRunTimeData();
+                tool.Init(toolDataSO);
+            }
+            else
+            {
+                // Nothing to do without toolDataSO
+                Debug.LogWarning("InteractWithTool called with null toolDataSO and null runtime data.");
+                return;
+            }
+        }
+
         switch (requireTool)
         {
             case ToolDataSO.ToolType.Shovel:
+                tool.currentDurability -= toolDataSO.durabilityLossPerUse;
                 Destroy(gameObject);
                 break;
             case ToolDataSO.ToolType.Sickle:
-                Interact();
+                if (isMature)
+                {
+                    Harvest();
+                    tool.currentDurability -= toolDataSO.durabilityLossPerUse;
+                }
+                else
+                {
+                    GameEventManager.Ins.TriggerDialog("<color=red>Cây trồng chưa thu hoạch được</color>");
+                }
                 break;
             default:
                 break;

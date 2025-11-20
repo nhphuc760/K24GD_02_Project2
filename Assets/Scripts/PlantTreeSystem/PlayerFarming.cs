@@ -68,7 +68,18 @@ public class PlayerFarming : MonoBehaviour
             if(toolDataSO != null && hit.TryGetComponent<IToolTarget>(out IToolTarget toolTarget))
             {
                 if(toolDataSO.toolType.Equals(toolTarget.RequireTool))
-                    GameEventManager.Ins.animationEvent.ToolUse(hit.GetComponent<IToolTarget>(), toolDataSO);
+                {
+                    // Ensure runtime data exists and is of correct type before calling ToolUse
+                    ToolRunTimeData runtime = curSelected.dataRuntime as ToolRunTimeData;
+                    if (runtime == null)
+                    {
+                        runtime = new ToolRunTimeData();
+                        runtime.Init(toolDataSO);
+                        curSelected.dataRuntime = runtime; // persist to slot so durability updates survive
+                    }
+
+                    GameEventManager.Ins.animationEvent.ToolUse(hit.GetComponent<IToolTarget>(), toolDataSO, runtime);
+                }
                 else
                     GameEventManager.Ins.TriggerDialog("<color=red>Công cụ không phù hợp</color>");
                 return;

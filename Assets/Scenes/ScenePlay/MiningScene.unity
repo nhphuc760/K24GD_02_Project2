@@ -3495,7 +3495,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -66451,6 +66451,7 @@ GameObject:
   - component: {fileID: 1483253312}
   - component: {fileID: 1483253311}
   - component: {fileID: 1483253314}
+  - component: {fileID: 1483253315}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Player
@@ -66514,7 +66515,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 34
-    OrthographicSize: 10
+    OrthographicSize: 8
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -66567,6 +66568,19 @@ MonoBehaviour:
     MaxWindowSize: 0
     Padding: 0
   m_LegacyMaxWindowSize: -2
+--- !u!114 &1483253315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483253310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ba7b3b82d4cfd2459af63577756ff6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinemachineCamera: {fileID: 1483253312}
 --- !u!1 &1591776376
 GameObject:
   m_ObjectHideFlags: 0

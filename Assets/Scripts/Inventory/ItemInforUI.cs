@@ -27,12 +27,23 @@ public class ItemInforUI : MonoBehaviour
         _removeButton.onClick.RemoveAllListeners();
     }
 
-    public void UpdateUI(ItemDataSO itemDataSO)
+    public void UpdateUI(InventorySlot inventorySlot)
     {
+        ItemDataSO itemDataSO = inventorySlot.ItemData;
         _itemName.text = itemDataSO._itemName;
         _icon.sprite = itemDataSO._icon;
-        _description.text = itemDataSO._description;
+        if(itemDataSO.runTimeItemType.Equals(RunTimeItemType.None) || inventorySlot.dataRuntime == null)
+        {
+            _description.text = itemDataSO._description;
+        }
+        else
+        {
+            _description.text = itemDataSO._description + "\n" + inventorySlot.dataRuntime.ToString();
+        }
+           
     }
+
+    
 
    public void RemoveItem()
     {
