@@ -253,7 +253,7 @@ public class BlackSmith : MonoBehaviour
     }
     void ShowUIComplete()
     {
-        UITrain.position += new Vector3(1.2f, 0, 0);
+        UITrain.position += new Vector3(1.4f, 0, 0);
         _icon.enabled = true;
         containerFill_Text.SetActive(false);
     }
