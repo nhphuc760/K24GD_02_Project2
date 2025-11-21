@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: Seed_Otchuongdo
   m_EditorClassIdentifier: 
   _id: 423
-  _itemName: Seed_Otchuongdo
+  _itemName: "H\u1EA1t gi\u1ED1ng \u1EDBt chu\xF4ng \u0111\u1ECF"
   _icon: {fileID: 5949341458490847246, guid: 8d283114280df184c85ba715dd66ba8f, type: 3}
-  _description: "H\u1EA1t gi\u1ED1ng \u1EDBt chu\xF4ng \u0111\u1ECF"
+  _description: "Tr\u1ED3ng v\xE0 thu ho\u1EA1ch\nS\u1EA3n l\u01B0\u1EE3ng: 5"
   _maxStack: 999
   isStackable: 1
   itemType: 0
+  runTimeItemType: 0
+  purchase_Price: 0
   timeSpandHarvest: 180
   cropData: {fileID: 11400000, guid: 05c047aa261f0c54abdb6ef1ea0e9fc2, type: 2}
   growhtSprites:
@@ -28,6 +30,4 @@ MonoBehaviour:
   - {fileID: 8385348414061305947, guid: 8d283114280df184c85ba715dd66ba8f, type: 3}
   - {fileID: -3286734817467071715, guid: 8d283114280df184c85ba715dd66ba8f, type: 3}
   harvestIndicator: {fileID: -7665956273199319417, guid: 5fa6f306aca02f84497c285587e49872, type: 3}
-  purchasePrice: 5
-  sellPrice: 6
   yield: 5

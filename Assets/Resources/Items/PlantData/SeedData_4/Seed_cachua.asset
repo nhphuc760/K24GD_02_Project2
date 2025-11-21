@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e90ab3f715a7ab40947acd3c0c41720, type: 3}
+  m_Name: Seed_cachua
+  m_EditorClassIdentifier: 
+  _id: 407
+  _itemName: "H\u1EA1t gi\u1ED1ng c\xE0 chua"
+  _icon: {fileID: 2134030778411992503, guid: 8d283114280df184c85ba715dd66ba8f, type: 3}
+  _description: "Tr\u1ED3ng v\xE0 thu ho\u1EA1ch\nS\u1EA3n l\u01B0\u1EE3ng: 10"
+  _maxStack: 999
+  isStackable: 1
+  itemType: 0
+  runTimeItemType: 0
+  purchase_Price: 0
+  timeSpandHarvest: 120
+  cropData: {fileID: 11400000, guid: 1c7be54e940fd1a4086f71448f660ee9, type: 2}
+  growhtSprites:
+  - {fileID: 3111203740893462048, guid: 8d283114280df184c85ba715dd66ba8f, type: 3}
+  - {fileID: 5714900978791789053, guid: 8d283114280df184c85ba715dd66ba8f, type: 3}
+  - {fileID: 6211616557387116470, guid: 8d283114280df184c85ba715dd66ba8f, type: 3}
+  - {fileID: -7794646364983219112, guid: 8d283114280df184c85ba715dd66ba8f, type: 3}
+  - {fileID: -8316724839696421219, guid: 8d283114280df184c85ba715dd66ba8f, type: 3}
+  - {fileID: -2807092664189701965, guid: 8d283114280df184c85ba715dd66ba8f, type: 3}
+  harvestIndicator: {fileID: 166006926289291715, guid: 5fa6f306aca02f84497c285587e49872, type: 3}
+  yield: 10

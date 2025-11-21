@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: "Seed_Th\u01A1m"
   m_EditorClassIdentifier: 
   _id: 419
-  _itemName: "Seed_Th\u01A1m"
+  _itemName: "H\u1EA1t gi\u1ED1ng d\u1EE9a"
   _icon: {fileID: -5937120398416915507, guid: 8d283114280df184c85ba715dd66ba8f, type: 3}
-  _description: "H\u1EA1t gi\u1ED1ng th\u01A1m"
+  _description: "Tr\u1ED3ng v\xE0 thu ho\u1EA1ch\nS\u1EA3n l\u01B0\u1EE3ng: 5"
   _maxStack: 999
   isStackable: 1
   itemType: 0
+  runTimeItemType: 0
+  purchase_Price: 0
   timeSpandHarvest: 240
   cropData: {fileID: 11400000, guid: 50d3e6876968f8244b3d3572427f37a5, type: 2}
   growhtSprites:
@@ -28,6 +30,4 @@ MonoBehaviour:
   - {fileID: 8712820116222803939, guid: 8d283114280df184c85ba715dd66ba8f, type: 3}
   - {fileID: 2431672936545192382, guid: 8d283114280df184c85ba715dd66ba8f, type: 3}
   harvestIndicator: {fileID: -319498696, guid: 5fa6f306aca02f84497c285587e49872, type: 3}
-  purchasePrice: 10
-  sellPrice: 12
   yield: 5

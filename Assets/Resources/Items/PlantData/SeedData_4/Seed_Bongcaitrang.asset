@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e90ab3f715a7ab40947acd3c0c41720, type: 3}
+  m_Name: Seed_Bongcaitrang
+  m_EditorClassIdentifier: 
+  _id: 405
+  _itemName: "H\u1EA1t gi\u1ED1ng b\xF4ng c\u1EA3i tr\u1EAFng"
+  _icon: {fileID: 8475934557218786544, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
+  _description: "Tr\u1ED3ng v\xE0 thu ho\u1EA1ch\nS\u1EA3n l\u01B0\u1EE3ng: 5"
+  _maxStack: 999
+  isStackable: 1
+  itemType: 0
+  runTimeItemType: 0
+  purchase_Price: 0
+  timeSpandHarvest: 60
+  cropData: {fileID: 11400000, guid: dd5f2b7e59ed05543958037d82a834de, type: 2}
+  growhtSprites:
+  - {fileID: 7318360343261514433, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
+  - {fileID: 6011732445141170974, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
+  - {fileID: 4565456746401431748, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
+  - {fileID: -7654527471587066042, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
+  - {fileID: 9212631399393004326, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
+  - {fileID: 6521562105762431199, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
+  harvestIndicator: {fileID: 7403454769088849491, guid: 5fa6f306aca02f84497c285587e49872, type: 3}
+  yield: 5
