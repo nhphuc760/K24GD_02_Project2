@@ -12,7 +12,7 @@ public class InteractionDetector : MonoBehaviour
     }
     public void OnInteract()
     {
-        Debug.Log("CanInteract: " + interactableInrange != null);
+        Debug.Log("Interact With NPC");
             interactableInrange?.Interact();
     }
 

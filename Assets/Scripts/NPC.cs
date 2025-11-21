@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,8 +10,10 @@ public class NPC : MonoBehaviour, IInteractable
     public Image portraitImage;
     public TMP_Text nameText, dialogueText;
     private int dialogueIndex;
-    private bool isTyping, isDialogueActive = false;
+    private bool isTyping;
+    bool isDialogueActive;
     private string currentLine;
+    bool isPause;
     private NPCPortraitExpression currentExpression;
 
     public bool CanInteract()
@@ -21,26 +23,31 @@ public class NPC : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (dialogueData == null || !isDialogueActive)
+        if (dialogueData == null || (isPause && !isDialogueActive))
+        {
             return;
+        }
+      
         if (isDialogueActive)
         {
+          
             NextLine();
         }
         else
         {
+           
             StartDialogue();
         }
     }
     void StartDialogue()
     {
+        isPause = true;
         isDialogueActive = true;
         dialogueIndex = 0;
-
         nameText.SetText(dialogueData.npcName);
         portraitImage.sprite = dialogueData.GetPortrait(NPCPortraitExpression.Normal);
         dialoguePanel.SetActive(true);
-
+        GameEventManager.Ins.gameInput.DisableMovement();
         StartCoroutine(TypeLine());
     }
     void NextLine()
@@ -101,8 +108,10 @@ public class NPC : MonoBehaviour, IInteractable
     public void EndDialogue()
     {
         StopAllCoroutines();
+        isPause = false;
         isDialogueActive = false;
         dialogueText.SetText("");
         dialoguePanel.SetActive(false);
+        GameEventManager.Ins.gameInput.EnableMovement();
     }
 }

@@ -191,6 +191,7 @@ Transform:
   - {fileID: 5680270185518964680}
   - {fileID: 1621853673766878180}
   - {fileID: 7319554292297083837}
+  - {fileID: 4496835122943137626}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1402103027682105741
@@ -247,13 +248,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 182530904078596470}
   playerVisual: {fileID: 832668232084899115}
+  fishIcon: {fileID: 4705040038368502904}
   isInFishingState: 0
   fishingPoint: {fileID: 4961491963497579643}
   fishingPointBack: {fileID: 3061952142595168706}
   fishingPointFront: {fileID: 842010924816829215}
   fishingPointLeft: {fileID: 5710323298054008541}
   fishingPointRight: {fileID: 4065604452624534821}
-  bobber: {fileID: 0}
+  bobberPoint: {fileID: 4496835122943137626}
   targetTime: 0
   extraBobberDistance: 0
   fishGame: {fileID: 2483054234722781040}
@@ -334,6 +336,55 @@ CapsuleCollider2D:
   m_Offset: {x: 0.027640224, y: 0}
   m_Size: {x: 0.55528045, y: 1}
   m_Direction: 0
+--- !u!1 &1262231634209244935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4496835122943137626}
+  - component: {fileID: 1251994508962025329}
+  m_Layer: 0
+  m_Name: Boob
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4496835122943137626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262231634209244935}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3416348921239499229}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1251994508962025329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262231634209244935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b77fd089a39d71449068f0a7936f911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RangeRandomFishBiteTime: {x: 5, y: 6}
+  AlertFishBitedTime: 2
+  player: {fileID: 5034473988514278421}
+  playerVisual: {fileID: 832668232084899115}
+  fishIcon: {fileID: 4705040038368502904}
 --- !u!1 &1396858724386881928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,7 +1152,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7319554292297083837
 Transform:
   m_ObjectHideFlags: 0
@@ -1204,7 +1255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1621853673766878180}
   m_Layer: 3
-  m_Name: FishingPoints
+  m_Name: BobberPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

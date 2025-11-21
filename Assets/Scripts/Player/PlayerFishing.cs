@@ -10,24 +10,22 @@ public class PlayerFishing : MonoBehaviour
 {
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] PlayerVisual playerVisual;
+    [SerializeField] GameObject fishIcon;
     public bool isInFishingState;
     public Transform fishingPoint;
     public Transform fishingPointBack;
     public Transform fishingPointFront;
     public Transform fishingPointLeft;
     public Transform fishingPointRight;
-    public Transform bobber;
-    public float targetTime = 0.0f;
-    public float extraBobberDistance;
+    public Transform bobberPoint;
     public GameObject fishGame;
     public GameObject fish;
     private Tilemap[] _groundTilemaps;
-    bool isFishing;
     InventorySlot curToolKit;
     ToolDataSO curToolDataSO;
-    public bool IsFishing { get => isFishing; set{
-            if(isFishing == value) return;
-            isFishing = value;
+    public bool IsFishing { get => isInFishingState; set{
+            if(isInFishingState == value) return;
+            isInFishingState = value;
             if (value)
             {
                 GameEventManager.Ins.gameInput.Disable_InputAction();
@@ -68,8 +66,6 @@ public class PlayerFishing : MonoBehaviour
     void Start()
     {
         fishGame.SetActive(false);
-        targetTime = 0.0f;
-        extraBobberDistance = 0.0f;
         SceneManager.sceneLoaded += OnSceneLoad;
         GameEventManager.Ins.onFishingZoneEnter += FishingZoneEnter;
         GameEventManager.Ins.onFishingZoneExit += FishingZoneExit;
@@ -119,10 +115,6 @@ public class PlayerFishing : MonoBehaviour
         }
         isBobberInWater = CheckBobberInWater(playerMovement.GetDirection());
         HandleInput();
-        if (isInFishingState && !isFishing)
-        {
-            targetTime += Time.deltaTime;
-        }
     }
     private void HandleInput()
     {
@@ -144,30 +136,19 @@ public class PlayerFishing : MonoBehaviour
 
     private void StartPoleBack()
     {
-        IsFishing = false;
-        targetTime = 0.0f;
-        isInFishingState = true;
+      
+        IsFishing = true;
         playerVisual.animator.Play(AnimationHashes.POLE_BACK);
     }
     private void CastingFishing()
     {
         playerVisual.animator.Play(AnimationHashes.CASTING_FISHING);
-        if (targetTime >= 3)
-        {
-            extraBobberDistance += 3;
-        }
-        else
-        {
-            extraBobberDistance += targetTime;
-        }
     }
     private void CancelFishing()
     {
         fishGame.SetActive(false);
         playerVisual.animator.Play(AnimationHashes.CAPTURE_NOFISH);
-       
         IsFishing = false;
-        isInFishingState = false;
         FishBited = false;
     }
 
@@ -176,35 +157,30 @@ public class PlayerFishing : MonoBehaviour
     {
         FishGameResult = true;
         playerVisual.animator.Play(AnimationHashes.CAPTURE_NOFISH);
-        isInFishingState = false;
         fishGame.SetActive(false);   
         IsFishing = false;
         FishBited = false;
+        fishIcon.SetActive(false);
+
     }
     public void fishGameLossed()
     {
         FishGameResult = false;
         playerVisual.animator.Play(AnimationHashes.CAPTURE_NOFISH);
-        isInFishingState = false;
         fishGame.SetActive(false);         
         IsFishing = false;
         FishBited = false;
+        fishIcon.SetActive(false);
     }
     public void OnCastFishingEnd()
     {
-        UpdateFishingPointPosition();
-        Vector3 temp = extraBobberDistance * (Vector3)playerMovement.GetDirection();
-        fishingPoint.transform.position += temp;        
-        IsFishing = true;
-        bobber.gameObject.SetActive(true);
-        bobber.position = fishingPoint.position;
-        fishingPoint.transform.position -= temp;
-        targetTime = 0.0f;
-        extraBobberDistance = 0.0f;
+        UpdateFishingPointPosition();      
+        bobberPoint.gameObject.SetActive(value: true);
+        bobberPoint.position = fishingPoint.position;
     }
     private void RemovePreviousBobber()
     {
-        bobber.gameObject.SetActive(false);
+        bobberPoint.gameObject.SetActive(false);
     }
     private bool CheckBobberInWater(Vector2 direction)
     {
@@ -269,4 +245,6 @@ public class PlayerFishing : MonoBehaviour
         else
             fish.SetActive(false);
     }
+    
+    
 }
