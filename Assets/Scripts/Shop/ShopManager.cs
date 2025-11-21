@@ -60,21 +60,25 @@ public class ShopManager : MonoBehaviour
     }
     public void Buy(ItemShopDataSO itemShopDataSO, int quantity = 1)
     {
-        int price = itemShopDataSO.purchase_Price;
+        int price = itemShopDataSO.purchase_Price * quantity;
         if (GameManager.Ins == null) return;
         if (GameManager.Ins.Coin < price)
         {
             GameEventManager.Ins.TriggerDialog($"<color=red>Không đủ tiền để mua, còn thiếu {price - GameManager.Ins.Coin}</color>");
             return;
         }
-        if(GameEventManager.Ins.inventoryEvent.AddItem(itemShopDataSO, quantity))
-        {
-            GameManager.Ins.Coin -= itemShopDataSO.purchase_Price;
+        // kiểm tra loại item mua, thêm vào inven hoặc gọi logic riêng
+        if(itemShopDataSO.typeItemShop == ItemShopDataSO.TypeItemShop.AddInven){
+            if (GameEventManager.Ins.inventoryEvent.AddItem(itemShopDataSO, quantity))
+            {
+                GameManager.Ins.Coin -= price;
+            }
         }
-    }
-    public void Sell()
-    {
-
+        else if(itemShopDataSO.typeItemShop == ItemShopDataSO.TypeItemShop.Separate && itemShopDataSO.CheckConditionBuy(quantity))
+        {
+            GameManager.Ins.Coin -= price;
+            itemShopDataSO.SeparateBuy(quantity);
+        }
     }
 
     void Show()

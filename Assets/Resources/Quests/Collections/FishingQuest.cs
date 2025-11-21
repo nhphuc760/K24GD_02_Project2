@@ -8,7 +8,7 @@ public class FishingQuest : QuestStep
     public int caughtToComplete = 5;    
     private void OnEnable()
     {
-        GameEventManager.Ins.OnFishingCaught += OnFishingCaught;
+        GameEventManager.Ins.onFishing += OnFishingCaught;
     }
 
     private void OnFishingCaught()
@@ -26,7 +26,7 @@ public class FishingQuest : QuestStep
 
     void OnDisable()
     {
-        GameEventManager.Ins.OnFishingCaught -= OnFishingCaught;
+        GameEventManager.Ins.onFishing -= OnFishingCaught;
     }
 
    void UpdateState()

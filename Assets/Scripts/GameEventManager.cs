@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 public class GameEventManager : MonoBehaviour
 {
     public static GameEventManager Ins;
-    public event Action OnCollectCoins;//cho vào questEvent
-    public event Action OnFishingCaught;//
+   
     public event Action<string> triggerDialog;
     public event Action<int> onCoinChange;
     //FishingEvent: Lười tạo script mới nên để luôn ở đây
@@ -20,6 +19,47 @@ public class GameEventManager : MonoBehaviour
     public ToolKitEvent toolKitEvent;
     public GameInput gameInput;
     public AnimationEvent animationEvent;
+
+
+    //Các phần event dưới đây sẽ tự động gọi theo diễn biến trò chơi, ko quan tâm ai subcribe
+    public event Action<SeedDataSO> onPlanting;//cho vào questEvent
+    public event Action onFishing;//
+    public event Action<CropDataSO> onHarvest;
+    public event Action<ToolDataSO> onRepairTool;
+    public event Action onCutDTree;
+    public event Action onMiningOre;
+    public event Action<AnimalDataSO> onBuyAnimal;
+    public event Action onGetProductAnimal;
+    public event Action onCooking;
+
+    public void Planting(SeedDataSO seedDataSO)
+    {
+        onPlanting?.Invoke(seedDataSO);
+    }
+    public void Fishing()
+    {
+        onFishing?.Invoke();
+    }
+    public void HarvestCrop(CropDataSO cropDataSO)
+    {
+        onHarvest?.Invoke(cropDataSO);
+    }
+    public void RepairTool(ToolDataSO tool)
+    {
+        onRepairTool?.Invoke(tool);
+    }
+    public void CutDownTree()
+    {
+        onCutDTree?.Invoke();
+    }
+    public void MiningOre()
+    {
+        onMiningOre?.Invoke();
+    }
+    public void BuyAnimal(AnimalDataSO animal)
+    {
+        onBuyAnimal?.Invoke(animal);
+    }
     private void Awake()
     {
        if(Ins != null && Ins != this)

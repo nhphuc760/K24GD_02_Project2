@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class FarmAnimal : MonoBehaviour, IInteractable
 {
@@ -22,8 +17,6 @@ public class FarmAnimal : MonoBehaviour, IInteractable
     private Rigidbody2D rb;
     private Vector2 moveDirection;
     private float moveTimer;
-
-    [SerializeField] GameObject canvas; //panel UI đếm nguoc975 khi cần thiết
     [SerializeField] TextMeshProUGUI timeRemainingTXT;
     [SerializeField] UnityEngine.UI.Image fillProduction;
     [SerializeField] GameObject harvestIndicatorPrefab;
@@ -38,8 +31,6 @@ public class FarmAnimal : MonoBehaviour, IInteractable
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        if (canvas != null) canvas.SetActive(false);
-
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -84,8 +75,12 @@ public class FarmAnimal : MonoBehaviour, IInteractable
 
         //lấy thgian server
         var task = await Save_Load_Firebase.GetSeverDateTime();
-        if(task.HasValue) { curTime = task.Value; }
-        else { curTime = DateTime.Now; }
+        if(task.HasValue) { 
+            curTime = task.Value; 
+        }
+        else { 
+            curTime = DateTime.Now; 
+        }
 
         timeProductReady = curTime.AddSeconds(animalData.secondsToProduce);
         canHarvest = false;
@@ -107,7 +102,6 @@ public class FarmAnimal : MonoBehaviour, IInteractable
         {
             canHarvest = true;
             ShowHarvestIndicator(true);
-            HideCoolDown();
         }
         else
         {
@@ -120,8 +114,6 @@ public class FarmAnimal : MonoBehaviour, IInteractable
     //Đếm ngược thời giand đẻ
     IEnumerator ProductionCycle()
     {
-        if(canvas != null) canvas.SetActive(true);
-
         while(curTime < timeProductReady)
         {
             curTime = curTime.AddSeconds(1);
@@ -141,7 +133,6 @@ public class FarmAnimal : MonoBehaviour, IInteractable
 
         //Khi hoàn thành
         canHarvest = true;
-        HideCoolDown();
         ShowHarvestIndicator(true);
     }
 
@@ -150,11 +141,7 @@ public class FarmAnimal : MonoBehaviour, IInteractable
     {
         if(canHarvest)
         {
-            Harvest();
-        }
-        else
-        {
-            GameEventManager.Ins.TriggerDialog("<color=red>Chưa thể thu hoạch!</color>");
+            GetProduct();
         }
     }
 
@@ -163,7 +150,7 @@ public class FarmAnimal : MonoBehaviour, IInteractable
         return canHarvest;
     }
 
-    private async void Harvest()
+    private async void GetProduct()
     {
         Debug.Log("Đã thu hoạch " + animalData.productData._id);
         GameEventManager.Ins.inventoryEvent.AddItem(animalData.productData, 1);//thêm sản phẩm vào inventory
@@ -195,11 +182,6 @@ public class FarmAnimal : MonoBehaviour, IInteractable
             currentIndicator.GetComponentInChildren<UnityEngine.UI.Image>().sprite = animalData.harvestIndicator;
             currentIndicator.SetActive(show);
         }
-    }
-
-    private void HideCoolDown()
-    {
-        if (canvas != null) canvas.SetActive(false);
     }
 
     //// --- HÀM LƯU GAME ---

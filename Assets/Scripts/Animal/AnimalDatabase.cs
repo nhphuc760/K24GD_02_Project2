@@ -7,17 +7,17 @@ public class AnimalDatabase : ScriptableObject
 {
     public List<AnimalDataSO> allAnimalData;
 
-    public AnimalDataSO GetAnimalDataByID(string id)
+    public AnimalDataSO GetAnimalDataByName(string name)
     {
         if (allAnimalData == null) return null;
         foreach (AnimalDataSO data in allAnimalData)
         {
-            if (data != null && data._id == id)
+            if (data != null && data._itemName == name)
             {
                 return data;
             }
         }
-        Debug.LogWarning("AnimalDatabase: AnimalData with ID " + id + " not found.");
+        Debug.LogWarning("AnimalDatabase: AnimalData with ID " + name + " not found.");
         return null;
     }
 
