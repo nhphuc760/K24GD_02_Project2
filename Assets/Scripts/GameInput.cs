@@ -59,4 +59,13 @@ public class GameInput
     {
         inputAction.Player.Disable();
     }
+    public void DisableMovement()
+    {
+        inputAction.Player.Move.Disable();
+    }
+
+    public void EnableMovement()
+    {
+        inputAction.Player.Move.Enable();
+    }
 }

@@ -226,7 +226,6 @@ public class GameManager : MonoBehaviour
     {
         await SaveCurrentSceneState();
         await Save_Load_Firebase.SaveData("Coins", _coins);
-       
     }
 
     private void OnValidate()
