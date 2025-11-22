@@ -226,7 +226,6 @@ public class GameManager : MonoBehaviour
     {
         await SaveCurrentSceneState();
         await Save_Load_Firebase.SaveData("Coins", _coins);
-       
     }
 
     private void OnValidate()
@@ -255,11 +254,11 @@ public class GameManager : MonoBehaviour
         // Kiểm tra xem đã tìm thấy spawn point chưa
         if (animalSpanwPoint == null)
         {
-            Debug.LogError($"Không thể mua {animal.animalName}: AnimalSpawnPoint chưa được tìm thấy trong scene này!");
+            Debug.LogError($"Không thể mua {animal._itemName}: AnimalSpawnPoint chưa được tìm thấy trong scene này!");
             return; // Dừng lại nếu không có spawn point
         }
 
-        Debug.Log($"Đang mua {animal.animalName}...");
+        Debug.Log($"Đang mua {animal._itemName}...");
         Vector3 spawnPos = animalSpanwPoint.position;
         spawnPos.z = 0f; // Đảm bảo Z=0
         GameObject animalObj = Instantiate(animal.animalPrefab, spawnPos, Quaternion.identity);

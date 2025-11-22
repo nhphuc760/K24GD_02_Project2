@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de1d657524943d7429277f7be95a32cd, type: 3}
+  m_Name: Cu_Cai_do
+  m_EditorClassIdentifier: 
+  _id: 512
+  _itemName: "C\u1EE7 c\u1EA3i \u0111\u1ECF"
+  _icon: {fileID: -8978098082627641021, guid: 86a1f20c893a0a343aca5543698e3e64, type: 3}
+  _description: "B\xE1n ho\u1EB7c ch\u1EBF bi\u1EBFn"
+  _maxStack: 999
+  isStackable: 1
+  itemType: 0
+  sellPrice: 150
+  prefab: {fileID: 592019398530287880, guid: 0ce711dce563d524283d11b948265835, type: 3}

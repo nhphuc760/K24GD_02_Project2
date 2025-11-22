@@ -83,8 +83,6 @@ public class Seed : MonoBehaviour, IToolTarget
     }
     private void Harvest()//thu hoạch
     {
-        // Logic to add the crop to the player's inventory would go here
-        Debug.Log($"Harvested {currentSeedData.cropData._itemName} for {currentSeedData.sellPrice} coins!");
         GameEventManager.Ins.inventoryEvent.AddItem(currentSeedData.cropData, currentSeedData.yield);
         Destroy(gameObject); // Remove the crop from the game world after harvesting
     }

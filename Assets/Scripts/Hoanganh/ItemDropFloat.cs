@@ -9,7 +9,8 @@ public class ItemDropFloat : MonoBehaviour
     Vector3 startPos;
     float floatTimer;
     Rigidbody2D rb;
-  
+    [SerializeField] int yield;
+    [SerializeField] ItemDataSO reSourceSO;
 
     void Start()
     {
@@ -53,7 +54,8 @@ public class ItemDropFloat : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Get Resource");
+            GameEventManager.Ins.inventoryEvent.AddItem(reSourceSO, yield);
+
         }
     }
 

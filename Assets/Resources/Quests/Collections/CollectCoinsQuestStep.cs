@@ -8,16 +8,16 @@ public class CollectCoinsQuestStep : QuestStep
     private void Start()
     {
         
-        GameEventManager.Ins.OnCollectCoins += OnCoinCollected;
+        GameEventManager.Ins.onPlanting += OnPlantingSeed;
     }
 
     private void OnDisable()
     {
-        GameEventManager.Ins.OnCollectCoins -= OnCoinCollected;
+        GameEventManager.Ins.onPlanting -= OnPlantingSeed;
     }
 
 
-    private void OnCoinCollected()
+    private void OnPlantingSeed(SeedDataSO seedDataSO)
     {
         if (coinCollected < coinsToCompleted)
         {
