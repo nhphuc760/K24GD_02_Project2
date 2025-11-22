@@ -298,6 +298,7 @@ MonoBehaviour:
   interactableLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  harvestSound: {fileID: 8300000, guid: 4a6ef36e0aca4f04a8e86cae687430f1, type: 3}
 --- !u!70 &8327488623868348190
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -115,6 +115,7 @@ MonoBehaviour:
   dropCount: 2
   dropForce: 3
   knockbackForce: 2
+  breakSound: {fileID: 8300000, guid: 0017f1d6d7e191247af1986143e77ce1, type: 3}
 --- !u!50 &3686963255431828276
 Rigidbody2D:
   serializedVersion: 5

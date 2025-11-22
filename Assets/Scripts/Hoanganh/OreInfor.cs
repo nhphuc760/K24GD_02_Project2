@@ -25,6 +25,9 @@ public class OreInfor : MonoBehaviour, IToolTarget
 
     int takeDamage = Animator.StringToHash("TakeDamage");
 
+
+    //them am thanh khi bi pha
+    public AudioClip breakSound;
     public ToolDataSO.ToolType RequireTool => requireTool;
 
     private void Awake()
@@ -104,6 +107,12 @@ public class OreInfor : MonoBehaviour, IToolTarget
         {
             //triger damage
             animator.SetTrigger(takeDamage);
+            if (AudioManager.instance != null && breakSound != null)
+            {
+                AudioManager.instance.PlayFX(breakSound);
+            }
+            else
+                Debug.LogWarning("AudioManager instance or breakSound is null!");
             return;
         }
         // Hết HP thì phá quặng

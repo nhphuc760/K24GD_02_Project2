@@ -169,6 +169,7 @@ MonoBehaviour:
   woodPrefab: {fileID: 3186487738297421167, guid: 75d6e39dc172c9b408eb648c05c1a32a, type: 3}
   dropCount: 2
   dropForce: 2
+  chopSound: {fileID: 8300000, guid: d82859929f6fa9d4fb8c57827a892aec, type: 3}
 --- !u!50 &1823001278935332341
 Rigidbody2D:
   serializedVersion: 5
