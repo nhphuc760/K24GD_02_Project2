@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundMusic: {fileID: 8300000, guid: 5f6ffd930f319664095264c28c5ab4ce, type: 3}
+  fallbackVolume: 0.5
 --- !u!4 &26346784
 Transform:
   m_ObjectHideFlags: 0
@@ -531,6 +532,18 @@ PrefabInstance:
     - target: {fileID: 1235425323585297934, guid: b9d27fe3d6d925a45b68cf1229e8b119, type: 3}
       propertyPath: m_Name
       value: LoadingUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682952136568504179, guid: b9d27fe3d6d925a45b68cf1229e8b119, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 1682952136568504179, guid: b9d27fe3d6d925a45b68cf1229e8b119, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 1682952136568504179, guid: b9d27fe3d6d925a45b68cf1229e8b119, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1921840757059515189, guid: b9d27fe3d6d925a45b68cf1229e8b119, type: 3}
       propertyPath: m_TargetCamera
