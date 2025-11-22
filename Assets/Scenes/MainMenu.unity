@@ -520,7 +520,7 @@ MonoBehaviour:
   m_text: "Ch\u01A1i m\u1EDBi"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e908cf3ebe99485409aea65579c065dd, type: 2}
-  m_sharedMaterial: {fileID: 1535261113384048926, guid: e908cf3ebe99485409aea65579c065dd, type: 2}
+  m_sharedMaterial: {fileID: 8718191804606293394, guid: e908cf3ebe99485409aea65579c065dd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -984,7 +984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadGameButton: {fileID: 396433470}
-  newGameScene: CustomizeCharacter
+  newGameScene: OpeningCutscene
   loadGameScene: PersistentSystem
 --- !u!224 &611279199
 RectTransform:
@@ -1186,7 +1186,7 @@ MonoBehaviour:
   m_text: "Ti\u1EBFp t\u1EE5c"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e908cf3ebe99485409aea65579c065dd, type: 2}
-  m_sharedMaterial: {fileID: 1535261113384048926, guid: e908cf3ebe99485409aea65579c065dd, type: 2}
+  m_sharedMaterial: {fileID: 8718191804606293394, guid: e908cf3ebe99485409aea65579c065dd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1564,7 +1564,7 @@ MonoBehaviour:
   m_text: "Tho\xE1t"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e908cf3ebe99485409aea65579c065dd, type: 2}
-  m_sharedMaterial: {fileID: 1535261113384048926, guid: e908cf3ebe99485409aea65579c065dd, type: 2}
+  m_sharedMaterial: {fileID: 8718191804606293394, guid: e908cf3ebe99485409aea65579c065dd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1908,7 +1908,7 @@ MonoBehaviour:
   m_text: "C\xE0i \u0111\u1EB7t"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e908cf3ebe99485409aea65579c065dd, type: 2}
-  m_sharedMaterial: {fileID: 1535261113384048926, guid: e908cf3ebe99485409aea65579c065dd, type: 2}
+  m_sharedMaterial: {fileID: 8718191804606293394, guid: e908cf3ebe99485409aea65579c065dd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
