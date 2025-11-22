@@ -10,6 +10,7 @@ public class MainMenuManager : MonoBehaviour
 
     [SerializeField] string newGameScene;
     [SerializeField] string loadGameScene;
+    [SerializeField] SettingsMenu settingsMenu;
     bool isDataExists = false;
     private async void Start()
     {
@@ -45,5 +46,20 @@ public class MainMenuManager : MonoBehaviour
                 LoadingScene.Ins.LoadScene(loadGameScene, "Đang tải dữ liệu người chơi", LoadSceneMode.Single, false);
             else SceneManager.LoadScene(loadGameScene);
         }
+    }
+    public void OnSettingsButton()
+    {
+        if (settingsMenu != null)
+        {
+            settingsMenu.Show();
+        }
+        else
+        {
+            Debug.LogError("Chưa gán SettingsMenu vào MainMenuManager!");
+        }
+    }
+    public void OnQuitButton()
+    {
+        Application.Quit();
     }
 }

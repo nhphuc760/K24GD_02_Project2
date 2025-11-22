@@ -944,6 +944,7 @@ GameObject:
   - component: {fileID: 1535584507}
   - component: {fileID: 1535584506}
   - component: {fileID: 1535584508}
+  - component: {fileID: 1535584509}
   m_Layer: 5
   m_Name: ChoiceButton_No
   m_TagString: Untagged
@@ -1053,6 +1054,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1535584509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535584504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34c9d71132f53a74e803ce4d01d33e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: 7f1f89306c8ee7f4a92fcacbde54b805, type: 3}
+  hoverSound: {fileID: 8300000, guid: be405012bc61c3c4d840026aadbaf3ae, type: 3}
+  volumeScale: 1
 --- !u!1 &1553139752
 GameObject:
   m_ObjectHideFlags: 0
@@ -1464,6 +1480,7 @@ GameObject:
   - component: {fileID: 1883331013}
   - component: {fileID: 1883331012}
   - component: {fileID: 1883331014}
+  - component: {fileID: 1883331015}
   m_Layer: 5
   m_Name: ChoiceButton_Yes
   m_TagString: Untagged
@@ -1573,6 +1590,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1883331015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883331010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34c9d71132f53a74e803ce4d01d33e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: 7f1f89306c8ee7f4a92fcacbde54b805, type: 3}
+  hoverSound: {fileID: 8300000, guid: be405012bc61c3c4d840026aadbaf3ae, type: 3}
+  volumeScale: 1
 --- !u!1 &2038995239
 GameObject:
   m_ObjectHideFlags: 0

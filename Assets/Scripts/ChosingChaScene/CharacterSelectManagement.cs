@@ -22,7 +22,6 @@ public class CharacterSelectManagement : MonoBehaviour
     [SerializeField] string nextScene;
 
 
-
     private void Start()
     {
         if(database == null || database.characters.Count == 0)

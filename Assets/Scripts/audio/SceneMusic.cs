@@ -20,7 +20,9 @@ public class SceneMusic : MonoBehaviour
             AudioSource tempSource = gameObject.AddComponent<AudioSource>();
             tempSource.clip = backgroundMusic;
             tempSource.loop = true;
-            tempSource.volume = fallbackVolume;
+            //luu ý ưu tiên volume đã lưu trong PlayerPrefs nếu có
+            float savedVolume = PlayerPrefs.GetFloat("MusicVol", 1f);
+            tempSource.volume = fallbackVolume * savedVolume;
             tempSource.Play();
 
             Debug.Log("Đang phát nhạc ở chế độ Fallback (không qua AudioManager)");
