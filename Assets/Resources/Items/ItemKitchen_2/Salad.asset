@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8cfeb0668ba179449373005050c6480, type: 3}
   m_Name: Salad
   m_EditorClassIdentifier: 
-  _id: 201
+  _id: 206
   _itemName: "Sa l\xE1t"
-  _icon: {fileID: -3881899911555437960, guid: 411200b0858c6f947ba34a5ef44c7e5b, type: 3}
-  _description: "Sa l\xE1t\nTh\u1EDDi gian: 0\nGi\xE1 b\xE1n: 150"
+  _icon: {fileID: -4074140791704215418, guid: 6427a3f99bbd919408e8db2a5234b09a, type: 3}
+  _description: "Sa l\xE1t\nTh\u1EDDi gian: 0h9p0s\nGi\xE1 b\xE1n: 150$"
   _maxStack: 1
   isStackable: 0
   itemType: 0
   runTimeItemType: 0
+  sell: 150
+  isCanSell: 1
   recipeSO: {fileID: 11400000, guid: 9a18678e6ba939348b54bb2100ac0400, type: 2}
-  sale_Price: 150
   Description: "Sa l\xE1t"

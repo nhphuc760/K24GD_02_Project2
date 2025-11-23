@@ -1,13 +1,19 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [CreateAssetMenu(fileName = "KitchenItemDataSO", menuName = "Scriptable Objects/KitchenItemDataSO")]
 public class KitchenItemDataSO : ItemDataSO
 {
     public RecipeSO recipeSO;
-    public int sale_Price;
     public string Description;
     public override void OnValidate()
     {
-        _description = Description + $"\nThời gian: {recipeSO.timeCooldown}\nGiá bán: {sale_Price}";
+        TimeSpan spand = TimeSpan.FromSeconds(recipeSO.timeCooldown);
+        _description = Description + $"\nThời gian: {spand.Hours}h{spand.Minutes}p{spand.Seconds}s\nGiá bán: {sell}$";
+    }
+
+    private void Reset()
+    {
+        isCanSell = true;
     }
 }

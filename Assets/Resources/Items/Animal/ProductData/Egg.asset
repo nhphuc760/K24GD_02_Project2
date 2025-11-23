@@ -12,12 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2093392db2aa9cc46b5c888823162620, type: 3}
   m_Name: Egg
   m_EditorClassIdentifier: 
-  _id: 0
-  _itemName: Egg
+  _id: 2
+  _itemName: "Tr\u1EE9ng g\xE0"
   _icon: {fileID: -4391903456437472486, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}
-  _description: "Tr\u1EE9ng g\xE0 "
+  _description: "Nguy\xEAn li\u1EC7u c\u1EE7a nh\u1EEFng m\xF3n \u0103n tuy\u1EC7t
+    v\u1EDDiiiiii\nGi\xE1 b\xE1n: 20$/1"
   _maxStack: 999
   isStackable: 1
   itemType: 0
-  sellPrice: 2
+  runTimeItemType: 0
+  sell: 20
+  isCanSell: 1
   prefab: {fileID: 0}
+  Description: "Nguy\xEAn li\u1EC7u c\u1EE7a nh\u1EEFng m\xF3n \u0103n tuy\u1EC7t
+    v\u1EDDiiiiii"

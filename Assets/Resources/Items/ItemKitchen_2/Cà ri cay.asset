@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 201
   _itemName: "C\xE0 ri cay"
-  _icon: {fileID: -3881899911555437960, guid: 411200b0858c6f947ba34a5ef44c7e5b, type: 3}
-  _description: "Chicken Guy\nTh\u1EDDi gian: 0\nGi\xE1 b\xE1n: 150"
+  _icon: {fileID: -1689713358, guid: fcd939daf4c881a48bf0d5dd49f46f48, type: 3}
+  _description: "Chicken Guy\nTh\u1EDDi gian: 0h5p0s\nGi\xE1 b\xE1n: 170$"
   _maxStack: 1
   isStackable: 0
   itemType: 0
   runTimeItemType: 0
+  sell: 170
+  isCanSell: 1
   recipeSO: {fileID: 11400000, guid: baf03e2395f154941b15b98ad7596c44, type: 2}
-  sale_Price: 150
   Description: Chicken Guy

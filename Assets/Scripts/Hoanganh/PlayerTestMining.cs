@@ -72,6 +72,12 @@ public class PlayerTestMining : MonoBehaviour
             GameEventManager.Ins.TriggerDialog("<color=red>Bạn chưa chọn công cụ</color>");
             return;
         }
+        ToolRunTimeData toolRuntime = curToolKit.dataRuntime as ToolRunTimeData;
+        if(toolRuntime.currentDurability <= 0)
+        {
+            GameEventManager.Ins.TriggerDialog($"<color=red>Dụng cụ của bạn đã bị hư hỏng, Hãy gặp BlackSmith ở thị trấn để bảo dưỡng");
+            return;
+        }
         Collider2D hit = Physics2D.OverlapCircle(groundCheck.position, interactRange, oreLayer);
         if (hit != null)
         {

@@ -25,15 +25,38 @@ public class ShopManager : MonoBehaviour
      
         GameEventManager.Ins.shopEvent.onShow += Show;
         GameEventManager.Ins.shopEvent.onHide += Hide;
+        GameEventManager.Ins.shopEvent.onPlayerEnterShop += PlayerEnterShop;
+        GameEventManager.Ins.shopEvent.onPlayerExitShop += PlayerExitShop;
         Hide();
 
     }
 
+    private void PlayerExitShop()
+    {
+        Hide();
+    }
+
+    private void PlayerEnterShop()
+    {
+        Show();
+        GameEventManager.Ins.inventoryEvent.DisableInventory();
+    }
+
+    private void OnEnable()
+    {
+        GameEventManager.Ins.gameInput.DisableOpenBag();
+    }
+    private void OnDisable()
+    {
+        GameEventManager.Ins.gameInput.EnableOpenBag();
+    }
     private void OnDestroy()
     {
         GameEventManager.Ins.onCoinChange -= OnCoinChange;
         GameEventManager.Ins.shopEvent.onShow -= Show;
         GameEventManager.Ins.shopEvent.onHide -= Hide;
+        GameEventManager.Ins.shopEvent.onPlayerEnterShop -= PlayerEnterShop;
+        GameEventManager.Ins.shopEvent.onPlayerExitShop -= PlayerExitShop;
     }
 
     private void OnCoinChange(int coin)
@@ -74,10 +97,10 @@ public class ShopManager : MonoBehaviour
                 GameManager.Ins.Coin -= price;
             }
         }
-        else if(itemShopDataSO.typeItemShop == ItemShopDataSO.TypeItemShop.Separate && itemShopDataSO.CheckConditionBuy(quantity))
+        else if(itemShopDataSO.typeItemShop == ItemShopDataSO.TypeItemShop.Separate && GameEventManager.Ins.CheckConDition(itemShopDataSO as AnimalDataSO, quantity))
         {
             GameManager.Ins.Coin -= price;
-            itemShopDataSO.SeparateBuy(quantity);
+            GameEventManager.Ins.Separate(itemShopDataSO as AnimalDataSO, quantity);
         }
     }
 

@@ -83,8 +83,9 @@ public class Kitchen : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-
+            
            GameEventManager.Ins.cookingEvent.PlayerEnterKitchen();
+           GameEventManager.Ins.inventoryEvent.DisableInventory();
             if(!isCooking && curRecipeSO != null)
             {
                 GetItem();
@@ -96,6 +97,7 @@ public class Kitchen : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
           GameEventManager.Ins.cookingEvent.PlayerLeaveKitchen();
+
         }
     }
 

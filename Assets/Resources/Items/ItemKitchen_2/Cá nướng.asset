@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8cfeb0668ba179449373005050c6480, type: 3}
   m_Name: "C\xE1 n\u01B0\u1EDBng"
   m_EditorClassIdentifier: 
-  _id: 201
-  _itemName: "C\xE1 n\u01B0\u1EDBng"
-  _icon: {fileID: -3881899911555437960, guid: 411200b0858c6f947ba34a5ef44c7e5b, type: 3}
-  _description: "H\u01A1i th\u1EDF c\u1EA7n th\u1EE7\nTh\u1EDDi gian: 0\nGi\xE1 b\xE1n:
-    150"
+  _id: 202
+  _itemName: "C\xE1 ch\xE9p n\u01B0\u1EDBng"
+  _icon: {fileID: 663025690, guid: fcd939daf4c881a48bf0d5dd49f46f48, type: 3}
+  _description: "H\u01A1i th\u1EDF c\u1EA7n th\u1EE7\nTh\u1EDDi gian: 0h3p0s\nGi\xE1
+    b\xE1n: 70$"
   _maxStack: 1
   isStackable: 0
   itemType: 0
   runTimeItemType: 0
+  sell: 70
+  isCanSell: 1
   recipeSO: {fileID: 11400000, guid: 1ed16652639c039449ccbd1d94d88730, type: 2}
-  sale_Price: 150
   Description: "H\u01A1i th\u1EDF c\u1EA7n th\u1EE7"

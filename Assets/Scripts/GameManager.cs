@@ -1,6 +1,5 @@
 ﻿
 using UnityEngine;
-using UnityEngine.U2D.Animation;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -168,7 +167,6 @@ public class GameManager : MonoBehaviour
         {
             List<SeedSaveData> seedSaveDatas = new List<SeedSaveData>();
             Seed[] cropsInScene = FindObjectsByType<Seed>(FindObjectsSortMode.None);
-            Debug.Log(cropsInScene.Length);
             if (cropsInScene == null || cropsInScene.Length == 0)
             {
                 await Save_Load_Firebase.RemoveAsync("SeedData");
@@ -253,16 +251,15 @@ public class GameManager : MonoBehaviour
     {
         // Kiểm tra xem đã tìm thấy spawn point chưa
         if (animalSpanwPoint == null)
-        {
-            Debug.LogError($"Không thể mua {animal._itemName}: AnimalSpawnPoint chưa được tìm thấy trong scene này!");
+        {       
             return; // Dừng lại nếu không có spawn point
         }
-
-        Debug.Log($"Đang mua {animal._itemName}...");
         Vector3 spawnPos = animalSpanwPoint.position;
         spawnPos.z = 0f; // Đảm bảo Z=0
         GameObject animalObj = Instantiate(animal.animalPrefab, spawnPos, Quaternion.identity);
-        animalObj.GetComponent<FarmAnimal>().Plant(animal);
+        FarmAnimal farm = animalObj.GetComponent<FarmAnimal>();
+        farm.StartLife(animal);
+        GameEventManager.Ins.animalEvent.BuyAnimal(farm);
     }
     /// Tự động tìm Spawn Point trong scene mới dựa vào TÊN.
     /// </summary>

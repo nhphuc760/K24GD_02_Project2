@@ -68,4 +68,21 @@ public class GameInput
     {
         inputAction.Player.Move.Enable();
     }
+    public void DisableOpenBag()
+    {
+        inputAction.Player.OpenBag.Disable();
+    }
+
+    public void EnableOpenBag()
+    {
+        inputAction.Player.OpenBag.Enable();
+    }
+    public void DisableInterac()
+    {
+        inputAction.Player.Interact.Disable();
+    }
+    public void EnableInterac()
+    {
+        inputAction.Player.Interact.Enable();
+    }
 }

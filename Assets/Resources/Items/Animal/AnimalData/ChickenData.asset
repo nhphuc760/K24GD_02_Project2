@@ -12,10 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edfddfed90934504480086417a8dd9f0, type: 3}
   m_Name: ChickenData
   m_EditorClassIdentifier: 
-  _id: 01
-  animalName: "G\xE0"
+  _id: 1
+  _itemName: ChickenData
+  _icon: {fileID: -1214411675, guid: 088785ac6b0faa148ab098ded8420701, type: 3}
+  _description: 
+  _maxStack: 0
+  isStackable: 0
+  itemType: 0
+  runTimeItemType: 0
+  purchase_Price: 200
+  typeItemShop: 1
   animalPrefab: {fileID: 7786292400762752500, guid: 82be35dbeedf63b4db0989f2b4b43450, type: 3}
-  purchasePrice: 500
-  secondsToProduce: 10
+  secondsToProduce: 300
   productData: {fileID: 11400000, guid: 843b04138c5f6be43be84cf7a679670e, type: 2}
   harvestIndicator: {fileID: 608467725020493339, guid: 890583a238bd3e1409f2a2d1c6063163, type: 3}

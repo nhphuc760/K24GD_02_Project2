@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54fbdf6376241cf4cbe4ae780ab816e9, type: 3}
+  m_Name: FishDatabase
+  m_EditorClassIdentifier: 
+  fishDatabase:
+  - {fileID: 11400000, guid: 77d267a8b3e0e0742b7de3ee0d35daac, type: 2}
+  - {fileID: 11400000, guid: f0760f9e3638e8f47bd49f371e171973, type: 2}
+  - {fileID: 11400000, guid: 24631e566b2d462499ddf5e0ef6f67c3, type: 2}
+  - {fileID: 11400000, guid: 631dc570c6d858548858a5b3e74f2559, type: 2}
+  - {fileID: 11400000, guid: 1c74ee613ea34fa4cb5c1d2fe13a43a0, type: 2}
+  - {fileID: 11400000, guid: b76b9a81b27b6e44183491d281e5df3c, type: 2}
+  - {fileID: 11400000, guid: fba0fb33d8e32df40980d812055dd6b8, type: 2}

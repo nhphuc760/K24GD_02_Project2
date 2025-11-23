@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b008df799a5a6b4a935ad730435dc0a, type: 3}
   m_Name: Sandwitch
   m_EditorClassIdentifier: 
-  timeCooldown: 0
+  timeCooldown: 320
   ingredients:
   - itemSO: {fileID: 11400000, guid: 78d00a0b2b4aa3a43bccfb619600c1d4, type: 2}
     quantity: 10

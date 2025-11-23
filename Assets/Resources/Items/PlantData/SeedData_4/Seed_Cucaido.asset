@@ -15,12 +15,16 @@ MonoBehaviour:
   _id: 410
   _itemName: "H\u1EA1t gi\u1ED1ng c\u1EE7 c\u1EA3i \u0111\u1ECF"
   _icon: {fileID: -5443696529636611499, guid: 86a1f20c893a0a343aca5543698e3e64, type: 3}
-  _description: "Tr\u1ED3ng v\xE0 thu ho\u1EA1ch\nS\u1EA3n l\u01B0\u1EE3ng: 10"
+  _description: "Tr\u1ED3ng v\xE0 thu ho\u1EA1ch\nTh\u1EDDi gian: 120\nS\u1EA3n l\u01B0\u1EE3ng:
+    10\nL\u1EE3i nhu\u1EADn: 12$/1"
   _maxStack: 999
   isStackable: 1
   itemType: 0
   runTimeItemType: 0
-  purchase_Price: 0
+  sell: 8
+  isCanSell: 1
+  purchase_Price: 7
+  typeItemShop: 0
   timeSpandHarvest: 120
   cropData: {fileID: 11400000, guid: bfc35865bff9ef4498b9795628ffaf4c, type: 2}
   growhtSprites:

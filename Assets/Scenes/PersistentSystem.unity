@@ -519,6 +519,10 @@ PrefabInstance:
       propertyPath: m_CategoryHash
       value: 6.6282384e-23
       objectReference: {fileID: 0}
+    - target: {fileID: 5034473988514278421, guid: 561b712c25e9fea48bc43fae007526ae, type: 3}
+      propertyPath: fishDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: ad75928fcd84b1841a7cbdf6cb012894, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2418,10 +2422,14 @@ MonoBehaviour:
   _icon: {fileID: 2072552097433328933}
   _description: {fileID: 7366216466928496934}
   _useButton: {fileID: 5139237853392924744}
-  _removeButton: {fileID: 4983216939254598599}
+  _confirmButton: {fileID: 4983216939254598599}
   _quantityInput: {fileID: 5245530022515558959}
   descriptionUI: {fileID: 8221254252084910781}
   removeItemUI: {fileID: 1371859465751903098}
+  _backGroundSell: {fileID: -1755616248, guid: b88b7f36c83b07444800afe6c6250cd0, type: 3}
+  _removeButton: {fileID: 5616565195291083937}
+  textButtonSell: {fileID: 2868258431509101290}
+  inventoryManager: {fileID: 3730841372730276426}
 --- !u!224 &2646820293729676174
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5050,7 +5058,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000016102951}
+  m_AnchoredPosition: {x: 0, y: -0.000030517578}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &5177539700448138140
@@ -5391,8 +5399,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48.1
-  m_fontSizeBase: 48.1
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8409,7 +8417,14 @@ MonoBehaviour:
   kitchenSlotUI: {fileID: 3717420926798147718, guid: f8c6ea02cb54c104e82247fb111607ea, type: 3}
   container: {fileID: 6193076113864086196}
   kitchenItemList:
+  - {fileID: 11400000, guid: 0aabe564bec68864eb0ac1691cc87676, type: 2}
+  - {fileID: 11400000, guid: 1b47dbc08c93a2c4e832f9e691759cff, type: 2}
+  - {fileID: 11400000, guid: 4d1a3be09edfcf645bcc22e983a42c9c, type: 2}
+  - {fileID: 11400000, guid: 0c6da33c65d3d2d4ca2d916906f45256, type: 2}
   - {fileID: 11400000, guid: e257ad48e33e3da4d95606985e732c8e, type: 2}
+  - {fileID: 11400000, guid: b6da4ed488531c748933de6997b6d155, type: 2}
+  - {fileID: 11400000, guid: 5c533254c51171040ab619b68c92ba1f, type: 2}
+  - {fileID: 11400000, guid: a159f26de459ea34bb117f344c039620, type: 2}
   slotInforUI: {fileID: 7573318442563025712}
   DialogCookingChange: {fileID: 4911655110420449342}
 --- !u!224 &8344028955524803700

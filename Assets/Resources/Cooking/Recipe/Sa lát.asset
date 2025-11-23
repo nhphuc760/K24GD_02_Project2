@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b008df799a5a6b4a935ad730435dc0a, type: 3}
   m_Name: "Sa l\xE1t"
   m_EditorClassIdentifier: 
-  timeCooldown: 0
+  timeCooldown: 180
   ingredients:
   - itemSO: {fileID: 11400000, guid: 05222f32163aec148aa1dcd52c846814, type: 2}
-    quantity: 0
+    quantity: 1
   - itemSO: {fileID: 11400000, guid: 5d87d85bd3ea33c459d555388052f323, type: 2}
-    quantity: 0
+    quantity: 1
   - itemSO: {fileID: 11400000, guid: dd5f2b7e59ed05543958037d82a834de, type: 2}
-    quantity: 0
+    quantity: 1
   - itemSO: {fileID: 11400000, guid: 9c283bb34ffb75f44b59c4b89f63bf8c, type: 2}
-    quantity: 0
+    quantity: 1
   - itemSO: {fileID: 11400000, guid: 05c047aa261f0c54abdb6ef1ea0e9fc2, type: 2}
-    quantity: 0
+    quantity: 1
   result: {fileID: 0}

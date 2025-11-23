@@ -12,6 +12,8 @@ public class ItemDataSO : ScriptableObject
     public bool isStackable;
     public ItemType itemType;
     public RunTimeItemType runTimeItemType;
+    public int sell;
+    public bool isCanSell;
 
     public virtual void OnValidate()
     {
