@@ -73,12 +73,12 @@ public class FarmAnimal : MonoBehaviour, IInteractable
         }
     }
 
-
     /// <summary>
     /// hàm bắt đầu gọi khi tạo con vật
     /// </summary>
     /// <param name="data"></param>
     public async void StartLife(AnimalDataSO data)
+
     {
         this.animalData = data;
 

@@ -24,6 +24,9 @@ public class TreeInfor : MonoBehaviour, IToolTarget
 
     public ToolDataSO.ToolType RequireTool => requiredTool;
 
+    //sound chat cay
+    public AudioClip chopSound;
+
     private void Awake()
     {
         if(bodyAnim == null)
@@ -99,6 +102,10 @@ public class TreeInfor : MonoBehaviour, IToolTarget
             if (currentHitPoints > rootHit)
             {
                 bodyAnim.SetTrigger("Interact");
+                if (chopSound != null)
+                {
+                    AudioManager.instance.PlayFX(chopSound);
+                }
                 return;
             }
             else
