@@ -23,6 +23,7 @@ public class PlayerFishing : MonoBehaviour
     private Tilemap[] _groundTilemaps;
     InventorySlot curToolKit;
     ToolDataSO curToolDataSO;
+    [SerializeField] FishDataBase fishDatabase;
     public bool IsFishing { get => isInFishingState; set{
             if(isInFishingState == value) return;
             isInFishingState = value;
@@ -125,6 +126,12 @@ public class PlayerFishing : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.Space) && playerVisual.winnerAnimIsActive == false && isInFishingState && !fishGame.activeSelf && !fishBited)
         {
+            ToolRunTimeData fishingRodData = curToolKit.dataRuntime as ToolRunTimeData;
+            if(fishingRodData.currentDurability <= 0)
+            {
+                GameEventManager.Ins.TriggerDialog("Cần câu đã hư hại, bạn cần gặp BlackSmith để sửa chữa");
+                return;
+            }
             CastingFishing();
         }
         if (Input.GetKeyDown(KeyCode.P) && isInFishingState)
@@ -161,7 +168,7 @@ public class PlayerFishing : MonoBehaviour
         IsFishing = false;
         FishBited = false;
         fishIcon.SetActive(false);
-
+        GameEventManager.Ins.inventoryEvent.AddItem(fishDatabase.GetRandomFish(), 1);
     }
     public void fishGameLossed()
     {

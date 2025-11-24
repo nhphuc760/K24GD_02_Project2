@@ -22,4 +22,8 @@ public abstract class ToolDataSO : ItemShopDataSO
         FishingRod,
         Sickle
     }
+    public override void OnValidate()
+    {
+        
+    }
 }

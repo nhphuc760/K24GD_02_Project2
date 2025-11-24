@@ -15,9 +15,13 @@ MonoBehaviour:
   _id: 503
   _itemName: Grapes
   _icon: {fileID: -1809181962, guid: 86a1f20c893a0a343aca5543698e3e64, type: 3}
-  _description: "B\xE1n ho\u1EB7c ch\u1EBF bi\u1EBFn"
+  _description: "B\xE1n ho\u1EB7c ch\u1EBF bi\u1EBFn m\xF3n \u0103n\nGi\xE1 b\xE1n:
+    150$/1"
   _maxStack: 999
   isStackable: 1
   itemType: 0
+  runTimeItemType: 0
+  sell: 18
+  isCanSell: 1
   sellPrice: 150
   prefab: {fileID: 4751093196059062069, guid: e8b73ac6fe7824d4796ea232aba00f33, type: 3}

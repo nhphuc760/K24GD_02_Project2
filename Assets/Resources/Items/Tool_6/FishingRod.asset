@@ -13,16 +13,19 @@ MonoBehaviour:
   m_Name: FishingRod
   m_EditorClassIdentifier: 
   _id: 605
-  _itemName: FishingRod
+  _itemName: "C\u1EA7n c\xE2u "
   _icon: {fileID: 3357079768526042575, guid: 527c77a6981ada3428785885c2e1db08, type: 3}
   _description: "C\u1EA7n tre"
   _maxStack: 1
   isStackable: 0
   itemType: 2
   runTimeItemType: 1
-  purchase_Price: 2000
+  sell: 0
+  isCanSell: 0
+  purchase_Price: 500
+  typeItemShop: 0
   maxDurability: 100
   durabilityLossPerUse: 5
   toolType: 5
-  repairCostPerPoint: 100
+  repairCostPerPoint: 10
   timePerpointRepair: 30

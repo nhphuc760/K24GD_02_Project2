@@ -70,7 +70,7 @@ public class SettingsMenu : MonoBehaviour
     void UpdateFallbackMusicVolume(float value)
     {
         // Tìm tất cả script SceneMusic trong scene hiện tại
-        SceneMusic[] musics = FindObjectsOfType<SceneMusic>();
+        SceneMusic[] musics = FindObjectsByType<SceneMusic>(FindObjectsSortMode.None);
         foreach (var music in musics)
         {
             // Vì SceneMusic fallback tự tạo AudioSource trên chính nó

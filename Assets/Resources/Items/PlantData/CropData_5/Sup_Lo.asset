@@ -15,9 +15,13 @@ MonoBehaviour:
   _id: 517
   _itemName: "S\xFAp l\u01A1"
   _icon: {fileID: -1192843495842217142, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
-  _description: "B\xE1n ho\u1EB7c ch\u1EBF bi\u1EBFn"
+  _description: "B\xE1n ho\u1EB7c ch\u1EBF bi\u1EBFn m\xF3n \u0103n\nGi\xE1 b\xE1n:
+    50$/1"
   _maxStack: 999
   isStackable: 1
   itemType: 0
+  runTimeItemType: 0
+  sell: 23
+  isCanSell: 1
   sellPrice: 50
   prefab: {fileID: 924045041693617390, guid: 14494782d2c97ea4684ff9a462f169f4, type: 3}

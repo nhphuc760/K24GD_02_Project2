@@ -15,9 +15,13 @@ MonoBehaviour:
   _id: 515
   _itemName: "H\xE0nh"
   _icon: {fileID: -6706443759888266369, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
-  _description: "b\xE1n ho\u1EB7c ch\u1EBF bi\u1EBFn"
+  _description: "B\xE1n ho\u1EB7c ch\u1EBF bi\u1EBFn m\xF3n \u0103n\nGi\xE1 b\xE1n:
+    50$/1"
   _maxStack: 999
   isStackable: 1
   itemType: 0
+  runTimeItemType: 0
+  sell: 2
+  isCanSell: 1
   sellPrice: 50
   prefab: {fileID: 8024406598420517611, guid: a1ca8aa8298e9c344bb9f03792fd2680, type: 3}

@@ -235,6 +235,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
+  footstepSounds:
+  - {fileID: 8300000, guid: b824acc76756b234d90f6e29b52ed509, type: 3}
+  - {fileID: 8300000, guid: d6e0c482d3aae6a4d8d13b13b1e46838, type: 3}
+  - {fileID: 8300000, guid: 83458fada03dcc14297d372326a9e9cd, type: 3}
+  - {fileID: 8300000, guid: 2ff1ba00f7d280046a3c5d987de9e9f4, type: 3}
+  - {fileID: 8300000, guid: ff1d158b774275b4696a34b242bb1976, type: 3}
+  footstepInterval: 0.5
 --- !u!114 &5034473988514278421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,6 +266,7 @@ MonoBehaviour:
   bobberPoint: {fileID: 4496835122943137626}
   fishGame: {fileID: 2483054234722781040}
   fish: {fileID: 7330929540574425785}
+  fishDatabase: {fileID: 11400000, guid: ad75928fcd84b1841a7cbdf6cb012894, type: 2}
 --- !u!114 &7649085941992401945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,7 +306,8 @@ MonoBehaviour:
   interactableLayerMask:
     serializedVersion: 2
     m_Bits: 512
-  harvestSound: {fileID: 8300000, guid: 4a6ef36e0aca4f04a8e86cae687430f1, type: 3}
+  PlantSound: {fileID: 8300000, guid: 4a6ef36e0aca4f04a8e86cae687430f1, type: 3}
+  HarvestSound: {fileID: 8300000, guid: afb39a4cf84acd348b66cb942fbeac31, type: 3}
 --- !u!70 &8327488623868348190
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -81,9 +81,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalData: {fileID: 11400000, guid: f9ef6cbf93378aa429856e2d864a7a95, type: 2}
+  visual: {fileID: 7149489580668447070}
   moveSpeed: 1
   TimetoChangeDirection: 3
-  canvas: {fileID: 0}
   timeRemainingTXT: {fileID: 0}
   fillProduction: {fileID: 0}
   harvestIndicatorPrefab: {fileID: 7068805685387326167, guid: c0685d91769654a449934561a867205b, type: 3}

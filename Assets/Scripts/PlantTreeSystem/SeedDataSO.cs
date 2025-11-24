@@ -18,6 +18,13 @@ public class SeedDataSO : ItemShopDataSO
     public int yield;// sản lượng thu được mỗi khi thu hoạch
 
 
+
+    private void Reset()
+    {
+        isCanSell = true;
+    }
+
+
     /// <summary>
     /// Lấy khoảng thời gian mỗi giai đoạn của cây
     /// </summary>
@@ -28,7 +35,8 @@ public class SeedDataSO : ItemShopDataSO
     }
     public override void OnValidate()
     {
-        _description = $"Trồng và thu hoạch\nSản lượng: {yield}";
+        _description = $"Trồng và thu hoạch\nThời gian: {timeSpandHarvest}\nSản lượng: {yield}\nLợi nhuận: {cropData.sell}$/1";
+        
     }
 }
 

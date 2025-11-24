@@ -23,6 +23,11 @@ public class KitchenInventoryManager : MonoBehaviour
             obj.Init(i, this); 
         }
     }
+
+    private void OnEnable()
+    {
+        GameEventManager.Ins.gameInput.DisableOpenBag();
+    }
     void Start()
     {
         GameEventManager.Ins.cookingEvent.onPlayerEnterKitchen += PlayerEnterKitchen;
@@ -48,6 +53,7 @@ public class KitchenInventoryManager : MonoBehaviour
     {
         slotInforUI.gameObject.SetActive(false);
         DialogCookingChange.SetActive(false);
+        GameEventManager.Ins.gameInput.EnableOpenBag();
     }
     private void PlayerLeaveKitchen()
     {

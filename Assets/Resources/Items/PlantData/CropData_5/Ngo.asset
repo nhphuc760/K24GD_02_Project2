@@ -15,9 +15,13 @@ MonoBehaviour:
   _id: 514
   _itemName: "Ng\xF4"
   _icon: {fileID: 6959094700402278857, guid: 8d283114280df184c85ba715dd66ba8f, type: 3}
-  _description: "B\xE1n ho\u1EB7c ch\u1EBF bi\u1EBFn"
+  _description: "B\xE1n ho\u1EB7c ch\u1EBF bi\u1EBFn m\xF3n \u0103n\nGi\xE1 b\xE1n:
+    50$/1"
   _maxStack: 999
   isStackable: 1
   itemType: 0
+  runTimeItemType: 0
+  sell: 10
+  isCanSell: 1
   sellPrice: 50
   prefab: {fileID: 2109830419602664874, guid: c7e9ed158c09f7545a5453848c017668, type: 3}
