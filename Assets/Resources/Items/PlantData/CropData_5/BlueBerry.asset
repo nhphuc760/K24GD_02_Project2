@@ -16,10 +16,11 @@ MonoBehaviour:
   _itemName: "Vi\u1EC7t qu\u1EA5t"
   _icon: {fileID: 8849037320410730604, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
   _description: "B\xE1n ho\u1EB7c ch\u1EBF bi\u1EBFn m\xF3n \u0103n\nGi\xE1 b\xE1n:
-    200$/1"
+    25$/1"
   _maxStack: 999
   isStackable: 1
   itemType: 0
   runTimeItemType: 0
-  sellPrice: 200
+  sell: 25
+  isCanSell: 1
   prefab: {fileID: 2901879548913263867, guid: 83d25fdc6b0eb61409da0594e35fdef1, type: 3}

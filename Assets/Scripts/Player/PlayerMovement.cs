@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
             if (footstepTimer <= 0)
             {
                 int index = GetIndex();
-                AudioManager.instance.PlayFX(footstepSounds[index]); ;
+                AudioManager.instance.PlayFX(footstepSounds[index]); 
 
                 // Reset lại đồng hồ
                 footstepTimer = footstepInterval;

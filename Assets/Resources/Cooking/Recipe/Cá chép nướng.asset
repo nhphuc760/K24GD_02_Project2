@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b008df799a5a6b4a935ad730435dc0a, type: 3}
-  m_Name: "Ph\xF4 mai"
+  m_Name: "C\xE1 ch\xE9p n\u01B0\u1EDBng"
   m_EditorClassIdentifier: 
-  timeCooldown: 0
-  ingredients: []
-  result: {fileID: 0}
+  timeCooldown: 400
+  ingredients:
+  - itemSO: {fileID: 11400000, guid: 77d267a8b3e0e0742b7de3ee0d35daac, type: 2}
+    quantity: 1
+  result: {fileID: 11400000, guid: 1b47dbc08c93a2c4e832f9e691759cff, type: 2}

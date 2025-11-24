@@ -24,4 +24,14 @@ public class ShopEvent
     {
         onHide?.Invoke();
     }
+    public event Action onPlayerEnterShop;
+    public event Action onPlayerExitShop;
+    public void PlayerEnterShop()
+    {
+        onPlayerEnterShop?.Invoke();
+    }
+    public void PlayerExitShop()
+    {
+        onPlayerExitShop?.Invoke();
+    }
 }

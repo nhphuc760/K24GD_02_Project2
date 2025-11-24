@@ -75,8 +75,11 @@ public class InventoryManager : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-   
 
+    private void OnEnable()
+    {
+        GameEventManager.Ins.gameInput.DisableInterac();
+    }
     private void Start()
     {
         GameEventManager.Ins.cookingEvent.onGetTotalItem += GetTotalItem;
@@ -90,6 +93,8 @@ public class InventoryManager : MonoBehaviour
         GameEventManager.Ins.inventoryEvent.onGetInventory += GetDataInventory;
         GameEventManager.Ins.inventoryEvent.onGetItemSOByID += GetItemDataSOByID;
         GameEventManager.Ins.inventoryEvent.onGetIndexOfSlot += GetIndexOfSlot;
+
+        GameEventManager.Ins.inventoryEvent.onDisableInventory += DisableSelf;
     }
 
     private InventoryManager GetDataInventory()
@@ -143,6 +148,7 @@ public class InventoryManager : MonoBehaviour
         {
             itemInforUI.gameObject.SetActive(false);
         }
+        GameEventManager.Ins.gameInput.EnableInterac();
        
     }
 
@@ -163,7 +169,13 @@ public class InventoryManager : MonoBehaviour
         GameEventManager.Ins.inventoryEvent.onGetInventory -= GetDataInventory;
         GameEventManager.Ins.inventoryEvent.onGetItemSOByID -= GetItemDataSOByID;
         GameEventManager.Ins.inventoryEvent.onGetIndexOfSlot -= GetIndexOfSlot;
+        GameEventManager.Ins.inventoryEvent.onDisableInventory -= DisableSelf;
         await inventory.SaveData("InventoryOfPlayer");
+    }
+
+    private void DisableSelf()
+    {
+       gameObject.SetActive(false);
     }
 
     private void OnValidate()

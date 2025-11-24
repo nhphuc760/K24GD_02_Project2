@@ -1,65 +1,26 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class StaminaManager : MonoBehaviour
 {
-    public static StaminaManager instance;
 
     public float maxStamina = 100f;
     public float currentStamina;
 
     public float staminaDecreasePerMinute = 0.5f;
-
-    public Slider staminaSlider;
     public Image fillImage; // Để đổi màu thanh máu (Xanh -> Đỏ)
 
     private float timer;
     private float secondsPerGameMinute; // Thời gian thực cho 1 phút trong game 
 
-    private void Awake()
-    {
-        if (instance == null) { instance = this; DontDestroyOnLoad(gameObject); }
-        else { Destroy(gameObject); }
-    }
-
     void Start()
     {
         currentStamina = maxStamina;
         UpdateUI();
+        StartCoroutine(AwaitTimeManagerReady());
 
-        // Tính toán: 1 ngày có 1440 phút
-        if (TimeManager.instance != null)
-        {
-            secondsPerGameMinute = TimeManager.instance.secondsperDay / 1440f;
-        }
-    }
-
-    void Update()
-    {
-        // Nếu TimeManager chưa sẵn sàng hoặc game đang pause, không làm gì cả
-        if (TimeManager.instance == null || Time.timeScale == 0) return;
-
-        // Đếm ngược thời gian thực
-        timer += Time.deltaTime;
-
-        // Nếu đã trôi qua đủ thời gian cho 1 phút trong game
-        if (timer >= secondsPerGameMinute)
-        {
-            DecreaseStamina(staminaDecreasePerMinute);
-            timer = 0;
-        }
-
-
-        // Test Cheat
-        if (Input.GetKeyDown(KeyCode.F1)) // Nhấn H để Hồi máu (giả lập ăn)
-        {
-            RestoreStamina(20);
-        }
-        if (Input.GetKeyDown(KeyCode.F2)) // Nhấn K để Tự sát (test chết)
-        {
-            DecreaseStamina(10);
-        }
     }
 
     // Hàm trừ thể lực (dùng cho cả thời gian và hành động cuốc đất)
@@ -106,19 +67,51 @@ public class StaminaManager : MonoBehaviour
     }
 
     private void UpdateUI()
-    {
-        if (staminaSlider != null)
-        {
-            staminaSlider.value = currentStamina / maxStamina;
-
-            // Đổi màu: Xanh khi đầy, Đỏ khi sắp chết
+    {       // Đổi màu: Xanh khi đầy, Đỏ khi sắp chết
             if (fillImage != null)
             {
-                fillImage.color = Color.Lerp(Color.red, Color.green, staminaSlider.value);
-            }
-        }
+                float fillValue = currentStamina / maxStamina;
+                fillImage.fillAmount = fillValue;   
+                fillImage.color = Color.Lerp(Color.red, Color.green, fillValue);
+            }   
     }
 
     // Hàm hỗ trợ để Inventory gọi khi dùng item(thêm sau)
  
+    IEnumerator UpdateCorotine()
+    {
+        // Đếm ngược thời gian thực
+        while (true)
+        {
+            timer += Time.deltaTime;
+
+            // Nếu đã trôi qua đủ thời gian cho 1 phút trong game
+            if (timer >= secondsPerGameMinute)
+            {
+                DecreaseStamina(staminaDecreasePerMinute);
+                timer = 0;
+            }
+
+
+            // Test Cheat
+            if (Input.GetKeyDown(KeyCode.F1)) // Nhấn H để Hồi máu (giả lập ăn)
+            {
+                RestoreStamina(20);
+            }
+            if (Input.GetKeyDown(KeyCode.F2)) // Nhấn K để Tự sát (test chết)
+            {
+                DecreaseStamina(10);
+            }
+            yield return null;
+        }
+    }
+    IEnumerator AwaitTimeManagerReady()
+    {
+        while (TimeManager.instance == null)
+        {
+            yield return null;
+        }
+        secondsPerGameMinute = TimeManager.instance.SecondsPerMinute;
+        StartCoroutine(UpdateCorotine());
+    }
 }

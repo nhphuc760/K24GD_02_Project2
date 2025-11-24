@@ -6,17 +6,17 @@ using UnityEngine;
 public class FarmAnimal : MonoBehaviour, IInteractable
 {
     public AnimalDataSO animalData;// được gán khi spawn
+    [SerializeField] SpriteRenderer visual;
 
     private DateTime timeProductReady; //thời điểm sản phẩm phọt raa
     private DateTime curTime; //thời điểm hiện tại
     private bool canHarvest = false; //có thể thu hoạch hay không
-
     //movement
     public float moveSpeed = 1f;
     public float TimetoChangeDirection = 3f;
     private Rigidbody2D rb;
     private Vector2 moveDirection;
-    private float moveTimer;
+    private float moveTimer; //thời gian thay đổi hướng đi của animal
     [SerializeField] TextMeshProUGUI timeRemainingTXT;
     [SerializeField] UnityEngine.UI.Image fillProduction;
     [SerializeField] GameObject harvestIndicatorPrefab;
@@ -34,13 +34,17 @@ public class FarmAnimal : MonoBehaviour, IInteractable
         audioSource = GetComponent<AudioSource>();
     }
 
+    private void Start()
+    {
+        transform.SetParent(AnimalManager.Ins.transform);
+    }
+
     void Update()
     {
         //logic di chuyển
         moveTimer -= Time.deltaTime;
         if (moveTimer <= 0f)
         {
-            Debug.Log("Hết giờ! Đang gọi ChangeDirection...");
             ChangeDirection();
         }
     }
@@ -51,25 +55,30 @@ public class FarmAnimal : MonoBehaviour, IInteractable
         if(rb != null)
         {
             rb.linearVelocity = moveDirection * moveSpeed;
+            Flip();
         }
     }
+    /// <summary>
+    /// Thay đổi hướng con vật 
+    /// </summary>
 
     void ChangeDirection()
     {
-        Debug.Log("ChangeDirection đã được gọi!");
         moveDirection = UnityEngine.Random.insideUnitCircle.normalized;
         moveTimer = TimetoChangeDirection + UnityEngine.Random.Range(-1f,1f);
 
         if (UnityEngine.Random.value < chanceVolume)
         {
-            Debug.Log("GÀ ĐANG GÁY! (Gọi PlayIdleSound)");
             PlayIdleSound();
         }
     }
 
+    /// <summary>
+    /// hàm bắt đầu gọi khi tạo con vật
+    /// </summary>
+    /// <param name="data"></param>
+    public async void StartLife(AnimalDataSO data)
 
-    //khi mua con vật mới
-    public async void Spawn(AnimalDataSO data)
     {
         this.animalData = data;
 
@@ -79,7 +88,7 @@ public class FarmAnimal : MonoBehaviour, IInteractable
             curTime = task.Value; 
         }
         else { 
-            curTime = DateTime.Now; 
+            curTime = DateTime.UtcNow; 
         }
 
         timeProductReady = curTime.AddSeconds(animalData.secondsToProduce);
@@ -90,7 +99,12 @@ public class FarmAnimal : MonoBehaviour, IInteractable
         if(currentIndicator != null) currentIndicator.SetActive(false);
     }
 
-    //tải con vật đã lưu
+    /// <summary>
+    /// Hàm tải dữ liệu con vật
+    /// </summary>
+    /// <param name="data"></param>
+    /// <param name="timeHarvest"></param>
+    /// <param name="curTime"></param>
     public void LoadAnimalState(AnimalDataSO data, DateTime timeHarvest, DateTime curTime)
     {
         this.animalData = data;
@@ -111,7 +125,10 @@ public class FarmAnimal : MonoBehaviour, IInteractable
         ChangeDirection();
     }
 
-    //Đếm ngược thời giand đẻ
+    /// <summary>
+    /// Hàm đếm ngược thời gian đẻ
+    /// </summary>
+    /// <returns></returns>
     IEnumerator ProductionCycle()
     {
         while(curTime < timeProductReady)
@@ -152,7 +169,6 @@ public class FarmAnimal : MonoBehaviour, IInteractable
 
     private async void GetProduct()
     {
-        Debug.Log("Đã thu hoạch " + animalData.productData._id);
         GameEventManager.Ins.inventoryEvent.AddItem(animalData.productData, 1);//thêm sản phẩm vào inventory
 
         //bắt đầu lại chu kỳ mới 
@@ -162,7 +178,7 @@ public class FarmAnimal : MonoBehaviour, IInteractable
         //lấy thgian server
         var task = await Save_Load_Firebase.GetSeverDateTime();
         if (task.HasValue) { curTime = task.Value; }
-        else { curTime = DateTime.Now; }
+        else { curTime = DateTime.UtcNow; }
 
         timeProductReady = curTime.AddSeconds(animalData.secondsToProduce);
         StartCoroutine(ProductionCycle());
@@ -184,17 +200,6 @@ public class FarmAnimal : MonoBehaviour, IInteractable
         }
     }
 
-    //// --- HÀM LƯU GAME ---
-    //public AnimalSaveData GetSaveData()
-    //{
-    //    AnimalSaveData data = new AnimalSaveData();
-    //    data.sceneName = SceneManager.GetActiveScene().name;
-    //    data.worldPosition = new SerializableVector3(transform.position);
-    //    data.animalDataID = animalData._id; // Lưu ID
-    //    data.timeProductReady = this.timeProductReady;
-    //    return data;
-    //}
-
     void PlayIdleSound()
     {
         if (audioSource != null && idleSounds.Length > 0)
@@ -209,6 +214,34 @@ public class FarmAnimal : MonoBehaviour, IInteractable
             audioSource.PlayOneShot(idleSounds[randomIndex]);
 
             Debug.Log("Gà đã gáy");
+        }
+    }
+
+    private void OnDisable()
+    {
+        AnimalManager.Ins.AddDataAnimal(GetAnimalSaveData());
+    }
+    public AnimalSaveData GetAnimalSaveData()
+    {
+        AnimalSaveData data = new AnimalSaveData
+        {
+            _idSO = animalData._id,
+            animalDataID = animalData._itemName,
+            worldPosition = new SerializableVector3(this.transform.position),
+            timeProductReady = this.timeProductReady,
+
+        };
+        return data;
+    }
+    void Flip()
+    {
+        if(rb.linearVelocityX > 0)
+        {
+            visual.flipX = true;
+        }
+        else
+        {
+            visual.flipX = false;   
         }
     }
 }

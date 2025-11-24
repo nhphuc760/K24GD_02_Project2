@@ -9,14 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ab8ad3cb4f85904b85dc485ddbf21a7, type: 3}
+  m_Script: {fileID: 11500000, guid: d6e77e4d31e6ee946853cabbf91c81a8, type: 3}
   m_Name: Umbrella
   m_EditorClassIdentifier: 
   _id: 301
   _itemName: Umbrella
-  _icon: {fileID: -4987337320017983735, guid: d26428b6e414d0940b5a3547e7e365ca, type: 3}
-  _description: Umbrella
+  _icon: {fileID: -4364100887663249488, guid: a5d467de234f8c944aae02807a482cae, type: 3}
+  _description: Decor
   _maxStack: 99
   isStackable: 1
   itemType: 0
+  runTimeItemType: 0
   purchase_Price: 100
+  typeItemShop: 0

@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,23 +9,53 @@ public class ItemInforUI : MonoBehaviour
     [SerializeField] Image _icon;
     [SerializeField] TextMeshProUGUI _description;
     [SerializeField] Button _useButton;
-    [SerializeField] Button _removeButton;
+    [SerializeField] Button _confirmButton;
     [SerializeField] TMP_InputField _quantityInput;
     [SerializeField] GameObject descriptionUI;
     [SerializeField] GameObject removeItemUI;
+    [SerializeField] Sprite _backGroundSell;
+    [SerializeField] Button _removeButton;
+    [SerializeField] TextMeshProUGUI textButtonSell;
     int slotIndex;
-
+    bool isSell;
+    Color colorDefault;
+    Sprite spriteDefault;
+    [SerializeField] InventoryManager inventoryManager;
     public int SlotIndex { get => slotIndex; set => slotIndex = value; }
 
     private void Awake()
     {
-        _removeButton.onClick.AddListener(RemoveItem);
+        colorDefault = _removeButton.image.color;
+        spriteDefault = _removeButton.image.sprite;
+        GameEventManager.Ins.onNearSell += OnNearSell;
+        _confirmButton.onClick.AddListener(RemoveItem);
 
     }
 
+    private void OnNearSell(bool obj)
+    {
+        isSell = obj;
+    }
+
+    private void OnEnable()
+    {
+        if (isSell)
+        {
+            _removeButton.image.sprite = _backGroundSell;
+           _removeButton.image.color = Color.white;
+            textButtonSell.text = "Bán";
+        }
+        else
+        {
+            _removeButton.image.sprite = spriteDefault;
+            _removeButton.image.color = colorDefault;
+            textButtonSell.text = "Loại bỏ";
+        }
+    }
     private void OnDestroy()
     {
-        _removeButton.onClick.RemoveAllListeners();
+        _confirmButton.onClick.RemoveAllListeners();
+        GameEventManager.Ins.onNearSell -= OnNearSell;
     }
 
     public void UpdateUI(InventorySlot inventorySlot)
@@ -47,10 +78,25 @@ public class ItemInforUI : MonoBehaviour
 
    public void RemoveItem()
     {
-        int quantity;
+            int quantity;
         if(int.TryParse(_quantityInput.text, out quantity))
         {
             if(quantity > 0) {
+                if (isSell)
+                { 
+                    ItemDataSO dataSO  = inventoryManager.inventory.itemSlots[slotIndex].ItemData;
+                    if (dataSO.isCanSell)
+                    {
+                        int total = dataSO.sell * quantity;
+                        GameManager.Ins.Coin += total;
+                        GameEventManager.Ins.TriggerDialog($"<color=green>+{total}</color>"); 
+                    }
+                    else
+                    {
+                        GameEventManager.Ins.TriggerDialog("<color=red>Vật phẩm không thể bán</color>");
+                        return;
+                    }
+                }
                 GameEventManager.Ins.inventoryEvent.RemoveItem(slotIndex, quantity);
                 _quantityInput.text = "";
             }

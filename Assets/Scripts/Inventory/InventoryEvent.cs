@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -58,4 +58,10 @@ public class InventoryEvent
     {
         return onGetIndexOfSlot?.Invoke(slot) ?? -1 ;
     }
+    public event Action onDisableInventory;
+    public void DisableInventory()
+    {
+        onDisableInventory?.Invoke();
+    }
+
 }

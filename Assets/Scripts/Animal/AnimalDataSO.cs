@@ -15,12 +15,4 @@ public class AnimalDataSO : ItemShopDataSO // có thể được mua trong shop.
     [Header("Visuals")]
     [Tooltip("Icon báo sẵn sàng lấy sản phẩm")]
     public Sprite harvestIndicator;
-    public override bool CheckConditionBuy(int quantity)
-    {
-        return base.CheckConditionBuy(quantity);
-    }
-    public override void SeparateBuy(int quantity)
-    {
-        base.SeparateBuy(quantity);
-    }
 }
