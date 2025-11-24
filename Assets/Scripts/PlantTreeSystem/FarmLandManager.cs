@@ -13,10 +13,13 @@ public class FarmLandManager : MonoBehaviour
     InventorySlot curToolKit;
     Transform groundCheck;
     bool isInFarmLand = false;
+    public bool IsFarmLand => isInFarmLand;
     Vector3Int curPos;
     Vector3Int lastHighLightPos;
+    public static FarmLandManager Ins;
     private void Awake()
     {
+        Ins = this;
         Transform player = FindAnyObjectByType<PlayerFishing>().transform;
         groundCheck = player.GetChild(1);
     }

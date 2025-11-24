@@ -35,6 +35,7 @@ public class ShopUISlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         }else if (eventData.button.Equals(PointerEventData.InputButton.Right))
         {
             price = manager.GetPriceItem(slotIndex);
+            totalPrice.text = price.ToString();
             multiBuy.SetActive(!multiBuy.activeSelf);
         }
     }
@@ -64,6 +65,7 @@ public class ShopUISlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
     public void InputMultiBuy(string quantity)
     {
+        if(string.IsNullOrEmpty(quantity)) return;
         int _quantity = int.Parse(quantity);
         totalPrice.text = $"{_quantity * price}";
     }
