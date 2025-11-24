@@ -44,6 +44,8 @@ public class UIManager : MonoBehaviour
 
     private List<Light2D> nightLightsInScene = new List<Light2D>();
 
+    //kim đồng hồ quay
+    public ClockUI clockUI;
     private void Awake()
     {
         if (instance == null)
@@ -178,6 +180,12 @@ public class UIManager : MonoBehaviour
         CalculateTargetLighting(hour, minute);
         // Cập nhật cường độ MỤC TIÊU cho đèn đêm
         UpdateNightLightState(hour, minute);
+
+        //Cập nhật kim đồng hồ
+        if (clockUI != null)
+        {
+            clockUI.UpdateTime(hour, minute);
+        }
     }
     void Update()
     {
