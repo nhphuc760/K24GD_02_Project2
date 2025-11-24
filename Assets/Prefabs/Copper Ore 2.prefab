@@ -109,13 +109,12 @@ MonoBehaviour:
   orePrefab: {fileID: 3639777610272869884}
   respawnDelay: 10
   animator: {fileID: 708901123360925062}
-  maxHitPoints: 3
+  maxHitPoints: 8
   requireTool: 1
-  dropPrefab: {fileID: 4968870224503612978, guid: 1172c48d9ff7bd946967cf79444ab3ca, type: 3}
-  dropCount: 2
+  dropPrefab: {fileID: 11400000, guid: f1eb2e2753d54cd4885c9dc295bf11ab, type: 2}
+  dropCount: 3
   dropForce: 3
   knockbackForce: 2
-  breakSound: {fileID: 8300000, guid: 0017f1d6d7e191247af1986143e77ce1, type: 3}
 --- !u!50 &3686963255431828276
 Rigidbody2D:
   serializedVersion: 5

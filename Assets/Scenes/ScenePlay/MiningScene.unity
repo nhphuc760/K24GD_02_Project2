@@ -66632,6 +66632,60 @@ Transform:
   - {fileID: 858910176}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1965745701
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1965745703}
+  - component: {fileID: 1965745702}
+  m_Layer: 0
+  m_Name: MapManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1965745702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965745701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947c7c45482117045af45b1ce501edfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  breakSound:
+  - {fileID: 8300000, guid: 8685bdbe21bd58149841c6487e5ee8ce, type: 3}
+  - {fileID: 8300000, guid: c9480465fa5ea284d93aacd52bcfb035, type: 3}
+  - {fileID: 8300000, guid: f84c1a2169142fe469a4da74c1daa64f, type: 3}
+  - {fileID: 8300000, guid: 3ea1e4b0debe04d45aaee2277f67d628, type: 3}
+  - {fileID: 8300000, guid: 96b1378dd4d52184080519f15c1f47cb, type: 3}
+  - {fileID: 8300000, guid: be97ca400cf5d7d479d7e31316566692, type: 3}
+  - {fileID: 8300000, guid: d62afa61e0e7f824aadec054c54c7669, type: 3}
+  - {fileID: 8300000, guid: 9e91f784a3113e6419dd2865041308af, type: 3}
+  - {fileID: 8300000, guid: 0c653c10f72c59a49868d6d2ebc40e92, type: 3}
+--- !u!4 &1965745703
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965745701}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -66646,3 +66700,4 @@ SceneRoots:
   - {fileID: 246741221}
   - {fileID: 1272435173}
   - {fileID: 333089812}
+  - {fileID: 1965745703}

@@ -112,4 +112,8 @@ public class ShopManager : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+    public int GetPriceItem(int slotIndex)
+    {
+        return shopDataBaseSO.shopDatabase[slotIndex].purchase_Price;
+    }
 }

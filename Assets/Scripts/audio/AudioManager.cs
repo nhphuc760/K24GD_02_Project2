@@ -50,6 +50,11 @@ public class AudioManager : MonoBehaviour
         sfxSource.PlayOneShot(clip,sfxVolume);
     }
 
+    public void PlayFX(AudioClip[] clip)
+    {
+        if (clip == null || clip.Length == 0) return;
+        PlayFX(clip[Random.Range(0, clip.Length - 1)]);
+    }
     public void StopMusic()
     {
         musicSource.Stop();
