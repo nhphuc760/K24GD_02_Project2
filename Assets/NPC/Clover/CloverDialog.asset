@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15e98bf3344115458f7a78b9295c227, type: 3}
+  m_Name: CloverDialog
+  m_EditorClassIdentifier: 
+  npcName: Clover
+  npcPortraits: []
+  dialogueLines:
+  - "C\u1EADu mu\u1ED1n ti\u1EBFt ki\u1EC7m ti\u1EC1n mua d\u1EE5ng c\u1EE5 m\u1EDBi
+    ?"
+  - "T\u1EDB khuy\xEAn c\u1EADu n\xEAn \u0111\u1EBFn g\u1EB7p b\xE1c BlackSmith"
+  - "B\xE1c \u1EA5y l\xE0 th\u1EE3 r\xE8n gi\u1ECFi nh\u1EA5t c\xE1i l\xE0ng n\xE0y
+    \u0111\u1EA5y"
+  autoProgressLines: 010101
+  autoProgressDelay: 1.5
+  typingSpeed: 0.05
+  voiceSound: {fileID: 0}
+  voicePitch: 1

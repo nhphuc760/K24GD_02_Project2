@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15e98bf3344115458f7a78b9295c227, type: 3}
+  m_Name: TieuphuDialog
+  m_EditorClassIdentifier: 
+  npcName: "Ti\u1EC1u phu gi\xE0"
+  npcPortraits: []
+  dialogueLines:
+  - "L\u1EA7n \u0111\u1EA7u ti\xEAn ta th\u1EA5y c\u1EADu \u0111\u1EA5y"
+  - "\u0110\u1ED1n c\u1EE7i gi\xFAp c\u1EADu ch\u1EBF t\u1EA1o c\xE1c trang b\u1ECB
+    c\u1EA7n thi\u1EBFt cho cu\u1ED9c s\u1ED1ng h\xE0ng ng\xE0y c\u1EE7a c\u1EADu
+    l\u1EAFm \u0111\u1EA5y"
+  - "\u0110\u1ED1n c\u1EE7i c\u0169ng gi\xFAp c\u1EADu r\xE8n luy\xEAn c\u01A1 b\u1EAFp
+    \u0111\u1EA5y , ho! ho! ho!"
+  autoProgressLines: 010101
+  autoProgressDelay: 1.5
+  typingSpeed: 0.05
+  voiceSound: {fileID: 0}
+  voicePitch: 1
