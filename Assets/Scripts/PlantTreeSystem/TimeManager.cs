@@ -18,21 +18,15 @@ public class TimeManager : MonoBehaviour
     private float timeSinceLastMinute;
     private float secondsPerMinute;
 
+    public float SecondsPerMinute { get => secondsPerMinute; }
 
     private void Start()
     {
         //Thiết lập singleton
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+       instance = this;
         secondsPerMinute = secondsperDay / 1440f; //1440 phút trong một ngày
         //Cập nhật UI lần đầu tiên khi game bắt đầu
+
         UIManager.instance.UpdateClock(currentHour, currentMinute);
     }
     void Update()
