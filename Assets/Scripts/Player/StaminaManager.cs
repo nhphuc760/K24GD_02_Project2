@@ -5,113 +5,121 @@ using System.Collections;
 
 public class StaminaManager : MonoBehaviour
 {
-
+    public static StaminaManager instance;
     public float maxStamina = 100f;
     public float currentStamina;
-
     public float staminaDecreasePerMinute = 0.5f;
-    public Image fillImage; // Để đổi màu thanh máu (Xanh -> Đỏ)
+
+    public Image staminaFillImage;
+    public Image iconImage;
+    public Sprite[] iconSprites;
 
     private float timer;
-    private float secondsPerGameMinute; // Thời gian thực cho 1 phút trong game 
+    private float secondsPerGameMinute;
+
+    private void Awake()
+    {
+        if (instance == null) { instance = this; DontDestroyOnLoad(gameObject); }
+        else { Destroy(gameObject); }
+    }
 
     void Start()
     {
         currentStamina = maxStamina;
-        UpdateUI();
-        StartCoroutine(AwaitTimeManagerReady());
-
+        // Bắt đầu Coroutine để chờ TimeManager
+        StartCoroutine(InitializeStaminaSystem());
     }
 
-    // Hàm trừ thể lực (dùng cho cả thời gian và hành động cuốc đất)
-    public void DecreaseStamina(float amount)
+    // Coroutine chờ TimeManager
+    IEnumerator InitializeStaminaSystem()
     {
-        currentStamina -= amount;
-
-        if (currentStamina <= 0)
-        {
-            currentStamina = 0;
-            Die(); // Chết!
-        }
-
-        UpdateUI();
-    }
-
-    // Hàm hồi thể lực (dùng khi ăn)
-    public void RestoreStamina(float amount)
-    {
-        currentStamina += amount;
-        if (currentStamina > maxStamina) currentStamina = maxStamina;
-
-        Debug.Log($"Đã ăn! Hồi {amount} thể lực.");
-        UpdateUI();
-    }
-
-    // Hàm xử lý cái chết
-    private void Die()
-    {
-        Debug.Log("Nhân vật đã kiệt sức và ngất xỉu!");
-
-        //Reset lại thể lực (một chút)
-        currentStamina = maxStamina * 0.5f; // Hồi 50%
-
-        //Chuyển về scene Farm 
-        // SceneLoader.instance.LoadScene("Farm"); 
-
-        //Trừ tiền phạt hoặc mất đồ
-
-        //Chuyển sang ngày hôm sau luôn
-        // GameManager.instance.EndDay();
-
-        UpdateUI();
-    }
-
-    private void UpdateUI()
-    {       // Đổi màu: Xanh khi đầy, Đỏ khi sắp chết
-            if (fillImage != null)
-            {
-                float fillValue = currentStamina / maxStamina;
-                fillImage.fillAmount = fillValue;   
-                fillImage.color = Color.Lerp(Color.red, Color.green, fillValue);
-            }   
-    }
-
-    // Hàm hỗ trợ để Inventory gọi khi dùng item(thêm sau)
- 
-    IEnumerator UpdateCorotine()
-    {
-        // Đếm ngược thời gian thực
-        while (true)
-        {
-            timer += Time.deltaTime;
-
-            // Nếu đã trôi qua đủ thời gian cho 1 phút trong game
-            if (timer >= secondsPerGameMinute)
-            {
-                DecreaseStamina(staminaDecreasePerMinute);
-                timer = 0;
-            }
-
-
-            // Test Cheat
-            if (Input.GetKeyDown(KeyCode.F1)) // Nhấn H để Hồi máu (giả lập ăn)
-            {
-                RestoreStamina(20);
-            }
-            if (Input.GetKeyDown(KeyCode.F2)) // Nhấn K để Tự sát (test chết)
-            {
-                DecreaseStamina(10);
-            }
-            yield return null;
-        }
-    }
-    IEnumerator AwaitTimeManagerReady()
-    {
+        // Chờ đến khi TimeManager sẵn sàng
         while (TimeManager.instance == null)
         {
             yield return null;
         }
-        secondsPerGameMinute = TimeManager.instance.SecondsPerMinute;
-        StartCoroutine(UpdateCorotine());
+
+        // Lấy giá trị từ TimeManager
+        secondsPerGameMinute = TimeManager.instance.secondsperDay / 1440f;
+
+        UpdateUI();
+    }
+
+    // Dùng Update() thay vì Coroutine while(true)
+    void Update()
+    {
+        // Nếu TimeManager chưa sẵn sàng, chưa làm gì cả
+        if (TimeManager.instance == null || secondsPerGameMinute <= 0) return;
+
+        //Logic Trừ Thể Lực Theo Thời Gian
+        timer += Time.deltaTime;
+        if (timer >= secondsPerGameMinute)
+        {
+            DecreaseStamina(staminaDecreasePerMinute);
+            timer = 0;
+        }
+
+        //Test Cheat 
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            RestoreStamina(20);
+        }
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            DecreaseStamina(10);
+        }
+    }
+
+    public void DecreaseStamina(float amount)
+    {
+        currentStamina -= amount;
+        if (currentStamina <= 0)
+        {
+            currentStamina = 0;
+            Die();
+        }
+        UpdateUI();
+    }
+
+    public void RestoreStamina(float amount)
+    {
+        currentStamina += amount;
+        if (currentStamina > maxStamina) currentStamina = maxStamina;
+        Debug.Log($"Đã ăn! Hồi {amount} thể lực.");
+        UpdateUI();
+    }
+
+    private void Die()
+    {
+        Debug.Log("Nhân vật đã kiệt sức và ngất xỉu!");
+        currentStamina = maxStamina * 0.5f;
+        UpdateUI();
+    }
+
+    private void UpdateUI()
+    {
+        //tính tỉ lệ % thể lực
+        float fillRatio = currentStamina / maxStamina;
+        // Đảm bảo ratio không bao giờ vượt quá 0-1 để tránh lỗi
+        fillRatio = Mathf.Clamp01(fillRatio);
+        if (staminaFillImage != null)
+        {
+            staminaFillImage.fillAmount = fillRatio;
+        }
+        if (iconImage != null && iconSprites.Length > 0)
+        {
+            // Thuật toán ánh xạ từ Tỉ lệ (0-1) sang Chỉ số mảng (0 -> n-1)
+            //có 6 ảnh. Ratio 1.0 -> index 5. Ratio 0.0 -> index 0.
+            int spriteCount = iconSprites.Length;
+
+            // Công thức: nhân tỉ lệ với số lượng ảnh, rồi làm tròn xuống
+            int index = Mathf.FloorToInt(fillRatio * spriteCount);
+
+            // Xử lý trường hợp đặc biệt: khi ratio là 1.0, công thức trên ra bằng spriteCount (ví dụ ra 6)
+            index = Mathf.Clamp(index, 0, spriteCount - 1);
+
+            // Gán sprite tương ứng vào Image
+            iconImage.sprite = iconSprites[index];
+        }
     }
 }
