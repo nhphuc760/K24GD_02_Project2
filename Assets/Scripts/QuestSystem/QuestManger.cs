@@ -10,10 +10,8 @@ public class QuestManger : MonoBehaviour
 
     [SerializeField]
     Dictionary<string, Quest> questMap;
- 
+    [SerializeField] QuestDatabaseSO questDatabase;
     [SerializeField] int currentPlayerLevel = 10;
-   
-    QuestInforSO[] questInforSOs;
     private  void Awake()
     {
      
@@ -113,9 +111,9 @@ public class QuestManger : MonoBehaviour
    
     async Task<Dictionary<string, Quest>> CreateQuestMap()
     {
-        questInforSOs = Resources.LoadAll<QuestInforSO>("Quests");
         Dictionary<string, Quest> idToQuestMap = new Dictionary<string, Quest>();
         List<Quest>  quests = await LoadQuest();
+        
         foreach (var quest in quests)
         {
             idToQuestMap[quest.questInforSO._id] = quest;
@@ -176,7 +174,7 @@ public class QuestManger : MonoBehaviour
                 List<QuestData> questDatas = JsonConvert.DeserializeObject<List<QuestData>>(snapshot.Value.ToString());
                 foreach (var child in questDatas)
                 {
-                    QuestInforSO infor = GetQuestInforSoByQuestID(child.questID);
+                    QuestInforSO infor = questDatabase.GetQuestByID(child.questID);
                     Quest quest = new Quest(infor, child.questState, child.questStepState, child.isClaimedReward);
                     quests.Add(quest);
                 }
@@ -184,7 +182,7 @@ public class QuestManger : MonoBehaviour
             else
             {
                 Debug.Log("QuestDatabase is not exists");
-                foreach (var info in questInforSOs)
+                foreach (var info in questDatabase.questDatabase)
                 {
                     quests.Add(new Quest(info));
                 }
@@ -194,19 +192,13 @@ public class QuestManger : MonoBehaviour
         catch 
         {
             quests.Clear();
-            foreach (var info in questInforSOs)
+            foreach (var info in questDatabase.questDatabase)
             {
                 quests.Add(new Quest(info));
             }
             return quests;
         }
 
-    }
-
-
-    public QuestInforSO GetQuestInforSoByQuestID(string id)
-    {
-       return questInforSOs.ToList().Find(x => x._id == id);
     }
 
 }

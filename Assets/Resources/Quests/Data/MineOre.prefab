@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3116835463073642447}
-  - component: {fileID: 6472445831919996870}
+  - component: {fileID: 3587973586359474648}
   m_Layer: 0
-  m_Name: FishingCaught
+  m_Name: MineOre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6472445831919996870
+--- !u!114 &3587973586359474648
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,9 +41,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7671482126454477678}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fbd4666f5ab91e42a00e6ae5c2145ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b9b2efec6969c04e839a12a2c034750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFinished: 0
-  currentCaught: 0
-  caughtToComplete: 10
+  dataStateRuntime:
+    current: 0
+    target: 10

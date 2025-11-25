@@ -15,12 +15,11 @@ MonoBehaviour:
   <_id>k__BackingField: Fishing
   displayName: Fishing
   requiredLevel: 2
-  prerequisiteQuests:
-  - {fileID: 11400000, guid: 8b49614a2e56b8e458843c98eba78de5, type: 2}
+  prerequisiteQuests: []
   questStepPrefab: {fileID: 7671482126454477678, guid: 4f9c279ed8428fc4e9a61ed1d3c716e0, type: 3}
   reward:
-    experience: 100
+    experience: 20
     gold: 50
     items:
-    - itemSO: {fileID: 11400000, guid: c0ec7fe32500bc840a9af0361ad2d8de, type: 2}
-      quantity: 10
+    - itemSO: {fileID: 11400000, guid: 5c533254c51171040ab619b68c92ba1f, type: 2}
+      quantity: 1

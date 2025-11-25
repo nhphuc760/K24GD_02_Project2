@@ -24,10 +24,10 @@ public class InventoryEvent
     {
         onRemoveItemByData?.Invoke(item, quantity);
     }
-    public event Func<ItemDataSO, int, DataRunTimeItem, bool> onAddItem;
-    public bool AddItem(ItemDataSO item, int quantity, DataRunTimeItem dataRunTimeItem = null)
+    public event Func<ItemDataSO, int, DataRunTimeItem, bool, bool> onAddItem;
+    public bool AddItem(ItemDataSO item, int quantity, DataRunTimeItem dataRunTimeItem = null, bool isDialog = true)
     {
-       return onAddItem?.Invoke(item, quantity, dataRunTimeItem) ?? false ;
+       return onAddItem?.Invoke(item, quantity, dataRunTimeItem, isDialog) ?? false ;
     }
     
 

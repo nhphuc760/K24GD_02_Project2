@@ -53,7 +53,7 @@ public class ItemDropFloat : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            GameEventManager.Ins.inventoryEvent.AddItem(reSourceSO, 1);
+            GameEventManager.Ins.inventoryEvent.AddItem(reSourceSO, 1, isDialog: false);
             Destroy(gameObject);
         }
     }

@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee640543e3fb7fe40b818226d1625b13, type: 3}
-  m_Name: GrowthPlant
+  m_Name: MineOre
   m_EditorClassIdentifier: 
-  <_id>k__BackingField: GrowthPlant
+  <_id>k__BackingField: MineOre
   displayName: Collect the coins
   requiredLevel: 1
   prerequisiteQuests: []
-  questStepPrefab: {fileID: 4602454062537588972, guid: 0d7f72473965ac34089eaf0b79c7ee65, type: 3}
+  questStepPrefab: {fileID: 7671482126454477678, guid: 6952e7cbe17279045a5ed87e9194462f, type: 3}
   reward:
     experience: 50
-    gold: 100
+    gold: 80
     items:
-    - itemSO: {fileID: 11400000, guid: 250d84d3be50290469b476fc988a9a4a, type: 2}
+    - itemSO: {fileID: 11400000, guid: b6da4ed488531c748933de6997b6d155, type: 2}
       quantity: 1
-    - itemSO: {fileID: 11400000, guid: c0ec7fe32500bc840a9af0361ad2d8de, type: 2}
-      quantity: 3
+    - itemSO: {fileID: 11400000, guid: e257ad48e33e3da4d95606985e732c8e, type: 2}
+      quantity: 1

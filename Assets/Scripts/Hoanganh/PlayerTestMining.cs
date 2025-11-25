@@ -20,8 +20,14 @@ public class PlayerTestMining : MonoBehaviour
         {
             playerMovement = GetComponent<PlayerMovement>();
         }
+        GameEventManager.Ins.toolKitEvent.onCurSelectedChange += CurToolSelectedChanged;
     }
 
+    private void OnEnable()
+    {
+        GameEventManager.Ins.gameInput.interacPressed += TryMineOre;   
+
+    }
     private void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoad;
@@ -40,27 +46,25 @@ public class PlayerTestMining : MonoBehaviour
     }
 
 
-    private void OnEnable()
-    {
-        GameEventManager.Ins.gameInput.interacPressed += TryMineOre;
-        GameEventManager.Ins.toolKitEvent.onCurSelectedChange += CurToolSelectedChanged;
-    }
+    
 
     private void CurToolSelectedChanged(InventorySlot obj)
     {
+       
         curToolKit = obj;
-        currentTool = curToolKit?.ItemData as ToolDataSO;
+        currentTool = curToolKit.ItemData as ToolDataSO;
     }
 
     private void OnDisable()
     {
         GameEventManager.Ins.gameInput.interacPressed -= TryMineOre;
-        GameEventManager.Ins.toolKitEvent.onCurSelectedChange -= CurToolSelectedChanged;
+        
     }
 
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoad;
+        GameEventManager.Ins.toolKitEvent.onCurSelectedChange -= CurToolSelectedChanged;
     }
 
     void TryMineOre()

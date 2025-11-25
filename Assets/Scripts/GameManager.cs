@@ -10,14 +10,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Ins;
     [Header("Reference")]
     [SerializeField] CharacterDatabase characterDatabase;
-    [SerializeField] GameObject playerPrefab;
     [SerializeField] SeedDatabase seedDataBase; // Cơ sở dữ liệu cây trồng chung cho toàn game
     public event Action<PlayerData, CharacterDataSO> onLoadDataCompleted;
 
     [SerializeField] int _coins;
-
-    //phần mới animal
-    public AnimalDataSO AnimalData;
     private Transform animalSpanwPoint;
     
     public int Coin 
@@ -143,19 +139,10 @@ public class GameManager : MonoBehaviour
         {
             // Tìm GameObject người chơi bằng Tag
             GameObject player = GameObject.FindGameObjectWithTag("Player");
-
-            if (player != null)
-            {
                 player.transform.position = this.nextPlayerPosition;
                 Debug.Log($"Đã di chuyển Player đến vị trí: {nextPlayerPosition}");
-
                 // Reset lại để lần sau không bị di chuyển nhầm
                 this.nextPlayerPosition = Vector3.zero;
-            }
-            else
-            {
-                Instantiate(playerPrefab, this.nextPlayerPosition, Quaternion.identity);
-            }
         }
     }
     private async Task SaveCurrentSceneState()
@@ -234,19 +221,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-    //animal test
-    private void Update()
-    {
-        // Khi nhấn phím F9 (ví dụ)
-        if (Input.GetKeyDown(KeyCode.F9))
-        {
-            if (AnimalData != null && animalSpanwPoint != null)
-            {
-                BuyAnimal(AnimalData);
-            }
-        }
-    }
     public void BuyAnimal(AnimalDataSO animal)
     {
         // Kiểm tra xem đã tìm thấy spawn point chưa

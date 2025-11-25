@@ -2,18 +2,13 @@ using System;
 using UnityEngine;
 public class QuestStepState 
 {
-    public int current;
-    public int target;
-    public QuestStepState(int current)
+    public string questStateDynamic;
+    public QuestStepState(string current)
     {
-        this.current = current;
+        questStateDynamic = current;
     }
     public QuestStepState()
     {
-        this.current = 0;
-    }
-    public override string ToString()
-    {
-        return $"{current}/{target}";
+        questStateDynamic = null;
     }
 }

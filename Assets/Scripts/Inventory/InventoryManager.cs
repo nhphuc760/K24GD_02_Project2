@@ -115,31 +115,6 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            AddItem(Resources.Load<ItemDataSO>("Items/ConsumpItem_1/TestItem"), 1);// Giả lập thêm Item
-
-        }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            AddItem(Resources.Load<ItemDataSO>("Items/ConsumpItem_1/TestItem2"), 2); //Giả lập thêm item
-
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            AddItem(Resources.Load<SeedDataSO>("Items/PlantData/SeedData_4/Seed_Carrot"), 10);
-        }
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            AddItem(Resources.Load<ItemDataSO>("Items/Tool_6/Sickle"), 1);
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            AddItem(Resources.Load<ItemDataSO>("Items/Tool_6/Shovel"), 1);
-        }
-    }
     private async void OnDisable()
     {
         if(isLoaded)
@@ -229,7 +204,7 @@ public class InventoryManager : MonoBehaviour
 
    
 
-    public bool AddItem(ItemDataSO itemDataSO, int quantity = 1, DataRunTimeItem dataRunTimeItem = null)
+    public bool AddItem(ItemDataSO itemDataSO, int quantity = 1, DataRunTimeItem dataRunTimeItem = null, bool isDialog = true)
     {
         if(itemDataSO == null)
         {
@@ -239,6 +214,7 @@ public class InventoryManager : MonoBehaviour
         Debug.Log($"ItemDataSO {itemDataSO.name}");
         if (inventory.AddItem(itemDataSO, quantity, dataRunTimeItem))
         {
+            if(isDialog)
             GameEventManager.Ins.TriggerDialog($"<color=green>{itemDataSO._itemName} đã được thêm vào kho đồ của bạn</color>");
             UpdateUI();
             return true;

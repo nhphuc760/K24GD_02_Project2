@@ -91,8 +91,9 @@ public class BlackSmith : MonoBehaviour
                ToolRunTimeData tool = new ToolRunTimeData();
                 tool.currentDurability = saveData.curDurability + saveData.spandDurability;
                 ItemDataSO item = GameEventManager.Ins.inventoryEvent.GetItemSOByID(saveData._idTool);               
-                GameEventManager.Ins.inventoryEvent.AddItem(item, 1, tool);
                 await GetItemEffect().ToUniTask();
+                GameEventManager.Ins.inventoryEvent.AddItem(item, 1, tool, isDialog: false);
+                GameEventManager.Ins.OnRepairTool(item as ToolDataSO);
                 saveData = null;
             }
             if(invenManager == null){

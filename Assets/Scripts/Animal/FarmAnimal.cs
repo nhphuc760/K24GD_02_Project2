@@ -159,6 +159,7 @@ public class FarmAnimal : MonoBehaviour, IInteractable
         if(canHarvest)
         {
             GetProduct();
+            GameEventManager.Ins.animalEvent.OnGetProduct(animalData.productData);
         }
     }
 

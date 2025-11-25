@@ -43,11 +43,8 @@ public class OreInfor : MonoBehaviour, IToolTarget
     void BreakOre()
     {
         if (isDestroyed) return;
-        isDestroyed = true;       
-
-        Debug.Log("Ore destroyed!");       
-
-        // Văng cục quặng ra nhẹ trước khi phá
+        isDestroyed = true;
+        GameEventManager.Ins.MiningOre(dropPrefab);
         StartCoroutine(KnockbackAndDestroy());
 
         // Gọi spawn lại quặng sau delay

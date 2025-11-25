@@ -8,4 +8,9 @@ public class AnimalEvent
     {
         onBuyAnimal?.Invoke(animal);
     }
+    public event Action<ProductDataSO> onGetProduct;
+    public void OnGetProduct(ProductDataSO sO)
+    {
+        onGetProduct?.Invoke(sO);
+    }
 }

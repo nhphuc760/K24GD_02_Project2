@@ -40,15 +40,18 @@ public class ShopManager : MonoBehaviour
     {
         Show();
         GameEventManager.Ins.inventoryEvent.DisableInventory();
+        GameEventManager.Ins.questEvents.HideQuestUI();
     }
 
     private void OnEnable()
     {
         GameEventManager.Ins.gameInput.DisableOpenBag();
+        GameEventManager.Ins.gameInput.DisableOpenQuest();
     }
     private void OnDisable()
     {
         GameEventManager.Ins.gameInput.EnableOpenBag();
+        GameEventManager.Ins.gameInput.EnableQuest();
     }
     private void OnDestroy()
     {

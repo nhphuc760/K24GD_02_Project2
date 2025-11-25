@@ -55,6 +55,7 @@ public class TreeInfor : MonoBehaviour, IToolTarget
         Debug.Log("Tree Chopped down");
         DropWood();
         Destroy(gameObject);
+        GameEventManager.Ins.CutDownTree(dropDataSO);
         //Gọi Respawn trong treeSpawn
         if(spawner != null)
         {

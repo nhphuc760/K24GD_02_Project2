@@ -86,8 +86,10 @@ public class Kitchen : MonoBehaviour
             
            GameEventManager.Ins.cookingEvent.PlayerEnterKitchen();
            GameEventManager.Ins.inventoryEvent.DisableInventory();
+            GameEventManager.Ins.questEvents.HideQuestUI();
             if(!isCooking && curRecipeSO != null)
             {
+                GameEventManager.Ins.cookingEvent.CookingFinish(curRecipeSO.result as KitchenItemDataSO);
                 GetItem();
             }
         }

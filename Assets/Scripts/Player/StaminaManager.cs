@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class StaminaManager : MonoBehaviour
@@ -57,16 +56,6 @@ public class StaminaManager : MonoBehaviour
         {
             DecreaseStamina(staminaDecreasePerMinute);
             timer = 0;
-        }
-
-        //Test Cheat 
-        if (Input.GetKeyDown(KeyCode.F1))
-        {
-            RestoreStamina(20);
-        }
-        if (Input.GetKeyDown(KeyCode.F2))
-        {
-            DecreaseStamina(10);
         }
     }
 

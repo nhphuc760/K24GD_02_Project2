@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee640543e3fb7fe40b818226d1625b13, type: 3}
+  m_Name: RepairTool
+  m_EditorClassIdentifier: 
+  <_id>k__BackingField: RepairTool
+  displayName: Collect the coins
+  requiredLevel: 1
+  prerequisiteQuests: []
+  questStepPrefab: {fileID: 7671482126454477678, guid: 0fe7ab4427764ca439dfebf551543150, type: 3}
+  reward:
+    experience: 50
+    gold: 100
+    items:
+    - itemSO: {fileID: 11400000, guid: ec5b870e3094fa2439e58a701d91796c, type: 2}
+      quantity: 10
+    - itemSO: {fileID: 11400000, guid: 1bbd11799be3a964faa9184baf8c0a28, type: 2}
+      quantity: 10
