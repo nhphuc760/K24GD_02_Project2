@@ -1,10 +1,11 @@
 ﻿
-using UnityEngine;
-using UnityEngine.SceneManagement;
+using Newtonsoft.Json;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System;
-using Newtonsoft.Json;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Ins;
@@ -288,5 +289,39 @@ public class GameManager : MonoBehaviour
             // Nếu là scene khác (Town, Mine...), chúng ta không cần spawn point
             animalSpanwPoint = null;
         }
+    }
+
+
+    //sleep
+    public void StartSleepSequence()
+    {
+        StartCoroutine(SleepRoutine());
+    }
+
+    IEnumerator SleepRoutine()
+    { 
+        //Màn hình tối dần
+        yield return UIManager.instance.FadeOut();
+
+        //Reset Thời Gian & Kích hoạt cây lớn lên
+        TimeManager.instance.SkipToNextDay();
+
+        // Hồi phục Thể Lực
+        if (StaminaManager.instance != null)
+        {
+            StaminaManager.instance.RestoreStamina(100);
+        }
+
+        //lưu game (optional)
+        //SaveGame();
+
+        // Đợi một chút cho cảm giác "đang ngủ" (ví dụ 1 giây)
+        yield return new WaitForSeconds(1f);
+
+
+        //Màn hình sáng lại
+        yield return UIManager.instance.FadeIn();
+
+        Debug.Log("Đã ngủ dậy!");
     }
 }

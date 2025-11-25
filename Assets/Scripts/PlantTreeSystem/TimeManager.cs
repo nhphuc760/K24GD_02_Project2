@@ -18,6 +18,9 @@ public class TimeManager : MonoBehaviour
     private float timeSinceLastMinute;
     private float secondsPerMinute;
 
+
+    //sleep
+    public event Action<float> OnTimeSkipped; //báo cho crop biết đã bao lâu trôi qua khi ngủ
     public float SecondsPerMinute { get => secondsPerMinute; }
 
     private void Start()
@@ -67,5 +70,27 @@ public class TimeManager : MonoBehaviour
     public int GetCurrentMinute()
     {
         return currentMinute;
+    }
+
+
+    //hàm được gọi khi ngủ
+    public void SkipToNextDay()
+    {
+        //Tính toán thời gian chênh lệch (Game Time)
+        int hoursToSkip = (24 - currentHour) + 6; // Từ giờ hiện tại đến 24h đêm + 6h sáng hôm sau
+        int minutesToSkip = (hoursToSkip * 60) - currentMinute;
+
+        float realSecondsSkipped = minutesToSkip * secondsPerMinute;
+        Debug.Log($"Đi ngủ: Bỏ qua {minutesToSkip} phút game (~{realSecondsSkipped} giây thực).");
+
+        OnTimeSkipped?.Invoke(realSecondsSkipped);
+        currentHour = 6;
+        currentMinute = 0;
+
+        //cập nhật ui
+        if (UIManager.instance != null)
+            UIManager.instance.UpdateClock(currentHour, currentMinute);
+
+        Debug.Log("Ngủ dậy vào ngày mới lúc 6 giờ sáng!");
     }
 }
