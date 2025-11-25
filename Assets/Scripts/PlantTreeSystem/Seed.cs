@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Net.NetworkInformation;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -25,6 +26,75 @@ public class Seed : MonoBehaviour, IToolTarget
     private GameObject currentIndicator;      // Biến để lưu trữ bảng hiệu đã được tạo ra
  
     public ToolDataSO.ToolType RequireTool => requireTool;
+
+
+    private void Start()
+    {
+        //sự kiện tua thời gian từ sleep
+        if (TimeManager.instance != null)
+        {
+            TimeManager.instance.OnTimeSkipped += HandleTimeSkipped;
+        }
+    }
+    private void OnDestroy()
+    {
+        // Hủy đăng ký để tránh lỗi
+        if (TimeManager.instance != null)
+        {
+            TimeManager.instance.OnTimeSkipped -= HandleTimeSkipped;
+        }
+    }
+    private void HandleTimeSkipped(float secondsSkipped)
+    {
+        if (isMature) return; // Nếu chín rồi thì thôi
+
+        // Cộng thêm số giây đã ngủ vào thời gian hiện tại của cây
+        //curTime là biến DateTime nội bộ của cây để đếm ngược
+        curTime = curTime.AddSeconds(secondsSkipped);
+
+        // Cập nhật ngay lập tức trạng thái cây (để UI và hình ảnh update luôn)
+        CheckGrowthStatus();
+    }
+    private void CheckGrowthStatus()
+    {
+        TimeSpan coolDown = timeHarvest - curTime;
+
+        // Cập nhật UI Fill
+        if (fillGrowth != null)
+        {
+            fillGrowth.fillAmount = 1 - (float)(coolDown.TotalSeconds / currentSeedData.timeSpandHarvest);
+        }
+        if (timeGrowthTXT != null) timeGrowthTXT.text = coolDown.ToString(@"hh\:mm\:ss");
+
+        // Cập nhật tiến độ lớn
+        int progress = CalCulateProgress(curTime);
+        if (progress > curGrowthProgress)
+        {
+            curGrowthProgress = progress;
+            if (curGrowthProgress >= currentSeedData.growhtSprites.Count - 1)
+            {
+                isMature = true;
+                requireTool = ToolDataSO.ToolType.Sickle;
+                ShowHarvestIndicator(true);
+                HideCoolDown();
+                UpdateSprite();
+                // Nếu đang chạy coroutine thì có thể dừng, nhưng để tự nhiên cũng được
+            }
+            UpdateSprite();
+        }
+
+        // Kiểm tra nếu đã vượt quá thời gian thu hoạch (trường hợp ngủ dậy là chín luôn)
+        if (curTime >= timeHarvest && !isMature)
+        {
+            isMature = true;
+            requireTool = ToolDataSO.ToolType.Sickle;
+            ShowHarvestIndicator(true);
+            HideCoolDown();
+            UpdateSprite();
+        }
+    }
+
+
 
     private void Awake()
     {

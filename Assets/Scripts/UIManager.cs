@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -46,6 +47,10 @@ public class UIManager : MonoBehaviour
 
     //kim đồng hồ quay
     public ClockUI clockUI;
+
+    //fade effect
+    public Image fadeImage; 
+    public float fadeDuration = 1f; // Thời gian fade
     private void Awake()
     {
         if (instance == null)
@@ -102,20 +107,26 @@ public class UIManager : MonoBehaviour
             Debug.Log(scene.path + "start with");
             if (inGameCanvas != null) inGameCanvas.SetActive(true);
             //Tìm Global Light trong scene mới
-            FindGlobalLight();
-            //tìm là lưu đèn đêm trong scene mới
-            FindAndStoreNightLights();
-            if (TimeManager.instance != null)
+            if (activeScene != 7 && activeScene != 11)
             {
-                int currentHour = TimeManager.instance.GetCurrentHour();
-                int currentMinute = TimeManager.instance.GetCurrentMinute();
-
-                // Cập nhật ánh sáng lần đầu
-                if (activeScene != 7)
+                FindGlobalLight();
+                //tìm là lưu đèn đêm trong scene mới
+                FindAndStoreNightLights();
+                if (TimeManager.instance != null)
                 {
+                    int currentHour = TimeManager.instance.GetCurrentHour();
+                    int currentMinute = TimeManager.instance.GetCurrentMinute();
+
+                    // Cập nhật ánh sáng lần đầu
                     SetInitialLighting(currentHour, currentMinute);
                     SetInitialNightLightState(currentHour, currentMinute);
                 }
+            }
+            else
+            {
+                // Nếu là scene 7 hoặc 11, Reset biến để không điều khiển nhầm
+                globalLight = null;
+                nightLightsInScene.Clear();
             }
         }
     }
@@ -176,11 +187,13 @@ public class UIManager : MonoBehaviour
             // Định dạng lại giờ và phút để luôn có 2 chữ số (ví dụ: 08:05)
             clockText.text = $"{hour:00}:{minute:00}";
         }
-        // Tính toán giá trị MỤC TIÊU cho ánh sáng môi trường
-        CalculateTargetLighting(hour, minute);
-        // Cập nhật cường độ MỤC TIÊU cho đèn đêm
-        UpdateNightLightState(hour, minute);
-
+        if (activeScene != 7 && activeScene != 11)
+        {
+            // Tính toán giá trị MỤC TIÊU cho ánh sáng môi trường
+            CalculateTargetLighting(hour, minute);
+            // Cập nhật cường độ MỤC TIÊU cho đèn đêm
+            UpdateNightLightState(hour, minute);
+        }
         //Cập nhật kim đồng hồ
         if (clockUI != null)
         {
@@ -190,7 +203,7 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         // Chỉ Lerp nếu Global Light tồn tại
-        if (globalLight != null && activeScene != 7)
+        if (globalLight != null && activeScene != 7 & activeScene != 11)
         {
             
             // Lerp ánh sáng môi trường
@@ -216,12 +229,12 @@ public class UIManager : MonoBehaviour
     //thiết lập ánh sáng ban đầu ngay lập tức khi vào scene.
     void SetInitialLighting(int hour, int minute)
     {
-        CalculateTargetLighting(hour, minute); // Tính giá trị
-        if (globalLight != null)
-        {
-            globalLight.color = targetGlobalColor; // Gán trực tiếp
-            globalLight.intensity = targetGlobalIntensity; // Gán trực tiếp
-        }
+         CalculateTargetLighting(hour, minute); // Tính giá trị
+         if (globalLight != null)
+         {
+             globalLight.color = targetGlobalColor; // Gán trực tiếp
+             globalLight.intensity = targetGlobalIntensity; // Gán trực tiếp
+         }
     }
     //update Night light theo thời gian
     void UpdateNightLightState(int hour, int minute)
@@ -249,7 +262,7 @@ public class UIManager : MonoBehaviour
         }
 
         // Áp dụng cường độ cho tất cả đèn đêm
-        if (activeScene == 7)
+        if (activeScene == 7 || activeScene == 11)
             return;
         else
         {
@@ -277,5 +290,39 @@ public class UIManager : MonoBehaviour
     public void Show()
     {
         gameObject.SetActive(true);
+    }
+
+
+    //fade effect
+    // Coroutine làm màn hình tối dần (Fade Out)
+    public IEnumerator FadeOut()
+    {
+        if (fadeImage == null) yield break;
+
+        float t = 0;
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            float alpha = t / fadeDuration;
+            fadeImage.color = new Color(0, 0, 0, alpha);
+            yield return null;
+        }
+        fadeImage.color = new Color(0, 0, 0, 1); // Đen hoàn toàn
+    }
+
+    // Coroutine làm màn hình sáng lại (Fade In)
+    public IEnumerator FadeIn()
+    {
+        if (fadeImage == null) yield break;
+
+        float t = 0;
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+            float alpha = 1 - (t / fadeDuration);
+            fadeImage.color = new Color(0, 0, 0, alpha);
+            yield return null;
+        }
+        fadeImage.color = new Color(0, 0, 0, 0); // Trong suốt
     }
 }

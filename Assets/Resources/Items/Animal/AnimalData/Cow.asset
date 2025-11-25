@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edfddfed90934504480086417a8dd9f0, type: 3}
+  m_Name: Cow
+  m_EditorClassIdentifier: 
+  _id: 2
+  _itemName: Cow
+  _icon: {fileID: -145892860266026107, guid: 9e63cd30f82651047a4193c605531d03, type: 3}
+  _description: 
+  _maxStack: 0
+  isStackable: 0
+  itemType: 0
+  runTimeItemType: 0
+  sell: 0
+  isCanSell: 0
+  purchase_Price: 500
+  typeItemShop: 1
+  animalPrefab: {fileID: 5817498884866880954, guid: 30517dc2a7a385d4bbed8868b3340e89, type: 3}
+  secondsToProduce: 600
+  productData: {fileID: 11400000, guid: 7d6cff6a58041184186291db720b0aec, type: 2}
+  harvestIndicator: {fileID: -7410647113679376744, guid: 4c585fa60822d1548a74e4879852c0a8, type: 3}
