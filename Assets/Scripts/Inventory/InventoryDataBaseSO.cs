@@ -14,6 +14,8 @@ public class InventoryDataBaseSO : ScriptableObject
     public int GetCount() => itemDataSOs.Count;
     private void OnValidate()
     {
+#if UNITY_EDITOR
         itemDataSOs = Resources.LoadAll<ItemDataSO>("Items").ToList();
+#endif
     }
 }

@@ -147,7 +147,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -168,4 +168,5 @@ MonoBehaviour:
   floatAmplitude: 0.1
   floatFrequency: 2
   floatDelay: 0.5
-  timeDestroy: 0
+  timeDestroy: 10
+  reSourceSO: {fileID: 11400000, guid: 319a62c3a9266f748ac403d10695fe38, type: 2}

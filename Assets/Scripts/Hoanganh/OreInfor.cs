@@ -15,7 +15,8 @@ public class OreInfor : MonoBehaviour, IToolTarget
     int currentHitPoints;
     bool isDestroyed = false;
     [Header("Drop Setting")]
-    public GameObject dropPrefab;        //prefab vật phẩm rớt ra
+    [Tooltip("Vật phẩm rớt ra")]
+    public ResourceSO dropPrefab;        //prefab vật phẩm rớt ra
     public int dropCount = 2;            //số lượng vật phẩm rớt ra
     public float dropForce = 3f;         //lực bắn khi rớt
 
@@ -24,10 +25,6 @@ public class OreInfor : MonoBehaviour, IToolTarget
     private Rigidbody2D rb;
 
     int takeDamage = Animator.StringToHash("TakeDamage");
-
-
-    //them am thanh khi bi pha
-    public AudioClip breakSound;
     public ToolDataSO.ToolType RequireTool => requireTool;
 
     private void Awake()
@@ -82,7 +79,7 @@ public class OreInfor : MonoBehaviour, IToolTarget
         if (dropPrefab == null) return;
         for (int i = 0; i < dropCount; i++)
         {
-            GameObject drop = Instantiate(dropPrefab, transform.position, Quaternion.identity);
+            GameObject drop = Instantiate(dropPrefab.prefabObj, transform.position, Quaternion.identity);
 
             //Thêm lực ngẫu nhiên để vật phẩm bay ra tự nhiên hơn
             Rigidbody2D rb = drop.GetComponent<Rigidbody2D>();
@@ -107,9 +104,9 @@ public class OreInfor : MonoBehaviour, IToolTarget
         {
             //triger damage
             animator.SetTrigger(takeDamage);
-            if (AudioManager.instance != null && breakSound != null)
+            if (AudioManager.instance != null && MiningManager.Ins != null)
             {
-                AudioManager.instance.PlayFX(breakSound);
+                AudioManager.instance.PlayFX(MiningManager.Ins.breakSound);
             }
             else
                 Debug.LogWarning("AudioManager instance or breakSound is null!");

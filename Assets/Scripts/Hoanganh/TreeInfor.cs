@@ -17,7 +17,8 @@ public class TreeInfor : MonoBehaviour, IToolTarget
     bool isChopped = false;         // Đánh dấu cây đã đổ
 
     [Header("Drop Setting")]
-    public GameObject woodPrefab;
+    [Tooltip("Dữ liệu sản phẩm")]
+    public ResourceSO dropDataSO;
     public int dropCount = 2;
     public float dropForce = 2f;
     int rootHit;
@@ -63,10 +64,10 @@ public class TreeInfor : MonoBehaviour, IToolTarget
     void DropWood()
     {
         
-        if(woodPrefab == null) return;
+        if(dropDataSO == null) return;
         for (int i = 0; i < dropCount; i++)
         {
-            GameObject drop = Instantiate(woodPrefab, transform.position, Quaternion.identity);
+            GameObject drop = Instantiate(dropDataSO.prefabObj, transform.position, Quaternion.identity);
 
             Rigidbody2D rb = drop.GetComponent<Rigidbody2D>();
             if(rb != null)

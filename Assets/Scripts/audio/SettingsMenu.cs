@@ -8,9 +8,6 @@ public class SettingsMenu : MonoBehaviour
     public Slider sfxSlider;
     public Button backButton; // Nút quay lại
 
-    [Header("Components")]
-    public GameObject visualPanel; 
-
     private void Start()
     {
         if (PlayerPrefs.HasKey("MusicVol")) musicSlider.value = PlayerPrefs.GetFloat("MusicVol");
@@ -34,15 +31,13 @@ public class SettingsMenu : MonoBehaviour
     // Hàm hiện Menu (Gọi từ MainMenuManager)
     public void Show()
     {
-        if (visualPanel != null) visualPanel.SetActive(true);
-        else gameObject.SetActive(true); // Fallback nếu quên gán panel
+      gameObject.SetActive(true); // Fallback nếu quên gán panel
     }
 
     // Hàm ẩn Menu (Gọi từ nút Back)
     public void Hide()
     {
-        if (visualPanel != null) visualPanel.SetActive(false);
-        else gameObject.SetActive(false);
+       gameObject.SetActive(false);
     }
 
     public void SetMusicVol(float value)

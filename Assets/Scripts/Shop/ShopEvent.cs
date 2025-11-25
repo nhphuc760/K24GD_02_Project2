@@ -7,12 +7,12 @@ public class ShopEvent
     public void PointerEnter() { 
         onPointerEnter?.Invoke();
     }
-    public event Action onPointerExit;
-    public   void PointerExit() { onPointerExit?.Invoke(); }
-    public event Action<string> onShowToolTip;
-    public void ShowToolTip(string message)
+    public event Action onHideToolTip;
+    public   void HideToolTip() { onHideToolTip?.Invoke(); }
+    public event Action<string, RectTransform> onShowToolTip;
+    public void ShowToolTip(string message, RectTransform parent)
     {
-        onShowToolTip?.Invoke(message);
+        onShowToolTip?.Invoke(message, parent);
     }
     public event Action onShow;
     public void Show()

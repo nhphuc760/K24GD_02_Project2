@@ -60,7 +60,7 @@ public class PlayerFarming : MonoBehaviour
     void HandleInput()
     {
 
-
+        if (FarmLandManager.Ins == null || !FarmLandManager.Ins.IsFarmLand) return;
         InventorySlot curSelected = GameEventManager.Ins.toolKitEvent.GetCurDataChoose();
         if (curSelected == null) return;
         var toolDataSO = curSelected.ItemData as ToolDataSO;
@@ -130,10 +130,6 @@ public class PlayerFarming : MonoBehaviour
                 {
                     Debug.Log("Play plant sound");
                     AudioManager.instance.PlayFX(PlantSound);
-                }
-                else
-                {
-                    Debug.LogWarning("AudioManager instance is null. Cannot play sound.");
                 }
             }
             else

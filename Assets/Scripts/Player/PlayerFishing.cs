@@ -138,7 +138,8 @@ public class PlayerFishing : MonoBehaviour
         {
             RemovePreviousBobber();
             CancelFishing();
-        }
+        } 
+
     }
 
     private void StartPoleBack()

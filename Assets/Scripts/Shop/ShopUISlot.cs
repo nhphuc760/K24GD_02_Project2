@@ -12,9 +12,10 @@ public class ShopUISlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [SerializeField] GameObject multiBuy;
     [SerializeField] Button buy;
     [SerializeField] TMP_InputField quantityInput;
+    [SerializeField] TextMeshProUGUI totalPrice;
     int slotIndex;
     ShopManager manager;
-
+    int price;
 
     private void Start()
     {
@@ -33,6 +34,8 @@ public class ShopUISlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             manager.Buy(slotIndex, 1); 
         }else if (eventData.button.Equals(PointerEventData.InputButton.Right))
         {
+            price = manager.GetPriceItem(slotIndex);
+            totalPrice.text = price.ToString();
             multiBuy.SetActive(!multiBuy.activeSelf);
         }
     }
@@ -59,5 +62,11 @@ public class ShopUISlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         int quantity = int.Parse(quantityInput.text);
         if (quantity <= 0) return;
         manager.Buy(slotIndex, quantity);
+    }
+    public void InputMultiBuy(string quantity)
+    {
+        if(string.IsNullOrEmpty(quantity)) return;
+        int _quantity = int.Parse(quantity);
+        totalPrice.text = $"{_quantity * price}";
     }
 }

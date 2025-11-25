@@ -4108,6 +4108,7 @@ RectTransform:
   - {fileID: 2723778731798167065}
   - {fileID: 3153886811303268862}
   - {fileID: 1626521080}
+  - {fileID: 7651257505004282186}
   - {fileID: 5395882643963457132}
   m_Father: {fileID: 6286420472958666427}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4800,7 +4801,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.8
 --- !u!223 &1570683012561739617
 Canvas:
   m_ObjectHideFlags: 0
@@ -6118,7 +6119,6 @@ RectTransform:
   - {fileID: 5048320985077896627}
   - {fileID: 4203273514933738161}
   - {fileID: 6419912204472179228}
-  - {fileID: 7651257505004282186}
   m_Father: {fileID: 761155059564347481}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -9869,8 +9869,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: {fileID: 5316857050006644080}
   background: {fileID: 3491514120744271291}
-  canvas: {fileID: 1570683012561739617}
   rectThis: {fileID: 7651257505004282186}
+  canvas: {fileID: 1570683012561739617}
 --- !u!224 &6658485361145536820
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11055,6 +11055,8 @@ MonoBehaviour:
   _icon: {fileID: 9184590633665947234}
   cook: {fileID: 8560307046124166600}
   ingredientContainer: {fileID: 4740693630579615514}
+  _requireItemSlotUI: {fileID: 1902140274076493879, guid: 74399d7145afc534294ca5f49413f80d, type: 3}
+  _kitchenPanel: {fileID: 6150954457497972940}
 --- !u!1 &7577666613739039812
 GameObject:
   m_ObjectHideFlags: 0
@@ -11124,14 +11126,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8361707113177598090}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3491514120744271291}
   - {fileID: 5524347709160684403}
-  m_Father: {fileID: 3153886811303268862}
+  m_Father: {fileID: 761155059564347481}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

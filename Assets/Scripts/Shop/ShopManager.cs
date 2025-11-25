@@ -66,14 +66,14 @@ public class ShopManager : MonoBehaviour
 
     public void ShopEvent_onPointerExit()
     {
-        GameEventManager.Ins.shopEvent.PointerExit();
+        GameEventManager.Ins.shopEvent.HideToolTip();
     }
 
     public void ShopEvent_onPointerEnter(int index)
     {
      
         ItemShopDataSO shopData = shopDataBaseSO.shopDatabase[index];
-        GameEventManager.Ins.shopEvent.ShowToolTip(shopData._description);
+        GameEventManager.Ins.shopEvent.ShowToolTip(shopData._description,(RectTransform)transform);
     }
 
     public void Buy(int slotIndex, int quantity = 1)
@@ -111,5 +111,9 @@ public class ShopManager : MonoBehaviour
     void Hide()
     {
         gameObject.SetActive(false);
+    }
+    public int GetPriceItem(int slotIndex)
+    {
+        return shopDataBaseSO.shopDatabase[slotIndex].purchase_Price;
     }
 }
