@@ -15,9 +15,10 @@ MonoBehaviour:
   npcName: Adam
   npcPortraits: []
   dialogueLines:
-  - Hello ? How is going
-  - You want to buy something ?
-  - I have anything you want
+  - "Xin ch\xE0o ! Ng\xE0y h\xF4m nay c\u1EE7a b\u1EA1n th\u1EBF n\xE0o"
+  - "B\u1EA1n c\xF3 mu\u1ED1n mua m\u1ED9t v\xE0i m\xF3n \u0111\u1ED3 t\u1EEB c\u1EEDa
+    h\xE0ng c\u1EE7a t\xF4i kh\xF4ng ?"
+  - "T\xF4i c\xF3 t\u1EA5t c\u1EA3 nh\u1EEFng g\xEC b\u1EA1n c\u1EA7n \u0111\u1EA5y"
   autoProgressLines: 010001
   autoProgressDelay: 1.5
   typingSpeed: 0.05

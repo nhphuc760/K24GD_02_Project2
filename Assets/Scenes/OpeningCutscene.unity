@@ -1101,6 +1101,8 @@ MonoBehaviour:
   dialoguePanel: {fileID: 1274810912}
   dialogueText: {fileID: 105179964}
   typingSpeed: 0.04
+  typingSound: {fileID: 8300000, guid: 5317903752b3e434c9f2ed4ba663f8b9, type: 3}
+  soundFrequency: 20
 --- !u!4 &1553139754
 Transform:
   m_ObjectHideFlags: 0

@@ -88,6 +88,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 3963039096378449534, guid: 1d72bfcd278b423428b6878c9918be44, type: 3}
+    - target: {fileID: 7457277003649596211, guid: c26e94db6a29def42a20b7f2b0316d0b, type: 3}
+      propertyPath: chopSound
+      value: 
+      objectReference: {fileID: 8300000, guid: fbbea055a2567784f95b2b71b80a29be, type: 3}
     - target: {fileID: 7732200127492826525, guid: c26e94db6a29def42a20b7f2b0316d0b, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0

@@ -20,6 +20,7 @@ public class OpeningCutsceneController : MonoBehaviour
 
     private int playerChoice = -1; // -1: no choice, 0: yes, 1: no
 
+    public AudioClip Sound;
 
     private void Start()
     {
@@ -88,6 +89,14 @@ public class OpeningCutsceneController : MonoBehaviour
 #else
                 Application.Quit();
 #endif
+        }
+    }
+
+    void PlaySound(AudioClip clip)
+    {
+        if (clip != null)
+        {
+            AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position);
         }
     }
 }

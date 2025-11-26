@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8cfeb0668ba179449373005050c6480, type: 3}
+  m_Name: "Salad \u1EDBt chu\xF4ng v\xE0ng"
+  m_EditorClassIdentifier: 
+  _id: 220
+  _itemName: "Salad ng\xF4i sao v\xE0ng"
+  _icon: {fileID: 909672631, guid: fcd939daf4c881a48bf0d5dd49f46f48, type: 3}
+  _description: "Salad th\xEAm t\xED \u1EDBt chu\xF4ng\nTh\u1EDDi gian: 0h3p0s\nGi\xE1
+    b\xE1n: 150$"
+  _maxStack: 1
+  isStackable: 0
+  itemType: 0
+  runTimeItemType: 0
+  sell: 150
+  isCanSell: 1
+  isCanUseBuff: 0
+  recipeSO: {fileID: 11400000, guid: f98554681767cbe4c99998c2fb1bb827, type: 2}
+  Description: "Salad th\xEAm t\xED \u1EDBt chu\xF4ng"
+  buffStamina: 10
