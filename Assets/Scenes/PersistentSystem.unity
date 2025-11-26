@@ -3365,7 +3365,9 @@ MonoBehaviour:
   musicSource: {fileID: 1487358622}
   sfxSource: {fileID: 92971461}
   musicVolume: 0.19
-  sfxVolume: 0.28
+  sfxVolume: 1.45
+  musicGroup: {fileID: 0}
+  sfxGroup: {fileID: 1789385594403612663, guid: db59da77c8cc7ac4c9582ff58799e2cb, type: 2}
 --- !u!4 &2036483230
 Transform:
   m_ObjectHideFlags: 0
@@ -5503,7 +5505,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 8398666804485544448}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

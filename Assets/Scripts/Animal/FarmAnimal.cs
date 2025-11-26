@@ -37,6 +37,12 @@ public class FarmAnimal : MonoBehaviour, IInteractable
     private void Start()
     {
         transform.SetParent(AnimalManager.Ins.transform);
+
+        if (AudioManager.instance != null)
+        {
+            // Lấy nhóm SFX từ AudioManager và gán vào AudioSource của con vật
+            audioSource.outputAudioMixerGroup = AudioManager.instance.sfxGroup;
+        }
     }
 
     void Update()

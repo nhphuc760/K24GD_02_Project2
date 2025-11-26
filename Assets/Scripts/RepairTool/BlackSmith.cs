@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Cysharp.Threading.Tasks;
+using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
-using Cysharp.Threading.Tasks;
 [RequireComponent(typeof(Collider2D))]
 public class BlackSmith : MonoBehaviour
 {
@@ -31,6 +32,9 @@ public class BlackSmith : MonoBehaviour
     BlackSmithTrainData saveData;
     float totalTime;
     Vector2 originAnchorUITrain;
+
+    public AudioClip TrainingSound;
+    private AudioSource audioSource;
     private async void Awake()
     {
         originAnchorUITrain = UITrain.position;
@@ -230,6 +234,10 @@ public class BlackSmith : MonoBehaviour
     public void PlaySoundEffect()
     {
         //Trigger sound here
+        if (audioSource != null)
+        {
+            AudioManager.instance.PlayFX(TrainingSound);
+        }
     }
     private async void OnDestroy()
     {
@@ -261,6 +269,8 @@ public class BlackSmith : MonoBehaviour
         _icon.enabled = false;
         containerFill_Text.SetActive(false);
     }
+
+    
 }
 
 public class BlackSmithTrainData
@@ -277,4 +287,6 @@ public class BlackSmithTrainData
         return JsonConvert.SerializeObject(this);
     }
 }
+
+
 
