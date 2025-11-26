@@ -20,8 +20,14 @@ public class PlayerTestMining : MonoBehaviour
         {
             playerMovement = GetComponent<PlayerMovement>();
         }
+        GameEventManager.Ins.toolKitEvent.onCurSelectedChange += CurToolSelectedChanged;
     }
 
+    private void OnEnable()
+    {
+        GameEventManager.Ins.gameInput.interacPressed += TryMineOre;   
+
+    }
     private void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoad;
@@ -40,27 +46,25 @@ public class PlayerTestMining : MonoBehaviour
     }
 
 
-    private void OnEnable()
-    {
-        GameEventManager.Ins.gameInput.interacPressed += TryMineOre;
-        GameEventManager.Ins.toolKitEvent.onCurSelectedChange += CurToolSelectedChanged;
-    }
+    
 
     private void CurToolSelectedChanged(InventorySlot obj)
     {
+       
         curToolKit = obj;
-        currentTool = curToolKit?.ItemData as ToolDataSO;
+        currentTool = curToolKit.ItemData as ToolDataSO;
     }
 
     private void OnDisable()
     {
         GameEventManager.Ins.gameInput.interacPressed -= TryMineOre;
-        GameEventManager.Ins.toolKitEvent.onCurSelectedChange -= CurToolSelectedChanged;
+        
     }
 
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoad;
+        GameEventManager.Ins.toolKitEvent.onCurSelectedChange -= CurToolSelectedChanged;
     }
 
     void TryMineOre()
@@ -75,7 +79,7 @@ public class PlayerTestMining : MonoBehaviour
         ToolRunTimeData toolRuntime = curToolKit.dataRuntime as ToolRunTimeData;
         if(toolRuntime.currentDurability <= 0)
         {
-            GameEventManager.Ins.TriggerDialog($"<color=red>Dụng cụ của bạn đã bị hư hỏng, Hãy gặp BlackSmith ở thị trấn để bảo dưỡng");
+            GameEventManager.Ins.TriggerDialog($"<color=red>Dụng cụ của bạn đã hư hỏng, Hãy gặp BlackSmith ở thị trấn để bảo dưỡng");
             return;
         }
         Collider2D hit = Physics2D.OverlapCircle(groundCheck.position, interactRange, oreLayer);
@@ -85,12 +89,12 @@ public class PlayerTestMining : MonoBehaviour
             // Gọi script quặng để xử lý đào
             if (hit.TryGetComponent<IToolTarget>(out IToolTarget toolTarget) && CheckDirection(hit.transform))
             {
-                if (currentTool.toolType.Equals(toolTarget.RequireTool))
+                if (currentTool.toolType == toolTarget.RequireTool)
                 {
                     GameEventManager.Ins.animationEvent.ToolUse(toolTarget, currentTool, curToolKit.dataRuntime as ToolRunTimeData);
                 }
                 else
-                    GameEventManager.Ins.TriggerDialog("<color=red>Công cụ không phù hợp để khai thác</color>");
+                  { GameEventManager.Ins.TriggerDialog("<color=red>Công cụ không phù hợp để khai thác</color>"); }
             }
 
         }

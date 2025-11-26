@@ -119,52 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &26346782
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 26346784}
-  - component: {fileID: 26346783}
-  m_Layer: 0
-  m_Name: Scenemusic
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &26346783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 26346782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be4447131dbcfe64d96a7ac127c823e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backgroundMusic: {fileID: 8300000, guid: 5f6ffd930f319664095264c28c5ab4ce, type: 3}
-  fallbackVolume: 0.5
---- !u!4 &26346784
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 26346782}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.13501, y: -0.49310336, z: 6861.199}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &31594297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -192,6 +146,10 @@ PrefabInstance:
     - target: {fileID: 403624682433506010, guid: 959cf3f46cfa71f41a64a75d02becd35, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -139
+      objectReference: {fileID: 0}
+    - target: {fileID: 405607911544118531, guid: 959cf3f46cfa71f41a64a75d02becd35, type: 3}
+      propertyPath: m_Text
+      value: "\u0110\u0103ng k\xFD"
       objectReference: {fileID: 0}
     - target: {fileID: 405607911544118531, guid: 959cf3f46cfa71f41a64a75d02becd35, type: 3}
       propertyPath: m_FontData.m_Font
@@ -426,6 +384,10 @@ PrefabInstance:
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3176404439217568885, guid: 959cf3f46cfa71f41a64a75d02becd35, type: 3}
+      propertyPath: m_Text
+      value: "\u0110\u0103ng nh\u1EADp"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3176404439217568885, guid: 959cf3f46cfa71f41a64a75d02becd35, type: 3}
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
@@ -464,6 +426,10 @@ PrefabInstance:
     - target: {fileID: 3759284359831255310, guid: 959cf3f46cfa71f41a64a75d02becd35, type: 3}
       propertyPath: m_Color.a
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3776377516033800223, guid: 959cf3f46cfa71f41a64a75d02becd35, type: 3}
+      propertyPath: m_Text
+      value: "\u0110\u0103ng nh\u1EADp"
       objectReference: {fileID: 0}
     - target: {fileID: 3776377516033800223, guid: 959cf3f46cfa71f41a64a75d02becd35, type: 3}
       propertyPath: m_FontData.m_Font
@@ -514,6 +480,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 55905436, guid: b88b7f36c83b07444800afe6c6250cd0, type: 3}
     - target: {fileID: 4930770617972898106, guid: 959cf3f46cfa71f41a64a75d02becd35, type: 3}
+      propertyPath: m_Text
+      value: "Qu\xEAn m\u1EADt kh\u1EA9u"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4930770617972898106, guid: 959cf3f46cfa71f41a64a75d02becd35, type: 3}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
@@ -556,6 +526,10 @@ PrefabInstance:
     - target: {fileID: 5412253731775794517, guid: 959cf3f46cfa71f41a64a75d02becd35, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 6.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 5627143645498424031, guid: 959cf3f46cfa71f41a64a75d02becd35, type: 3}
+      propertyPath: m_Text
+      value: "M\u1EADt kh\u1EA9u"
       objectReference: {fileID: 0}
     - target: {fileID: 5627143645498424031, guid: 959cf3f46cfa71f41a64a75d02becd35, type: 3}
       propertyPath: m_FontData.m_Font
@@ -821,6 +795,10 @@ PrefabInstance:
       propertyPath: m_FontData.m_Font
       value: 
       objectReference: {fileID: 12800000, guid: 03c844e368efcd340835730408e21a00, type: 3}
+    - target: {fileID: 9198322692002466082, guid: 959cf3f46cfa71f41a64a75d02becd35, type: 3}
+      propertyPath: m_Text
+      value: "B\u1EA1n ch\u01B0a c\xF3 t\xE0i kho\u1EA3n? \u0110\u0103ng k\xFD ngay"
+      objectReference: {fileID: 0}
     - target: {fileID: 9198322692002466082, guid: 959cf3f46cfa71f41a64a75d02becd35, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -1634,13 +1612,29 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1682952136568504179, guid: b9d27fe3d6d925a45b68cf1229e8b119, type: 3}
+      propertyPath: m_text
+      value: 98%
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682952136568504179, guid: b9d27fe3d6d925a45b68cf1229e8b119, type: 3}
+      propertyPath: m_fontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682952136568504179, guid: b9d27fe3d6d925a45b68cf1229e8b119, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 125eb7eacd865574f8da833e022ea558, type: 2}
+    - target: {fileID: 1682952136568504179, guid: b9d27fe3d6d925a45b68cf1229e8b119, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682952136568504179, guid: b9d27fe3d6d925a45b68cf1229e8b119, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1682952136568504179, guid: b9d27fe3d6d925a45b68cf1229e8b119, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: -117209474352708512, guid: 125eb7eacd865574f8da833e022ea558, type: 2}
     - target: {fileID: 1682952136568504179, guid: b9d27fe3d6d925a45b68cf1229e8b119, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -2560,4 +2554,3 @@ SceneRoots:
   - {fileID: 31594297}
   - {fileID: 1915174467}
   - {fileID: 947026458}
-  - {fileID: 26346784}

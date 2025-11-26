@@ -16,6 +16,7 @@ public class ItemInforUI : MonoBehaviour
     [SerializeField] Sprite _backGroundSell;
     [SerializeField] Button _removeButton;
     [SerializeField] TextMeshProUGUI textButtonSell;
+    [SerializeField] GameObject player;
     int slotIndex;
     bool isSell;
     Color colorDefault;
@@ -29,7 +30,7 @@ public class ItemInforUI : MonoBehaviour
         spriteDefault = _removeButton.image.sprite;
         GameEventManager.Ins.onNearSell += OnNearSell;
         _confirmButton.onClick.AddListener(RemoveItem);
-
+        _useButton.onClick.AddListener(UseItem);
     }
 
     private void OnNearSell(bool obj)
@@ -55,6 +56,7 @@ public class ItemInforUI : MonoBehaviour
     private void OnDestroy()
     {
         _confirmButton.onClick.RemoveAllListeners();
+        _useButton.onClick.RemoveAllListeners();
         GameEventManager.Ins.onNearSell -= OnNearSell;
     }
 
@@ -74,7 +76,13 @@ public class ItemInforUI : MonoBehaviour
            
     }
 
-    
+    public void UseItem()
+    {
+        ItemDataSO dataSO = inventoryManager.inventory.itemSlots[slotIndex].ItemData;
+        if (!dataSO.isCanUseBuff) return;
+        dataSO.Use(player);
+        GameEventManager.Ins.inventoryEvent.RemoveItem(slotIndex, 1);
+    }
 
    public void RemoveItem()
     {

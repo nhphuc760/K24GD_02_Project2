@@ -126,6 +126,7 @@ public class PlayerFarming : MonoBehaviour
                 GameEventManager.Ins.inventoryEvent.RemoveItem(curIndex, 1);
                 GameObject cropInstance = Instantiate(cropToPlant.cropData.prefab, cellCenterPosition, Quaternion.identity);
                 cropInstance.GetComponent<Seed>().Plant(cropToPlant);
+                GameEventManager.Ins.Planting(cropToPlant);
                 if (AudioManager.instance != null)
                 {
                     Debug.Log("Play plant sound");

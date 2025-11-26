@@ -6,6 +6,7 @@ public class KitchenItemDataSO : ItemDataSO
 {
     public RecipeSO recipeSO;
     public string Description;
+    public float buffStamina;
     public override void OnValidate()
     {
         TimeSpan spand = TimeSpan.FromSeconds(recipeSO.timeCooldown);
@@ -15,5 +16,12 @@ public class KitchenItemDataSO : ItemDataSO
     private void Reset()
     {
         isCanSell = true;
+    }
+    public override void Use(GameObject tarGet)
+    {
+       if(StaminaManager.instance != null)
+        {
+            StaminaManager.instance.RestoreStamina(buffStamina);
+        }
     }
 }

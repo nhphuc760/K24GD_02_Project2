@@ -154,6 +154,7 @@ public class Seed : MonoBehaviour, IToolTarget
     private void Harvest()//thu hoạch
     {
         GameEventManager.Ins.inventoryEvent.AddItem(currentSeedData.cropData, currentSeedData.yield);
+        GameEventManager.Ins.HarvestCrop(currentSeedData.cropData);
         Destroy(gameObject); // Remove the crop from the game world after harvesting
     }
     private void ShowHarvestIndicator(bool show)

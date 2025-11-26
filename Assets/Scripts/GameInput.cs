@@ -25,6 +25,7 @@ public class GameInput
         inputAction.Player.Interact.performed += _ => { Interact_performed(); };
         inputAction.Player.SelectToolKit.performed += SelectToolKit_performed;
         inputAction.Player.DisplayToolKit.performed += _ => { GameEventManager.Ins.toolKitEvent.Trigger(); };
+        inputAction.Player.MenuQuest.performed += _ => { GameEventManager.Ins.questEvents.TriggerQuestUI(); };
     }
 
     private void SelectToolKit_performed(InputAction.CallbackContext context)
@@ -84,5 +85,13 @@ public class GameInput
     public void EnableInterac()
     {
         inputAction.Player.Interact.Enable();
+    }
+    public void DisableOpenQuest()
+    {
+        inputAction.Player.MenuQuest.Disable();
+    }
+    public void EnableQuest()
+    {
+       inputAction.Player.MenuQuest.Enable();
     }
 }

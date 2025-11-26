@@ -2156,7 +2156,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: -538644135, guid: b88b7f36c83b07444800afe6c6250cd0, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2694,8 +2694,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1164331866957732423, guid: 561b712c25e9fea48bc43fae007526ae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1545649917}
   m_SourcePrefab: {fileID: 100100000, guid: 561b712c25e9fea48bc43fae007526ae, type: 3}
+--- !u!1 &1545649916 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1164331866957732423, guid: 561b712c25e9fea48bc43fae007526ae, type: 3}
+  m_PrefabInstance: {fileID: 1545649915}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1545649917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545649916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b47eb3692797ed64ba21f5043e633d82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStamina: 100
+  currentStamina: 100
+  staminaDecreasePerMinute: 0.2
+  staminaFillImage: {fileID: 337084500}
+  iconImage: {fileID: 625570059}
+  iconSprites:
+  - {fileID: -1070232324859063644, guid: b1264ebb9fc30224bb802d84e4a4342e, type: 3}
+  - {fileID: -5611159671457333093, guid: b1264ebb9fc30224bb802d84e4a4342e, type: 3}
+  - {fileID: 3348285320354254549, guid: b1264ebb9fc30224bb802d84e4a4342e, type: 3}
 --- !u!1 &1566916785
 GameObject:
   m_ObjectHideFlags: 0
@@ -3788,6 +3817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d38529be8aac19e4493aa708ffbcb4c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questDatabase: {fileID: 11400000, guid: c8d6e5bff33174b44a40009917d55b3f, type: 2}
   currentPlayerLevel: 10
 --- !u!222 &98746037341862133
 CanvasRenderer:
@@ -5501,6 +5531,7 @@ MonoBehaviour:
   _backGroundSell: {fileID: -1755616248, guid: b88b7f36c83b07444800afe6c6250cd0, type: 3}
   _removeButton: {fileID: 5616565195291083937}
   textButtonSell: {fileID: 2868258431509101290}
+  player: {fileID: 0}
   inventoryManager: {fileID: 3730841372730276426}
 --- !u!224 &2646820293729676174
 RectTransform:
@@ -6040,7 +6071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bdc668fa0ecf784f8d27c9032a432c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsperDay: 60
+  secondsperDay: 1440
   totalTimeElapsed: 0
 --- !u!222 &3042945525491635789
 CanvasRenderer:
@@ -8348,7 +8379,6 @@ GameObject:
   - component: {fileID: 3134153711947818580}
   - component: {fileID: 2996285249089657736}
   - component: {fileID: 6011047769379365515}
-  - component: {fileID: 6011047769379365516}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -9228,31 +9258,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterDatabase: {fileID: 11400000, guid: 69d23bea396a8d34aa2adf287a7bd1ad, type: 2}
-  playerPrefab: {fileID: 1164331866957732423, guid: 5b0b1826f9cb9164f9f813fc0d95565d, type: 3}
   seedDataBase: {fileID: 11400000, guid: b7ef27eaf327d7a4198a7c978e77166d, type: 2}
-  _coins: 0
-  AnimalData: {fileID: 0}
---- !u!114 &6011047769379365516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5250161312961228189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b47eb3692797ed64ba21f5043e633d82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxStamina: 100
-  currentStamina: 100
-  staminaDecreasePerMinute: 0.5
-  staminaFillImage: {fileID: 337084500}
-  iconImage: {fileID: 625570059}
-  iconSprites:
-  - {fileID: -1070232324859063644, guid: b1264ebb9fc30224bb802d84e4a4342e, type: 3}
-  - {fileID: -5611159671457333093, guid: b1264ebb9fc30224bb802d84e4a4342e, type: 3}
-  - {fileID: 3348285320354254549, guid: b1264ebb9fc30224bb802d84e4a4342e, type: 3}
+  _coins: 500
 --- !u!114 &6025473897131479377
 MonoBehaviour:
   m_ObjectHideFlags: 0

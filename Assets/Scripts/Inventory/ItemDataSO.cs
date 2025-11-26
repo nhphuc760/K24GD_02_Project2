@@ -14,10 +14,16 @@ public class ItemDataSO : ScriptableObject
     public RunTimeItemType runTimeItemType;
     public int sell;
     public bool isCanSell;
+    public bool isCanUseBuff;
 
     public virtual void OnValidate()
     {
         _itemName = this.name;
+    }
+
+    public virtual void Use(GameObject tarGet)
+    {
+
     }
 }
 

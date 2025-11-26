@@ -169,7 +169,10 @@ public class PlayerFishing : MonoBehaviour
         IsFishing = false;
         FishBited = false;
         fishIcon.SetActive(false);
-        GameEventManager.Ins.inventoryEvent.AddItem(fishDatabase.GetRandomFish(), 1);
+        FishDataSO sO = fishDatabase.GetRandomFish();
+        GameEventManager.Ins.inventoryEvent.AddItem(sO, 1, isDialog: false);
+        GameEventManager.Ins.TriggerDialog($"<color=green>Bạn vừa câu được cá {sO._itemName}</color>");
+        GameEventManager.Ins.OnFishing(sO);
     }
     public void fishGameLossed()
     {

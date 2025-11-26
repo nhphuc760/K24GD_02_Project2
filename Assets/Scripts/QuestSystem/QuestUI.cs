@@ -64,6 +64,7 @@ public class QuestUI : MonoBehaviour
     }
     public void ChangeStepState(QuestStepState questStepState)
     {
+        if(questStepState  == null) return;
         stateQuestStep.text = questStepState.ToString();
     }
 

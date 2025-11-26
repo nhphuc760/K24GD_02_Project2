@@ -24,15 +24,32 @@ public class GameEventManager : MonoBehaviour
 
     //Các phần event dưới đây sẽ tự động gọi theo diễn biến trò chơi, ko quan tâm ai subcribe
     public event Action<SeedDataSO> onPlanting;//cho vào questEvent
-    public event Action onFishing;//
+    public event Action<FishDataSO> onFishing;//
     public event Action<CropDataSO> onHarvest;
     public event Action<ToolDataSO> onRepairTool;
-    public event Action onCutDTree;
-    public event Action onMiningOre;
-    public event Action onGetProductAnimal;
-    public event Action onCooking;
+    public event Action<ResourceSO> onCutDTree;
+    public event Action<ResourceSO> onMiningOre;
     public event Func<AnimalDataSO, int, bool> onCheckConDition;
     public event Action<bool> onNearSell;
+
+    private void Awake()
+    {
+        if (Ins != null && Ins != this)
+        {
+            Destroy(this.gameObject);
+        }
+        Ins = this;
+        questEvents = new QuestEvents();
+        cookingEvent = new CookingEvent();
+        inventoryEvent = new InventoryEvent();
+        shopEvent = new ShopEvent();
+        toolKitEvent = new ToolKitEvent();
+        gameInput = new GameInput();
+        animationEvent = new AnimationEvent();
+        animalEvent = new AnimalEvent();
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     public void OnNearSell(bool value)
     {
         onNearSell?.Invoke(value);
@@ -50,44 +67,28 @@ public class GameEventManager : MonoBehaviour
     {
         onPlanting?.Invoke(seedDataSO);
     }
-    public void Fishing()
+    public void OnFishing(FishDataSO sO)
     {
-        onFishing?.Invoke();
+        onFishing?.Invoke(sO);
     }
     public void HarvestCrop(CropDataSO cropDataSO)
     {
         onHarvest?.Invoke(cropDataSO);
     }
-    public void RepairTool(ToolDataSO tool)
+    public void OnRepairTool(ToolDataSO tool)
     {
         onRepairTool?.Invoke(tool);
     }
-    public void CutDownTree()
+    public void CutDownTree(ResourceSO rO)
     {
-        onCutDTree?.Invoke();
+        onCutDTree?.Invoke(rO);
     }
-    public void MiningOre()
+    public void MiningOre(ResourceSO rO)
     {
-        onMiningOre?.Invoke();
+        onMiningOre?.Invoke(rO);
     }
    
-    private void Awake()
-    {
-       if(Ins != null && Ins != this)
-        { 
-            Destroy(this.gameObject);
-        }
-        Ins = this;
-        questEvents = new QuestEvents();
-        cookingEvent = new CookingEvent();
-        inventoryEvent = new InventoryEvent();
-        shopEvent = new ShopEvent();
-        toolKitEvent = new ToolKitEvent();
-        gameInput = new GameInput();
-        animationEvent = new AnimationEvent();
-        animalEvent = new AnimalEvent();
-        DontDestroyOnLoad(this.gameObject);
-    }
+  
 
     private void Start()
     {
@@ -112,23 +113,7 @@ public class GameEventManager : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoad;
     }
-    private void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.V))
-        //{
-        //    if (OnCollectCoins != null)
-        //    {
-        //        OnCollectCoins();
-        //    }
-        //    else {
-        //        Debug.Log("OnCollectCoins is not assgin");
-        //    }
 
-        //}
-        //if(Input.GetKeyDown(KeyCode.W)) { 
-        //    OnFishingCaught?.Invoke();
-        //}
-    }
     public void CoinChange(int coin)
     {
         onCoinChange?.Invoke(coin);

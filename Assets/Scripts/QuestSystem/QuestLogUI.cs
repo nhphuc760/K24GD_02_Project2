@@ -26,8 +26,15 @@ public class QuestLogUI : MonoBehaviour
         GameEventManager.Ins.questEvents.OnLoadQuestMapSuccess += Manger_OnLoadQuestMapSuccess;
         GameEventManager.Ins.questEvents.onQuestInforClick += QuestEvents_onQuestInforClick;
         GameEventManager.Ins.questEvents.onRewardClick += QuestEvents_onRewardClick;
-        Hide();
+        GameEventManager.Ins.questEvents.onMenuQuestPress += TriggerUI;
+        GameEventManager.Ins.questEvents.onHideQuestUI += Hide;
+        gameObject.SetActive(false);
         //sub event <string id>
+    }
+
+    void TriggerUI()
+    {
+        gameObject.SetActive(!gameObject.activeSelf);
     }
 
     private void QuestEvents_onRewardClick(Quest quest)
@@ -43,19 +50,13 @@ public class QuestLogUI : MonoBehaviour
 
         if (quest.isClaimRewards)
         {
-            //if (isCoroutine || dialogText == null) return;
-            //StartCoroutine(DisplayDialogText("Phần thưởng đã được nhận trước đó", Color.red));
             GameEventManager.Ins.TriggerDialog("<color=red>Phần thưởng đã được nhận trước đó</color>");
         }
         else
         {
             GameEventManager.Ins.questEvents.ClaimReward(quest);
-            //if (!isCoroutine) {
-            //    if (dialogText == null) return;
-            //    StartCoroutine(DisplayDialogText("Phần thưởng đã được thêm vào kho đồ", Color.green));
-            //}
             GameEventManager.Ins.TriggerDialog("<color=green>Phần thưởng đã được thêm vào kho đồ</color>");
-           
+            quest.isClaimRewards = true;
         }
     }
 
@@ -65,8 +66,7 @@ public class QuestLogUI : MonoBehaviour
         if (quest.questState.Equals(QuestState.CAN_START))
         {
             GameEventManager.Ins.questEvents.StartQuest(quest.questInforSO._id);
-            //StartCoroutine(DisplayDialogText($"Bắt đầu nhiệm vụ {quest.questInforSO.displayName}", Color.cyan));
-            GameEventManager.Ins.TriggerDialog($"<color=cyan>Bắt đầu nhiệm vụ {quest.questInforSO.displayName}</color>");
+            GameEventManager.Ins.TriggerDialog($"<color=green>Bắt đầu nhiệm vụ {quest.questInforSO.displayName}</color>");
 
         }
         else if (quest.questState.Equals(QuestState.FINISHED))
@@ -89,6 +89,8 @@ public class QuestLogUI : MonoBehaviour
         GameEventManager.Ins.questEvents.OnLoadQuestMapSuccess -= Manger_OnLoadQuestMapSuccess;
         GameEventManager.Ins.questEvents.onQuestInforClick -= QuestEvents_onQuestInforClick;
         GameEventManager.Ins.questEvents.onRewardClick -= QuestEvents_onRewardClick;
+        GameEventManager.Ins.questEvents.onMenuQuestPress -= TriggerUI;
+        GameEventManager.Ins.questEvents.onHideQuestUI -= Hide;
     }
 
     private void Manger_OnLoadQuestMapSuccess(List<Quest> questMap)
@@ -104,7 +106,7 @@ public class QuestLogUI : MonoBehaviour
             questUI.ChangedState(quest.questState);
             if(quest.questStepStates == null)
             {
-                questUI.ChangeStepState(new QuestStepState { current = 0, target = 0});
+                questUI.ChangeStepState(new QuestStepState { questStateDynamic = "Mở khóa"});
             }
             else
             {
@@ -123,17 +125,12 @@ public class QuestLogUI : MonoBehaviour
             }
         }
     }
-
-    void Show()
+    Sprite GetRandomSpriteBackGround()
     {
-        gameObject.SetActive(true);
+        return backGroundSlotRewards[Random.Range(0,backGroundSlotRewards.Count - 1)];
     }
     void Hide()
     {
         gameObject.SetActive(false);
-    }
-    Sprite GetRandomSpriteBackGround()
-    {
-        return backGroundSlotRewards[Random.Range(0,backGroundSlotRewards.Count - 1)];
     }
 }
