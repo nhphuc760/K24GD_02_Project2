@@ -120,7 +120,7 @@ public class QuestLogUI : MonoBehaviour
                 questUI.ChangeStepState(quest.questStepStates);
             }
 
-                questUI.SetPlaynameQuest(quest.questInforSO.displayName);
+                questUI.SetPlaynameQuest(quest.questInforSO.displayName, quest.questInforSO.description);
             // safe-subscribe to quest events
             quest.questStepStateChanged += questUI.ChangeStepState;
             quest.questStateChanged += questUI.ChangedState;
