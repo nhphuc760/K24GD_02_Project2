@@ -32,6 +32,13 @@ public class QuestLogUI : MonoBehaviour
         //sub event <string id>
     }
 
+ 
+
+    private void OnDisable()
+    {
+        GameEventManager.Ins.shopEvent.HideToolTip();
+    }
+
     void TriggerUI()
     {
         gameObject.SetActive(!gameObject.activeSelf);
@@ -113,7 +120,7 @@ public class QuestLogUI : MonoBehaviour
                 questUI.ChangeStepState(quest.questStepStates);
             }
 
-                questUI.SetPlaynameQuest(quest.questInforSO.displayName);
+                questUI.SetPlaynameQuest(quest.questInforSO.displayName, quest.questInforSO.description);
             // safe-subscribe to quest events
             quest.questStepStateChanged += questUI.ChangeStepState;
             quest.questStateChanged += questUI.ChangedState;
@@ -121,10 +128,11 @@ public class QuestLogUI : MonoBehaviour
             // update reward UI safely
             if (questUI.rewardUI != null && quest.questInforSO != null && quest.questInforSO.reward != null)
             {
-                questUI.rewardUI.UpdateUI(quest.questInforSO.reward, GetRandomSpriteBackGround(), slotRewardUI);
+                questUI.rewardUI.UpdateUI(quest.questInforSO.reward, GetRandomSpriteBackGround(), slotRewardUI, (RectTransform)transform);
             }
         }
     }
+    
     Sprite GetRandomSpriteBackGround()
     {
         return backGroundSlotRewards[Random.Range(0,backGroundSlotRewards.Count - 1)];

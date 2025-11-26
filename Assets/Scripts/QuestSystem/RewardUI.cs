@@ -6,7 +6,7 @@ public class RewardUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI buffReward;
     [SerializeField] Transform containerItem;
-    public void UpdateUI(RewardData rewardData, Sprite background, SlotRewardUI prefabSlot)
+    public void UpdateUI(RewardData rewardData, Sprite background, SlotRewardUI prefabSlot, RectTransform rootParent)
     {
         if (buffReward != null)
         {
@@ -25,14 +25,15 @@ public class RewardUI : MonoBehaviour
         foreach (var item in rewardData.items)
         {
             if (item.itemSO != null) 
-                InstantiateItemReward(item.itemSO._icon, item.quantity, background, prefabSlot);
+                InstantiateItemReward(item.itemSO._icon, item.quantity, background, prefabSlot, item.itemSO._itemName, rootParent);
         }
     }
 
 
-    void InstantiateItemReward(Sprite icon, int _quantity, Sprite background, SlotRewardUI prefabSlot)
+    void InstantiateItemReward(Sprite icon, int _quantity, Sprite background, SlotRewardUI prefabSlot, string _nameItem ,RectTransform rootParent)
     {
         SlotRewardUI itemReward = Instantiate(prefabSlot, containerItem);
+        itemReward.InitForToolTip(_nameItem, rootParent);
         itemReward.UpdateUI(icon, _quantity, background);
     }
 

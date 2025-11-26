@@ -16,6 +16,7 @@ public class QuestInforSO : ScriptableObject
     public GameObject questStepPrefab;
     [Header("Rewards")]
     public RewardData reward;
+    public string description;
     private void OnValidate()
     {
 #if UNITY_EDITOR

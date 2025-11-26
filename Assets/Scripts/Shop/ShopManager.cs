@@ -52,6 +52,7 @@ public class ShopManager : MonoBehaviour
     {
         GameEventManager.Ins.gameInput.EnableOpenBag();
         GameEventManager.Ins.gameInput.EnableQuest();
+        GameEventManager.Ins.shopEvent.HideToolTip();
     }
     private void OnDestroy()
     {

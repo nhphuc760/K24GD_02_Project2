@@ -3,30 +3,29 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class FarmAnimal : MonoBehaviour, IInteractable
+public abstract class FarmAnimal : MonoBehaviour, IInteractable
 {
     public AnimalDataSO animalData;// được gán khi spawn
-    [SerializeField] SpriteRenderer visual;
+    [SerializeField] protected SpriteRenderer visual;
 
-    private DateTime timeProductReady; //thời điểm sản phẩm phọt raa
-    private DateTime curTime; //thời điểm hiện tại
-    private bool canHarvest = false; //có thể thu hoạch hay không
+    protected DateTime timeProductReady; //thời điểm sản phẩm phọt raa
+    protected DateTime curTime; //thời điểm hiện tại
+    protected bool canHarvest = false; //có thể thu hoạch hay không
     //movement
     public float moveSpeed = 1f;
     public float TimetoChangeDirection = 3f;
-    private Rigidbody2D rb;
-    private Vector2 moveDirection;
-    private float moveTimer; //thời gian thay đổi hướng đi của animal
-    [SerializeField] TextMeshProUGUI timeRemainingTXT;
-    [SerializeField] UnityEngine.UI.Image fillProduction;
-    [SerializeField] GameObject harvestIndicatorPrefab;
-    [SerializeField] Transform indicatorAnchor;
+    protected Rigidbody2D rb;
+    protected Vector2 moveDirection;
+    protected float moveTimer; //thời gian thay đổi hướng đi của animal
 
-    private GameObject currentIndicator;
+    [SerializeField] protected GameObject harvestIndicatorPrefab;
+    [SerializeField]  protected Transform indicatorAnchor;
+
+    protected GameObject currentIndicator;
 
     //thêm âm thanh cục tác
     public AudioClip[] idleSounds; // Kéo các file tiếng gà cục tác vào đây
-    private AudioSource audioSource;
+    protected AudioSource audioSource;
     public float chanceVolume = 0.3f;
     private void Awake()
     {
@@ -68,7 +67,7 @@ public class FarmAnimal : MonoBehaviour, IInteractable
     /// Thay đổi hướng con vật 
     /// </summary>
 
-    void ChangeDirection()
+    protected virtual void ChangeDirection()
     {
         moveDirection = UnityEngine.Random.insideUnitCircle.normalized;
         moveTimer = TimetoChangeDirection + UnityEngine.Random.Range(-1f,1f);
@@ -141,16 +140,6 @@ public class FarmAnimal : MonoBehaviour, IInteractable
         {
             curTime = curTime.AddSeconds(1);
             TimeSpan cooldown = timeProductReady - curTime;
-
-            //Cập nhật UI
-            if (fillProduction != null)
-            {
-                fillProduction.fillAmount = 1 - (float)(cooldown.TotalSeconds / animalData.secondsToProduce);
-            }
-            if(timeRemainingTXT != null)
-            {
-                timeRemainingTXT.text = cooldown.ToString(@"hh\:mm\:ss");
-            }
             yield return new WaitForSeconds(1f);
         }
 
@@ -240,7 +229,7 @@ public class FarmAnimal : MonoBehaviour, IInteractable
         };
         return data;
     }
-    void Flip()
+    protected virtual void Flip()
     {
         if(rb.linearVelocityX > 0)
         {
