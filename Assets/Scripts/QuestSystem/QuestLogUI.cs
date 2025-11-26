@@ -106,7 +106,7 @@ public class QuestLogUI : MonoBehaviour
             questUI.ChangedState(quest.questState);
             if(quest.questStepStates == null)
             {
-                questUI.ChangeStepState(new QuestStepState { questStateDynamic = "Không xác định"});
+                questUI.ChangeStepState(new QuestStepState { questStateDynamic = "Mở khóa"});
             }
             else
             {

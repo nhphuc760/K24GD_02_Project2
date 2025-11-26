@@ -1,4 +1,4 @@
-using Firebase;
+﻿using Firebase;
 using Firebase.Auth;
 using Firebase.Extensions;
 using UnityEngine;
@@ -36,15 +36,15 @@ public class FirebaseAuthManager : MonoBehaviour
         auth.CreateUserWithEmailAndPasswordAsync(registerEmail.text, registerPassword.text).ContinueWithOnMainThread(task => {
             if (task.IsCanceled)
             {
-                regiterNotify.text = "The registration has been canceled";
+                regiterNotify.text = "Hoạt động đăng ký bị hủy";
                 return;
             }else if (task.IsFaulted)
             {
-                regiterNotify.text = "An error has occurred, please try again";
+                regiterNotify.text = "Đã có lỗi xảy ra, Vui lòng thử lại";
                 return;
             }else if (task.IsCompleted)
             {
-                regiterNotify.text = "Registration successful";
+                regiterNotify.text = "Đăng ký thành công";
 
             }
         });
@@ -56,13 +56,13 @@ public class FirebaseAuthManager : MonoBehaviour
             if (task.IsCanceled)
             {
                
-                loginNotify.text = "The sign in has been canceled";
+                loginNotify.text = "Hoạt động đăng nhập bị hủy";
                 return;
             }
             else if (task.IsFaulted)
             {
 
-                loginNotify.text = "An error has occurred, please try again";
+                loginNotify.text = "Đã có lỗi xảy ra vui lòng thử lại";
                 return;
             }
             else if (task.IsCompleted)

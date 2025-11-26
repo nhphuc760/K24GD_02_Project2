@@ -9,6 +9,11 @@ public class MineOreQuest : QuestStep
         GameEventManager.Ins.onMiningOre += OnMineOre;
     }
 
+    private void Start()
+    {
+        UpdateState();
+    }
+
     private void OnMineOre(ResourceSO sO)
     {
         if (dataStateRuntime.current < dataStateRuntime.target)

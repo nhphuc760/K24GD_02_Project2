@@ -9,6 +9,11 @@ public class CutDownTree : QuestStep
         GameEventManager.Ins.onCutDTree += OnCutDownTree;
     }
 
+    private void Start()
+    {
+        UpdateState();
+    }
+
     private void OnCutDownTree(ResourceSO sO)
     {
         if (dataStateRuntime.current < dataStateRuntime.target)

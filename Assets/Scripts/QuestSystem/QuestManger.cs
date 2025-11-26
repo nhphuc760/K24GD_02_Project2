@@ -178,6 +178,13 @@ public class QuestManger : MonoBehaviour
                     Quest quest = new Quest(infor, child.questState, child.questStepState, child.isClaimedReward);
                     quests.Add(quest);
                 }
+                foreach (var child in questDatabase.questDatabase)
+                {
+
+                    if (!CheckHasQuestInforSO(child, quests)){
+                        quests.Add(new Quest(child));
+                    }
+                }
             }
             else
             {
@@ -199,6 +206,16 @@ public class QuestManger : MonoBehaviour
             return quests;
         }
 
+    }
+
+    bool CheckHasQuestInforSO(QuestInforSO input, List<Quest> repare)
+    {
+        foreach (var child in repare)
+        {
+            if(child.questInforSO == input)
+                return true;
+        }
+        return false;
     }
 
 }

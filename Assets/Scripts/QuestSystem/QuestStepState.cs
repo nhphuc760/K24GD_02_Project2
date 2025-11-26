@@ -11,4 +11,8 @@ public class QuestStepState
     {
         questStateDynamic = null;
     }
+    public override string ToString()
+    {
+        return questStateDynamic;
+    }
 }

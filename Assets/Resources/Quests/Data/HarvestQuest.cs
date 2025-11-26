@@ -9,6 +9,11 @@ public class HarvestQuest : QuestStep
         GameEventManager.Ins.onHarvest += OnHarvest;
     }
 
+
+    private void Start()
+    {
+        UpdateState();
+    }
     private void OnHarvest(CropDataSO sO)
     {
         if (dataStateRuntime.current < dataStateRuntime.target)

@@ -9,7 +9,7 @@ public class PlantingQuestStep : QuestStep
     {
         
         GameEventManager.Ins.onPlanting += OnPlantingSeed;
-
+        UpdateState();
     }
 
     private void OnDisable()

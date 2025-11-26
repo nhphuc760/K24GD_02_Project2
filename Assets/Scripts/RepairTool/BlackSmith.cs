@@ -33,7 +33,6 @@ public class BlackSmith : MonoBehaviour
     Vector2 originAnchorUITrain;
     private async void Awake()
     {
-        canvas ??= transform.GetChild(1).gameObject;
         originAnchorUITrain = UITrain.position;
         var task = await Save_Load_Firebase.LoadData("BlackSmith");
         if (task != null && task.Exists)
@@ -155,12 +154,10 @@ public class BlackSmith : MonoBehaviour
     {
         if (GameManager.Ins.Coin >= input)
         {
-            Debug.Log("đủ tiền");
             return true;
         }
         else
         {
-            Debug.Log("Không đủ tiền");
             StartCoroutine(ShakeCoin());
             return false;
         }
@@ -204,6 +201,7 @@ public class BlackSmith : MonoBehaviour
         }
         totalTime = time;
         await Save_Load_Firebase.SaveData("BlackSmith", saveData.SerilizeObject());
+        _icon.sprite = icon;
         StartCoroutine(Train());
     }
 

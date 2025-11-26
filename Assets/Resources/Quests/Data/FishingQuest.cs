@@ -10,6 +10,10 @@ public class FishingQuest : QuestStep
         GameEventManager.Ins.onFishing += OnFishingCaught;
     }
 
+    private void Start()
+    {
+        UpdateState();
+    }
     private void OnFishingCaught(FishDataSO sO)
     {
 
