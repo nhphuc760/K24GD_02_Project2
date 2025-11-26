@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8cfeb0668ba179449373005050c6480, type: 3}
+  m_Name: "C\u01A1m ph\u1EE7 Ph\xF4 mai"
+  m_EditorClassIdentifier: 
+  _id: 222
+  _itemName: "C\u01A1m ph\u1EE7 ph\xF4 mai"
+  _icon: {fileID: 9220797181501635587, guid: fcd939daf4c881a48bf0d5dd49f46f48, type: 3}
+  _description: "C\u01A1m ph\u1EE7 m\u1ED9t l\u1EDBp ph\xF4 mai ch\u1EA3y\nTh\u1EDDi
+    gian: 0h10p0s\nGi\xE1 b\xE1n: 200$"
+  _maxStack: 1
+  isStackable: 0
+  itemType: 0
+  runTimeItemType: 0
+  sell: 200
+  isCanSell: 1
+  isCanUseBuff: 0
+  recipeSO: {fileID: 11400000, guid: 3d865074df38bcf4eaac92fb0f9db541, type: 2}
+  Description: "C\u01A1m ph\u1EE7 m\u1ED9t l\u1EDBp ph\xF4 mai ch\u1EA3y"
+  buffStamina: 20

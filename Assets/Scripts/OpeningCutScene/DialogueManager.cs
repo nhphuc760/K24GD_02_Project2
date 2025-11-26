@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -21,8 +21,9 @@ public class DialogueManager : MonoBehaviour
 
     //bien bao hieu doi thoai da ket thuc (Cho cutsceneController biet)
     private bool dialogueFinished = true;
-    
 
+    public AudioClip typingSound; // Kéo file âm thanh tiếng gõ vào đây
+    public int soundFrequency = 2;
     private void Awake()
     {
         // Singleton pattern
@@ -91,14 +92,30 @@ public class DialogueManager : MonoBehaviour
     {
         isTyping = true;
         dialogueText.text = "";
-        foreach(char letter in sentence.ToCharArray())
+        int charIndex = 0;
+        foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
+            if (typingSound != null && letter != ' ' && charIndex % soundFrequency == 0)
+            {
+                PlayTypingSound();
+            }
+            charIndex++;
             yield return new WaitForSeconds(typingSpeed);
         }
         isTyping = false;
     }
+    void PlayTypingSound()
+    {
+        if (AudioManager.instance != null)
+        {
+            // Nếu bạn đã làm hàm PlaySFXRandomPitch như bài trước thì dùng cái đó sẽ hay hơn
+            // AudioManager.instance.PlaySFXRandomPitch(typingSound);
 
+            // Nếu chưa thì dùng PlaySFX thường
+            AudioManager.instance.PlayFX(typingSound);
+        }
+    }
     //ket thuc doi thoai
     void EndDialogue()
     {
@@ -112,4 +129,6 @@ public class DialogueManager : MonoBehaviour
     {
         return !dialogueFinished;
     }
+
+
 }

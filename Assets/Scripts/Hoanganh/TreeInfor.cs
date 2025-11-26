@@ -52,6 +52,10 @@ public class TreeInfor : MonoBehaviour, IToolTarget
     {
         if(isChopped) return;
         isChopped = true;
+        if (chopSound != null)
+        {
+            AudioManager.instance.PlayFX(chopSound);
+        }
         Debug.Log("Tree Chopped down");
         DropWood();
         Destroy(gameObject);

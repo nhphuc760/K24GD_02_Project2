@@ -14,6 +14,9 @@ public class AudioManager : MonoBehaviour
     // Tên biến để lưu vào PlayerPrefs
     private const string MIXER_MUSIC = "MusicVol";
     private const string MIXER_SFX = "SFXVol";
+
+    public AudioMixerGroup musicGroup;
+    public AudioMixerGroup sfxGroup;
     private void Awake()
     {
         if (instance == null)
