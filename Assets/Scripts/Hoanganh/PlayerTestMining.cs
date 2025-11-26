@@ -89,6 +89,10 @@ public class PlayerTestMining : MonoBehaviour
             // Gọi script quặng để xử lý đào
             if (hit.TryGetComponent<IToolTarget>(out IToolTarget toolTarget) && CheckDirection(hit.transform))
             {
+                Debug.Log(toolTarget.GetType().Name);
+                Debug.Log(toolTarget.RequireTool.ToString());
+                Debug.Log("curTool: " + currentTool._itemName);
+                Debug.Log("curToolType: " + currentTool.toolType.ToString());
                 if (currentTool.toolType == toolTarget.RequireTool)
                 {
                     GameEventManager.Ins.animationEvent.ToolUse(toolTarget, currentTool, curToolKit.dataRuntime as ToolRunTimeData);

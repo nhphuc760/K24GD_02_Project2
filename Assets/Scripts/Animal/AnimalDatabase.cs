@@ -17,8 +17,8 @@ public class AnimalDatabase : ScriptableObject
         return allAnimalData.Find(x => x._id == id);
     }
     // Tùy chọn: Tự động tải từ thư mục Resources
-    // private void OnValidate()
-    // {
-    //     allAnimalData = Resources.LoadAll<AnimalDataSO>("Animals").ToList();
-    // }
+    private void OnValidate()
+    {
+        allAnimalData = Resources.LoadAll<AnimalDataSO>("Items/Animal").ToList();
+    }
 }

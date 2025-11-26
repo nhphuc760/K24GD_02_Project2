@@ -28,6 +28,7 @@ public class SlotInforUI : MonoBehaviour
     private void OnDisable()
     {
         curkitchenItemSO = null;
+        GameEventManager.Ins.shopEvent.HideToolTip();
     }
 
     public void PointerClickSlotUI(int index)
