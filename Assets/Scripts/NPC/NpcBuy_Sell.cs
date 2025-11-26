@@ -3,10 +3,10 @@ using UnityEngine;
 public class NpcBuy_Sell : MonoBehaviour, IInteractable
 {
 
-    bool isPlayerNear;
+   
     public bool CanInteract()
     {
-       return isPlayerNear;
+        return true;
     }
 
     public void Interact()
@@ -18,7 +18,6 @@ public class NpcBuy_Sell : MonoBehaviour, IInteractable
     {
         if (collision.CompareTag("Player"))
         {
-            isPlayerNear = true;
             GameEventManager.Ins.OnNearSell(true);
            
         }
@@ -28,7 +27,6 @@ public class NpcBuy_Sell : MonoBehaviour, IInteractable
         if (collision.CompareTag("Player"))
         {
             GameEventManager.Ins.OnNearSell(false);
-            isPlayerNear = false;
             GameEventManager.Ins.inventoryEvent.DisableInventory();
         }
     }
