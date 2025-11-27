@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 
 public class StaminaManager : MonoBehaviour
 {
@@ -15,6 +17,10 @@ public class StaminaManager : MonoBehaviour
 
     private float timer;
     private float secondsPerGameMinute;
+    [SerializeField] int coinLostPerDead = 500;
+
+    // Guard to prevent multiple concurrent Die() calls / scene loads
+    private bool isDying = false;
 
     private void Awake()
     {
@@ -59,13 +65,28 @@ public class StaminaManager : MonoBehaviour
         }
     }
 
-    public void DecreaseStamina(float amount)
+    public async void DecreaseStamina(float amount)
     {
+        // If we're already handling death, ignore further decreases.
+        if (isDying) return;
+
         currentStamina -= amount;
         if (currentStamina <= 0)
         {
             currentStamina = 0;
-            Die();
+            // set guard before awaiting Die() to avoid re-entrancy
+            isDying = true;
+            // reset timer so we don't immediately re-trigger after revival
+            timer = 0f;
+            try
+            {
+                await Die();
+            }
+            finally
+            {
+                // clear guard after death handling completes
+                isDying = false;
+            }
         }
         UpdateUI();
     }
@@ -78,12 +99,25 @@ public class StaminaManager : MonoBehaviour
         UpdateUI();
     }
 
-    private void Die()
+    private async UniTask Die()
     {
         Debug.Log("Nhân vật đã kiệt sức và ngất xỉu!");
-        currentStamina = maxStamina * 0.5f;
+        GameEventManager.Ins.gameInput.Disable_InputAction();
+        if (UIManager.instance != null)
+            UIManager.instance.Hide();
+        GameEventManager.Ins.animationEvent.Dead();
+        await UniTask.Delay(2000);
+        await GameManager.Ins.StartSceneTransition("InsideHouse", new Vector3(-5f, 2.3f, 0), "Trở về từ cõi chết", 0.5f);
+        await UniTask.Yield();
+        GameEventManager.Ins.gameInput.Enable_InputAction();
+        GameEventManager.Ins.animationEvent.Idle();
+        if (UIManager.instance != null) UIManager.instance.Show();
+        currentStamina = maxStamina * 0.3f;
+        GameManager.Ins.Coin -= coinLostPerDead;
         UpdateUI();
     }
+
+ 
 
     private void UpdateUI()
     {

@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -35,16 +37,20 @@ public class LoadingScene : MonoBehaviour
         HideInstant();
     }
 
-    public void LoadScene( string newSceneName, string description, LoadSceneMode loadSceneMode, bool fadeOut = true)
+    public async UniTask LoadScene( string newSceneName, string description, LoadSceneMode loadSceneMode, bool fadeOut = true, float speedFade = 0.3f)
     {
         Show();
-        StartCoroutine(LoadSceneAsync(newSceneName, description, loadSceneMode, fadeOut));
+        this.speedFade = speedFade;
+        //StartCoroutine(LoadSceneAsync(newSceneName, description, loadSceneMode, fadeOut));
+        await LoadSceneAsync(newSceneName, description, loadSceneMode, fadeOut).ToUniTask();
     }
 
-    public void LoadScene( int newIndex, string description, LoadSceneMode loadSceneMode, bool fadeOut = true)
+    public async UniTask LoadScene( int newIndex, string description, LoadSceneMode loadSceneMode, bool fadeOut = true, float speedFade = 0.3f)
     {
         Show();
-        StartCoroutine(LoadSceneAsync( newIndex, description, loadSceneMode, fadeOut));
+        this.speedFade = speedFade;
+        //StartCoroutine(LoadSceneAsync( newIndex, description, loadSceneMode, fadeOut));
+        await LoadSceneAsync(newIndex, description, loadSceneMode, fadeOut).ToUniTask();
     }
 
     IEnumerator LoadSceneAsync( int newIndex, string description, LoadSceneMode loadMode, bool fadeOut)

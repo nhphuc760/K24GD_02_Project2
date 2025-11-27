@@ -1,4 +1,5 @@
 ﻿
+using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -16,8 +17,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] int _coins;
     private Transform animalSpanwPoint;
-    
-    public int Coin 
+
+    public int Coin
     {
         get => _coins;
         set
@@ -89,7 +90,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-   
+
 
     /// <summary>
     /// Hàm này sẽ được tự động gọi MỖI KHI một scene mới được tải xong.
@@ -103,8 +104,9 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-        if(scene.name == "Farm"){
-        var task = await Save_Load_Firebase.LoadData("SeedData");
+        if (scene.name == "Farm")
+        {
+            var task = await Save_Load_Firebase.LoadData("SeedData");
             if (task.Exists)
             {
                 List<SeedSaveData> seedDatas = JsonConvert.DeserializeObject<List<SeedSaveData>>(task.Value.ToString());
@@ -121,7 +123,7 @@ public class GameManager : MonoBehaviour
         }
     }
     //Hàm được Portal gọi để bắt đầu chuyển scene
-    public async void StartSceneTransition(string sceneName, Vector3 newPos)
+    public async UniTask StartSceneTransition(string sceneName, Vector3 newPos, string desciption = "", float speedFade = 0.3f)
     {
         await SaveCurrentSceneState(); //nếu cần lưu trạng thái hiện tại thì làm ở đây
         //Lưu lại vị trí mà người chơi sẽ đến
@@ -129,8 +131,14 @@ public class GameManager : MonoBehaviour
 
         // Gọi UIManager để bật hiệu ứng fade-out đen màn hình ở đây) // làm sau
         if (LoadingScene.Ins != null)
-            LoadingScene.Ins.LoadScene(sceneName, "Loading...", LoadSceneMode.Single, true);
-        else SceneManager.LoadScene(sceneName);
+        {
+            string des = string.IsNullOrEmpty(desciption) ? "Loading..." : desciption;
+            await LoadingScene.Ins.LoadScene(sceneName, des, LoadSceneMode.Single, true, speedFade);
+        }
+        else 
+        { 
+            SceneManager.LoadScene(sceneName); 
+        }
     }
     //hàm để di chuyển người chơi đến vị trí đã lưu sau khi tải xong scene mới
     private void MovePlayerToPosition()
@@ -140,10 +148,10 @@ public class GameManager : MonoBehaviour
         {
             // Tìm GameObject người chơi bằng Tag
             GameObject player = GameObject.FindGameObjectWithTag("Player");
-                player.transform.position = this.nextPlayerPosition;
-                Debug.Log($"Đã di chuyển Player đến vị trí: {nextPlayerPosition}");
-                // Reset lại để lần sau không bị di chuyển nhầm
-                this.nextPlayerPosition = Vector3.zero;
+            player.transform.position = this.nextPlayerPosition;
+            Debug.Log($"Đã di chuyển Player đến vị trí: {nextPlayerPosition}");
+            // Reset lại để lần sau không bị di chuyển nhầm
+            this.nextPlayerPosition = Vector3.zero;
         }
     }
     private async Task SaveCurrentSceneState()
@@ -151,7 +159,7 @@ public class GameManager : MonoBehaviour
         string currentScene = SceneManager.GetActiveScene().name;
         //chỉ lưu khi là game scene có thể trồng cây
         Debug.Log(currentScene);
-        if(currentScene.Equals("Farm"))
+        if (currentScene.Equals("Farm"))
         {
             List<SeedSaveData> seedSaveDatas = new List<SeedSaveData>();
             Seed[] cropsInScene = FindObjectsByType<Seed>(FindObjectsSortMode.None);
@@ -164,14 +172,14 @@ public class GameManager : MonoBehaviour
             {
                 seedSaveDatas.Add(crop.GetSaveData());
             }
-         
+
             await Save_Load_Firebase.SaveData("SeedData", JsonConvert.SerializeObject(seedSaveDatas));
         }
     }
 
     public async void LoadCropsForScene(string sceneName, List<SeedSaveData> data)
     {
-        if(seedDataBase == null)
+        if (seedDataBase == null)
         {
             Debug.LogError("Crop Database is not assigned in GameManager!");
             return;
@@ -188,17 +196,17 @@ public class GameManager : MonoBehaviour
         }
         if (data == null) return;
 
-        foreach(SeedSaveData cropData in data)
+        foreach (SeedSaveData cropData in data)
         {
-            if(cropData.SceneName == sceneName)
+            if (cropData.SceneName == sceneName)
             {
                 SeedDataSO dataAsset = seedDataBase.GetSeedDataByID(cropData.cropDataID);
                 var cropPrefab = dataAsset.cropData.prefab;
-                if(dataAsset != null && cropPrefab != null)
+                if (dataAsset != null && cropPrefab != null)
                 {
                     GameObject cropInstance = Instantiate(cropPrefab, cropData.worldPosition.ToVector3(), Quaternion.identity);
                     Seed cropScript = cropInstance.GetComponent<Seed>();
-                    if(cropScript != null)
+                    if (cropScript != null)
                     {
                         cropScript.LoadCropState(dataAsset, cropData.timeHarvest, curTime);
                     }
@@ -206,9 +214,9 @@ public class GameManager : MonoBehaviour
             }
         }
 
-     
+
     }
-    private async void OnDestroy()  
+    private async void OnDestroy()
     {
         await SaveCurrentSceneState();
         await Save_Load_Firebase.SaveData("Coins", _coins);
@@ -216,7 +224,7 @@ public class GameManager : MonoBehaviour
 
     private void OnValidate()
     {
-        if(characterDatabase == null)
+        if (characterDatabase == null)
         {
             characterDatabase = Resources.Load<CharacterDatabase>("CharacterData");
         }
@@ -226,7 +234,7 @@ public class GameManager : MonoBehaviour
     {
         // Kiểm tra xem đã tìm thấy spawn point chưa
         if (animalSpanwPoint == null)
-        {       
+        {
             return; // Dừng lại nếu không có spawn point
         }
         Vector3 spawnPos = animalSpanwPoint.position;
@@ -273,7 +281,7 @@ public class GameManager : MonoBehaviour
     }
 
     IEnumerator SleepRoutine()
-    { 
+    {
         //Màn hình tối dần
         yield return UIManager.instance.FadeOut();
 

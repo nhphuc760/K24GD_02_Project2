@@ -2725,6 +2725,7 @@ MonoBehaviour:
   - {fileID: -1070232324859063644, guid: b1264ebb9fc30224bb802d84e4a4342e, type: 3}
   - {fileID: -5611159671457333093, guid: b1264ebb9fc30224bb802d84e4a4342e, type: 3}
   - {fileID: 3348285320354254549, guid: b1264ebb9fc30224bb802d84e4a4342e, type: 3}
+  coinLostPerDead: 500
 --- !u!1 &1566916785
 GameObject:
   m_ObjectHideFlags: 0
@@ -4522,7 +4523,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 322460421, guid: 0e1ba428729d26b479dc916ff1446992, type: 3}
+  m_Sprite: {fileID: -2944167225865018257, guid: 8f9ce5784d1677f4594806e367e1f375, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9563,8 +9564,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -10235,6 +10236,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogText: {fileID: 6207683837448058976}
+  backGround: {fileID: 5395882643963457132}
+  textPadding: 80
 --- !u!222 &6895096082209010761
 CanvasRenderer:
   m_ObjectHideFlags: 0

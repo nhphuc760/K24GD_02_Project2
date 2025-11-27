@@ -31,19 +31,19 @@ public class MainMenuManager : MonoBehaviour
     }
 
     //hàm được gòi khi nhấn nút New Game
-    public void OnNewGameButton()
+    public async void OnNewGameButton()
     {
         if (LoadingScene.Ins != null)
-            LoadingScene.Ins.LoadScene(newGameScene, "Loading...", LoadSceneMode.Single, true);
+           await LoadingScene.Ins.LoadScene(newGameScene, "Loading...", LoadSceneMode.Single, true);
         else SceneManager.LoadScene(newGameScene);
     }
 
-    public void OnLoadGameButton()
+    public async void OnLoadGameButton()
     {
         if (isDataExists)
         {
             if (LoadingScene.Ins != null)
-                LoadingScene.Ins.LoadScene(loadGameScene, "Đang tải dữ liệu người chơi", LoadSceneMode.Single, false);
+              await  LoadingScene.Ins.LoadScene(loadGameScene, "Đang tải dữ liệu người chơi", LoadSceneMode.Single, false);
             else SceneManager.LoadScene(loadGameScene);
         }
     }
