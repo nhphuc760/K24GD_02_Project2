@@ -22,6 +22,13 @@ public class PlayerVisual : MonoBehaviour
     private void Start()
     {
         GameEventManager.Ins.animationEvent.onToolUse += UseTool;
+        GameEventManager.Ins.animationEvent.onDead += Dead;
+        GameEventManager.Ins.animationEvent.onIdle += Idle;
+    }
+
+    private void Idle()
+    {
+        animator.Play(AnimationHashes.IDLE);
     }
 
     private void UseTool(IToolTarget target, ToolDataSO sO, ToolRunTimeData dataRunTime)
@@ -74,6 +81,8 @@ public class PlayerVisual : MonoBehaviour
     {
         GameManager.Ins.onLoadDataCompleted -= LoadDataPlayerCompleted;
         GameEventManager.Ins.animationEvent.onToolUse -= UseTool;
+        GameEventManager.Ins.animationEvent.onDead -= Dead;
+        GameEventManager.Ins.animationEvent.onIdle -= Idle;
     }
 
     IEnumerator WaitUseTool(IToolTarget target, ToolDataSO sO, ToolRunTimeData tool)
@@ -92,6 +101,10 @@ public class PlayerVisual : MonoBehaviour
     public void OnCaptureFishStartAnimationEvent()
     {
         player.CheckIfWinFishGame();
+    }
+    public void Dead()
+    {
+        animator.Play(AnimationHashes.DEAD);
     }
 }
 

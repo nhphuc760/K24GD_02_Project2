@@ -52,7 +52,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
     public void Sign()
     {
-        auth.SignInWithEmailAndPasswordAsync(signEmail.text, signPassword.text).ContinueWithOnMainThread(task => {
+        auth.SignInWithEmailAndPasswordAsync(signEmail.text, signPassword.text).ContinueWithOnMainThread(async task => {
             if (task.IsCanceled)
             {
                
@@ -68,7 +68,7 @@ public class FirebaseAuthManager : MonoBehaviour
             else if (task.IsCompleted)
             {
                 if (LoadingScene.Ins != null)
-                    LoadingScene.Ins.LoadScene("MainMenu", "Loading...", LoadSceneMode.Single);
+                   await LoadingScene.Ins.LoadScene("MainMenu", "Loading...", LoadSceneMode.Single);
                 else SceneManager.LoadScene("MainMenu");
                     signBTN.interactable = false;
             }

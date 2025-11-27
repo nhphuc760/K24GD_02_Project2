@@ -13,4 +13,5 @@
         public static int ROLL = Animator.StringToHash("Roll");
         public static int FISH_HOOK_BLEND_TREE = Animator.StringToHash("Fish_Hook");
         public static int BOBBER_FISH = Animator.StringToHash("BobberFish");
+        public static int DEAD = Animator.StringToHash("Dead");
     }

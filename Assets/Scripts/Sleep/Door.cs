@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
@@ -5,19 +6,18 @@ public class Door : MonoBehaviour, IInteractable
 {
     public string sceneToLoad;
     public Vector3 targetPostion;
-    bool isInteract;
     public bool CanInteract()
     {
         return true;
     }
 
-    public void Interact()
+    public async void Interact()
     {
         Debug.Log("Interacted with Door to " + sceneToLoad);
         if (GameManager.Ins != null)
         {
             
-            GameManager.Ins.StartSceneTransition(sceneToLoad, targetPostion);
+           await GameManager.Ins.StartSceneTransition(sceneToLoad, targetPostion);
         }
     }
 

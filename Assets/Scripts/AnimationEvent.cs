@@ -8,4 +8,14 @@ public class AnimationEvent
     {
         onToolUse?.Invoke(toolTarget,sO, toolDataSO);
     }
+    public event Action onDead;
+    public void Dead()
+    {
+        onDead?.Invoke();
+    }
+    public event Action onIdle;
+    public void Idle()
+    {
+        onIdle?.Invoke();
+    }
 }

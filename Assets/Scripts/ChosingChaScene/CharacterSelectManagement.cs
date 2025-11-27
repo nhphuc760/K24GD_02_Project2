@@ -88,7 +88,7 @@ public class CharacterSelectManagement : MonoBehaviour
         };
         await Save_Load_Firebase.SaveData("PlayerData", player.ToString());
         if (LoadingScene.Ins != null)
-            LoadingScene.Ins.LoadScene(nextScene, "Loading...", LoadSceneMode.Single, false);
+           await LoadingScene.Ins.LoadScene(nextScene, "Loading...", LoadSceneMode.Single, false);
         else SceneManager.LoadScene(nextScene);
     }
 }
