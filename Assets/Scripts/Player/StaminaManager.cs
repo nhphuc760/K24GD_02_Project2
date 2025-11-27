@@ -14,6 +14,9 @@ public class StaminaManager : MonoBehaviour
     public Image staminaFillImage;
     public Image iconImage;
     public Sprite[] iconSprites;
+    public Color dayColor = Color.green; // Màu khi đầy sức ban ngày
+    public Color nightColor = new Color(0.7f, 0.2f, 1f); // Màu tím khi đầy sức ban đêm
+    public Color emptyColor = Color.red; // Màu khi cạn sức
 
     private float timer;
     private float secondsPerGameMinute;
@@ -53,15 +56,31 @@ public class StaminaManager : MonoBehaviour
     // Dùng Update() thay vì Coroutine while(true)
     void Update()
     {
+        
         // Nếu TimeManager chưa sẵn sàng, chưa làm gì cả
         if (TimeManager.instance == null || secondsPerGameMinute <= 0) return;
-
         //Logic Trừ Thể Lực Theo Thời Gian
         timer += Time.deltaTime;
         if (timer >= secondsPerGameMinute)
         {
-            DecreaseStamina(staminaDecreasePerMinute);
+            int currentHour = TimeManager.instance.GetCurrentHour();
+            if (currentHour >= 20 || currentHour < 6)
+            {
+                //ban đêm trừ nhiều thể lực hơn
+                DecreaseStamina(staminaDecreasePerMinute * 2);
+                Debug.Log("Đêm rồi! Thể lực giảm nhanh hơn.");
+            }
+            else
+            {
+                DecreaseStamina(staminaDecreasePerMinute);
+            }
+            UpdateUI();
             timer = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            Debug.Log("Cheat: Hồi 50 Thể lực!");
+            RestoreStamina(50);
         }
     }
 
@@ -128,6 +147,17 @@ public class StaminaManager : MonoBehaviour
         if (staminaFillImage != null)
         {
             staminaFillImage.fillAmount = fillRatio;
+            if (TimeManager.instance != null)
+            {
+                int currentHour = TimeManager.instance.GetCurrentHour();
+                bool isNight = (currentHour >= 20 || currentHour < 6);
+
+                // Xác định màu đích (Xanh hay Tím)
+                Color targetFullColor = isNight ? nightColor : dayColor;
+
+                // Pha màu: Từ Đỏ (hết) -> Màu Đích (đầy)
+                staminaFillImage.color = Color.Lerp(emptyColor, targetFullColor, fillRatio);
+            }
         }
         if (iconImage != null && iconSprites.Length > 0)
         {
