@@ -57,8 +57,10 @@ public class ToolTip : MonoBehaviour
 
     private void OnDestroy()
     {
-
-        GameEventManager.Ins.shopEvent.onShowToolTip -= ShowToolTip;
-        GameEventManager.Ins.shopEvent.onHideToolTip -= HideToolTip;
+        if (GameEventManager.Ins != null)
+        {
+            GameEventManager.Ins.shopEvent.onShowToolTip -= ShowToolTip;
+            GameEventManager.Ins.shopEvent.onHideToolTip -= HideToolTip;
+        }
     }
 }

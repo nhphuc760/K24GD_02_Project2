@@ -36,7 +36,8 @@ public class GameEventManager : MonoBehaviour
     {
         if (Ins != null && Ins != this)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
+            return;
         }
         Ins = this;
         questEvents = new QuestEvents();
@@ -47,7 +48,7 @@ public class GameEventManager : MonoBehaviour
         gameInput = new GameInput();
         animationEvent = new AnimationEvent();
         animalEvent = new AnimalEvent();
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 
     public void OnNearSell(bool value)

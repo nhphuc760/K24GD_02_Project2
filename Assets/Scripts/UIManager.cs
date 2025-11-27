@@ -53,15 +53,13 @@ public class UIManager : MonoBehaviour
     public float fadeDuration = 1f; // Thời gian fade
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
+        if(instance != null && instance != this)
         {
             Destroy(gameObject);
+            return;
         }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
         GameManager.Ins.onLoadDataCompleted += LoadDataPlayerCompleted;
     }
 
@@ -89,6 +87,7 @@ public class UIManager : MonoBehaviour
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        if(GameManager.Ins != null)
         GameManager.Ins.onLoadDataCompleted -= LoadDataPlayerCompleted;
     }
     // Hàm này sẽ được gọi mỗi khi một scene MỚI được tải xong

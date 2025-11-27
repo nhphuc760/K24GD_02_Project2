@@ -14,6 +14,7 @@ public class PlantingQuestStep : QuestStep
 
     private void OnDisable()
     {
+        if(GameEventManager.Ins != null)
         GameEventManager.Ins.onPlanting -= OnPlantingSeed;
     }
 

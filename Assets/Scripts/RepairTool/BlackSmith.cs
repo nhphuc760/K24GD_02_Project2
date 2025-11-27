@@ -238,6 +238,7 @@ public class BlackSmith : MonoBehaviour
     {
         //Trigger sound here
         if (audioSource != null && TrainingSound != null)
+
         {
             if (Time.time - lastSoundTime >= soundInterval)
             {

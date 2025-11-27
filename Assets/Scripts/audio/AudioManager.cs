@@ -19,15 +19,13 @@ public class AudioManager : MonoBehaviour
     public AudioMixerGroup sfxGroup;
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
+            return;
         }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
 

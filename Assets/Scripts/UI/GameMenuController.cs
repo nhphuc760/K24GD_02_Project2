@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Threading.Tasks;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameMenuController : MonoBehaviour
@@ -15,38 +16,38 @@ public class GameMenuController : MonoBehaviour
         if (menuPanel != null) menuPanel.SetActive(false);
     }
 
-
-    //Mở Menu
-    public void OnHomePressed()
+    public async void OnMainMenuPressed()
     {
-        menuPanel.SetActive(true);
-    }
-
-    //Đóng Menu
-    public void OnClosePressed()
-    {
-        menuPanel.SetActive(false);
-    }
-
-    public void OnMainMenuPressed()
-    {
-        //// (Tùy chọn) Lưu game trước khi thoát
-        //if (GameManager.instance != null)
-        //{
-        //    // GameManager.instance.SaveGame(); 
-        //}
-        SceneManager.LoadScene(mainMenuScene);
+        if (GameEventManager.Ins != null && UIManager.instance != null){
+            Destroy(GameEventManager.Ins.gameObject);
+            GameEventManager.Ins = null;
+            UIManager.instance = null;
+        }
+   
+        if(GameManager.Ins != null)
+        {
+            Destroy(GameManager.Ins.gameObject);
+            GameManager.Ins = null;
+        }
+        if(Player.Instance != null)
+        {
+            Destroy(Player.Instance.gameObject);
+            Player.Instance = null; 
+        }
+        if (AudioManager.instance != null)
+        {
+            Destroy (AudioManager.instance.gameObject);
+            AudioManager.instance = null;
+        }
+        await LoadingScene.Ins.LoadScene(mainMenuScene, "Loading...", LoadSceneMode.Single);
     }
 
     //Exit Game
-    public void OnExitPressed()
+    public  void OnExitPressed()
     {
-        //// (Tùy chọn) Lưu game trước khi thoát
-        //if (GameManager.instance != null)
-        //{
-        //    // GameManager.instance.SaveGame(); 
-        //}
-
+       
+        Save_Load_Firebase.LogOut();
         Application.Quit();
+      
     }
 }

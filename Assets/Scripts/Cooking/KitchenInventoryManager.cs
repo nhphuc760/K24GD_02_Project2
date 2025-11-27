@@ -45,17 +45,23 @@ public class KitchenInventoryManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameEventManager.Ins.cookingEvent.onPlayerEnterKitchen -= PlayerEnterKitchen;
-        GameEventManager.Ins.cookingEvent.onPlayerLeaveKitchen -= PlayerLeaveKitchen;
-        GameEventManager.Ins.cookingEvent.onPointerClickSlotUI -= slotInforUI.PointerClickSlotUI;
-        GameEventManager.Ins.cookingEvent.onStartCook -= StartCooking;
+        if (GameEventManager.Ins != null)
+        {
+            GameEventManager.Ins.cookingEvent.onPlayerEnterKitchen -= PlayerEnterKitchen;
+            GameEventManager.Ins.cookingEvent.onPlayerLeaveKitchen -= PlayerLeaveKitchen;
+            GameEventManager.Ins.cookingEvent.onPointerClickSlotUI -= slotInforUI.PointerClickSlotUI;
+            GameEventManager.Ins.cookingEvent.onStartCook -= StartCooking;
+        }
     }
     private void OnDisable()
     {
         slotInforUI.gameObject.SetActive(false);
         DialogCookingChange.SetActive(false);
-        GameEventManager.Ins.gameInput.EnableOpenBag();
-        GameEventManager.Ins.gameInput.EnableQuest();
+        if (GameEventManager.Ins != null)
+        {
+            GameEventManager.Ins.gameInput.EnableOpenBag();
+            GameEventManager.Ins.gameInput.EnableQuest();
+        }
     }
     private void PlayerLeaveKitchen()
     {

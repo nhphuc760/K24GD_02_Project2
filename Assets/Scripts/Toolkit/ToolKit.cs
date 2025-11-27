@@ -55,12 +55,14 @@ public class ToolKit : MonoBehaviour
 
     private void OnDisable()
     {
-      
-        GameEventManager.Ins.toolKitEvent.onCallInput -= OnInputCalled;
-        GameEventManager.Ins.toolKitEvent.onUpdateUI -= UpdateUI;
-        GameEventManager.Ins.toolKitEvent.onGetDataChooseSlot -= GetCurDataChoosing;
-        GameEventManager.Ins.toolKitEvent.onGetCurrentIndexChoose -= GetCurIndexChoosing;
-        GameEventManager.Ins.toolKitEvent.onTrigger -= Trigger;
+        if (GameEventManager.Ins != null)
+        {
+            GameEventManager.Ins.toolKitEvent.onCallInput -= OnInputCalled;
+            GameEventManager.Ins.toolKitEvent.onUpdateUI -= UpdateUI;
+            GameEventManager.Ins.toolKitEvent.onGetDataChooseSlot -= GetCurDataChoosing;
+            GameEventManager.Ins.toolKitEvent.onGetCurrentIndexChoose -= GetCurIndexChoosing;
+            GameEventManager.Ins.toolKitEvent.onTrigger -= Trigger;
+        }
     }
 
     private void InitInventorySuccess(Inventory inventory)
@@ -76,6 +78,7 @@ public class ToolKit : MonoBehaviour
             slot.UpdateUI();
         }
         OnInputCalled(1); //Mặc định vào game sẽ chọn ô toolkit đầu tiên
+        if(GameEventManager.Ins != null)
         GameEventManager.Ins.toolKitEvent.onInitSuccess -= InitInventorySuccess;
     }
 

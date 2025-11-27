@@ -50,17 +50,23 @@ public class ShopManager : MonoBehaviour
     }
     private void OnDisable()
     {
-        GameEventManager.Ins.gameInput.EnableOpenBag();
-        GameEventManager.Ins.gameInput.EnableQuest();
-        GameEventManager.Ins.shopEvent.HideToolTip();
+        if (GameEventManager.Ins != null)
+        {
+            GameEventManager.Ins.gameInput.EnableOpenBag();
+            GameEventManager.Ins.gameInput.EnableQuest();
+            GameEventManager.Ins.shopEvent.HideToolTip();
+        }
     }
     private void OnDestroy()
     {
-        GameEventManager.Ins.onCoinChange -= OnCoinChange;
-        GameEventManager.Ins.shopEvent.onShow -= Show;
-        GameEventManager.Ins.shopEvent.onHide -= Hide;
-        GameEventManager.Ins.shopEvent.onPlayerEnterShop -= PlayerEnterShop;
-        GameEventManager.Ins.shopEvent.onPlayerExitShop -= PlayerExitShop;
+        if (GameEventManager.Ins != null)
+        {
+            GameEventManager.Ins.onCoinChange -= OnCoinChange;
+            GameEventManager.Ins.shopEvent.onShow -= Show;
+            GameEventManager.Ins.shopEvent.onHide -= Hide;
+            GameEventManager.Ins.shopEvent.onPlayerEnterShop -= PlayerEnterShop;
+            GameEventManager.Ins.shopEvent.onPlayerExitShop -= PlayerExitShop;
+        }
     }
 
     private void OnCoinChange(int coin)

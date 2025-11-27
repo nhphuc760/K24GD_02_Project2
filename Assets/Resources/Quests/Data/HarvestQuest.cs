@@ -29,6 +29,7 @@ public class HarvestQuest : QuestStep
 
     void OnDisable()
     {
+        if(GameEventManager.Ins != null)
         GameEventManager.Ins.onHarvest -= OnHarvest;
     }
 

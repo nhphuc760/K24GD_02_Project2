@@ -39,6 +39,7 @@ public class ChangCookingDialog : MonoBehaviour
     }
     private void OnDestroy()
     {
+        if(GameEventManager.Ins != null)
         GameEventManager.Ins.cookingEvent.enableDialogCookingChange -= CookingEvent_enableDialogCookingChange;
     }
 }

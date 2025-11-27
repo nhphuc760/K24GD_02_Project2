@@ -93,7 +93,7 @@ public class InventoryManager : MonoBehaviour
         GameEventManager.Ins.inventoryEvent.onGetInventory += GetDataInventory;
         GameEventManager.Ins.inventoryEvent.onGetItemSOByID += GetItemDataSOByID;
         GameEventManager.Ins.inventoryEvent.onGetIndexOfSlot += GetIndexOfSlot;
-
+        GameEventManager.Ins.inventoryEvent.onGetBaitData += OnGetBaitData;
         GameEventManager.Ins.inventoryEvent.onDisableInventory += DisableSelf;
     }
 
@@ -123,6 +123,7 @@ public class InventoryManager : MonoBehaviour
         {
             itemInforUI.gameObject.SetActive(false);
         }
+        if(GameEventManager.Ins != null)
         GameEventManager.Ins.gameInput.EnableInterac();
        
     }
@@ -131,20 +132,24 @@ public class InventoryManager : MonoBehaviour
     private async void OnDestroy()
     {
         //GameInput.Ins.openBagPressed -= Ins_openBagPressed;
-        GameEventManager.Ins.inventoryEvent.opendBagPressed -= Ins_openBagPressed;
-        GameEventManager.Ins.questEvents.onClaimReward -= QuestEvents_onClaimReward;
-        GameEventManager.Ins.inventoryEvent.onRemoveItemClick -= RemoveItem;
-        GameEventManager.Ins.inventoryEvent.onRemoveItemCompleted -= OnRemoveItemCompleted;
-        GameEventManager.Ins.cookingEvent.onGetTotalItem -= GetTotalItem;
-        GameEventManager.Ins.cookingEvent.onGetItem -= CookingEvent_onGetItem;
-        GameEventManager.Ins.inventoryEvent.checkHasItem -= CheckHasItem;
-        GameEventManager.Ins.inventoryEvent.onRemoveItemByData -= RemoveItemByData;
-        GameEventManager.Ins.inventoryEvent.onAddItem -= AddItem;
-        GameEventManager.Ins.inventoryEvent.onDropItem -= OnDropItem;
-        GameEventManager.Ins.inventoryEvent.onGetInventory -= GetDataInventory;
-        GameEventManager.Ins.inventoryEvent.onGetItemSOByID -= GetItemDataSOByID;
-        GameEventManager.Ins.inventoryEvent.onGetIndexOfSlot -= GetIndexOfSlot;
-        GameEventManager.Ins.inventoryEvent.onDisableInventory -= DisableSelf;
+        if (GameEventManager.Ins != null)
+        {
+            GameEventManager.Ins.inventoryEvent.opendBagPressed -= Ins_openBagPressed;
+            GameEventManager.Ins.questEvents.onClaimReward -= QuestEvents_onClaimReward;
+            GameEventManager.Ins.inventoryEvent.onRemoveItemClick -= RemoveItem;
+            GameEventManager.Ins.inventoryEvent.onRemoveItemCompleted -= OnRemoveItemCompleted;
+            GameEventManager.Ins.cookingEvent.onGetTotalItem -= GetTotalItem;
+            GameEventManager.Ins.cookingEvent.onGetItem -= CookingEvent_onGetItem;
+            GameEventManager.Ins.inventoryEvent.checkHasItem -= CheckHasItem;
+            GameEventManager.Ins.inventoryEvent.onRemoveItemByData -= RemoveItemByData;
+            GameEventManager.Ins.inventoryEvent.onAddItem -= AddItem;
+            GameEventManager.Ins.inventoryEvent.onDropItem -= OnDropItem;
+            GameEventManager.Ins.inventoryEvent.onGetInventory -= GetDataInventory;
+            GameEventManager.Ins.inventoryEvent.onGetItemSOByID -= GetItemDataSOByID;
+            GameEventManager.Ins.inventoryEvent.onGetIndexOfSlot -= GetIndexOfSlot;
+            GameEventManager.Ins.inventoryEvent.onDisableInventory -= DisableSelf;
+            GameEventManager.Ins.inventoryEvent.onGetBaitData -= OnGetBaitData;
+        }
         await inventory.SaveData("InventoryOfPlayer");
     }
 
@@ -302,5 +307,15 @@ public class InventoryManager : MonoBehaviour
     public ItemDataSO GetItemDataSOByID(int id)
     {
         return itemDataBase.GetDataByID(id);
+    }
+   BaitDataSO OnGetBaitData()
+    {
+        InventorySlot slot = inventory.itemSlots.Find(x => x.ItemData is BaitDataSO);
+        if (slot == null) return null;
+        if(slot.ItemData != null)
+        {
+            return slot.ItemData as BaitDataSO;
+        }
+        return null;  
     }
 }

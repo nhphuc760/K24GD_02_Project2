@@ -27,6 +27,7 @@ public class LoadingScene : MonoBehaviour
       if(Ins != null &&  Ins != this)
         {
             Destroy(Ins.gameObject);
+            return;
         }   
       Ins = this;
       DontDestroyOnLoad(gameObject);

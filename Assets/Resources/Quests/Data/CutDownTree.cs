@@ -29,6 +29,7 @@ public class CutDownTree : QuestStep
 
     void OnDisable()
     {
+        if(GameEventManager.Ins != null)
         GameEventManager.Ins.onCutDTree -= OnCutDownTree;
     }
 

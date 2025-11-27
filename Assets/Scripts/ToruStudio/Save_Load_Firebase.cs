@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Firebase.Auth;
 using Firebase.Database;
 using UnityEngine;
 public static class Save_Load_Firebase 
 {
     static DatabaseReference reference = FirebaseDatabase.DefaultInstance.RootReference;
+    static FirebaseAuth auth = FirebaseAuth.DefaultInstance;
     public static string GetUserID()
     {
         var user = Firebase.Auth.FirebaseAuth.DefaultInstance.CurrentUser;
@@ -69,5 +71,10 @@ public static class Save_Load_Firebase
     public static async Task RemoveAsync(string path)
     {
         await reference.Child(GetUserID()).Child(path).RemoveValueAsync();
+    }
+
+    public static void LogOut()
+    {
+        auth.SignOut();
     }
 }
