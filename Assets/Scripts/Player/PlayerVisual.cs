@@ -35,6 +35,7 @@ public class PlayerVisual : MonoBehaviour
     {
         if (!isInteract)
         {
+            StaminaManager.instance.DecreaseStamina(sO.decreaseStaminaPerUse);
             isInteract = true;
             animator.Play(target.RequireTool.ToString());
             StartCoroutine(WaitUseTool(target, sO, dataRunTime));

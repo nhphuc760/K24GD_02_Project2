@@ -22,6 +22,7 @@ MonoBehaviour:
   runTimeItemType: 1
   sell: 0
   isCanSell: 0
+  isCanUseBuff: 0
   purchase_Price: 500
   typeItemShop: 0
   maxDurability: 100
@@ -29,3 +30,4 @@ MonoBehaviour:
   toolType: 5
   repairCostPerPoint: 7
   timePerpointRepair: 30
+  decreaseStaminaPerUse: 0.5

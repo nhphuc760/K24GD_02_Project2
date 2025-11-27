@@ -35,8 +35,8 @@ public class BlackSmith : MonoBehaviour
 
     public AudioClip TrainingSound;
     [SerializeField] private AudioSource audioSource;
-    public float soundInterval = 0.8f; // Chỉnh số này to lên nếu muốn chậm hơn
-    private float lastSoundTime;       // Biến lưu thời điểm phát tiếng lần cuối
+    //public float soundInterval = 0.8f; // Chỉnh số này to lên nếu muốn chậm hơn
+    //private float lastSoundTime;       // Biến lưu thời điểm phát tiếng lần cuối
     private async void Awake()
     {
         if (audioSource == null) audioSource = GetComponent<AudioSource>();
@@ -240,8 +240,8 @@ public class BlackSmith : MonoBehaviour
         if (audioSource != null && TrainingSound != null)
 
         {
-            if (Time.time - lastSoundTime >= soundInterval)
-            {
+           // if (Time.time - lastSoundTime >= soundInterval)
+           // {
                 //// Thay đổi độ cao
                 //audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
 
@@ -249,8 +249,8 @@ public class BlackSmith : MonoBehaviour
                 audioSource.PlayOneShot(TrainingSound);
 
                 // Cập nhật lại thời gian lần cuối
-                lastSoundTime = Time.time;
-            }
+             //   lastSoundTime = Time.time;
+           // }
         }
     }
     private async void OnDestroy()
