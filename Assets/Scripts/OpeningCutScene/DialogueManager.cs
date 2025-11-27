@@ -24,6 +24,7 @@ public class DialogueManager : MonoBehaviour
 
     public AudioClip typingSound; // Kéo file âm thanh tiếng gõ vào đây
     public int soundFrequency = 2;
+    private AudioSource fallbackSource;
     private void Awake()
     {
         // Singleton pattern
@@ -36,6 +37,9 @@ public class DialogueManager : MonoBehaviour
             Destroy(gameObject);
         }
         sentences = new Queue<string>();
+
+        fallbackSource = gameObject.AddComponent<AudioSource>();
+        fallbackSource.playOnAwake = false;
     }
 
     private void Update()
@@ -109,11 +113,22 @@ public class DialogueManager : MonoBehaviour
     {
         if (AudioManager.instance != null)
         {
-            // Nếu bạn đã làm hàm PlaySFXRandomPitch như bài trước thì dùng cái đó sẽ hay hơn
             // AudioManager.instance.PlaySFXRandomPitch(typingSound);
-
-            // Nếu chưa thì dùng PlaySFX thường
             AudioManager.instance.PlayFX(typingSound);
+        }
+        else
+        {
+            // Lấy Volume SFX đã lưu (mặc định là 1 nếu chưa lưu)
+            float savedVolume = PlayerPrefs.GetFloat("SFXVol", 1f);
+
+            // Chỉnh volume cho loa dự phòng
+            fallbackSource.volume = savedVolume;
+
+            //// Thay đổi độ cao một chút cho tự nhiên (Random Pitch)
+            //fallbackSource.pitch = Random.Range(0.9f, 1.1f);
+
+            // Phát tiếng
+            fallbackSource.PlayOneShot(typingSound);
         }
     }
     //ket thuc doi thoai

@@ -25,6 +25,9 @@ public class PlayerFishing : MonoBehaviour
     ToolDataSO curToolDataSO;
     BaitDataSO bait;
     [SerializeField] FishDataBase fishDatabase;
+
+    public AudioClip ThrowRob;
+    public AudioClip ThrowRobBack;
     public bool IsFishing { get => isInFishingState; set{
             if(isInFishingState == value) return;
             isInFishingState = value;
@@ -125,6 +128,11 @@ public class PlayerFishing : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && playerVisual.winnerAnimIsActive == false && !fishGame.activeSelf && !fishBited && isBobberInWater)
         {
+            if(AudioManager.instance != null)
+            {
+                Debug.Log("Play Throw Rob Back Sound");
+                AudioManager.instance.PlayFX(ThrowRobBack);
+            }
             RemovePreviousBobber();
             StartPoleBack();
         }
@@ -146,6 +154,19 @@ public class PlayerFishing : MonoBehaviour
             }
 
             CastingFishing();
+            if(AudioManager.instance != null)
+            {
+                Debug.Log("Play Throw Rob Sound");
+                if (ThrowRob == null)
+                {
+                    Debug.LogError("LỖI: Chưa gán file âm thanh ThrowRob vào Inspector của PlayerFishing!");
+                }
+                else
+                {
+                    AudioManager.instance.PlayFX(ThrowRob);
+                }
+                // -----
+            }
         }
         if (Input.GetKeyDown(KeyCode.P) && isInFishingState)
         {
@@ -176,6 +197,18 @@ public class PlayerFishing : MonoBehaviour
 
     public void fishGameWon()
     {
+        if (AudioManager.instance != null)
+        {
+            Debug.Log("Play Throw Rob Sound");
+            if (ThrowRob == null)
+            {
+                Debug.LogError("LỖI: Chưa gán file âm thanh ThrowRob vào Inspector của PlayerFishing!");
+            }
+            else
+            {
+                AudioManager.instance.PlayFX(ThrowRob);
+            }
+        }
         FishGameResult = true;
         playerVisual.animator.Play(AnimationHashes.CAPTURE_NOFISH);
         fishGame.SetActive(false);   
@@ -192,6 +225,18 @@ public class PlayerFishing : MonoBehaviour
     }
     public void fishGameLossed()
     {
+        if (AudioManager.instance != null)
+        {
+            Debug.Log("Play Throw Rob Sound");
+            if (ThrowRob == null)
+            {
+                Debug.LogError("LỖI: Chưa gán file âm thanh ThrowRob vào Inspector của PlayerFishing!");
+            }
+            else
+            {
+                AudioManager.instance.PlayFX(ThrowRob);
+            }
+        }
         FishGameResult = false;
         playerVisual.animator.Play(AnimationHashes.CAPTURE_NOFISH);
         fishGame.SetActive(false);         
@@ -208,6 +253,12 @@ public class PlayerFishing : MonoBehaviour
         UpdateFishingPointPosition();      
         bobberPoint.gameObject.SetActive(value: true);
         bobberPoint.position = fishingPoint.position;
+
+        if (AudioManager.instance != null)
+        {
+            Debug.Log("Play Throw Rob Sound");
+            AudioManager.instance.PlayFX(ThrowRob);
+        }
     }
     private void RemovePreviousBobber()
     {

@@ -10,6 +10,8 @@ public class QuestLogUI : MonoBehaviour
     [SerializeField] Transform container;
     [SerializeField] List<Sprite> backGroundSlotRewards;
     [SerializeField] SlotRewardUI slotRewardUI;
+
+    public AudioClip rewardSound;
     private void Start()
     {
         if (manager == null)
@@ -61,6 +63,11 @@ public class QuestLogUI : MonoBehaviour
         }
         else
         {
+            if(AudioManager.instance != null && rewardSound != null)
+            {
+                AudioManager.instance.PlayFX(rewardSound);
+                Debug.Log("Play Reward Sound");
+            }
             GameEventManager.Ins.questEvents.ClaimReward(quest);
             GameEventManager.Ins.TriggerDialog("<color=green>Phần thưởng đã được thêm vào kho đồ</color>");
             quest.isClaimRewards = true;
