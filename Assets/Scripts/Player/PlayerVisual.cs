@@ -81,6 +81,7 @@ public class PlayerVisual : MonoBehaviour
     {
         if (GameEventManager.Ins != null)
         {
+            if(GameManager.Ins != null)
             GameManager.Ins.onLoadDataCompleted -= LoadDataPlayerCompleted;
             GameEventManager.Ins.animationEvent.onToolUse -= UseTool;
             GameEventManager.Ins.animationEvent.onDead -= Dead;

@@ -1,4 +1,5 @@
 using System.Collections;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -65,13 +66,15 @@ public class FarmLandManager : MonoBehaviour
     private void OnDisable()
     {
         StopCoroutine(CheckPlayerInFarm());
-        GameEventManager.Ins.toolKitEvent.onCurSelectedChange += CurSelectedChange;
+        if(GameEventManager.Ins != null)
+        GameEventManager.Ins.toolKitEvent.onCurSelectedChange -= CurSelectedChange;
     }
 
     IEnumerator CheckPlayerInFarm()
     {
         while (true)
         {
+            if (groundCheck == null) yield break;
             Vector3Int cellPosition = farmLand.WorldToCell(groundCheck.position);
             TileBase currentTile = farmLand.GetTile(cellPosition);
             curPos = cellPosition;

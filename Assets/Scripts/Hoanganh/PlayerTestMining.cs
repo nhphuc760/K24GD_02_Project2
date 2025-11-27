@@ -97,6 +97,7 @@ public class PlayerTestMining : MonoBehaviour
                 Debug.Log("curToolType: " + currentTool.toolType.ToString());
                 if (currentTool.toolType == toolTarget.RequireTool)
                 {
+                    StaminaManager.instance.DecreaseStamina(currentTool.decreaseStaminaPerUse);
                     GameEventManager.Ins.animationEvent.ToolUse(toolTarget, currentTool, curToolKit.dataRuntime as ToolRunTimeData);
                 }
                 else

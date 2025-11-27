@@ -15,7 +15,7 @@ MonoBehaviour:
   _id: 216
   _itemName: "M\u1EE9t Vi\u1EC7t Qu\u1EA5t"
   _icon: {fileID: 1190637045, guid: fcd939daf4c881a48bf0d5dd49f46f48, type: 3}
-  _description: "M\u1EE9t vi\u1EC7t qu\u1EA5t siu ng\u1ECDt\nTh\u1EDDi gian: 0h0p0s\nGi\xE1
+  _description: "M\u1EE9t vi\u1EC7t qu\u1EA5t siu ng\u1ECDt\nTh\u1EDDi gian: 0h10p0s\nGi\xE1
     b\xE1n: 200$"
   _maxStack: 1
   isStackable: 0
@@ -23,7 +23,7 @@ MonoBehaviour:
   runTimeItemType: 0
   sell: 200
   isCanSell: 1
-  isCanUseBuff: 0
+  isCanUseBuff: 1
   recipeSO: {fileID: 11400000, guid: 8a35497f607798246a96fac3f961c0f5, type: 2}
   Description: "M\u1EE9t vi\u1EC7t qu\u1EA5t siu ng\u1ECDt"
   buffStamina: 20

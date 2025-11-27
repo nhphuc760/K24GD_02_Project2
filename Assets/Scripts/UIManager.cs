@@ -87,6 +87,7 @@ public class UIManager : MonoBehaviour
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        if(GameManager.Ins != null)
         GameManager.Ins.onLoadDataCompleted -= LoadDataPlayerCompleted;
     }
     // Hàm này sẽ được gọi mỗi khi một scene MỚI được tải xong

@@ -188,6 +188,7 @@ public class PlayerFishing : MonoBehaviour
         GameEventManager.Ins.TriggerDialog($"<color=green>Bạn vừa câu được cá {sO._itemName}</color>");
         GameEventManager.Ins.OnFishing(sO);
         GameEventManager.Ins.inventoryEvent.RemoveItemByData(bait, 1);
+        StaminaManager.instance.DecreaseStamina(curToolDataSO.decreaseStaminaPerUse);
     }
     public void fishGameLossed()
     {
@@ -200,6 +201,7 @@ public class PlayerFishing : MonoBehaviour
         fishingRodData.currentDurability -= curToolDataSO.durabilityLossPerUse;
         GameEventManager.Ins.TriggerDialog("<color=red>Trật mất rồi...huhu</color>");
         GameEventManager.Ins.inventoryEvent.RemoveItemByData(bait, 1);
+        StaminaManager.instance.DecreaseStamina(curToolDataSO.decreaseStaminaPerUse);
     }
     public void OnCastFishingEnd()
     {
