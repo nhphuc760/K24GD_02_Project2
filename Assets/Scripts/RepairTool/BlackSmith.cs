@@ -34,9 +34,12 @@ public class BlackSmith : MonoBehaviour
     Vector2 originAnchorUITrain;
 
     public AudioClip TrainingSound;
-    private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource;
+    public float soundInterval = 0.8f; // Chỉnh số này to lên nếu muốn chậm hơn
+    private float lastSoundTime;       // Biến lưu thời điểm phát tiếng lần cuối
     private async void Awake()
     {
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
         originAnchorUITrain = UITrain.position;
         var task = await Save_Load_Firebase.LoadData("BlackSmith");
         if (task != null && task.Exists)
@@ -234,9 +237,19 @@ public class BlackSmith : MonoBehaviour
     public void PlaySoundEffect()
     {
         //Trigger sound here
-        if (audioSource != null)
+        if (audioSource != null && TrainingSound != null)
         {
-            AudioManager.instance.PlayFX(TrainingSound);
+            if (Time.time - lastSoundTime >= soundInterval)
+            {
+                //// Thay đổi độ cao
+                //audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+
+                // Phát âm thanh
+                audioSource.PlayOneShot(TrainingSound);
+
+                // Cập nhật lại thời gian lần cuối
+                lastSoundTime = Time.time;
+            }
         }
     }
     private async void OnDestroy()
