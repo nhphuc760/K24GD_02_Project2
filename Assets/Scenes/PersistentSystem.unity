@@ -2681,12 +2681,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3807949721572296570, guid: 561b712c25e9fea48bc43fae007526ae, type: 3}
       propertyPath: m_labelHash
-      value: 1.3971405e-28
+      value: 2.138533e-11
       objectReference: {fileID: 0}
     - target: {fileID: 3807949721572296570, guid: 561b712c25e9fea48bc43fae007526ae, type: 3}
       propertyPath: m_CategoryHash
-      value: 6.6282384e-23
+      value: 1.9589289e-22
       objectReference: {fileID: 0}
+    - target: {fileID: 5034473988514278421, guid: 561b712c25e9fea48bc43fae007526ae, type: 3}
+      propertyPath: ThrowRob
+      value: 
+      objectReference: {fileID: 8300000, guid: 684327247e727564095f51f1b562cc05, type: 3}
+    - target: {fileID: 5034473988514278421, guid: 561b712c25e9fea48bc43fae007526ae, type: 3}
+      propertyPath: ThrowRobBack
+      value: 
+      objectReference: {fileID: 8300000, guid: 6e0600a3f474883459e9d504e9bab2ce, type: 3}
     - target: {fileID: 5034473988514278421, guid: 561b712c25e9fea48bc43fae007526ae, type: 3}
       propertyPath: fishDatabase
       value: 
@@ -2718,13 +2726,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxStamina: 100
   currentStamina: 100
-  staminaDecreasePerMinute: 0.2
+  staminaDecreasePerMinute: 0.5
   staminaFillImage: {fileID: 337084500}
   iconImage: {fileID: 625570059}
   iconSprites:
   - {fileID: -1070232324859063644, guid: b1264ebb9fc30224bb802d84e4a4342e, type: 3}
   - {fileID: -5611159671457333093, guid: b1264ebb9fc30224bb802d84e4a4342e, type: 3}
   - {fileID: 3348285320354254549, guid: b1264ebb9fc30224bb802d84e4a4342e, type: 3}
+  dayColor: {r: 0, g: 1, b: 0, a: 1}
+  nightColor: {r: 0.45328596, g: 0.19999999, b: 1, a: 1}
+  emptyColor: {r: 1, g: 0, b: 0, a: 1}
   coinLostPerDead: 500
 --- !u!1 &1566916785
 GameObject:
