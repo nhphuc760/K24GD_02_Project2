@@ -24,13 +24,16 @@ public class QuestManger : MonoBehaviour
         GameEventManager.Ins.questEvents.onQuestStepStateChanged += QuestStepStateChanged;
     }
 
-    
+
 
     private void OnDisable()
     {
-        GameEventManager.Ins.questEvents.onStartQuest -= StartQuest;
-        GameEventManager.Ins.questEvents.onFinishQuest -= FinishQuest;
-        GameEventManager.Ins.questEvents.onQuestStepStateChanged -= QuestStepStateChanged;
+        if (GameEventManager.Ins != null)
+        {
+            GameEventManager.Ins.questEvents.onStartQuest -= StartQuest;
+            GameEventManager.Ins.questEvents.onFinishQuest -= FinishQuest;
+            GameEventManager.Ins.questEvents.onQuestStepStateChanged -= QuestStepStateChanged;
+        }
     }
 
     private async void Start()

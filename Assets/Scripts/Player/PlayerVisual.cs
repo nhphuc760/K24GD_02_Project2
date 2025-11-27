@@ -79,10 +79,13 @@ public class PlayerVisual : MonoBehaviour
     }
     private void OnDestroy()
     {
-        GameManager.Ins.onLoadDataCompleted -= LoadDataPlayerCompleted;
-        GameEventManager.Ins.animationEvent.onToolUse -= UseTool;
-        GameEventManager.Ins.animationEvent.onDead -= Dead;
-        GameEventManager.Ins.animationEvent.onIdle -= Idle;
+        if (GameEventManager.Ins != null)
+        {
+            GameManager.Ins.onLoadDataCompleted -= LoadDataPlayerCompleted;
+            GameEventManager.Ins.animationEvent.onToolUse -= UseTool;
+            GameEventManager.Ins.animationEvent.onDead -= Dead;
+            GameEventManager.Ins.animationEvent.onIdle -= Idle;
+        }
     }
 
     IEnumerator WaitUseTool(IToolTarget target, ToolDataSO sO, ToolRunTimeData tool)

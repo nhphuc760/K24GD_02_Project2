@@ -22,6 +22,7 @@ public class InteractionDetector : MonoBehaviour
         {
             interactableInrange = interactable;
             interactionIcon?.SetActive(true);
+            if(GameEventManager.Ins != null)
             GameEventManager.Ins.gameInput.interacPressed += OnInteract;
         }
     }
@@ -34,6 +35,7 @@ public class InteractionDetector : MonoBehaviour
         {
             interactableInrange = null;
             interactionIcon?.SetActive(false);
+            if(GameEventManager.Ins != null)
             GameEventManager.Ins.gameInput.interacPressed -= OnInteract;
         }
     }

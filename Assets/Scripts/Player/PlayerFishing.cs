@@ -23,6 +23,7 @@ public class PlayerFishing : MonoBehaviour
     private Tilemap[] _groundTilemaps;
     InventorySlot curToolKit;
     ToolDataSO curToolDataSO;
+    BaitDataSO bait;
     [SerializeField] FishDataBase fishDatabase;
     public bool IsFishing { get => isInFishingState; set{
             if(isInFishingState == value) return;
@@ -52,7 +53,6 @@ public class PlayerFishing : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
         playerMovement ??= GetComponent<PlayerMovement>();
         playerVisual ??= GetComponentInChildren<PlayerVisual>();
         GameEventManager.Ins.toolKitEvent.onCurSelectedChange += CurSelectToolKitChange;
@@ -101,9 +101,12 @@ public class PlayerFishing : MonoBehaviour
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoad;
-        GameEventManager.Ins.onFishingZoneEnter -= FishingZoneEnter;
-        GameEventManager.Ins.onFishingZoneExit -= FishingZoneExit;
-        GameEventManager.Ins.toolKitEvent.onCurSelectedChange -= CurSelectToolKitChange;
+        if (GameEventManager.Ins != null)
+        {
+            GameEventManager.Ins.onFishingZoneEnter -= FishingZoneEnter;
+            GameEventManager.Ins.onFishingZoneExit -= FishingZoneExit;
+            GameEventManager.Ins.toolKitEvent.onCurSelectedChange -= CurSelectToolKitChange;
+        }
 
     }
     private void Update()
@@ -117,6 +120,7 @@ public class PlayerFishing : MonoBehaviour
         isBobberInWater = CheckBobberInWater(playerMovement.GetDirection());
         HandleInput();
     }
+    ToolRunTimeData fishingRodData;
     private void HandleInput()
     {
         if (Input.GetKeyDown(KeyCode.Space) && playerVisual.winnerAnimIsActive == false && !fishGame.activeSelf && !fishBited && isBobberInWater)
@@ -126,12 +130,21 @@ public class PlayerFishing : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.Space) && playerVisual.winnerAnimIsActive == false && isInFishingState && !fishGame.activeSelf && !fishBited)
         {
-            ToolRunTimeData fishingRodData = curToolKit.dataRuntime as ToolRunTimeData;
-            if(fishingRodData.currentDurability <= 0)
+             fishingRodData = curToolKit.dataRuntime as ToolRunTimeData;
+            if(fishingRodData.currentDurability < curToolDataSO.durabilityLossPerUse)
             {
                 GameEventManager.Ins.TriggerDialog("Cần câu đã hư hại, bạn cần gặp BlackSmith để sửa chữa");
+                CancelFishing();
                 return;
             }
+            bait = GameEventManager.Ins.inventoryEvent.GetBaitDataSO();
+            if(bait == null)
+            {
+                GameEventManager.Ins.TriggerDialog("<color=red>Không có mồi câu cá</color>");
+                CancelFishing();
+                return;
+            }
+
             CastingFishing();
         }
         if (Input.GetKeyDown(KeyCode.P) && isInFishingState)
@@ -170,9 +183,11 @@ public class PlayerFishing : MonoBehaviour
         FishBited = false;
         fishIcon.SetActive(false);
         FishDataSO sO = fishDatabase.GetRandomFish();
+        fishingRodData.currentDurability -= curToolDataSO.durabilityLossPerUse;
         GameEventManager.Ins.inventoryEvent.AddItem(sO, 1, isDialog: false);
         GameEventManager.Ins.TriggerDialog($"<color=green>Bạn vừa câu được cá {sO._itemName}</color>");
         GameEventManager.Ins.OnFishing(sO);
+        GameEventManager.Ins.inventoryEvent.RemoveItemByData(bait, 1);
     }
     public void fishGameLossed()
     {
@@ -182,6 +197,9 @@ public class PlayerFishing : MonoBehaviour
         IsFishing = false;
         FishBited = false;
         fishIcon.SetActive(false);
+        fishingRodData.currentDurability -= curToolDataSO.durabilityLossPerUse;
+        GameEventManager.Ins.TriggerDialog("<color=red>Trật mất rồi...huhu</color>");
+        GameEventManager.Ins.inventoryEvent.RemoveItemByData(bait, 1);
     }
     public void OnCastFishingEnd()
     {
@@ -256,6 +274,7 @@ public class PlayerFishing : MonoBehaviour
         else
             fish.SetActive(false);
     }
+    
     
     
 }

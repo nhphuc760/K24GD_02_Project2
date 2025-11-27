@@ -11,6 +11,7 @@ public class RepairToolQuest : QuestStep
 
     private void OnEnable()
     {
+        
         GameEventManager.Ins.onRepairTool += OnRepairTool;
     }
 
@@ -21,6 +22,7 @@ public class RepairToolQuest : QuestStep
 
     private void OnDisable()
     {
+        if(GameEventManager.Ins != null)
         GameEventManager.Ins.onRepairTool -= OnRepairTool;
     }
 

@@ -35,6 +35,7 @@ public class Dialog : MonoBehaviour
     }
     private void OnDestroy()
     {
+        if(GameEventManager.Ins != null)
         GameEventManager.Ins.triggerDialog -= Ins_triggerDialog;
     }
 }

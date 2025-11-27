@@ -49,6 +49,7 @@ public class PlayerFarming : MonoBehaviour
 
     private void OnDisable()
     {
+        if(GameEventManager.Ins != null)
         GameEventManager.Ins.gameInput.interacPressed -= HandleInput;
        
     }

@@ -57,6 +57,7 @@ public class PlayerTestMining : MonoBehaviour
 
     private void OnDisable()
     {
+        if(GameEventManager.Ins != null)
         GameEventManager.Ins.gameInput.interacPressed -= TryMineOre;
         
     }
@@ -64,6 +65,7 @@ public class PlayerTestMining : MonoBehaviour
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoad;
+        if(GameEventManager.Ins != null)
         GameEventManager.Ins.toolKitEvent.onCurSelectedChange -= CurToolSelectedChanged;
     }
 
@@ -77,7 +79,7 @@ public class PlayerTestMining : MonoBehaviour
             return;
         }
         ToolRunTimeData toolRuntime = curToolKit.dataRuntime as ToolRunTimeData;
-        if(toolRuntime.currentDurability <= 0)
+        if(toolRuntime.currentDurability < currentTool.durabilityLossPerUse)
         {
             GameEventManager.Ins.TriggerDialog($"<color=red>Dụng cụ của bạn đã hư hỏng, Hãy gặp BlackSmith ở thị trấn để bảo dưỡng");
             return;

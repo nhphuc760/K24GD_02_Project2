@@ -57,6 +57,7 @@ public class ItemInforUI : MonoBehaviour
     {
         _confirmButton.onClick.RemoveAllListeners();
         _useButton.onClick.RemoveAllListeners();
+        if(GameEventManager.Ins != null)
         GameEventManager.Ins.onNearSell -= OnNearSell;
     }
 

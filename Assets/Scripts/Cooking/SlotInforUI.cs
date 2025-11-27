@@ -28,6 +28,7 @@ public class SlotInforUI : MonoBehaviour
     private void OnDisable()
     {
         curkitchenItemSO = null;
+        if(GameEventManager.Ins != null)
         GameEventManager.Ins.shopEvent.HideToolTip();
     }
 

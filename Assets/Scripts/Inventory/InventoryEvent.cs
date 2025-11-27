@@ -1,4 +1,5 @@
 ﻿using System;
+using Cysharp.Threading.Tasks.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -62,6 +63,11 @@ public class InventoryEvent
     public void DisableInventory()
     {
         onDisableInventory?.Invoke();
+    }
+    public event Func<BaitDataSO> onGetBaitData;
+    public BaitDataSO GetBaitDataSO()
+    {
+        return onGetBaitData?.Invoke();
     }
 
 }

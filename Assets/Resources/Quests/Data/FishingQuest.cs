@@ -30,6 +30,7 @@ public class FishingQuest : QuestStep
 
     void OnDisable()
     {
+        if(GameEventManager.Ins != null)
         GameEventManager.Ins.onFishing -= OnFishingCaught;
     }
 

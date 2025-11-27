@@ -53,15 +53,13 @@ public class UIManager : MonoBehaviour
     public float fadeDuration = 1f; // Thời gian fade
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
+        if(instance != null && instance != this)
         {
             Destroy(gameObject);
+            return;
         }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
         GameManager.Ins.onLoadDataCompleted += LoadDataPlayerCompleted;
     }
 

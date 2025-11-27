@@ -29,6 +29,7 @@ public class MineOreQuest : QuestStep
 
     void OnDisable()
     {
+        if(GameEventManager.Ins != null)
         GameEventManager.Ins.onMiningOre -= OnMineOre;
     }
 

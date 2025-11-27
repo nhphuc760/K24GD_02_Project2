@@ -215,6 +215,7 @@ public abstract class FarmAnimal : MonoBehaviour, IInteractable
 
     private void OnDisable()
     {
+        if(AnimalManager.Ins != null)
         AnimalManager.Ins.AddDataAnimal(GetAnimalSaveData());
     }
     public AnimalSaveData GetAnimalSaveData()

@@ -234,6 +234,7 @@ public class BlackSmith : MonoBehaviour
     public void PlaySoundEffect()
     {
         //Trigger sound here
+        Debug.Log("PlaySoundEffect called");
         if (audioSource != null)
         {
             AudioManager.instance.PlayFX(TrainingSound);

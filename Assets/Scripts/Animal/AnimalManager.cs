@@ -89,9 +89,12 @@ public class AnimalManager : MonoBehaviour
 
     private void OnDisable()
     {
-        GameEventManager.Ins.animalEvent.onBuyAnimal -= OnBuyAnimal;
-        GameEventManager.Ins.onCheckConDition -= CheckConditionBuy;
-        GameEventManager.Ins.onSeparate -= Separate;
+        if (GameEventManager.Ins != null)
+        {
+            GameEventManager.Ins.animalEvent.onBuyAnimal -= OnBuyAnimal;
+            GameEventManager.Ins.onCheckConDition -= CheckConditionBuy;
+            GameEventManager.Ins.onSeparate -= Separate;
+        }
     }
 
     private async void OnDestroy()

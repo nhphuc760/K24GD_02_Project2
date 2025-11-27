@@ -93,11 +93,14 @@ public class QuestLogUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameEventManager.Ins.questEvents.OnLoadQuestMapSuccess -= Manger_OnLoadQuestMapSuccess;
-        GameEventManager.Ins.questEvents.onQuestInforClick -= QuestEvents_onQuestInforClick;
-        GameEventManager.Ins.questEvents.onRewardClick -= QuestEvents_onRewardClick;
-        GameEventManager.Ins.questEvents.onMenuQuestPress -= TriggerUI;
-        GameEventManager.Ins.questEvents.onHideQuestUI -= Hide;
+        if (GameEventManager.Ins != null)
+        {
+            GameEventManager.Ins.questEvents.OnLoadQuestMapSuccess -= Manger_OnLoadQuestMapSuccess;
+            GameEventManager.Ins.questEvents.onQuestInforClick -= QuestEvents_onQuestInforClick;
+            GameEventManager.Ins.questEvents.onRewardClick -= QuestEvents_onRewardClick;
+            GameEventManager.Ins.questEvents.onMenuQuestPress -= TriggerUI;
+            GameEventManager.Ins.questEvents.onHideQuestUI -= Hide;
+        }
     }
 
     private void Manger_OnLoadQuestMapSuccess(List<Quest> questMap)

@@ -171,10 +171,13 @@ public class Kitchen : MonoBehaviour
 
     private async void OnDestroy()
     {
-        GameEventManager.Ins.cookingEvent.onCookClick -= CookingEvent_onCookClick;
-        GameEventManager.Ins.cookingEvent.confirmCookingChange -= CookingEvent_confirmCookingChange;
+        if (GameEventManager.Ins != null)
+        {
+            GameEventManager.Ins.cookingEvent.onCookClick -= CookingEvent_onCookClick;
+            GameEventManager.Ins.cookingEvent.confirmCookingChange -= CookingEvent_confirmCookingChange;
+        }
         await Save();
-      
+
     }
     public void GetItem()
     {

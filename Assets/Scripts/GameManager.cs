@@ -33,15 +33,13 @@ public class GameManager : MonoBehaviour
     private Vector3 nextPlayerPosition; // vị trí người chơi sau khi chuyển scene
     private async void Awake()
     {
-        if (Ins == null)
-        {
-            Ins = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
+        if(Ins != null && Ins != this)
         {
             Destroy(gameObject);
+            return;
         }
+        Ins = this;
+        DontDestroyOnLoad(gameObject);
         var task = await Save_Load_Firebase.LoadData("Coins");
         if (task.Exists)
         {
