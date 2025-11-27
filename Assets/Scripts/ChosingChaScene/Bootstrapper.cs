@@ -19,6 +19,7 @@ public class Bootstrapper : MonoBehaviour
         {
             SceneManager.LoadScene(nextScene);
            await UniTask.Yield();
+            return;
         }
         while (LoadingScene.Ins.IsBusy)
         {
