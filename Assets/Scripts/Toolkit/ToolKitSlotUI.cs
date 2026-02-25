@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -12,19 +12,10 @@ public class ToolKitSlotUI : MonoBehaviour, IDragDrop, IPointerClickHandler
     [SerializeField] TextMeshProUGUI _quantityText;
     Image dragIcon;
 
-    private void Start()
-    {
-        
-    }
-
     public void Init(int index, ToolKit toolKit)
     {
         this.slotIndex = index;
         this.toolKitManager = toolKit;
-    }
-    public ItemDataSO GetItemDataSO()
-    {
-        return null;
     }
     public void OnDrag(PointerEventData eventData) // Ham callback unity, duoc goi khi keo
     {
@@ -45,7 +36,7 @@ public class ToolKitSlotUI : MonoBehaviour, IDragDrop, IPointerClickHandler
         dragIcon.color = Color.white;
         dragIcon.raycastTarget = false;
         dragIcon.transform.SetParent(toolKitManager.transform);
-        dragIcon.rectTransform.sizeDelta = new Vector2(64, 64);
+        dragIcon.rectTransform.sizeDelta = new Vector2(128 , 128);
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -98,9 +89,19 @@ public class ToolKitSlotUI : MonoBehaviour, IDragDrop, IPointerClickHandler
         _selectCursor.gameObject.SetActive(true);
     }
 
-    public int GetIndex()
+    public InventorySlot GetInventorySlot()
+    {
+      return toolKitManager.inventory.itemSlots[slotIndex];
+    }
+
+    public int GetIndexSlot()
     {
        return slotIndex;
+    }
+
+    public void SetInventorySlot(InventorySlot slot)
+    {
+       //not needed
     }
 }
    

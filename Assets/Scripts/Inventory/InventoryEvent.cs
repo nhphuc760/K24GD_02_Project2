@@ -1,4 +1,5 @@
-using System;
+﻿using System;
+using Cysharp.Threading.Tasks.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -24,10 +25,10 @@ public class InventoryEvent
     {
         onRemoveItemByData?.Invoke(item, quantity);
     }
-    public event Func<ItemDataSO, int, bool> onAddItem;
-    public bool AddItem(ItemDataSO item, int quantity)
+    public event Func<ItemDataSO, int, DataRunTimeItem, bool, bool> onAddItem;
+    public bool AddItem(ItemDataSO item, int quantity, DataRunTimeItem dataRunTimeItem = null, bool isDialog = true)
     {
-       return onAddItem?.Invoke(item, quantity) ?? false ;
+       return onAddItem?.Invoke(item, quantity, dataRunTimeItem, isDialog) ?? false ;
     }
     
 
@@ -42,4 +43,31 @@ public class InventoryEvent
     {
         onDropItem?.Invoke(eventData);
     }
+
+    public event Func<InventoryManager> onGetInventory;
+    public InventoryManager GetDataInventory()
+    {
+        return onGetInventory?.Invoke();
+    }
+    public event Func<int, ItemDataSO> onGetItemSOByID;
+    public ItemDataSO GetItemSOByID(int id)
+    {
+        return onGetItemSOByID?.Invoke(id);
+    }
+    public event Func<InventorySlot, int> onGetIndexOfSlot;
+    public int GetIndexOfSlot(InventorySlot slot)
+    {
+        return onGetIndexOfSlot?.Invoke(slot) ?? -1 ;
+    }
+    public event Action onDisableInventory;
+    public void DisableInventory()
+    {
+        onDisableInventory?.Invoke();
+    }
+    public event Func<BaitDataSO> onGetBaitData;
+    public BaitDataSO GetBaitDataSO()
+    {
+        return onGetBaitData?.Invoke();
+    }
+
 }

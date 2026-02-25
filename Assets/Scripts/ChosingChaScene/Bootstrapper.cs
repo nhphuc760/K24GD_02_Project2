@@ -1,5 +1,5 @@
 ﻿// Bootstrapper.cs
-using System.Collections;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,25 +7,26 @@ public class Bootstrapper : MonoBehaviour
 {
     //scene đầu tiên  muốn người chơi thấy
     [SerializeField] string nextScene = "Farm";
-    void Start()
+    async void Start()
     {
-        StartCoroutine(WaitLoadingScene());
+        await WaitLoadingScene();
     }
 
-    IEnumerator WaitLoadingScene()
+    async UniTask WaitLoadingScene()
     {
-        yield return null;
+        await UniTask.Yield();
         if(LoadingScene.Ins == null)
         {
             SceneManager.LoadScene(nextScene);
-            yield break;
+           await UniTask.Yield();
+            return;
         }
         while (LoadingScene.Ins.IsBusy)
         {
-            yield return null;  
+            await UniTask.Yield();
         }
         
-        LoadingScene.Ins.LoadScene( nextScene, "Dữ liệu đã sẵn sàng", LoadSceneMode.Single, true);
+        await LoadingScene.Ins.LoadScene( nextScene, "Dữ liệu đã sẵn sàng", LoadSceneMode.Single, true);
 
     }
 }

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e90ab3f715a7ab40947acd3c0c41720, type: 3}
+  m_Name: "Seed_d\u01B0ahau"
+  m_EditorClassIdentifier: 
+  _id: 412
+  _itemName: "H\u1EA1t gi\u1ED1ng d\u01B0a h\u1EA5u"
+  _icon: {fileID: -7553651991473413757, guid: 8d283114280df184c85ba715dd66ba8f, type: 3}
+  _description: "Tr\u1ED3ng v\xE0 thu ho\u1EA1ch\nTh\u1EDDi gian: 25200\nS\u1EA3n
+    l\u01B0\u1EE3ng: 5\nL\u1EE3i nhu\u1EADn: 25$/1"
+  _maxStack: 999
+  isStackable: 1
+  itemType: 0
+  runTimeItemType: 0
+  sell: 10
+  isCanSell: 1
+  isCanUseBuff: 0
+  purchase_Price: 12
+  typeItemShop: 0
+  timeSpandHarvest: 25200
+  cropData: {fileID: 11400000, guid: 036d1ff2d86356c4790bf9a89118c822, type: 2}
+  growhtSprites:
+  - {fileID: -8989569366271797681, guid: 8d283114280df184c85ba715dd66ba8f, type: 3}
+  - {fileID: -6701046630696743573, guid: 8d283114280df184c85ba715dd66ba8f, type: 3}
+  - {fileID: -8264350872875031804, guid: 8d283114280df184c85ba715dd66ba8f, type: 3}
+  - {fileID: -8426440615525717462, guid: 8d283114280df184c85ba715dd66ba8f, type: 3}
+  - {fileID: 1905663479348960794, guid: 8d283114280df184c85ba715dd66ba8f, type: 3}
+  - {fileID: -1512804255523908494, guid: 8d283114280df184c85ba715dd66ba8f, type: 3}
+  - {fileID: -6549673638485341476, guid: 8d283114280df184c85ba715dd66ba8f, type: 3}
+  harvestIndicator: {fileID: -802595805, guid: 5fa6f306aca02f84497c285587e49872, type: 3}
+  yield: 5

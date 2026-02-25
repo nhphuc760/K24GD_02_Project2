@@ -6,15 +6,24 @@ public class ItemDataSO : ScriptableObject
     public int _id;
     public string _itemName;
     public Sprite _icon;
+    [TextArea]
     public string _description;
     public int _maxStack;
     public bool isStackable;
     public ItemType itemType;
     public RunTimeItemType runTimeItemType;
+    public int sell;
+    public bool isCanSell;
+    public bool isCanUseBuff;
 
-    private void OnValidate()
+    public virtual void OnValidate()
     {
         _itemName = this.name;
+    }
+
+    public virtual void Use(GameObject tarGet)
+    {
+
     }
 }
 

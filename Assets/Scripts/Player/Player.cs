@@ -1,32 +1,16 @@
-using System;
-using Unity.Cinemachine;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public DateTime dateTime;
+   public static Player Instance;
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-    }
-
-    private void Start()
-    {
-        SceneManager.sceneLoaded += OnSceneLoad;
-
-    }
-
-    private void OnSceneLoad(Scene arg0, LoadSceneMode arg1)
-    {
-        if (arg0.path.StartsWith("Assets/Scenes/ScenePlay"))
+        if(Instance != null && Instance != this)
         {
-            FindAnyObjectByType<CinemachineCamera>().Follow = this.transform;
+            Destroy(gameObject);
+            return;
         }
-    }
-
-    private void OnDestroy()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoad;
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 }

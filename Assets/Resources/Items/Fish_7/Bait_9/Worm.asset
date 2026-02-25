@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a7b354d0529de44ad474bec9171d56, type: 3}
+  m_Name: Worm
+  m_EditorClassIdentifier: 
+  _id: 901
+  _itemName: "M\u1ED3i c\xE2u c\xE1"
+  _icon: {fileID: 4478404091626418483, guid: 21c935dd74a281146b0ef3ff7ed61061, type: 3}
+  _description: "\u0111\u01B0\u1EE3c chui v\xE0o d\u1EA1 d\xE0y c\xE1 l\xE0 ni\u1EC1m
+    vinh h\u1EA1nh c\u1EE7a t\xF4i"
+  _maxStack: 5
+  isStackable: 1
+  itemType: 0
+  runTimeItemType: 0
+  sell: 0
+  isCanSell: 0
+  isCanUseBuff: 0
+  purchase_Price: 5
+  typeItemShop: 0

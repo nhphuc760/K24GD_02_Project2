@@ -10,15 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 321059806271058162, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
       propertyPath: m_Size.x
-      value: 0.89
+      value: 0.8900001
+      objectReference: {fileID: 0}
+    - target: {fileID: 321059806271058162, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5004193
       objectReference: {fileID: 0}
     - target: {fileID: 321059806271058162, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
       propertyPath: m_Offset.x
-      value: -0
+      value: -0.000000005972047
       objectReference: {fileID: 0}
     - target: {fileID: 321059806271058162, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
       propertyPath: m_Offset.y
-      value: 0.04
+      value: -0.050097167
       objectReference: {fileID: 0}
     - target: {fileID: 540968652401062206, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
       propertyPath: m_Name
@@ -80,6 +84,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4948609461753288601, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
+      propertyPath: chopSound
+      value: 
+      objectReference: {fileID: 8300000, guid: fbbea055a2567784f95b2b71b80a29be, type: 3}
     - target: {fileID: 5933077112115853164, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
       propertyPath: m_SpriteLibraryAsset
       value: 
@@ -122,48 +130,13 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 540968652401062206, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 229941974851165642}
-    - targetCorrespondingSourceObject: {fileID: 540968652401062206, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1823001278935332341}
   m_SourcePrefab: {fileID: 100100000, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
---- !u!95 &436400654897777839 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5892082040632711006, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
-  m_PrefabInstance: {fileID: 6326019743504473073}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1857237353890058522 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5624066813496462059, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
-  m_PrefabInstance: {fileID: 6326019743504473073}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5785825276416862927 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 540968652401062206, guid: 2631c97c6ab443045a47156bbeeeea3b, type: 3}
   m_PrefabInstance: {fileID: 6326019743504473073}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &229941974851165642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5785825276416862927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc96dff9b75010b479bf2556ce2b4f8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawner: {fileID: 0}
-  treePrefab: {fileID: 0}
-  respawnDelay: 10
-  spawnArea: {fileID: 0}
-  bodyAnim: {fileID: 1857237353890058522}
-  rootAnim: {fileID: 436400654897777839}
-  maxHitPoints: 10
-  woodPrefab: {fileID: 3186487738297421167, guid: 75d6e39dc172c9b408eb648c05c1a32a, type: 3}
-  dropCount: 2
-  dropForce: 2
 --- !u!50 &1823001278935332341
 Rigidbody2D:
   serializedVersion: 5

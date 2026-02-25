@@ -53,4 +53,14 @@ public class QuestEvents
     {
         OnLoadQuestMapSuccess?.Invoke(quests);
     }
+    public event Action onMenuQuestPress;
+    public void TriggerQuestUI()
+    {
+        onMenuQuestPress?.Invoke();
+    }
+    public event Action onHideQuestUI;
+    public void HideQuestUI()
+    {
+        onHideQuestUI?.Invoke();
+    }
 }

@@ -43,4 +43,10 @@ public class ToolKitEvent
     {
         onCurSelectedChange?.Invoke(itemDataSO);
     }
+    public event Action onTrigger;
+    public void Trigger()
+    {
+        onTrigger?.Invoke();
+    }
+    
 }

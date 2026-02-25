@@ -15,6 +15,7 @@ public class GameInput
     public GameInput(InputSystem_Actions inputActions)
     {
         this.inputAction = inputActions;
+       
     }
 
     public void Init()
@@ -23,6 +24,8 @@ public class GameInput
         inputAction.Player.OpenBag.performed += _ => { GameEventManager.Ins.inventoryEvent.OpenBagPress(); };
         inputAction.Player.Interact.performed += _ => { Interact_performed(); };
         inputAction.Player.SelectToolKit.performed += SelectToolKit_performed;
+        inputAction.Player.DisplayToolKit.performed += _ => { GameEventManager.Ins.toolKitEvent.Trigger(); };
+        inputAction.Player.MenuQuest.performed += _ => { GameEventManager.Ins.questEvents.TriggerQuestUI(); };
     }
 
     private void SelectToolKit_performed(InputAction.CallbackContext context)
@@ -56,5 +59,39 @@ public class GameInput
     public void Disable_InputAction()
     {
         inputAction.Player.Disable();
+    }
+    public void DisableMovement()
+    {
+        inputAction.Player.Move.Disable();
+    }
+
+    public void EnableMovement()
+    {
+        inputAction.Player.Move.Enable();
+    }
+    public void DisableOpenBag()
+    {
+        inputAction.Player.OpenBag.Disable();
+    }
+
+    public void EnableOpenBag()
+    {
+        inputAction.Player.OpenBag.Enable();
+    }
+    public void DisableInterac()
+    {
+        inputAction.Player.Interact.Disable();
+    }
+    public void EnableInterac()
+    {
+        inputAction.Player.Interact.Enable();
+    }
+    public void DisableOpenQuest()
+    {
+        inputAction.Player.MenuQuest.Disable();
+    }
+    public void EnableQuest()
+    {
+       inputAction.Player.MenuQuest.Enable();
     }
 }

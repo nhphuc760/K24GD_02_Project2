@@ -15,22 +15,6 @@ public class CookingEvent
     {
         onCookClick?.Invoke(recipe);
     }
-
-    public event Action onStopCook;
-    public void StopCook()
-    {
-        onStopCook?.Invoke();
-    }
-    public event Action onFinishCook;
-    public void FinishCook()
-    {
-        onFinishCook?.Invoke(); 
-    }
-    public event Action onFailure;
-    public void CookFailure()
-    {
-        onFailure?.Invoke();
-    }
     public event Action<int> onPointerClickSlotUI;
     public void PointerClickSlotUI(int index)
     {
@@ -75,5 +59,10 @@ public class CookingEvent
     public void EnableDialogCookingChange(RecipeSO recipe)
     {
         enableDialogCookingChange?.Invoke(recipe);
+    }
+    public event Action<KitchenItemDataSO> onCookingFinish;
+    public void CookingFinish(KitchenItemDataSO sO)
+    {
+        onCookingFinish?.Invoke(sO);
     }
 }

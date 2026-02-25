@@ -109,9 +109,10 @@ MonoBehaviour:
   orePrefab: {fileID: 3639777610272869884}
   respawnDelay: 10
   animator: {fileID: 3283512699782956577}
-  maxHitPoints: 3
-  dropPrefab: {fileID: 4968870224503612978, guid: 1172c48d9ff7bd946967cf79444ab3ca, type: 3}
-  dropCount: 2
+  maxHitPoints: 5
+  requireTool: 1
+  dropPrefab: {fileID: 11400000, guid: f1891b8efb0918a4999b53cd01bc8a9f, type: 2}
+  dropCount: 1
   dropForce: 3
   knockbackForce: 2
 --- !u!50 &2540632769902621660
@@ -175,7 +176,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.042301655, y: -0.08460283}
+  m_Offset: {x: -0.042301655, y: -0.15812969}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -185,7 +186,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.61928654, y: 0.5093031}
+  m_Size: {x: 0.61928654, y: 0.6563568}
   m_EdgeRadius: 0
 --- !u!95 &3283512699782956577
 Animator:

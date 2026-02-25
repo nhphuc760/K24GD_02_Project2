@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8cfeb0668ba179449373005050c6480, type: 3}
+  m_Name: "G\xE0 N\u01B0\u1EDBng (Chay)"
+  m_EditorClassIdentifier: 
+  _id: 210
+  _itemName: "G\xE0 N\u01B0\u1EDBng (Chay)"
+  _icon: {fileID: 1602215456, guid: fcd939daf4c881a48bf0d5dd49f46f48, type: 3}
+  _description: "G\xE0 n\u01B0\u1EDBng cho ng\u01B0\u1EDDi \u0103n chay - \u0103n
+    chay nh\u01B0 \u0103n th\u1ECBt\nTh\u1EDDi gian: 0h10p0s\nGi\xE1 b\xE1n: 200$"
+  _maxStack: 1
+  isStackable: 0
+  itemType: 0
+  runTimeItemType: 0
+  sell: 200
+  isCanSell: 1
+  isCanUseBuff: 1
+  recipeSO: {fileID: 11400000, guid: 183662747b42ba3488b85cec73c330a9, type: 2}
+  Description: "G\xE0 n\u01B0\u1EDBng cho ng\u01B0\u1EDDi \u0103n chay - \u0103n
+    chay nh\u01B0 \u0103n th\u1ECBt"
+  buffStamina: 20

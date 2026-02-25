@@ -1,14 +1,16 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameEventManager : MonoBehaviour
 {
     public static GameEventManager Ins;
-    public event Action OnCollectCoins;//cho v�o questEvent
-    public event Action OnFishingCaught;//
+   
     public event Action<string> triggerDialog;
     public event Action<int> onCoinChange;
+    //FishingEvent: Lười tạo script mới nên để luôn ở đây
+    public event Action onFishingZoneEnter;
+    public event Action onFishingZoneExit;
 
     public QuestEvents questEvents;
     public CookingEvent cookingEvent;
@@ -17,11 +19,25 @@ public class GameEventManager : MonoBehaviour
     public ToolKitEvent toolKitEvent;
     public GameInput gameInput;
     public AnimationEvent animationEvent;
+    public AnimalEvent animalEvent;
+
+
+    //Các phần event dưới đây sẽ tự động gọi theo diễn biến trò chơi, ko quan tâm ai subcribe
+    public event Action<SeedDataSO> onPlanting;//cho vào questEvent
+    public event Action<FishDataSO> onFishing;//
+    public event Action<CropDataSO> onHarvest;
+    public event Action<ToolDataSO> onRepairTool;
+    public event Action<ResourceSO> onCutDTree;
+    public event Action<ResourceSO> onMiningOre;
+    public event Func<AnimalDataSO, int, bool> onCheckConDition;
+    public event Action<bool> onNearSell;
+
     private void Awake()
     {
-       if(Ins != null && Ins != this)
+        if (Ins != null && Ins != this)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
+            return;
         }
         Ins = this;
         questEvents = new QuestEvents();
@@ -31,8 +47,49 @@ public class GameEventManager : MonoBehaviour
         toolKitEvent = new ToolKitEvent();
         gameInput = new GameInput();
         animationEvent = new AnimationEvent();
-        DontDestroyOnLoad(this.gameObject);
+        animalEvent = new AnimalEvent();
+        DontDestroyOnLoad(gameObject);
     }
+
+    public void OnNearSell(bool value)
+    {
+        onNearSell?.Invoke(value);
+    }
+    public bool CheckConDition(AnimalDataSO animalDataSO, int quantity)
+    {
+        return onCheckConDition?.Invoke(animalDataSO, quantity) ?? false;
+    }
+    public event Action<AnimalDataSO, int> onSeparate;
+    public void Separate(AnimalDataSO itemData, int quantity)
+    {
+        onSeparate?.Invoke(itemData, quantity);
+    }
+    public void Planting(SeedDataSO seedDataSO)
+    {
+        onPlanting?.Invoke(seedDataSO);
+    }
+    public void OnFishing(FishDataSO sO)
+    {
+        onFishing?.Invoke(sO);
+    }
+    public void HarvestCrop(CropDataSO cropDataSO)
+    {
+        onHarvest?.Invoke(cropDataSO);
+    }
+    public void OnRepairTool(ToolDataSO tool)
+    {
+        onRepairTool?.Invoke(tool);
+    }
+    public void CutDownTree(ResourceSO rO)
+    {
+        onCutDTree?.Invoke(rO);
+    }
+    public void MiningOre(ResourceSO rO)
+    {
+        onMiningOre?.Invoke(rO);
+    }
+   
+  
 
     private void Start()
     {
@@ -57,23 +114,7 @@ public class GameEventManager : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoad;
     }
-    private void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.V))
-        //{
-        //    if (OnCollectCoins != null)
-        //    {
-        //        OnCollectCoins();
-        //    }
-        //    else {
-        //        Debug.Log("OnCollectCoins is not assgin");
-        //    }
 
-        //}
-        //if(Input.GetKeyDown(KeyCode.W)) { 
-        //    OnFishingCaught?.Invoke();
-        //}
-    }
     public void CoinChange(int coin)
     {
         onCoinChange?.Invoke(coin);
@@ -82,6 +123,15 @@ public class GameEventManager : MonoBehaviour
     {
         triggerDialog?.Invoke(log);
     }
- 
+    
+
+    public void FishingZoneEnter()
+    {
+        onFishingZoneEnter?.Invoke();
+    }
+    public void FishingZoneExit()
+    {
+        onFishingZoneExit?.Invoke();
+    }
 
 }

@@ -83,10 +83,13 @@ public class Kitchen : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-
+            
            GameEventManager.Ins.cookingEvent.PlayerEnterKitchen();
+           GameEventManager.Ins.inventoryEvent.DisableInventory();
+            GameEventManager.Ins.questEvents.HideQuestUI();
             if(!isCooking && curRecipeSO != null)
             {
+                GameEventManager.Ins.cookingEvent.CookingFinish(curRecipeSO.result as KitchenItemDataSO);
                 GetItem();
             }
         }
@@ -96,6 +99,7 @@ public class Kitchen : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
           GameEventManager.Ins.cookingEvent.PlayerLeaveKitchen();
+
         }
     }
 
@@ -167,10 +171,13 @@ public class Kitchen : MonoBehaviour
 
     private async void OnDestroy()
     {
-        GameEventManager.Ins.cookingEvent.onCookClick -= CookingEvent_onCookClick;
-        GameEventManager.Ins.cookingEvent.confirmCookingChange -= CookingEvent_confirmCookingChange;
+        if (GameEventManager.Ins != null)
+        {
+            GameEventManager.Ins.cookingEvent.onCookClick -= CookingEvent_onCookClick;
+            GameEventManager.Ins.cookingEvent.confirmCookingChange -= CookingEvent_confirmCookingChange;
+        }
         await Save();
-      
+
     }
     public void GetItem()
     {

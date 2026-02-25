@@ -13,13 +13,19 @@ MonoBehaviour:
   m_Name: Sickle
   m_EditorClassIdentifier: 
   _id: 604
-  _itemName: Sickle
+  _itemName: "Li\u1EC1m"
   _icon: {fileID: -8175024772737227555, guid: 527c77a6981ada3428785885c2e1db08, type: 3}
-  _description: nothing
+  _description: "Thu ho\u1EA1ch c\xE2y tr\u1ED3ng"
   _maxStack: 1
   isStackable: 0
   itemType: 2
   runTimeItemType: 1
+  sell: 0
+  isCanSell: 0
+  purchase_Price: 100
+  typeItemShop: 0
   maxDurability: 100
   durabilityLossPerUse: 1
   toolType: 6
+  repairCostPerPoint: 5
+  timePerpointRepair: 15

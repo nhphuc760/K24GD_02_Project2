@@ -25,15 +25,48 @@ public class ShopManager : MonoBehaviour
      
         GameEventManager.Ins.shopEvent.onShow += Show;
         GameEventManager.Ins.shopEvent.onHide += Hide;
+        GameEventManager.Ins.shopEvent.onPlayerEnterShop += PlayerEnterShop;
+        GameEventManager.Ins.shopEvent.onPlayerExitShop += PlayerExitShop;
         Hide();
 
     }
 
+    private void PlayerExitShop()
+    {
+        Hide();
+    }
+
+    private void PlayerEnterShop()
+    {
+        Show();
+        GameEventManager.Ins.inventoryEvent.DisableInventory();
+        GameEventManager.Ins.questEvents.HideQuestUI();
+    }
+
+    private void OnEnable()
+    {
+        GameEventManager.Ins.gameInput.DisableOpenBag();
+        GameEventManager.Ins.gameInput.DisableOpenQuest();
+    }
+    private void OnDisable()
+    {
+        if (GameEventManager.Ins != null)
+        {
+            GameEventManager.Ins.gameInput.EnableOpenBag();
+            GameEventManager.Ins.gameInput.EnableQuest();
+            GameEventManager.Ins.shopEvent.HideToolTip();
+        }
+    }
     private void OnDestroy()
     {
-        GameEventManager.Ins.onCoinChange -= OnCoinChange;
-        GameEventManager.Ins.shopEvent.onShow -= Show;
-        GameEventManager.Ins.shopEvent.onHide -= Hide;
+        if (GameEventManager.Ins != null)
+        {
+            GameEventManager.Ins.onCoinChange -= OnCoinChange;
+            GameEventManager.Ins.shopEvent.onShow -= Show;
+            GameEventManager.Ins.shopEvent.onHide -= Hide;
+            GameEventManager.Ins.shopEvent.onPlayerEnterShop -= PlayerEnterShop;
+            GameEventManager.Ins.shopEvent.onPlayerExitShop -= PlayerExitShop;
+        }
     }
 
     private void OnCoinChange(int coin)
@@ -43,14 +76,14 @@ public class ShopManager : MonoBehaviour
 
     public void ShopEvent_onPointerExit()
     {
-        GameEventManager.Ins.shopEvent.PointerExit();
+        GameEventManager.Ins.shopEvent.HideToolTip();
     }
 
     public void ShopEvent_onPointerEnter(int index)
     {
      
         ItemShopDataSO shopData = shopDataBaseSO.shopDatabase[index];
-        GameEventManager.Ins.shopEvent.ShowToolTip(shopData._description);
+        GameEventManager.Ins.shopEvent.ShowToolTip(shopData._description,(RectTransform)transform);
     }
 
     public void Buy(int slotIndex, int quantity = 1)
@@ -60,21 +93,25 @@ public class ShopManager : MonoBehaviour
     }
     public void Buy(ItemShopDataSO itemShopDataSO, int quantity = 1)
     {
-        int price = itemShopDataSO.purchase_Price;
+        int price = itemShopDataSO.purchase_Price * quantity;
         if (GameManager.Ins == null) return;
         if (GameManager.Ins.Coin < price)
         {
             GameEventManager.Ins.TriggerDialog($"<color=red>Không đủ tiền để mua, còn thiếu {price - GameManager.Ins.Coin}</color>");
             return;
         }
-        if(GameEventManager.Ins.inventoryEvent.AddItem(itemShopDataSO, quantity))
-        {
-            GameManager.Ins.Coin -= itemShopDataSO.purchase_Price;
+        // kiểm tra loại item mua, thêm vào inven hoặc gọi logic riêng
+        if(itemShopDataSO.typeItemShop == ItemShopDataSO.TypeItemShop.AddInven){
+            if (GameEventManager.Ins.inventoryEvent.AddItem(itemShopDataSO, quantity))
+            {
+                GameManager.Ins.Coin -= price;
+            }
         }
-    }
-    public void Sell()
-    {
-
+        else if(itemShopDataSO.typeItemShop == ItemShopDataSO.TypeItemShop.Separate && GameEventManager.Ins.CheckConDition(itemShopDataSO as AnimalDataSO, quantity))
+        {
+            GameManager.Ins.Coin -= price;
+            GameEventManager.Ins.Separate(itemShopDataSO as AnimalDataSO, quantity);
+        }
     }
 
     void Show()
@@ -84,5 +121,9 @@ public class ShopManager : MonoBehaviour
     void Hide()
     {
         gameObject.SetActive(false);
+    }
+    public int GetPriceItem(int slotIndex)
+    {
+        return shopDataBaseSO.shopDatabase[slotIndex].purchase_Price;
     }
 }

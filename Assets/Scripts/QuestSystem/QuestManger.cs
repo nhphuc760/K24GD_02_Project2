@@ -10,10 +10,8 @@ public class QuestManger : MonoBehaviour
 
     [SerializeField]
     Dictionary<string, Quest> questMap;
- 
+    [SerializeField] QuestDatabaseSO questDatabase;
     [SerializeField] int currentPlayerLevel = 10;
-   
-    QuestInforSO[] questInforSOs;
     private  void Awake()
     {
      
@@ -26,13 +24,16 @@ public class QuestManger : MonoBehaviour
         GameEventManager.Ins.questEvents.onQuestStepStateChanged += QuestStepStateChanged;
     }
 
-    
+
 
     private void OnDisable()
     {
-        GameEventManager.Ins.questEvents.onStartQuest -= StartQuest;
-        GameEventManager.Ins.questEvents.onFinishQuest -= FinishQuest;
-        GameEventManager.Ins.questEvents.onQuestStepStateChanged -= QuestStepStateChanged;
+        if (GameEventManager.Ins != null)
+        {
+            GameEventManager.Ins.questEvents.onStartQuest -= StartQuest;
+            GameEventManager.Ins.questEvents.onFinishQuest -= FinishQuest;
+            GameEventManager.Ins.questEvents.onQuestStepStateChanged -= QuestStepStateChanged;
+        }
     }
 
     private async void Start()
@@ -113,9 +114,9 @@ public class QuestManger : MonoBehaviour
    
     async Task<Dictionary<string, Quest>> CreateQuestMap()
     {
-        questInforSOs = Resources.LoadAll<QuestInforSO>("Quests");
         Dictionary<string, Quest> idToQuestMap = new Dictionary<string, Quest>();
         List<Quest>  quests = await LoadQuest();
+        
         foreach (var quest in quests)
         {
             idToQuestMap[quest.questInforSO._id] = quest;
@@ -176,15 +177,22 @@ public class QuestManger : MonoBehaviour
                 List<QuestData> questDatas = JsonConvert.DeserializeObject<List<QuestData>>(snapshot.Value.ToString());
                 foreach (var child in questDatas)
                 {
-                    QuestInforSO infor = GetQuestInforSoByQuestID(child.questID);
+                    QuestInforSO infor = questDatabase.GetQuestByID(child.questID);
                     Quest quest = new Quest(infor, child.questState, child.questStepState, child.isClaimedReward);
                     quests.Add(quest);
+                }
+                foreach (var child in questDatabase.questDatabase)
+                {
+
+                    if (!CheckHasQuestInforSO(child, quests)){
+                        quests.Add(new Quest(child));
+                    }
                 }
             }
             else
             {
                 Debug.Log("QuestDatabase is not exists");
-                foreach (var info in questInforSOs)
+                foreach (var info in questDatabase.questDatabase)
                 {
                     quests.Add(new Quest(info));
                 }
@@ -194,7 +202,7 @@ public class QuestManger : MonoBehaviour
         catch 
         {
             quests.Clear();
-            foreach (var info in questInforSOs)
+            foreach (var info in questDatabase.questDatabase)
             {
                 quests.Add(new Quest(info));
             }
@@ -203,10 +211,14 @@ public class QuestManger : MonoBehaviour
 
     }
 
-
-    public QuestInforSO GetQuestInforSoByQuestID(string id)
+    bool CheckHasQuestInforSO(QuestInforSO input, List<Quest> repare)
     {
-       return questInforSOs.ToList().Find(x => x._id == id);
+        foreach (var child in repare)
+        {
+            if(child.questInforSO == input)
+                return true;
+        }
+        return false;
     }
 
 }

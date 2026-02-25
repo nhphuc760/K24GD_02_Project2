@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3087930661594206770}
   - component: {fileID: 8580989887104017995}
   - component: {fileID: 6428125475090740160}
+  - component: {fileID: 280619554320872841}
   m_Layer: 9
   m_Name: BrichTree_Small
   m_TagString: Untagged
@@ -87,6 +88,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 7256057679317725453}
   alpha: 0.6
+--- !u!114 &280619554320872841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540968652401062206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc96dff9b75010b479bf2556ce2b4f8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner: {fileID: 0}
+  treePrefab: {fileID: 0}
+  respawnDelay: 10
+  spawnArea: {fileID: 0}
+  bodyAnim: {fileID: 5624066813496462059}
+  rootAnim: {fileID: 5892082040632711006}
+  maxHitPoints: 3
+  requiredTool: 0
+  dropDataSO: {fileID: 11400000, guid: 9ec6f9eddf599a24e87d355fe4407a50, type: 2}
+  dropCount: 2
+  dropForce: 2
+  chopSound: {fileID: 8300000, guid: fbbea055a2567784f95b2b71b80a29be, type: 3}
 --- !u!1 &6535430398277095103
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,8 +178,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.050470404, y: -0.12302079}
-  m_Size: {x: 0.5583884, y: 0.24926072}
+  m_Offset: {x: 0.050470397, y: -0.16921952}
+  m_Size: {x: 0.5583885, y: 0.34165868}
   m_Direction: 1
 --- !u!1 &7236576008810215604
 GameObject:
@@ -232,8 +257,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1293688563
-  m_SortingLayer: -5
+  m_SortingLayerID: 522754583
+  m_SortingLayer: -6
   m_SortingOrder: 1
   m_Sprite: {fileID: -3786365283607771447, guid: cca61b885f756a44b872b295c2793bc0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

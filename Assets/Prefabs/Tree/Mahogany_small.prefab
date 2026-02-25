@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3087930661594206770}
   - component: {fileID: 8580989887104017995}
   - component: {fileID: 5268648581936028555}
+  - component: {fileID: 4948609461753288601}
   m_Layer: 9
   m_Name: Mahogany_small
   m_TagString: Untagged
@@ -87,6 +88,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 7256057679317725453}
   alpha: 0.6
+--- !u!114 &4948609461753288601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540968652401062206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc96dff9b75010b479bf2556ce2b4f8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner: {fileID: 0}
+  treePrefab: {fileID: 0}
+  respawnDelay: 10
+  spawnArea: {fileID: 0}
+  bodyAnim: {fileID: 5624066813496462059}
+  rootAnim: {fileID: 5892082040632711006}
+  maxHitPoints: 3
+  requiredTool: 0
+  dropDataSO: {fileID: 11400000, guid: 9ec6f9eddf599a24e87d355fe4407a50, type: 2}
+  dropCount: 2
+  dropForce: 2
+  chopSound: {fileID: 8300000, guid: fbbea055a2567784f95b2b71b80a29be, type: 3}
 --- !u!1 &2510847654132081926
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,8 +178,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.028720912, y: -0.04}
-  m_Size: {x: 0.5858137, y: 0.20790349}
+  m_Offset: {x: 0.028720906, y: -0.10482581}
+  m_Size: {x: 0.5858138, y: 0.33755568}
   m_Direction: 1
 --- !u!1 &7236576008810215604
 GameObject:
@@ -232,8 +257,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1293688563
-  m_SortingLayer: -5
+  m_SortingLayerID: 522754583
+  m_SortingLayer: -6
   m_SortingOrder: 1
   m_Sprite: {fileID: 2574514772055256612, guid: ce53f8a4df9db26429b9ecb8a9eabcef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

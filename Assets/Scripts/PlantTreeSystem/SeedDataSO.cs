@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using NUnit.Framework.Internal.Execution;
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SeedDataSO", menuName = "Scriptable Objects/SeedDataSO")]
-public class SeedDataSO : ItemDataSO 
+public class SeedDataSO : ItemShopDataSO 
 {
     [Header("Crop Info")]
     [Tooltip("Khoảng thời gian từ lúc trồng đến lúc thu hoạch, tính bằng giây")]
@@ -13,9 +15,14 @@ public class SeedDataSO : ItemDataSO
     public List<Sprite> growhtSprites; // Sprite for the mature stage
     public Sprite harvestIndicator;
     [Header("Crop Economic Value")]
-    public int purchasePrice; // Price to buy the seed
-    public int sellPrice; // Price to sell the mature crop
     public int yield;// sản lượng thu được mỗi khi thu hoạch
+
+
+
+    private void Reset()
+    {
+        isCanSell = true;
+    }
 
 
     /// <summary>
@@ -26,4 +33,11 @@ public class SeedDataSO : ItemDataSO
     {
         return timeSpandHarvest / (growhtSprites.Count - 1);
     }
+    public override void OnValidate()
+    {
+        _description = $"Trồng và thu hoạch\nThời gian: {timeSpandHarvest}\nSản lượng: {yield}\nLợi nhuận: {cropData.sell}$/1";
+        
+    }
 }
+
+

@@ -168,4 +168,5 @@ MonoBehaviour:
   floatAmplitude: 0.1
   floatFrequency: 2
   floatDelay: 0.5
-  timeDestroy: 0
+  timeDestroy: 10
+  reSourceSO: {fileID: 11400000, guid: 319a62c3a9266f748ac403d10695fe38, type: 2}

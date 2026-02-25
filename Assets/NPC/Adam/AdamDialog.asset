@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15e98bf3344115458f7a78b9295c227, type: 3}
+  m_Name: AdamDialog
+  m_EditorClassIdentifier: 
+  npcName: Adam
+  npcPortraits: []
+  dialogueLines:
+  - "Xin ch\xE0o ! Ng\xE0y h\xF4m nay c\u1EE7a b\u1EA1n th\u1EBF n\xE0o"
+  - "B\u1EA1n c\xF3 mu\u1ED1n mua m\u1ED9t v\xE0i m\xF3n \u0111\u1ED3 t\u1EEB c\u1EEDa
+    h\xE0ng c\u1EE7a t\xF4i kh\xF4ng ?"
+  - "T\xF4i c\xF3 t\u1EA5t c\u1EA3 nh\u1EEFng g\xEC b\u1EA1n c\u1EA7n \u0111\u1EA5y"
+  autoProgressLines: 010001
+  autoProgressDelay: 1.5
+  typingSpeed: 0.05
+  voiceSound: {fileID: 8300000, guid: 3ec132107a3d63f4b898692298dc5c2c, type: 3}
+  voicePitch: 1

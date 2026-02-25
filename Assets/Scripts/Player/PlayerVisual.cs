@@ -5,20 +5,30 @@ using UnityEngine.U2D.Animation;
 
 public class PlayerVisual : MonoBehaviour
 {
-    [SerializeField] Animator animator;
+
+    [SerializeField] PlayerFishing player;
+    [SerializeField] public Animator animator;
     [SerializeField] PlayerMovement playerMovement;
-    static int ISMOVING = Animator.StringToHash("isMoving");
-    static int HORIZONTAL_MOVEMENT = Animator.StringToHash("horizontalMovement");
-    static int VERTICAL_MOVEMENT = Animator.StringToHash("verticalMovement");
+
+  
     bool isInteract = false;
     private void Awake()
     {
-        GameManager.Ins.onLoadDataCompleted += LoadDataPlayerCompleted;
+        GameManager.Ins.onLoadDataCompleted += LoadDataPlayerCompleted; 
+        player ??= transform.parent.GetComponent<PlayerFishing>();
+        
     }
 
     private void Start()
     {
         GameEventManager.Ins.animationEvent.onToolUse += UseTool;
+        GameEventManager.Ins.animationEvent.onDead += Dead;
+        GameEventManager.Ins.animationEvent.onIdle += Idle;
+    }
+
+    private void Idle()
+    {
+        animator.Play(AnimationHashes.IDLE);
     }
 
     private void UseTool(IToolTarget target, ToolDataSO sO, ToolRunTimeData dataRunTime)
@@ -41,18 +51,23 @@ public class PlayerVisual : MonoBehaviour
         GetComponent<SpriteLibrary>().spriteLibraryAsset = sO.SpriteLibraryAsset;
     }
 
+    public bool winnerAnimIsActive;
+    public AnimationCurve animationCurve;
+
     private void Update()
     {
-        animator.SetBool(ISMOVING, playerMovement.IsMoving);
-        animator.SetFloat(HORIZONTAL_MOVEMENT, playerMovement.HorizontalMovement);
-        animator.SetFloat(VERTICAL_MOVEMENT, playerMovement.VerticalMovement);
+        animator.SetBool(AnimationHashes.ISMOVING, playerMovement.IsMoving);
+        animator.SetFloat(AnimationHashes.HORIZONTAL_MOVEMENT, playerMovement.HorizontalMovement);
+        animator.SetFloat(AnimationHashes.VERTICAL_MOVEMENT, playerMovement.VerticalMovement);
         if (playerMovement.IsMoving)
         {
             FlipVisual();
         }
+        
     }
 
-    void FlipVisual() {
+    void FlipVisual() 
+    {
         if (playerMovement.HorizontalMovement < 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
@@ -64,8 +79,14 @@ public class PlayerVisual : MonoBehaviour
     }
     private void OnDestroy()
     {
-        GameManager.Ins.onLoadDataCompleted -= LoadDataPlayerCompleted;
-        GameEventManager.Ins.animationEvent.onToolUse -= UseTool;
+        if (GameEventManager.Ins != null)
+        {
+            if(GameManager.Ins != null)
+            GameManager.Ins.onLoadDataCompleted -= LoadDataPlayerCompleted;
+            GameEventManager.Ins.animationEvent.onToolUse -= UseTool;
+            GameEventManager.Ins.animationEvent.onDead -= Dead;
+            GameEventManager.Ins.animationEvent.onIdle -= Idle;
+        }
     }
 
     IEnumerator WaitUseTool(IToolTarget target, ToolDataSO sO, ToolRunTimeData tool)
@@ -74,6 +95,20 @@ public class PlayerVisual : MonoBehaviour
         float duration = animator.GetCurrentAnimatorStateInfo(0).length;
         yield return new WaitForSeconds(duration);
         target.InteractWithTool(sO, tool);
-        isInteract = false;
+        isInteract = false; 
+    }
+
+    public void OnCastFishingEndAnimationEvent()
+    {
+        player.OnCastFishingEnd();
+    }
+    public void OnCaptureFishStartAnimationEvent()
+    {
+        player.CheckIfWinFishGame();
+    }
+    public void Dead()
+    {
+        animator.Play(AnimationHashes.DEAD);
     }
 }
+

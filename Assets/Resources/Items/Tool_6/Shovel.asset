@@ -15,11 +15,17 @@ MonoBehaviour:
   _id: 603
   _itemName: Shovel
   _icon: {fileID: -7010185486416626803, guid: 527c77a6981ada3428785885c2e1db08, type: 3}
-  _description: nothing
+  _description: "Lo\u1EA1i b\u1ECF c\xE2y tr\u1ED3ng "
   _maxStack: 1
   isStackable: 0
   itemType: 2
   runTimeItemType: 1
+  sell: 0
+  isCanSell: 0
+  purchase_Price: 150
+  typeItemShop: 0
   maxDurability: 100
   durabilityLossPerUse: 1
   toolType: 2
+  repairCostPerPoint: 5
+  timePerpointRepair: 5

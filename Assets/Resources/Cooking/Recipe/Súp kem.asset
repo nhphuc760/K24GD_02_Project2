@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b008df799a5a6b4a935ad730435dc0a, type: 3}
+  m_Name: "S\xFAp kem"
+  m_EditorClassIdentifier: 
+  timeCooldown: 180
+  ingredients:
+  - itemSO: {fileID: 11400000, guid: 843b04138c5f6be43be84cf7a679670e, type: 2}
+    quantity: 3
+  - itemSO: {fileID: 11400000, guid: 1c7be54e940fd1a4086f71448f660ee9, type: 2}
+    quantity: 1
+  - itemSO: {fileID: 11400000, guid: 68608578a24f3ab488a04af7e23d65fb, type: 2}
+    quantity: 1
+  - itemSO: {fileID: 11400000, guid: 7d6cff6a58041184186291db720b0aec, type: 2}
+    quantity: 1
+  result: {fileID: 11400000, guid: 88dda54452e278d4f8bd1693a93cfc1c, type: 2}

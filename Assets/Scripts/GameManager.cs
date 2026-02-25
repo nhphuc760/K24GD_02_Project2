@@ -1,23 +1,24 @@
 ﻿
-using UnityEngine;
-using UnityEngine.U2D.Animation;
-using UnityEngine.SceneManagement;
+using Cysharp.Threading.Tasks;
+using Newtonsoft.Json;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System;
-using Newtonsoft.Json;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Ins;
     [Header("Reference")]
     [SerializeField] CharacterDatabase characterDatabase;
-    [SerializeField] GameObject playerPrefab;
     [SerializeField] SeedDatabase seedDataBase; // Cơ sở dữ liệu cây trồng chung cho toàn game
     public event Action<PlayerData, CharacterDataSO> onLoadDataCompleted;
 
-    
-    int _coins = -1;
-    public int Coin 
+    [SerializeField] int _coins;
+    private Transform animalSpanwPoint;
+
+    public int Coin
     {
         get => _coins;
         set
@@ -25,22 +26,20 @@ public class GameManager : MonoBehaviour
             if (_coins != value)
             {
                 _coins = value;
-                GameEventManager.Ins.CoinChange(Coin);
+                GameEventManager.Ins.CoinChange(_coins);
             }
         }
     }
     private Vector3 nextPlayerPosition; // vị trí người chơi sau khi chuyển scene
     private async void Awake()
     {
-        if (Ins == null)
-        {
-            Ins = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
+        if(Ins != null && Ins != this)
         {
             Destroy(gameObject);
+            return;
         }
+        Ins = this;
+        DontDestroyOnLoad(gameObject);
         var task = await Save_Load_Firebase.LoadData("Coins");
         if (task.Exists)
         {
@@ -50,6 +49,7 @@ public class GameManager : MonoBehaviour
         {
             Coin = 500;// số tiền mặc định cho beginer
         }
+        GameEventManager.Ins.CoinChange(_coins);
     }
     //Để Script giúp cho GManager "lắng nghe" sự kiện khi scene thay đổi không bị mất đi
     // Đăng ký "lắng nghe" sự kiện khi scene thay đổi
@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-   
+
 
     /// <summary>
     /// Hàm này sẽ được tự động gọi MỖI KHI một scene mới được tải xong.
@@ -102,16 +102,26 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-        var task = await Save_Load_Firebase.LoadData("SeedData");
-        if (task.Exists)
+        if (scene.name == "Farm")
         {
-            List<SeedSaveData> seedDatas = JsonConvert.DeserializeObject<List<SeedSaveData>>(task.Value.ToString());
-            LoadCropsForScene(scene.name, seedDatas);
+            var task = await Save_Load_Firebase.LoadData("SeedData");
+            if (task.Exists)
+            {
+                List<SeedSaveData> seedDatas = JsonConvert.DeserializeObject<List<SeedSaveData>>(task.Value.ToString());
+                LoadCropsForScene(scene.name, seedDatas);
+            }
         }
         MovePlayerToPosition();
+
+
+        // Kiểm tra nếu đây là scene game (không phải menu) (test animal)
+        if (scene.name != "PersistentSystems" && scene.name != "CustomizeCharacter" /*...*/)
+        {
+            FindSpawnPoint(scene.name);
+        }
     }
     //Hàm được Portal gọi để bắt đầu chuyển scene
-    public async void StartSceneTransition(string sceneName, Vector3 newPos)
+    public async UniTask StartSceneTransition(string sceneName, Vector3 newPos, string desciption = "", float speedFade = 0.3f)
     {
         await SaveCurrentSceneState(); //nếu cần lưu trạng thái hiện tại thì làm ở đây
         //Lưu lại vị trí mà người chơi sẽ đến
@@ -119,8 +129,14 @@ public class GameManager : MonoBehaviour
 
         // Gọi UIManager để bật hiệu ứng fade-out đen màn hình ở đây) // làm sau
         if (LoadingScene.Ins != null)
-            LoadingScene.Ins.LoadScene(sceneName, "Loading...", LoadSceneMode.Single, true);
-        else SceneManager.LoadScene(sceneName);
+        {
+            string des = string.IsNullOrEmpty(desciption) ? "Loading..." : desciption;
+            await LoadingScene.Ins.LoadScene(sceneName, des, LoadSceneMode.Single, true, speedFade);
+        }
+        else 
+        { 
+            SceneManager.LoadScene(sceneName); 
+        }
     }
     //hàm để di chuyển người chơi đến vị trí đã lưu sau khi tải xong scene mới
     private void MovePlayerToPosition()
@@ -130,19 +146,10 @@ public class GameManager : MonoBehaviour
         {
             // Tìm GameObject người chơi bằng Tag
             GameObject player = GameObject.FindGameObjectWithTag("Player");
-
-            if (player != null)
-            {
-                player.transform.position = this.nextPlayerPosition;
-                Debug.Log($"Đã di chuyển Player đến vị trí: {nextPlayerPosition}");
-
-                // Reset lại để lần sau không bị di chuyển nhầm
-                this.nextPlayerPosition = Vector3.zero;
-            }
-            else
-            {
-                Instantiate(playerPrefab, this.nextPlayerPosition, Quaternion.identity);
-            }
+            player.transform.position = this.nextPlayerPosition;
+            Debug.Log($"Đã di chuyển Player đến vị trí: {nextPlayerPosition}");
+            // Reset lại để lần sau không bị di chuyển nhầm
+            this.nextPlayerPosition = Vector3.zero;
         }
     }
     private async Task SaveCurrentSceneState()
@@ -150,11 +157,10 @@ public class GameManager : MonoBehaviour
         string currentScene = SceneManager.GetActiveScene().name;
         //chỉ lưu khi là game scene có thể trồng cây
         Debug.Log(currentScene);
-        if(currentScene.Equals("Farm"))
+        if (currentScene.Equals("Farm"))
         {
             List<SeedSaveData> seedSaveDatas = new List<SeedSaveData>();
             Seed[] cropsInScene = FindObjectsByType<Seed>(FindObjectsSortMode.None);
-            Debug.Log(cropsInScene.Length);
             if (cropsInScene == null || cropsInScene.Length == 0)
             {
                 await Save_Load_Firebase.RemoveAsync("SeedData");
@@ -164,14 +170,14 @@ public class GameManager : MonoBehaviour
             {
                 seedSaveDatas.Add(crop.GetSaveData());
             }
-         
+
             await Save_Load_Firebase.SaveData("SeedData", JsonConvert.SerializeObject(seedSaveDatas));
         }
     }
 
     public async void LoadCropsForScene(string sceneName, List<SeedSaveData> data)
     {
-        if(seedDataBase == null)
+        if (seedDataBase == null)
         {
             Debug.LogError("Crop Database is not assigned in GameManager!");
             return;
@@ -188,17 +194,17 @@ public class GameManager : MonoBehaviour
         }
         if (data == null) return;
 
-        foreach(SeedSaveData cropData in data)
+        foreach (SeedSaveData cropData in data)
         {
-            if(cropData.SceneName == sceneName)
+            if (cropData.SceneName == sceneName)
             {
                 SeedDataSO dataAsset = seedDataBase.GetSeedDataByID(cropData.cropDataID);
                 var cropPrefab = dataAsset.cropData.prefab;
-                if(dataAsset != null && cropPrefab != null)
+                if (dataAsset != null && cropPrefab != null)
                 {
                     GameObject cropInstance = Instantiate(cropPrefab, cropData.worldPosition.ToVector3(), Quaternion.identity);
                     Seed cropScript = cropInstance.GetComponent<Seed>();
-                    if(cropScript != null)
+                    if (cropScript != null)
                     {
                         cropScript.LoadCropState(dataAsset, cropData.timeHarvest, curTime);
                     }
@@ -206,20 +212,96 @@ public class GameManager : MonoBehaviour
             }
         }
 
-     
+
     }
-    private async void OnDestroy()  
+    private async void OnDestroy()
     {
         await SaveCurrentSceneState();
         await Save_Load_Firebase.SaveData("Coins", _coins);
-       
     }
 
     private void OnValidate()
     {
-        if(characterDatabase == null)
+        if (characterDatabase == null)
         {
             characterDatabase = Resources.Load<CharacterDatabase>("CharacterData");
         }
+    }
+
+    public void BuyAnimal(AnimalDataSO animal)
+    {
+        // Kiểm tra xem đã tìm thấy spawn point chưa
+        if (animalSpanwPoint == null)
+        {
+            return; // Dừng lại nếu không có spawn point
+        }
+        Vector3 spawnPos = animalSpanwPoint.position;
+        spawnPos.z = 0f; // Đảm bảo Z=0
+        GameObject animalObj = Instantiate(animal.animalPrefab, spawnPos, Quaternion.identity);
+        FarmAnimal farm = animalObj.GetComponent<FarmAnimal>();
+        farm.StartLife(animal);
+        GameEventManager.Ins.animalEvent.BuyAnimal(farm);
+    }
+    /// Tự động tìm Spawn Point trong scene mới dựa vào TÊN.
+    /// </summary>
+    private void FindSpawnPoint(string sceneName)
+    {
+        // Chỉ tìm nếu chúng ta ở đúng scene
+        if (sceneName == "Farm") // Thay "Farm" bằng tên scene farm của bạn
+        {
+            // Tìm GameObject bằng TÊN
+            // Đảm bảo tên này KHỚP 100% với tên GameObject trong Hierarchy
+            GameObject spawnObj = GameObject.Find("AnimalSpawnPoint");
+
+            if (spawnObj != null)
+            {
+                animalSpanwPoint = spawnObj.transform;
+                Debug.Log("GameManager đã tự động tìm thấy AnimalSpawnPoint!");
+            }
+            else
+            {
+                Debug.LogWarning("Không tìm thấy 'AnimalSpawnPoint' trong scene Farm! Hãy kiểm tra lại tên.");
+                animalSpanwPoint = null;
+            }
+        }
+        else
+        {
+            // Nếu là scene khác (Town, Mine...), chúng ta không cần spawn point
+            animalSpanwPoint = null;
+        }
+    }
+
+
+    //sleep
+    public void StartSleepSequence()
+    {
+        StartCoroutine(SleepRoutine());
+    }
+
+    IEnumerator SleepRoutine()
+    {
+        //Màn hình tối dần
+        yield return UIManager.instance.FadeOut();
+
+        //Reset Thời Gian & Kích hoạt cây lớn lên
+        TimeManager.instance.SkipToNextDay();
+
+        // Hồi phục Thể Lực
+        if (StaminaManager.instance != null)
+        {
+            StaminaManager.instance.RestoreStamina(100);
+        }
+
+        //lưu game (optional)
+        //SaveGame();
+
+        // Đợi một chút cho cảm giác "đang ngủ" (ví dụ 1 giây)
+        yield return new WaitForSeconds(1f);
+
+
+        //Màn hình sáng lại
+        yield return UIManager.instance.FadeIn();
+
+        Debug.Log("Đã ngủ dậy!");
     }
 }

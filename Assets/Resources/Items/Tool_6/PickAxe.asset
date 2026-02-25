@@ -13,13 +13,19 @@ MonoBehaviour:
   m_Name: PickAxe
   m_EditorClassIdentifier: 
   _id: 602
-  _itemName: PickAxe
+  _itemName: "Cu\u1ED1c"
   _icon: {fileID: -492788189712266756, guid: 038db4862654f5946b86fcf00b466b33, type: 3}
-  _description: nothing
+  _description: "Khai th\xE1c qu\u1EB7ng \u1EDF h\u1EA7m m\u1ECF"
   _maxStack: 1
   isStackable: 0
   itemType: 2
   runTimeItemType: 1
+  sell: 0
+  isCanSell: 0
+  purchase_Price: 200
+  typeItemShop: 0
   maxDurability: 100
-  durabilityLossPerUse: 1
+  durabilityLossPerUse: 2
   toolType: 1
+  repairCostPerPoint: 8
+  timePerpointRepair: 10

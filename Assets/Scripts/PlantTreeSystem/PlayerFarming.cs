@@ -11,8 +11,11 @@ public class PlayerFarming : MonoBehaviour
     public TileBase farmPlotTile;
     public LayerMask cropsLayerMask;//quét tìm cropsLayerMask
     public LayerMask interactableLayerMask;//quét tìm interactableLayerMask
-  //  public float interactionRadius = 0.8f; // Bán kính tương tác với các đối tượng xung quanh
+                                           //  public float interactionRadius = 0.8f; // Bán kính tương tác với các đối tượng xung quanh
 
+    //audio
+    public AudioClip PlantSound;
+    public AudioClip HarvestSound;
     private void Start()
     {
       
@@ -46,6 +49,7 @@ public class PlayerFarming : MonoBehaviour
 
     private void OnDisable()
     {
+        if(GameEventManager.Ins != null)
         GameEventManager.Ins.gameInput.interacPressed -= HandleInput;
        
     }
@@ -57,7 +61,7 @@ public class PlayerFarming : MonoBehaviour
     void HandleInput()
     {
 
-
+        if (FarmLandManager.Ins == null || !FarmLandManager.Ins.IsFarmLand) return;
         InventorySlot curSelected = GameEventManager.Ins.toolKitEvent.GetCurDataChoose();
         if (curSelected == null) return;
         var toolDataSO = curSelected.ItemData as ToolDataSO;
@@ -79,6 +83,11 @@ public class PlayerFarming : MonoBehaviour
                     }
 
                     GameEventManager.Ins.animationEvent.ToolUse(hit.GetComponent<IToolTarget>(), toolDataSO, runtime);
+                    if (AudioManager.instance != null)
+                    {
+                        Debug.Log("Play harvest sound");
+                        AudioManager.instance.PlayFX(HarvestSound);
+                    }
                 }
                 else
                     GameEventManager.Ins.TriggerDialog("<color=red>Công cụ không phù hợp</color>");
@@ -118,6 +127,12 @@ public class PlayerFarming : MonoBehaviour
                 GameEventManager.Ins.inventoryEvent.RemoveItem(curIndex, 1);
                 GameObject cropInstance = Instantiate(cropToPlant.cropData.prefab, cellCenterPosition, Quaternion.identity);
                 cropInstance.GetComponent<Seed>().Plant(cropToPlant);
+                GameEventManager.Ins.Planting(cropToPlant);
+                if (AudioManager.instance != null)
+                {
+                    Debug.Log("Play plant sound");
+                    AudioManager.instance.PlayFX(PlantSound);
+                }
             }
             else
             {

@@ -13,13 +13,19 @@ MonoBehaviour:
   m_Name: Axe
   m_EditorClassIdentifier: 
   _id: 601
-  _itemName: Axe
+  _itemName: "R\xECu"
   _icon: {fileID: 8290443533355553962, guid: 038db4862654f5946b86fcf00b466b33, type: 3}
-  _description: nothing
+  _description: "Ch\u1EB7t c\xE2y"
   _maxStack: 1
   isStackable: 0
   itemType: 2
   runTimeItemType: 1
+  sell: 0
+  isCanSell: 0
+  purchase_Price: 130
+  typeItemShop: 0
   maxDurability: 100
-  durabilityLossPerUse: 1
+  durabilityLossPerUse: 2
   toolType: 0
+  repairCostPerPoint: 7
+  timePerpointRepair: 20

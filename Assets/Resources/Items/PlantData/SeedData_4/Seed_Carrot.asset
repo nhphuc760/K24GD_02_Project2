@@ -13,13 +13,20 @@ MonoBehaviour:
   m_Name: Seed_Carrot
   m_EditorClassIdentifier: 
   _id: 401
-  _itemName: Seed_Carrot
+  _itemName: "H\u1EA1t gi\u1ED1ng c\xE0 r\u1ED1t"
   _icon: {fileID: 2109489747490457824, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
-  _description: Carrot dai
+  _description: "Tr\u1ED3ng v\xE0 thu ho\u1EA1ch\nTh\u1EDDi gian: 14400\nS\u1EA3n
+    l\u01B0\u1EE3ng: 5\nL\u1EE3i nhu\u1EADn: 10$/1"
   _maxStack: 99
   isStackable: 1
   itemType: 0
-  timeSpandHarvest: 60
+  runTimeItemType: 0
+  sell: 1
+  isCanSell: 1
+  isCanUseBuff: 0
+  purchase_Price: 5
+  typeItemShop: 0
+  timeSpandHarvest: 14400
   cropData: {fileID: 11400000, guid: 23567b50437f9a34d996177f9dec4ae2, type: 2}
   growhtSprites:
   - {fileID: 2109489747490457824, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
@@ -28,6 +35,4 @@ MonoBehaviour:
   - {fileID: -5752873257389657301, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
   - {fileID: -8286018175113047878, guid: 7552eb715a273654c8dfcdbc891fd06c, type: 3}
   harvestIndicator: {fileID: -590013225539145547, guid: 5fa6f306aca02f84497c285587e49872, type: 3}
-  purchasePrice: 2
-  sellPrice: 4
   yield: 5

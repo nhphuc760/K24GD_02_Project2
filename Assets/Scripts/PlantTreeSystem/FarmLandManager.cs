@@ -1,4 +1,5 @@
 using System.Collections;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -13,11 +14,14 @@ public class FarmLandManager : MonoBehaviour
     InventorySlot curToolKit;
     Transform groundCheck;
     bool isInFarmLand = false;
+    public bool IsFarmLand => isInFarmLand;
     Vector3Int curPos;
     Vector3Int lastHighLightPos;
+    public static FarmLandManager Ins;
     private void Awake()
     {
-        Transform player = FindAnyObjectByType<Player>().transform;
+        Ins = this;
+        Transform player = FindAnyObjectByType<PlayerFishing>().transform;
         groundCheck = player.GetChild(1);
     }
     private void OnEnable()
@@ -62,13 +66,15 @@ public class FarmLandManager : MonoBehaviour
     private void OnDisable()
     {
         StopCoroutine(CheckPlayerInFarm());
-        GameEventManager.Ins.toolKitEvent.onCurSelectedChange += CurSelectedChange;
+        if(GameEventManager.Ins != null)
+        GameEventManager.Ins.toolKitEvent.onCurSelectedChange -= CurSelectedChange;
     }
 
     IEnumerator CheckPlayerInFarm()
     {
         while (true)
         {
+            if (groundCheck == null) yield break;
             Vector3Int cellPosition = farmLand.WorldToCell(groundCheck.position);
             TileBase currentTile = farmLand.GetTile(cellPosition);
             curPos = cellPosition;

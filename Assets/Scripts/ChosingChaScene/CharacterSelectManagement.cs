@@ -22,7 +22,6 @@ public class CharacterSelectManagement : MonoBehaviour
     [SerializeField] string nextScene;
 
 
-
     private void Start()
     {
         if(database == null || database.characters.Count == 0)
@@ -89,7 +88,7 @@ public class CharacterSelectManagement : MonoBehaviour
         };
         await Save_Load_Firebase.SaveData("PlayerData", player.ToString());
         if (LoadingScene.Ins != null)
-            LoadingScene.Ins.LoadScene(nextScene, "Loading...", LoadSceneMode.Single, false);
+           await LoadingScene.Ins.LoadScene(nextScene, "Loading...", LoadSceneMode.Single, false);
         else SceneManager.LoadScene(nextScene);
     }
 }
